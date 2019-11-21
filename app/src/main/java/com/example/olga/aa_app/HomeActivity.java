@@ -3,6 +3,8 @@ package com.example.olga.aa_app;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,6 +14,9 @@ import android.widget.TextView;
 public class HomeActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private ReactionFragment reactionFragment;
+    private ProfileFragment profileFragment;
+    private EmergencyCallFragment emergencyCallFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -20,13 +25,13 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_profile:
-                    mTextMessage.setText(R.string.title_profile);
+                    setFragment(profileFragment);
                     return true;
                 case R.id.navigation_notruf:
-                    mTextMessage.setText(R.string.title_notruf);
+                    setFragment(emergencyCallFragment);
                     return true;
                 case R.id.navigation_reaction:
-                    mTextMessage.setText(R.string.title_reaction);
+                    setFragment(reactionFragment);
                     return true;
             }
             return false;
@@ -41,6 +46,11 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.logo);
 
+        reactionFragment = new ReactionFragment();
+        profileFragment = new ProfileFragment();
+        emergencyCallFragment = new EmergencyCallFragment();
+        setFragment(profileFragment);
+
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -53,4 +63,9 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_frame, fragment);
+        fragmentTransaction.commit();
+    }
 }
