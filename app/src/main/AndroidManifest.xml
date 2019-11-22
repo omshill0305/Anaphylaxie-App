@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity">
+            android:name=".ProfileFormActivity"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +22,9 @@
         </activity>
         <activity
             android:name=".HomeActivity"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
