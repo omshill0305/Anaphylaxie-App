@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AA_app</string>
+    <string name="save">Speichern</string>
+    <string name="no">Nein</string>
+    <string name="profile_name">Profilname</string>
+    <string name="yes">Ja</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="asthma">Asthma</string>
+    <string name="birthday">Geburtstag</string>
+    <string name="emergency_set">Notfallset</string>
+    <string name="gender">Geschlecht</string>
+    <string name="known_allergens">Bekannte Allergene</string>
+    <string name="title_emergency_call">Notruf</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_reaction">Reaktion</string>
+    <string name="male">männlich</string>
+    <string name="female">weiblich</string>
+    <string name="diverse">divers</string>
+    <string name="product_name">Produktname</string>
+    <string name="dosage">Dosierung</string>
+    <string name="antihistamine">Antihistaminikum</string>
+    <string name="steroid">Steroid</string>
+    <string name="autoinjector">Autoinjektor</string>
+    <string name="salbutamol">Salbutamol</string>
+</resources>
