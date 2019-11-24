@@ -14,4 +14,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="skin">Haut</string>
+    <string name="stomach">Magen - Darm</string>
+    <string name="heart">Herz - Kreislauf</string>
+    <string name="breathe">Atemwege</string>
+    <string name="sickness">Schwindel</string>
+    <string name="running_nose">Fließschnupfen</string>
+    <string name="panic">Unbestimmte Angst</string>
+    <string name="no_idea">Ich weiß es nicht</string>
 </resources>
