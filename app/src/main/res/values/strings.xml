@@ -6,6 +6,20 @@
     <string name="title_reaction">Reaktion</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="reaction_fragment">Reaktion</string>
+    <string name="no_symptoms">Noch keine Symptome gewählt</string>
+    <string name="choose_symptoms">Jetzt auswählen</string>
+    <string name="title_activity_reaktion">ReaktionActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="skin">Haut</string>
+    <string name="stomach">Magen - Darm</string>
+    <string name="heart">Herz - Kreislauf</string>
+    <string name="breathe">Atemwege</string>
+    <string name="sickness">Schwindel</string>
+    <string name="running_nose">Fließschnupfen</string>
+    <string name="panic">Unbestimmte Angst</string>
+    <string name="no_idea">Ich weiß es nicht</string>
 </resources>
