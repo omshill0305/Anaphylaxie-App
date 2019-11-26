@@ -75,12 +75,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:paddingBottom="5dp"
-                    android:text="@string/skin"
+                    android:drawableTop="@drawable/pimples32"
+                    android:padding="10dp"
                     android:textAlignment="center"
-                    android:gravity="bottom"
-                    android:drawableEnd="@drawable/ic_reaction_black_24dp"
-                    />
+                    android:text="@string/skin"/>
 
                 <Button
                     android:id="@+id/button28"
@@ -89,10 +87,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:gravity="bottom"
-                    android:paddingBottom="5dp"
-                    android:text="@string/stomach"
-                    android:textAlignment="center" />
+                    android:drawableTop="@drawable/stomach"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/stomach"/>
             </TableRow>
 
             <TableRow
@@ -108,10 +106,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:gravity="bottom"
-                    android:paddingBottom="5dp"
-                    android:text="@string/heart"
-                    android:textAlignment="center" />
+                    android:drawableTop="@drawable/cardiogram"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/heart"/>
 
                 <Button
                     android:id="@+id/button30"
@@ -120,10 +118,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:gravity="bottom"
-                    android:paddingBottom="5dp"
-                    android:text="@string/breathe"
-                    android:textAlignment="center" />
+                    android:drawableTop="@drawable/lung"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/breathe"/>
             </TableRow>
 
             <TableRow
@@ -139,10 +137,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:gravity="bottom"
-                    android:paddingBottom="5dp"
-                    android:text="@string/sickness"
-                    android:textAlignment="center" />
+                    android:drawableTop="@drawable/headache"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/sickness"/>
 
                 <Button
                     android:id="@+id/button32"
@@ -151,10 +149,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:gravity="bottom"
-                    android:paddingBottom="5dp"
-                    android:text="@string/running_nose"
-                    android:textAlignment="center" />
+                    android:drawableTop="@drawable/runny"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/running_nose"/>
             </TableRow>
 
             <TableRow
@@ -170,10 +168,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:gravity="bottom"
-                    android:paddingBottom="5dp"
-                    android:text="@string/panic"
-                    android:textAlignment="center" />
+                    android:drawableTop="@drawable/ghost"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/panic"/>
 
                 <Button
                     android:id="@+id/button34"
@@ -182,10 +180,10 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/my_button"
-                    android:gravity="bottom"
-                    android:paddingBottom="5dp"
-                    android:text="@string/no_idea"
-                    android:textAlignment="center" />
+                    android:drawableTop="@drawable/question_mark"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:text="@string/no_idea"/>
             </TableRow>
         </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
