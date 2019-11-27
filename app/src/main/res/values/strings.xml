@@ -4,7 +4,10 @@
     <string name="title_profile">Profile</string>
     <string name="title_notruf">Notruf</string>
     <string name="title_reaction">Reaktion</string>
+
     <string name="action_settings">Settings</string>
+    <string name="action_language">Sprachen</string>
+    <string name="action_daten">Datenschutz</string>
 
 
     <string name="reaction_fragment">Reaktion</string>
