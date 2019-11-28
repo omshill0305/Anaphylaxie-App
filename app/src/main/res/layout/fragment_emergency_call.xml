@@ -1,14 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EmergencyCallFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Notruf!" />
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/notruf_layout"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:background="@color/colorAccent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/info_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:scaleType="center"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:src="@drawable/ic_notruf_red_24dp" />
+
+            <TextView
+                android:id="@+id/notruf_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="Notruf"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/info_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/button_emergancy_call"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notruf_layout">
+
+            <TextView
+                android:id="@+id/info_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="1. Von einem sicheren Ort aus anrufen"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/info_text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. Ruhe bewahren"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/info_text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. Autoinjektor bereithalten"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/button_emergancy_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="?attr/colorBackgroundFloating"
+            android:clickable="true"
+            android:contextClickable="false"
+            android:src="@drawable/ic_launcher"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_layout" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="355dp"
+            android:layout_height="192dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:scrollbarStyle="insideInset"
+            android:verticalScrollbarPosition="right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_emergancy_call">
+
+
+            <LinearLayout
+                android:id="@+id/Scroll_questions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:clipToPadding="false"
+                android:contextClickable="true"
+                android:isScrollContainer="true"
+                android:keepScreenOn="true"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                android:overScrollMode="always"
+                android:paddingLeft="10dp"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:scrollbars="vertical"
+                android:verticalScrollbarPosition="right">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/infotext_how_many"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Wie viele sind betroffen?"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/infotext_what"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Was für eine Reaktion?"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/infotext_where"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Wo ist es passiert?"
+                        android:textColor="?attr/colorAccent"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/infotext_which"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Welche Symptome?"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/infotext_wait"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Warten auf Rückfragen!"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>
