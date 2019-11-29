@@ -29,7 +29,7 @@ public class SymptomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logo);
+        toolbar.setLogo(R.drawable.logo1);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -42,7 +42,8 @@ public class SymptomeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_extra, menu);
+
         return true;
     }
 

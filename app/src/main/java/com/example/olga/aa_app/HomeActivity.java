@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logo);
+        toolbar.setLogo(R.drawable.logo1);
 
         reactionFragment = new ReactionFragment();
         profileFragment = new ProfileFragment();
