@@ -12,6 +12,8 @@
 
     <string name="reaction_fragment">Reaktion</string>
     <string name="no_symptoms">Noch keine Symptome gewählt</string>
+    <string name="no_profile">Noch kein Profile erstellt</string>
+    <string name="create_profile">Profile erstellen</string>
     <string name="choose_symptoms">Jetzt auswählen</string>
     <string name="title_activity_reaktion">ReaktionActivity</string>
     <string name="title_home">Home</string>
