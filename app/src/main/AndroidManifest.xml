@@ -12,7 +12,8 @@
         <activity
             android:name=".ProfileFormActivity"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName=".HomeActivity"></activity>
+            android:parentActivityName=".HomeActivity"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
