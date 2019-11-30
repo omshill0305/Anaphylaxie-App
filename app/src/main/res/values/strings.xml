@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">AA_app</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home" translatable="false">HomeActivity</string>
     <string name="title_profile">Profile</string>
-    <string name="title_notruf">Notruf</string>
-    <string name="title_reaction">Reaktion</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="title_notruf">Notruf</string>
     <string name="action_language">Sprachen</string>
     <string name="action_daten">Datenschutz</string>
 
@@ -27,4 +25,28 @@
     <string name="running_nose">Fließschnupfen</string>
     <string name="panic">Unbestimmte Angst</string>
     <string name="no_idea">Ich weiß es nicht</string>
+
+    <string name="title_emergency_call">Emergency Call</string>
+    <string name="title_reaction">Reaction</string>
+    <string name="action_settings">Settings</string>
+    <string name="save">Save</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="birthday">Birthday</string>
+    <string name="gender">Gender</string>
+    <string name="known_allergens">Known Allergens</string>
+    <string name="asthma">Asthma</string>
+    <string name="emergency_set">Emergency Set</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="diverse">diverse</string>
+    <string name="product_name">Product Name</string>
+    <string name="dosage">Dosage</string>
+    <string name="antihistamine">Antihistamine</string>
+    <string name="steroid">Steroid</string>
+    <string name="autoinjector">Autoinjector</string>
+    <string name="salbutamol">Salbutamol</string>
+
+
 </resources>
