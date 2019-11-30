@@ -10,6 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+
         android:layout_height="match_parent">
 
         <ImageView
@@ -66,7 +67,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/box_white"
                 android:layout_width="288dp"
                 android:layout_height="128dp"
                 android:layout_marginStart="8dp"
@@ -98,7 +99,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.503"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView6" />
+                app:layout_constraintTop_toTopOf="@+id/box_white" />
 
             <Button
                 android:id="@+id/button2"
@@ -110,14 +111,15 @@
                 android:onClick="onClick"
                 android:padding="8dp"
                 android:text="@string/choose_symptoms"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintBottom_toBottomOf="@+id/box_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="@+id/box_white"
                 app:layout_constraintVertical_bias="0.816" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>
