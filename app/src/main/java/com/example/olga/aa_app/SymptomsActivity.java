@@ -1,6 +1,5 @@
 package com.example.olga.aa_app;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,6 +7,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class SymptomsActivity extends AppCompatActivity {
 
@@ -26,12 +27,12 @@ public class SymptomsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        button1 = (Button) findViewById(R.id.scin);
+        button1 = (Button) findViewById(R.id.skin);
 
-        button1.setOnClickListener(new View.OnClickListener(){
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                startActivity(new Intent(SymptomsActivity.this, ScinActivity.class));
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, SkinActivity.class));
             }
         });
     }
@@ -45,14 +46,12 @@ public class SymptomsActivity extends AppCompatActivity {
     }
 
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(getFragmentManager().getBackStackEntryCount() == 0) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
-        }
-        else if(getFragmentManager().getBackStackEntryCount() == 1) {
+        } else if (getFragmentManager().getBackStackEntryCount() == 1) {
             moveTaskToBack(false);
-        }
-        else {
+        } else {
             getFragmentManager().popBackStack();
         }
         return true;

@@ -13,15 +13,20 @@
     <string name="action_data_protection">Data Protection</string>
     <string name="action_settings">Settings</string>
 
-    <string name="no_profile">No profile created yet</string>
+    <string name="symptom_selection">Symptom Selection</string>
     <string name="skin">Skin</string>
     <string name="gastro_intestinal">Gastro-Intestinal</string>
     <string name="cardiovascular">Cardiovascular</string>
     <string name="dizziness">Dizziness</string>
     <string name="runny_nose">Runny Nose</string>
-    <string name="no_idea">I don\'t know</string>
     <string name="airways">Airways</string>
+    <string name="no_idea">I don\'t know</string>
+    <string name="panic">Indefinable Dread</string>
+    <string name="no_symptoms">No symptoms selected</string>
+    <string name="choose_symptoms">Select symptoms</string>
 
+    <string name="create_profile">Create Profile</string>
+    <string name="no_profile">No profile created yet</string>
     <string name="save">Save</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -40,8 +45,4 @@
     <string name="steroid">Steroid</string>
     <string name="autoinjector">Autoinjector</string>
     <string name="salbutamol">Salbutamol</string>
-    <string name="create_profile">Create Profile</string>
-    <string name="panic">Indefinable Dread</string>
-    <string name="no_symptoms">No symptoms selected</string>
-    <string name="choose_symptoms">Select symptoms</string>
 </resources>

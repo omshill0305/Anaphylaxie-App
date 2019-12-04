@@ -29,7 +29,8 @@
             android:name=".SymptomsActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <activity android:name=".ScinActivity"
+        <activity
+            android:name=".SkinActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

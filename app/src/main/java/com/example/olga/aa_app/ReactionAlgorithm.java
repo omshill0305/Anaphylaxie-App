@@ -1,13 +1,12 @@
 package com.example.olga.aa_app;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ReactionAlgorithm {
     private ArrayList<String> symptoms = new ArrayList<>();
 
     public ArrayList<String> getSymptoms() {
-    return symptoms;
+        return symptoms;
     }
 
     public void addSymptom(String symptom) {

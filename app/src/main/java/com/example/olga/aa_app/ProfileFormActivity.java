@@ -2,10 +2,11 @@ package com.example.olga.aa_app;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DateFormat;
 import java.util.Calendar;

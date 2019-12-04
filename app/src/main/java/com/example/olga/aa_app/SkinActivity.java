@@ -1,17 +1,17 @@
 package com.example.olga.aa_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ScinActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class SkinActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scin);
+        setContentView(R.layout.activity_skin);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -29,14 +29,12 @@ public class ScinActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(getFragmentManager().getBackStackEntryCount() == 0) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
-        }
-        else if(getFragmentManager().getBackStackEntryCount() == 1) {
+        } else if (getFragmentManager().getBackStackEntryCount() == 1) {
             moveTaskToBack(false);
-        }
-        else {
+        } else {
             getFragmentManager().popBackStack();
         }
         return true;
