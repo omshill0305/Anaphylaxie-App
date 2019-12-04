@@ -36,8 +36,9 @@
             android:name=".SkinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".GastroIntestinalActivity"
-        android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GastroIntestinalActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
