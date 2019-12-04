@@ -12,7 +12,8 @@ import androidx.appcompat.widget.Toolbar;
 
 public class SymptomsActivity extends AppCompatActivity {
 
-    Button button1;
+    Button skin;
+    Button gastro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +28,19 @@ public class SymptomsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        button1 = (Button) findViewById(R.id.skin);
-
-        button1.setOnClickListener(new View.OnClickListener() {
+        skin = findViewById(R.id.skin);
+        skin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SymptomsActivity.this, SkinActivity.class));
+            }
+        });
+
+        gastro = findViewById(R.id.gastro_intestinal);
+        gastro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, GastroIntestinalActivity.class));
             }
         });
     }

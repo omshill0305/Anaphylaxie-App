@@ -70,7 +70,7 @@
                     android:textAlignment="center" />
 
                 <Button
-                    android:id="@+id/stomach"
+                    android:id="@+id/gastro_intestinal"
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -90,7 +90,7 @@
                 android:weightSum="1">
 
                 <Button
-                    android:id="@+id/heart"
+                    android:id="@+id/cardiovascular"
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -102,7 +102,7 @@
                     android:textAlignment="center" />
 
                 <Button
-                    android:id="@+id/breath"
+                    android:id="@+id/airways"
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -122,7 +122,7 @@
                 android:weightSum="1">
 
                 <Button
-                    android:id="@+id/dizzy"
+                    android:id="@+id/dizziness"
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -134,7 +134,7 @@
                     android:textAlignment="center" />
 
                 <Button
-                    android:id="@+id/running_nose"
+                    android:id="@+id/runny_nose"
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
