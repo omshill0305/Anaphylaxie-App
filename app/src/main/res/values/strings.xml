@@ -1,34 +1,27 @@
 <resources>
     <string name="app_name">AA_app</string>
     <string name="title_activity_home" translatable="false">HomeActivity</string>
+    <string name="title_activity_reaction" translatable="false">ReactionActivity</string>
     <string name="title_profile">Profile</string>
-
-    <string name="title_notruf">Notruf</string>
-    <string name="action_language">Sprachen</string>
-    <string name="action_daten">Datenschutz</string>
-
-
-    <string name="reaction_fragment">Reaktion</string>
-    <string name="no_symptoms">Noch keine Symptome gewählt</string>
-    <string name="no_profile">Noch kein Profile erstellt</string>
-    <string name="create_profile">Profile erstellen</string>
-    <string name="choose_symptoms">Jetzt auswählen</string>
-    <string name="title_activity_reaktion">ReaktionActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="skin">Haut</string>
-    <string name="stomach">Magen - Darm</string>
-    <string name="heart">Herz - Kreislauf</string>
-    <string name="breathe">Atemwege</string>
-    <string name="sickness">Schwindel</string>
-    <string name="running_nose">Fließschnupfen</string>
-    <string name="panic">Unbestimmte Angst</string>
-    <string name="no_idea">Ich weiß es nicht</string>
-
     <string name="title_emergency_call">Emergency Call</string>
     <string name="title_reaction">Reaction</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="action_language">Language</string>
+    <string name="action_data_protection">Data Protection</string>
     <string name="action_settings">Settings</string>
+
+    <string name="no_profile">No profile created yet</string>
+    <string name="skin">Skin</string>
+    <string name="gastro_intestinal">Gastro-Intestinal</string>
+    <string name="cardiovascular">Cardiovascular</string>
+    <string name="dizziness">Dizziness</string>
+    <string name="runny_nose">Runny Nose</string>
+    <string name="no_idea">I don\'t know</string>
+    <string name="airways">Airways</string>
+
     <string name="save">Save</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -47,6 +40,8 @@
     <string name="steroid">Steroid</string>
     <string name="autoinjector">Autoinjector</string>
     <string name="salbutamol">Salbutamol</string>
-
-
+    <string name="create_profile">Create Profile</string>
+    <string name="panic">Indefinable Dread</string>
+    <string name="no_symptoms">No symptoms selected</string>
+    <string name="choose_symptoms">Select symptoms</string>
 </resources>

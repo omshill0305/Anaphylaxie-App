@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SymptomeActivity">
+    tools:context=".SymptomsActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +74,7 @@
                     android:background="@drawable/my_button"
                     android:drawableTop="@drawable/stomach"
                     android:padding="10dp"
-                    android:text="@string/stomach"
+                    android:text="@string/gastro_intestinal"
                     android:textAlignment="center" />
             </TableRow>
 
@@ -93,7 +93,7 @@
                     android:background="@drawable/my_button"
                     android:drawableTop="@drawable/cardiogram"
                     android:padding="10dp"
-                    android:text="@string/heart"
+                    android:text="@string/cardiovascular"
                     android:textAlignment="center" />
 
                 <Button
@@ -105,7 +105,7 @@
                     android:background="@drawable/my_button"
                     android:drawableTop="@drawable/lung"
                     android:padding="10dp"
-                    android:text="@string/breathe"
+                    android:text="@string/airways"
                     android:textAlignment="center" />
             </TableRow>
 
@@ -124,7 +124,7 @@
                     android:background="@drawable/my_button"
                     android:drawableTop="@drawable/headache"
                     android:padding="10dp"
-                    android:text="@string/sickness"
+                    android:text="@string/dizziness"
                     android:textAlignment="center" />
 
                 <Button
@@ -136,7 +136,7 @@
                     android:background="@drawable/my_button"
                     android:drawableTop="@drawable/runny"
                     android:padding="10dp"
-                    android:text="@string/running_nose"
+                    android:text="@string/runny_nose"
                     android:textAlignment="center" />
             </TableRow>
 

@@ -36,7 +36,7 @@ public class ReactionFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getActivity(), SymptomeActivity.class);
+        Intent intent = new Intent(getActivity(), SymptomsActivity.class);
         getActivity().startActivity(intent);
     }
 }

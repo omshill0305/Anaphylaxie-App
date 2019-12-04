@@ -9,14 +9,14 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class SymptomeActivity extends AppCompatActivity {
+public class SymptomsActivity extends AppCompatActivity {
 
     Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_symptome);
+        setContentView(R.layout.activity_symptoms);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -31,7 +31,7 @@ public class SymptomeActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                startActivity(new Intent(SymptomeActivity.this, ScinActivity.class));
+                startActivity(new Intent(SymptomsActivity.this, ScinActivity.class));
             }
         });
     }
