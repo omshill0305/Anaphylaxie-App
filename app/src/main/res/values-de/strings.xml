@@ -39,4 +39,9 @@
     <string name="no_profile">Noch kein Profil erstellt</string>
     <string name="choose_symptoms">Jetzt auswählen</string>
     <string name="symptom_selection">Symptomauswahl</string>
+    <string name="diarrhea">Durchfall</string>
+    <string name="abdominal_pain">Bauchschmerzen</string>
+    <string name="nausea">Übelkeit</string>
+    <string name="tingling_mouth_throat">Kribbeln in Mund oder Rachen</string>
+    <string name="vomiting">Erbrechen</string>
 </resources>

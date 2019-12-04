@@ -24,6 +24,11 @@
     <string name="panic">Indefinable Dread</string>
     <string name="no_symptoms">No symptoms selected</string>
     <string name="choose_symptoms">Select symptoms</string>
+    <string name="diarrhea">Diarrhea</string>
+    <string name="abdominal_pain">Abdominal Pain</string>
+    <string name="vomiting">Vomiting</string>
+    <string name="tingling_mouth_throat">Tingling in Mouth or Throat</string>
+    <string name="nausea">Nausea</string>
 
     <string name="create_profile">Create Profile</string>
     <string name="no_profile">No profile created yet</string>
