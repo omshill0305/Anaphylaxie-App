@@ -3,4 +3,6 @@
     <color name="colorPrimary">#3E7DBD</color>
     <color name="colorPrimaryDark">#3e5cbd</color>
     <color name="colorAccent">#AD4371</color>
+    <color name="colorProjektGreen">#00897b</color>
+    <color name="white">#ffffff</color>
 </resources>

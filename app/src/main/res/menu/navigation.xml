@@ -9,11 +9,11 @@
     <item
         android:id="@+id/navigation_notruf"
         android:icon="@drawable/ic_notruf_red_24dp"
-        android:title="@string/title_notruf" />
+        android:title="@string/title_emergency_call" />
 
     <item
         android:id="@+id/navigation_reaction"
-        android:icon="@drawable/ic_reaction_black_24dp"
+        android:icon="@drawable/icons8_hospital_96"
         android:title="@string/title_reaction" />
 
 </menu>
