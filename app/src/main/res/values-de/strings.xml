@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AA_app</string>
+    <string name="save">Speichern</string>
+    <string name="no">Nein</string>
+    <string name="profile_name">Profilname</string>
+    <string name="yes">Ja</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="asthma">Asthma</string>
+    <string name="birthday">Geburtstag</string>
+    <string name="emergency_set">Notfallset</string>
+    <string name="gender">Geschlecht</string>
+    <string name="known_allergens">Bekannte Allergene</string>
+    <string name="title_emergency_call">Notruf</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_reaction">Reaktion</string>
+    <string name="male">männlich</string>
+    <string name="female">weiblich</string>
+    <string name="diverse">divers</string>
+    <string name="product_name">Produktname</string>
+    <string name="dosage">Dosierung</string>
+    <string name="antihistamine">Antihistaminikum</string>
+    <string name="steroid">Steroid</string>
+    <string name="autoinjector">Autoinjektor</string>
+    <string name="salbutamol">Salbutamol</string>
+    <string name="action_language">Sprache</string>
+    <string name="action_data_protection">Datenschutz</string>
+    <string name="airways">Atemwege</string>
+    <string name="skin">Haut</string>
+    <string name="title_notifications">Benachrichtigungen</string>
+    <string name="create_profile">Profil erstellen</string>
+    <string name="cardiovascular">Herz-Kreislauf</string>
+    <string name="dizziness">Schwindel</string>
+    <string name="runny_nose">Fließschnupfen</string>
+    <string name="gastro_intestinal">Magen-Darm</string>
+    <string name="no_idea">Ich weiß es nicht</string>
+    <string name="panic">Unbestimmte Angst</string>
+    <string name="no_symptoms">Keine Symptome ausgewählt</string>
+    <string name="no_profile">Noch kein Profil erstellt</string>
+    <string name="choose_symptoms">Jetzt auswählen</string>
+    <string name="symptom_selection">Symptomauswahl</string>
+    <string name="diarrhea">Durchfall</string>
+    <string name="abdominal_pain">Bauchschmerzen</string>
+    <string name="nausea">Übelkeit</string>
+    <string name="tingling_mouth_throat">Kribbeln in Mund oder Rachen</string>
+    <string name="vomiting">Erbrechen</string>
+</resources>
