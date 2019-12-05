@@ -107,7 +107,6 @@
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/my_button"
-                        android:padding="10dp"
                         android:text="@string/diarrhea"
                         android:textAlignment="center" />
 
@@ -132,7 +131,6 @@
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/my_button"
-                        android:padding="10dp"
                         android:text="@string/abdominal_pain"
                         android:textAlignment="center" />
 
@@ -157,7 +155,6 @@
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/my_button"
-                        android:padding="10dp"
                         android:text="@string/nausea"
                         android:textAlignment="center" />
 
@@ -182,7 +179,6 @@
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/my_button"
-                        android:padding="10dp"
                         android:text="@string/tingling_mouth_throat"
                         android:textAlignment="center" />
 
@@ -207,7 +203,6 @@
                         android:layout_margin="10dp"
                         android:layout_weight="1"
                         android:background="@drawable/my_button"
-                        android:padding="10dp"
                         android:text="@string/vomiting"
                         android:textAlignment="center" />
 
