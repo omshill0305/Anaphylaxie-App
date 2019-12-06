@@ -14,6 +14,7 @@ import com.example.olga.aa_app.database.entities.Allergy;
 @Database(entities = {Allergy.class}, version = 1)
 public abstract class ReactionDatabase extends RoomDatabase {
 
+    // Basic thread-safe singleton implementation
     private static ReactionDatabase instance;
 
     // Provide access to entity DAOs here
