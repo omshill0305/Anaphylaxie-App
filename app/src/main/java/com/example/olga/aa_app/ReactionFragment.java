@@ -3,12 +3,12 @@ package com.example.olga.aa_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,13 +30,13 @@ public class ReactionFragment extends Fragment implements View.OnClickListener {
         final View rootView = inflater.inflate(R.layout.fragment_reaction, container, false);
         Button chooseBt = (Button) rootView.findViewById(R.id.button2);
         chooseBt.setOnClickListener(this);
-            
+
         return rootView;
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(getActivity(), SymptomeActivity.class);
+        Intent intent = new Intent(getActivity(), SymptomsActivity.class);
         getActivity().startActivity(intent);
     }
 }
