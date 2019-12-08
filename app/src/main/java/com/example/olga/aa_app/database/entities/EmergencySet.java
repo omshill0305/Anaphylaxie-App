@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey;
  * with getters and setters accordingly. The entity can be seen as a normal class, but
  * database specific fields such as a primary key have to be annotated separately.
  */
-@Entity(tableName = "allergy_table")
-public class Allergy {
+@Entity(tableName = "emergencyset_table")
+public class EmergencySet {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
@@ -19,21 +19,12 @@ public class Allergy {
     private String name;
     private String description;
 
-    public Allergy(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
+    private String brandname;
+    private String medicine;
+    private float dose;
+    private boolean available;
 
-    // ID needs a setter
-    public void setId(int id) {
-        this.id = id;
-    }
+    // Constructor and getters needed
 
-    public String getName() {
-        return name;
-    }
 
-    public String getDescription() {
-        return description;
-    }
 }

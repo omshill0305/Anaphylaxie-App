@@ -5,12 +5,13 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.olga.aa_app.database.daos.AllergyDAO;
 import com.example.olga.aa_app.database.entities.Allergy;
 import com.example.olga.aa_app.database.repositorys.AllergyRepository;
 
 import java.util.List;
 
-public class AllergyViewModel extends AndroidViewModel {
+public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
 
     private AllergyRepository repository;
     private LiveData<List<Allergy>> listLiveData;
@@ -19,8 +20,6 @@ public class AllergyViewModel extends AndroidViewModel {
         super(application);
         repository = new AllergyRepository(application);
         listLiveData = repository.getAllAllergies();
-
-
     }
 
     public void insert(Allergy allergy){

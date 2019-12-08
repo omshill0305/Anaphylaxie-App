@@ -9,21 +9,27 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.olga.aa_app.database.daos.AllergyDAO;
+import com.example.olga.aa_app.database.daos.EmergencySetDAO;
+import com.example.olga.aa_app.database.daos.ProfileDAO;
 import com.example.olga.aa_app.database.entities.Allergy;
+import com.example.olga.aa_app.database.entities.EmergencySet;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * The database class that will start the database.
+ * The database class that will start the database. All entities have to be written inside
+ * the entities field in @Database annotation.
  */
-@Database(entities = {Allergy.class}, version = 1, exportSchema = false)
+@Database(entities = {Allergy.class, EmergencySet.class}, version = 1, exportSchema = false)
 public abstract class ReactionDatabase extends RoomDatabase {
 
     private static volatile ReactionDatabase instance;
 
-    // Provide access to entity DAOs here
+    // Provide access to entity DAOs here. Room is handling the rest, hence can be abstract.
     public abstract AllergyDAO allergyDAO();
+    public abstract EmergencySetDAO emergencySetDAO();
+    public abstract ProfileDAO profileDAO();
 
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =

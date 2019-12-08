@@ -2,13 +2,9 @@ package com.example.olga.aa_app.database.repositorys;
 
 import android.app.Application;
 
-import androidx.lifecycle.LiveData;
-
 import com.example.olga.aa_app.database.ReactionDatabase;
-import com.example.olga.aa_app.database.daos.AllergyDAO;
-import com.example.olga.aa_app.database.entities.Allergy;
-
-import java.util.List;
+import com.example.olga.aa_app.database.daos.ProfileDAO;
+import com.example.olga.aa_app.database.entities.Profile;
 
 /**
  * The repository class is a class that is created for every entity. It is used to wrap the queries
@@ -16,39 +12,35 @@ import java.util.List;
  * database itself, we will use the "databaseWriteExecutor" that we declared in the database, to
  * execute all database operations.
  */
-public class AllergyRepository implements AllergyDAO{
+public class ProfileRepository implements ProfileDAO {
 
-    private AllergyDAO allergyDAO;
+    private ProfileDAO profileDAO;
 
 
-    public AllergyRepository(Application application){
+    public ProfileRepository(Application application){
         ReactionDatabase database = ReactionDatabase.getInstance(application);
-        allergyDAO = database.allergyDAO();
+        profileDAO = database.profileDAO();
     }
 
 
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public void insert(Allergy allergy){
+    public void insert(Profile allergy) {
         ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.insert(allergy);
+            profileDAO.insert(allergy);
         });
     }
 
-    public void update(Allergy allergy){
+    public void update(Profile allergy) {
         ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.update(allergy);
+            profileDAO.update(allergy);
         });
     }
 
-    public void delete(Allergy allergy){
+    public void delete(Profile allergy) {
         ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.delete(allergy);
+            profileDAO.delete(allergy);
         });
-    }
-
-    public LiveData<List<Allergy>> getAllAllergies(){
-        return allergyDAO.getAllAllergies();
     }
 }

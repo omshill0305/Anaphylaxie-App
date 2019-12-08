@@ -5,8 +5,9 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.olga.aa_app.database.ReactionDatabase;
-import com.example.olga.aa_app.database.daos.AllergyDAO;
+import com.example.olga.aa_app.database.daos.EmergencySetDAO;
 import com.example.olga.aa_app.database.entities.Allergy;
+import com.example.olga.aa_app.database.entities.EmergencySet;
 
 import java.util.List;
 
@@ -16,39 +17,36 @@ import java.util.List;
  * database itself, we will use the "databaseWriteExecutor" that we declared in the database, to
  * execute all database operations.
  */
-public class AllergyRepository implements AllergyDAO{
+public class EmergencySetRepository implements EmergencySetDAO{
 
-    private AllergyDAO allergyDAO;
+    private EmergencySetDAO emergencySetDAO;
 
 
-    public AllergyRepository(Application application){
+    public EmergencySetRepository(Application application){
         ReactionDatabase database = ReactionDatabase.getInstance(application);
-        allergyDAO = database.allergyDAO();
+        emergencySetDAO = database.emergencySetDAO();
     }
 
 
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public void insert(Allergy allergy){
+    public void insert(EmergencySet emergencySet){
         ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.insert(allergy);
+            emergencySetDAO.insert(emergencySet);
         });
     }
 
-    public void update(Allergy allergy){
+    public void update(EmergencySet emergencySet){
         ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.update(allergy);
+            emergencySetDAO.update(emergencySet);
         });
     }
 
-    public void delete(Allergy allergy){
+    public void delete(EmergencySet emergencySet){
         ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.delete(allergy);
+            emergencySetDAO.delete(emergencySet);
         });
     }
 
-    public LiveData<List<Allergy>> getAllAllergies(){
-        return allergyDAO.getAllAllergies();
-    }
 }
