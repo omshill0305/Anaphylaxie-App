@@ -50,4 +50,6 @@
     <string name="steroid">Steroid</string>
     <string name="autoinjector">Autoinjector</string>
     <string name="salbutamol">Salbutamol</string>
+    <string name="enter_name">Enter your name</string>
+    <string name="enter_birthday" >Enter your birthday</string>
 </resources>

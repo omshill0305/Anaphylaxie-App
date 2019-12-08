@@ -44,4 +44,6 @@
     <string name="nausea">Übelkeit</string>
     <string name="tingling_mouth_throat">Kribbeln in Mund oder Rachen</string>
     <string name="vomiting">Erbrechen</string>
+    <string name="enter_name">Gebe deinen Namen ein</string>
+    <string name="enter_birthday">Gebe deinen Geburtstag ein</string>
 </resources>

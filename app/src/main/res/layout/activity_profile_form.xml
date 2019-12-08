@@ -27,14 +27,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_name"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textSize="16sp" />
 
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your name"
-                android:inputType="textPersonName" />
+                android:hint="@string/enter_name"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -45,14 +47,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/birthday"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/birthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter your Birthday"
-                android:textColor="@android:color/black" />
+                android:hint="@string/enter_birthday"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -63,7 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/gender"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textSize="16sp" />
 
             <RadioGroup
                 android:layout_width="match_parent"
@@ -99,7 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/known_allergens"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -116,7 +122,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/asthma"
-                    android:textAllCaps="true" />
+                    android:textAllCaps="true"
+                    android:textSize="16sp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -154,7 +161,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/emergency_set"
-                android:textAllCaps="true" />
+                android:textAllCaps="true"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -164,7 +172,8 @@
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/antihistamine" />
+                android:text="@string/antihistamine"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -176,14 +185,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/product_name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:hint="@string/dosage"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <Space
@@ -194,7 +205,8 @@
                 android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/steroid" />
+                android:text="@string/steroid"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -206,14 +218,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/product_name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:hint="@string/dosage"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <Space
@@ -224,7 +238,8 @@
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/autoinjector" />
+                android:text="@string/autoinjector"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -236,14 +251,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/product_name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
 
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:hint="@string/dosage"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <Space
@@ -260,7 +277,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/salbutamol" />
+                    android:text="@string/salbutamol"
+                    android:textSize="16sp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
