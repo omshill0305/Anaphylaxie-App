@@ -133,111 +133,150 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/box_white" />
 
-        <ScrollView
-            android:id="@+id/scrollView2"
+
+        <LinearLayout
+            android:id="@+id/Scroll_questions"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:scrollbarStyle="insideInset"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="false"
+            android:contextClickable="true"
+            android:isScrollContainer="true"
+            android:keepScreenOn="true"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            android:overScrollMode="always"
+            android:paddingLeft="10dp"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
             android:verticalScrollbarPosition="right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_emergancy_call">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WIE "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/infotext_how_many"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="viele sind betroffen?"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/Scroll_questions"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:clipToPadding="false"
-                android:contextClickable="true"
-                android:isScrollContainer="true"
-                android:keepScreenOn="true"
-                android:nestedScrollingEnabled="false"
-                android:orientation="vertical"
-                android:overScrollMode="always"
-                android:paddingLeft="10dp"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbars="vertical"
-                android:verticalScrollbarPosition="right">
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WAS "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/infotext_what"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/infotext_how_many"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Wie viele sind betroffen?"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/infotext_what"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Was für eine Reaktion?"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/infotext_where"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Wo ist es passiert?"
-                        android:textColor="?attr/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/infotext_which"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Welche Symptome?"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/infotext_wait"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Warten auf Rückfragen!"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
+                    android:layout_height="wrap_content"
+                    android:text="für eine Reaktion?"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
             </LinearLayout>
-        </ScrollView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WO "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/infotext_where"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ist es passiert?"
+                    android:textColor="?attr/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WELCHE "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/infotext_which"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Symptome?"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WARTEN "
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/infotext_wait"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="auf Rückfragen!"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
