@@ -3,124 +3,92 @@ package com.example.olga.aa_app;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static org.junit.Assert.*;
 
-public class ReactionAlgorithmTest {
-    private ReactionAlgorithm testObject;
+public class AlgorithmTest {
+    Reaction reaction;
 
     @Before
     public void before() {
-        testObject = new ReactionAlgorithm();
-    }
-
-    @Test
-    public void addOneSymptom() {
-        testObject.addSymptom("quaddeln");
-        assertEquals(new ArrayList<>(Arrays.asList("quaddeln")), testObject.getSymptoms());
-    }
-
-    @Test
-    public void addMoreSymptomsAtOnce() {
-        testObject.addSymptoms(new String[] {"quaddeln", "schwindel", "atemnot"});
-        assertEquals(new ArrayList<>(Arrays.asList("quaddeln", "schwindel", "atemnot")), testObject.getSymptoms());
-    }
-
-    @Test
-    public void addMoreSymptomsSequentially() {
-        testObject.addSymptom("quaddeln");
-        testObject.addSymptom("schwindel");
-        testObject.addSymptom("atemnot");
-        assertEquals(new ArrayList<>(Arrays.asList("quaddeln", "schwindel", "atemnot")), testObject.getSymptoms());
-    }
-
-    @Test
-    public void addSymptomThatIsAlreadyThere() {
-        testObject.addSymptom("quaddeln");
-        testObject.addSymptom("schwindel");
-        testObject.addSymptom("quaddeln");
-        assertEquals(new ArrayList<>(Arrays.asList("quaddeln", "schwindel")), testObject.getSymptoms());
-    }
-
-    @Test
-    public void removeSymptom() {
-        testObject.addSymptoms(new String[] {"quaddeln", "schwindel", "atemnot"});
-        testObject.removeSymptom("quaddeln");
-        assertEquals(new ArrayList<>(Arrays.asList("schwindel", "atemnot")), testObject.getSymptoms());
-    }
-
-    @Test
-    public void removeSymptomThatIsNotThere() {
-        testObject.addSymptoms(new String[] {"quaddeln", "schwindel", "atemnot"});
-        testObject.removeSymptom("husten");
-        assertEquals(new ArrayList<>(Arrays.asList("quaddeln", "schwindel", "atemnot")), testObject.getSymptoms());
+        reaction = new Reaction();
     }
 
     @Test
     public void evaluateAlgorithm1_1() {
-        testObject.addSymptom("quaddeln");
+        reaction.addSymptom(new Symptom("quaddeln"));
         assertEquals("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Bitte AA bereithalten, im Zweifelsfall bitte auch benutzen" +
                         "Hinweis zum Notruf, grüner Rahmen",
-                     testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm1_2() {
-        testObject.addSymptoms(new String[] {"quaddeln", "schwellung von lippen und gesicht", "jucken"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("quaddeln"),
+                        new Symptom("schwellung von lippen und gesicht"),
+                        new Symptom("jucken")
+                });
         assertEquals("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Bitte AA bereithalten, im Zweifelsfall bitte auch benutzen" +
                         "Hinweis zum Notruf, grüner Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm2_1() {
-        testObject.addSymptom("husten");
+        reaction.addSymptom(new Symptom("husten"));
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm2_2() {
-        testObject.addSymptoms(new String[] {"quaddeln", "durchfall"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("quaddeln"),
+                        new Symptom("durchfall")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm2_3() {
-        testObject.addSymptom("plötzliche heiserkeit");
+        reaction.addSymptom(new Symptom("plötzliche heiserkeit"));
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm2_4() {
-        testObject.addSymptoms(new String[] {"quaddeln", "plötzliche heiserkeit"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("quaddeln"),
+                        new Symptom("plötzliche heiserkeit")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm3_1() {
-        testObject.addSymptom("atemnot");
+        reaction.addSymptom(new Symptom("atemnot"));
 
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
@@ -128,118 +96,156 @@ public class ReactionAlgorithmTest {
                         "IF SALBUTAMOL(Bitte Salbutamol verabreichen)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm3_2() {
-        testObject.addSymptoms(new String[] {"quaddeln", "atemnot"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("quaddeln"),
+                        new Symptom("atemnot")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "IF SALBUTAMOL(Bitte Salbutamol verabreichen)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm3_3() {
-        testObject.addSymptoms(new String[] {"quaddeln", "plötzliche heiserkeit", "atemnot"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("quaddeln"),
+                        new Symptom("plötzliche heiserkeit"),
+                        new Symptom("atemnot")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "IF SALBUTAMOL(Bitte Salbutamol verabreichen)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm4_1() {
-        testObject.addSymptom("blutdruckabfall");
+        reaction.addSymptom(new Symptom("blutdruckabfall"));
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm4_2() {
-        testObject.addSymptoms(new String[] {"quaddeln", "blutdruckabfall"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("quaddeln"),
+                        new Symptom("blutdruckabfall")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm4_3() {
-        testObject.addSymptoms(new String[] {"plötzliche heiserkeit", "blutdruckabfall"}); //?
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("plötzliche heiserkeit"),
+                        new Symptom("blutdruckabfall")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm4_4() {
-        testObject.addSymptoms(new String[] {"atemnot", "blutdruckabfall"}); //?
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("atemnot"),
+                        new Symptom("blutdruckabfall")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm5_1() {
-        testObject.addSymptom("bewusstlosigkeit");
+        reaction.addSymptom(new Symptom("bewusstlosigkeit"));
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm5_2() {
-        testObject.addSymptoms(new String[] {"quaddeln", "blutdruckabfall", "bewusstlosigkeit"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("quaddeln"),
+                        new Symptom("blutdruckabfall"),
+                        new Symptom("bewusstlosigkeit")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm5_3() {
-        testObject.addSymptoms(new String[] {"plötzliche heiserkeit", "blutdruckabfall", "bewusstlosigkeit"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("plötzliche heiserkeit"),
+                        new Symptom("blutdruckabfall"),
+                        new Symptom("bewusstlosigkeit")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
     public void evaluateAlgorithm5_4() {
-        testObject.addSymptoms(new String[] {"atemnot", "blutdruckabfall", "bewusstlosigkeit"});
+        reaction.addSymptoms(
+                new Symptom[] {
+                        new Symptom("atemnot"),
+                        new Symptom("blutdruckabfall"),
+                        new Symptom("bewusstlosigkeit")
+                });
         assertEquals("Es bestehen Anzeichen für eine schwere Reaktion\n" +
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                testObject.evaluateAlgorithm());
+                Algorithm.evaluate(reaction));
     }
+
+
 }
