@@ -20,7 +20,7 @@ public class AlgorithmTest {
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Bitte AA bereithalten, im Zweifelsfall bitte auch benutzen" +
                         "Hinweis zum Notruf, grüner Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class AlgorithmTest {
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Bitte AA bereithalten, im Zweifelsfall bitte auch benutzen" +
                         "Hinweis zum Notruf, grüner Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -45,7 +45,7 @@ public class AlgorithmTest {
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class AlgorithmTest {
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class AlgorithmTest {
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class AlgorithmTest {
                         "Bitte Fastjekt verabreichen (Grafik, wo + Hinweis auf Video ganz unten)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class AlgorithmTest {
                         "IF SALBUTAMOL(Bitte Salbutamol verabreichen)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -112,7 +112,7 @@ public class AlgorithmTest {
                         "IF SALBUTAMOL(Bitte Salbutamol verabreichen)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -129,7 +129,7 @@ public class AlgorithmTest {
                         "IF SALBUTAMOL(Bitte Salbutamol verabreichen)\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -140,7 +140,7 @@ public class AlgorithmTest {
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -155,7 +155,7 @@ public class AlgorithmTest {
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -170,7 +170,7 @@ public class AlgorithmTest {
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -185,7 +185,7 @@ public class AlgorithmTest {
                         "Patient_in mit dem Oberkörper nach oben lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -196,7 +196,7 @@ public class AlgorithmTest {
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -212,7 +212,7 @@ public class AlgorithmTest {
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -228,7 +228,7 @@ public class AlgorithmTest {
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
     @Test
@@ -244,7 +244,7 @@ public class AlgorithmTest {
                         "Patient_in in der stabilen Seitenlage lagern\n" +
                         "Bitte verabreichen Sie: <AntihistaminikumDosierung> des Antihistaminikums <AntihistaminikumName> und <SteroidDosierung> des Steroids <SteroidName>\n" +
                         "Hinweis zum Notruf, roter Rahmen",
-                Algorithm.evaluate());
+                Algorithm.evaluate(reaction));
     }
 
 
