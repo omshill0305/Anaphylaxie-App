@@ -1,7 +1,9 @@
 package com.example.olga.aa_app.database.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import static androidx.room.ForeignKey.CASCADE;
@@ -26,7 +28,8 @@ import static androidx.room.ForeignKey.RESTRICT;
                 childColumns = "medicineId",
                 onDelete = RESTRICT,
                 onUpdate = CASCADE)
-}) // Don't forget to change the table name when copy and pasting
+}, indices =
+    {@Index (value = "brandNameId"), @Index(value =  "medicineId")}) // Don't forget to change the table name when copy and pasting
 public class EmergencySet {
 
     // autoGenerate equals a serial or autoincrement
@@ -37,6 +40,8 @@ public class EmergencySet {
     private long medicineId;
 
     private float dosage;
+
+    @NonNull
     private String dosageUnit;
 
     // Things needed: Constructor, Getters for all fields and one setter for ID

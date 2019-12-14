@@ -61,11 +61,21 @@ public abstract class ReactionDatabase extends RoomDatabase {
     // Here we populate the database on first time app launch
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
+        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+            super.onOpen(db);
             databaseWriteExecutor.execute(() -> {
                 AllergyDAO allergyDAO = instance.allergyDAO();
+                BrandNameDAO brandNameDAO = instance.brandNameDAO();
+                MedicineDAO medicineDAO = instance.medicineDAO();
 
+                allergyDAO.insert(new Allergy("bruh"));
+                allergyDAO.insert(new Allergy("bruh2"));
+                allergyDAO.insert(new Allergy("bruh4"));
+
+                brandNameDAO.insert(new BrandName("FromSoftware"));
+                brandNameDAO.insert(new BrandName("Activision"));
+
+                medicineDAO.insert(new Medicine("Perc-30"));
             });
         }
     };

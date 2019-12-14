@@ -23,12 +23,10 @@ import java.util.List;
 public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
 
     private AllergyRepository repository;
-    private LiveData<List<Allergy>> listLiveData;   // LiveData reference
 
     public AllergyViewModel(@NonNull Application application) {
         super(application);
         repository = new AllergyRepository(application);
-        listLiveData = repository.getAllAllergies();
     }
 
     public void insert(Allergy allergy){
@@ -44,7 +42,7 @@ public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
     }
 
     public LiveData<List<Allergy>> getAllAllergies() {  // Only returns referenced live data
-        return listLiveData;
+        return repository.getAllAllergies();
     }
 
     @Override

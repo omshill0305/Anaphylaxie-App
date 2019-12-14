@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey;
  * with getters and setters accordingly. The entity can be seen as a normal class, but
  * database specific fields such as a primary key have to be annotated separately.
  */
-@Entity(tableName = "brandname_table", indices = {@Index(value = {"brandname_id"}, unique = true)})  // Don't forget to change the table name when copy and pasting
+@Entity(tableName = "brandname_table", indices = {@Index(value = "brandname_id", unique = true)})  // Don't forget to change the table name when copy and pasting
 public class BrandName {
 
     // autoGenerate equals a serial or autoincrement
@@ -34,11 +34,15 @@ public class BrandName {
         return brandNameId;
     }
 
+    public void setBrandNameId(int brandNameId) {
+        this.brandNameId = brandNameId;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setBrandNameId(int brandNameId) {
-        this.brandNameId = brandNameId;
+    public void setName(String name) {
+        this.name = name;
     }
 }

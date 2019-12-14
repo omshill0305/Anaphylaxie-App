@@ -6,7 +6,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 
-public class MainActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.example.olga.aa_app.database.entities.BrandName;
+import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
+import com.example.olga.aa_app.database.viewmodels.BrandNameViewModel;
+
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
 
     @Override
@@ -14,6 +24,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
+        AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
+        BrandNameViewModel brandNameViewModel = ViewModelProviders.of(this).get(BrandNameViewModel.class);
+
+        // Probably does not work because it is not synchronized
+        BrandName b = brandNameViewModel.getBrandNameByName("FromSoftware");
+
+        System.out.println(b.getName());
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -22,6 +41,7 @@ public class MainActivity extends Activity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
+
 
     }
 }
