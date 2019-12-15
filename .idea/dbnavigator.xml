@@ -25,13 +25,13 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="7a99430a-4411-47e4-8c4c-ae10447dd6a8">
-        <schema name="main" object-types="view, index, table, constraint, column, dataset trigger" />
+        <schema name="main" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7a99430a-4411-47e4-8c4c-ae10447dd6a8">
-      <console name="RoomDatabase" type="STANDARD" schema="main" session="Main"><![CDATA[select * from medicine_table]]></console>
+      <console name="RoomDatabase" type="STANDARD" schema="main" session="Main">select * from medicine_table</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

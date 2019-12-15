@@ -15,6 +15,7 @@ import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
 import com.example.olga.aa_app.database.viewmodels.BrandNameViewModel;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
         BrandNameViewModel brandNameViewModel = ViewModelProviders.of(this).get(BrandNameViewModel.class);
 
-        // Probably does not work because it is not synchronized
         BrandName b = brandNameViewModel.getBrandNameByName("FromSoftware");
 
         System.out.println(b.getName());
