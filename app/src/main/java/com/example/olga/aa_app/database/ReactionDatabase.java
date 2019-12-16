@@ -22,6 +22,13 @@ import com.example.olga.aa_app.database.entities.Profile;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import io.reactivex.CompletableObserver;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * The database class that will start the database. All entities have to be written inside
  * the entities field in @Database annotation.
@@ -63,20 +70,12 @@ public abstract class ReactionDatabase extends RoomDatabase {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-            databaseWriteExecutor.execute(() -> {
-                AllergyDAO allergyDAO = instance.allergyDAO();
-                BrandNameDAO brandNameDAO = instance.brandNameDAO();
-                MedicineDAO medicineDAO = instance.medicineDAO();
 
-                allergyDAO.insert(new Allergy("bruh"));
-                allergyDAO.insert(new Allergy("bruh2"));
-                allergyDAO.insert(new Allergy("bruh4"));
+            AllergyDAO allergyDAO = instance.allergyDAO();
+            BrandNameDAO brandNameDAO = instance.brandNameDAO();
+            MedicineDAO medicineDAO = instance.medicineDAO();
 
-                brandNameDAO.insert(new BrandName("FromSoftware"));
-                brandNameDAO.insert(new BrandName("Activision"));
 
-                medicineDAO.insert(new Medicine("Perc-30"));
-            });
         }
     };
 

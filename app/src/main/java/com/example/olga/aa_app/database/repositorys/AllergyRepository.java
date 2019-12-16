@@ -11,6 +11,9 @@ import com.example.olga.aa_app.database.entities.Allergy;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * The repository class is a class that is created for every entity. It is used to wrap the queries
  * and to separate it from the DAOs. Because database operation cannot be performed directly on the
@@ -32,22 +35,16 @@ public class AllergyRepository implements AllergyDAO{
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public void insert(Allergy allergy){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.insert(allergy);
-        });
+    public Completable insert(Allergy allergy){
+        return allergyDAO.insert(allergy);
     }
 
-    public void update(Allergy allergy){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.update(allergy);
-        });
+    public Completable update(Allergy allergy){
+        return allergyDAO.update(allergy);
     }
 
-    public void delete(Allergy allergy){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            allergyDAO.delete(allergy);
-        });
+    public Completable delete(Allergy allergy){
+        return allergyDAO.delete(allergy);
     }
 
     // LiveData gets reference from DAO without the use of databaseWriteExecutor
@@ -56,25 +53,13 @@ public class AllergyRepository implements AllergyDAO{
     }
 
     @Override
-    public Allergy getAllergyByID(int id) {             // Needs testing
+    public Single<Allergy> getAllergyByID(int id) {             // Needs testing
 
-        AtomicReference<Allergy> returnValue = new AtomicReference<>();
-
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            returnValue.set(allergyDAO.getAllergyByID(id));
-        });
-
-        return returnValue.get();
+        return allergyDAO.getAllergyByID(id);
     }
 
     @Override
-    public Allergy getAllergyByName(String name) {
-        AtomicReference<Allergy> returnValue = new AtomicReference<>();
-
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            returnValue.set(allergyDAO.getAllergyByName(name));
-        });
-
-        return returnValue.get();
+    public Single<Allergy> getAllergyByName(String name) {
+        return allergyDAO.getAllergyByName(name);
     }
 }

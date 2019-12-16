@@ -12,6 +12,9 @@ import com.example.olga.aa_app.database.repositorys.BrandNameRepository;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * The ViewModel is a wrapper class for the repositories. The main purpose of this class is to call
  * methods from the repositories and provide the data that the user needs. The ViewModel exists, to
@@ -30,25 +33,25 @@ public class BrandNameViewModel extends AndroidViewModel implements BrandNameDAO
         repository = new BrandNameRepository(application);
     }
 
-    public void insert(BrandName brandName){
-        repository.insert(brandName);
+    public Completable insert(BrandName brandName){
+        return repository.insert(brandName);
     }
 
-    public void update(BrandName brandName){
-        repository.update(brandName);
+    public Completable update(BrandName brandName){
+        return repository.update(brandName);
     }
 
-    public void delete(BrandName brandName){
-        repository.delete(brandName);
+    public Completable delete(BrandName brandName){
+        return repository.delete(brandName);
     }
 
     @Override
-    public BrandName getBrandNameByID(int id) {
+    public Single<BrandName> getBrandNameByID(int id) {
         return repository.getBrandNameByID(id);
     }
 
     @Override
-    public BrandName getBrandNameByName(String name) {
+    public Single<BrandName> getBrandNameByName(String name) {
         return repository.getBrandNameByName(name);
     }
 

@@ -7,6 +7,8 @@ import androidx.room.Update;
 
 import com.example.olga.aa_app.database.entities.Profile;
 
+import io.reactivex.Completable;
+
 /**
  * DAOs hold the queries for the SQLite database as interface methods. Basic queries
  * such as insert, update or delete can be annotated with the appropriate annotation
@@ -18,13 +20,13 @@ public interface ProfileDAO {
     // Base Operations
 
     @Insert
-    void insert(Profile profile);
+    Completable insert(Profile profile);
 
     @Update
-    void update(Profile profile);
+    Completable update(Profile profile);
 
     @Delete
-    void delete(Profile profile);
+    Completable delete(Profile profile);
 
     // Custom queries
 

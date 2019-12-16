@@ -12,6 +12,8 @@ import com.example.olga.aa_app.database.repositorys.EmergencySetRepository;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+
 /**
  * The ViewModel is a wrapper class for the repositories. The main purpose of this class is to call
  * methods from the repositories and provide the data that the user needs. The ViewModel exists, to
@@ -30,16 +32,16 @@ public class EmergencySetViewModel extends AndroidViewModel implements Emergency
         repository = new EmergencySetRepository(application);
     }
 
-    public void insert(EmergencySet emergencySet){
-        repository.insert(emergencySet);
+    public Completable insert(EmergencySet emergencySet){
+        return repository.insert(emergencySet);
     }
 
-    public void update(EmergencySet emergencySet){
-        repository.update(emergencySet);
+    public Completable update(EmergencySet emergencySet){
+        return repository.update(emergencySet);
     }
 
-    public void delete(EmergencySet emergencySet){
-        repository.delete(emergencySet);
+    public Completable delete(EmergencySet emergencySet){
+        return repository.delete(emergencySet);
     }
 
     @Override

@@ -12,6 +12,9 @@ import com.example.olga.aa_app.database.entities.Medicine;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * DAOs hold the queries for the SQLite database as interface methods. Basic queries
  * such as insert, update or delete can be annotated with the appropriate annotation
@@ -23,21 +26,21 @@ public interface MedicineDAO {
     // Base Operations
 
     @Insert
-    void insert(Medicine medicine);
+    Completable insert(Medicine medicine);
 
     @Update
-    void update(Medicine medicine);
+    Completable update(Medicine medicine);
 
     @Delete
-    void delete(Medicine medicine);
+    Completable delete(Medicine medicine);
 
     // Custom queries
 
     @Query("SELECT * FROM medicine_table WHERE medicine_id = :id")
-    Medicine getMedicineByID(int id);
+    Single<Medicine> getMedicineByID(int id);
 
     @Query("SELECT * FROM medicine_table WHERE name = :name")
-    Medicine getMedicineByName(String name);
+    Single<Medicine> getMedicineByName(String name);
 
     @Query("SELECT * FROM medicine_table")
     LiveData<List<Medicine>> getAllMedicine();

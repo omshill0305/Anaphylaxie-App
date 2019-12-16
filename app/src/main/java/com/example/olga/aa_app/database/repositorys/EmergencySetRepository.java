@@ -11,6 +11,8 @@ import com.example.olga.aa_app.database.entities.EmergencySet;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+
 /**
  * The repository class is a class that is created for every entity. It is used to wrap the queries
  * and to separate it from the DAOs. Because database operation cannot be performed directly on the
@@ -32,22 +34,16 @@ public class EmergencySetRepository implements EmergencySetDAO{
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public void insert(EmergencySet emergencySet){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            emergencySetDAO.insert(emergencySet);
-        });
+    public Completable insert(EmergencySet emergencySet){
+        return emergencySetDAO.insert(emergencySet);
     }
 
-    public void update(EmergencySet emergencySet){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            emergencySetDAO.update(emergencySet);
-        });
+    public Completable update(EmergencySet emergencySet){
+        return emergencySetDAO.update(emergencySet);
     }
 
-    public void delete(EmergencySet emergencySet){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            emergencySetDAO.delete(emergencySet);
-        });
+    public Completable delete(EmergencySet emergencySet){
+        return emergencySetDAO.delete(emergencySet);
     }
 
     @Override

@@ -11,6 +11,9 @@ import com.example.olga.aa_app.database.entities.Medicine;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * The repository class is a class that is created for every entity. It is used to wrap the queries
  * and to separate it from the DAOs. Because database operation cannot be performed directly on the
@@ -32,44 +35,27 @@ public class MedicineRepository implements MedicineDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public void insert(Medicine medicine){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            medicineDAO.insert(medicine);
-        });
+    public Completable insert(Medicine medicine){
+        return medicineDAO.insert(medicine);
     }
 
-    public void update(Medicine medicine){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            medicineDAO.update(medicine);
-        });
+    public Completable update(Medicine medicine){
+        return medicineDAO.update(medicine);
     }
 
-    public void delete(Medicine medicine){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            medicineDAO.delete(medicine);
-        });
+    public Completable delete(Medicine medicine){
+        return medicineDAO.delete(medicine);
     }
 
     @Override
-    public Medicine getMedicineByID(int id) {
-        AtomicReference<Medicine> returnValue = new AtomicReference<>();
-
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            returnValue.set(medicineDAO.getMedicineByID(id));
-        });
-
-        return returnValue.get();
+    public Single<Medicine> getMedicineByID(int id) {
+        return medicineDAO.getMedicineByID(id);
     }
 
     @Override
-    public Medicine getMedicineByName(String name) {
-        AtomicReference<Medicine> returnValue = new AtomicReference<>();
+    public Single<Medicine> getMedicineByName(String name) {
 
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            returnValue.set(medicineDAO.getMedicineByName(name));
-        });
-
-        return returnValue.get();
+        return medicineDAO.getMedicineByName(name);
     }
 
     @Override

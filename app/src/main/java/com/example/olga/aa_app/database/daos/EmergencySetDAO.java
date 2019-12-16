@@ -11,6 +11,8 @@ import com.example.olga.aa_app.database.entities.EmergencySet;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+
 /**
  * DAOs hold the queries for the SQLite database as interface methods. Basic queries
  * such as insert, update or delete can be annotated with the appropriate annotation
@@ -22,13 +24,13 @@ public interface EmergencySetDAO {
     // Base Operations
 
     @Insert
-    void insert(EmergencySet emergencySet);
+    Completable insert(EmergencySet emergencySet);
 
     @Update
-    void update(EmergencySet emergencySet);
+    Completable update(EmergencySet emergencySet);
 
     @Delete
-    void delete(EmergencySet emergencySet);
+    Completable delete(EmergencySet emergencySet);
 
     // Custom queries
     @Query("SELECT * FROM emergencyset_table")

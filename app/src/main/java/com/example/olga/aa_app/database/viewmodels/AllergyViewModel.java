@@ -11,6 +11,9 @@ import com.example.olga.aa_app.database.repositorys.AllergyRepository;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * The ViewModel is a wrapper class for the repositories. The main purpose of this class is to call
  * methods from the repositories and provide the data that the user needs. The ViewModel exists, to
@@ -29,16 +32,16 @@ public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
         repository = new AllergyRepository(application);
     }
 
-    public void insert(Allergy allergy){
-        repository.insert(allergy);
+    public Completable insert(Allergy allergy){
+        return repository.insert(allergy);
     }
 
-    public void update(Allergy allergy){
-        repository.update(allergy);
+    public Completable update(Allergy allergy){
+        return repository.update(allergy);
     }
 
-    public void delete(Allergy allergy){
-        repository.delete(allergy);
+    public Completable delete(Allergy allergy){
+        return repository.delete(allergy);
     }
 
     public LiveData<List<Allergy>> getAllAllergies() {  // Only returns referenced live data
@@ -46,12 +49,12 @@ public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
     }
 
     @Override
-    public Allergy getAllergyByID(int id) {
+    public Single<Allergy> getAllergyByID(int id) {
         return repository.getAllergyByID(id);
     }
 
     @Override
-    public Allergy getAllergyByName(String name) {
+    public Single<Allergy> getAllergyByName(String name) {
         return repository.getAllergyByName(name);
     }
 }

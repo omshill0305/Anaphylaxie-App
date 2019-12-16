@@ -6,6 +6,8 @@ import com.example.olga.aa_app.database.ReactionDatabase;
 import com.example.olga.aa_app.database.daos.ProfileDAO;
 import com.example.olga.aa_app.database.entities.Profile;
 
+import io.reactivex.Completable;
+
 /**
  * The repository class is a class that is created for every entity. It is used to wrap the queries
  * and to separate it from the DAOs. Because database operation cannot be performed directly on the
@@ -27,21 +29,15 @@ public class ProfileRepository implements ProfileDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public void insert(Profile allergy) {
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            profileDAO.insert(allergy);
-        });
+    public Completable insert(Profile allergy) {
+        return profileDAO.insert(allergy);
     }
 
-    public void update(Profile allergy) {
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            profileDAO.update(allergy);
-        });
+    public Completable update(Profile allergy) {
+        return profileDAO.update(allergy);
     }
 
-    public void delete(Profile allergy) {
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            profileDAO.delete(allergy);
-        });
+    public Completable delete(Profile allergy) {
+        return profileDAO.delete(allergy);
     }
 }

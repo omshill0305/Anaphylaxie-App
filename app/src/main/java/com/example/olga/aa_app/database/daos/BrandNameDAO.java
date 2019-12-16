@@ -12,6 +12,9 @@ import com.example.olga.aa_app.database.entities.BrandName;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * DAOs hold the queries for the SQLite database as interface methods. Basic queries
  * such as insert, update or delete can be annotated with the appropriate annotation
@@ -23,21 +26,21 @@ public interface BrandNameDAO {
     // Base Operations
 
     @Insert
-    void insert(BrandName brandName);
+    Completable insert(BrandName brandName);
 
     @Update
-    void update(BrandName brandName);
+    Completable update(BrandName brandName);
 
     @Delete
-    void delete(BrandName brandName);
+    Completable delete(BrandName brandName);
 
     // Custom queries
 
     @Query("SELECT * FROM brandname_table WHERE brandname_id = :id")
-    BrandName getBrandNameByID(int id);
+    Single<BrandName> getBrandNameByID(int id);
 
     @Query("SELECT * FROM brandname_table WHERE name = :name")
-    BrandName getBrandNameByName(String name);
+    Single<BrandName> getBrandNameByName(String name);
 
     @Query("SELECT * FROM brandname_table")
     LiveData<List<BrandName>> getAllBrandNames();

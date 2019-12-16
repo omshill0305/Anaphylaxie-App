@@ -12,6 +12,8 @@ import com.example.olga.aa_app.database.entities.Profile;
 import com.example.olga.aa_app.database.repositorys.EmergencySetRepository;
 import com.example.olga.aa_app.database.repositorys.ProfileRepository;
 
+import io.reactivex.Completable;
+
 /**
  * The ViewModel is a wrapper class for the repositories. The main purpose of this class is to call
  * methods from the repositories and provide the data that the user needs. The ViewModel exists, to
@@ -30,15 +32,15 @@ public class ProfileViewModel extends AndroidViewModel implements ProfileDAO {
         repository = new ProfileRepository(application);
     }
 
-    public void insert(Profile profile) {
-        repository.insert(profile);
+    public Completable insert(Profile profile) {
+        return repository.insert(profile);
     }
 
-    public void update(Profile profile) {
-        repository.update(profile);
+    public Completable update(Profile profile) {
+        return repository.update(profile);
     }
 
-    public void delete(Profile profile) {
-        repository.delete(profile);
+    public Completable delete(Profile profile) {
+        return repository.delete(profile);
     }
 }

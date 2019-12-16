@@ -15,6 +15,9 @@ import com.example.olga.aa_app.database.repositorys.MedicineRepository;
 
 import java.util.List;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * The ViewModel is a wrapper class for the repositories. The main purpose of this class is to call
  * methods from the repositories and provide the data that the user needs. The ViewModel exists, to
@@ -33,25 +36,25 @@ public class MedicineViewModel extends AndroidViewModel implements MedicineDAO {
         repository = new MedicineRepository(application);
     }
 
-    public void insert(Medicine medicineRepository){
-        repository.insert(medicineRepository);
+    public Completable insert(Medicine medicineRepository){
+        return repository.insert(medicineRepository);
     }
 
-    public void update(Medicine medicineRepository){
-        repository.update(medicineRepository);
+    public Completable update(Medicine medicineRepository){
+        return repository.update(medicineRepository);
     }
 
-    public void delete(Medicine medicineRepository){
-        repository.delete(medicineRepository);
+    public Completable delete(Medicine medicineRepository){
+        return repository.delete(medicineRepository);
     }
 
     @Override
-    public Medicine getMedicineByID(int id) {
+    public Single<Medicine> getMedicineByID(int id) {
         return repository.getMedicineByID(id);
     }
 
     @Override
-    public Medicine getMedicineByName(String name) {
+    public Single<Medicine> getMedicineByName(String name) {
         return repository.getMedicineByName(name);
     }
 

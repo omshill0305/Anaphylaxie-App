@@ -10,12 +10,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.olga.aa_app.database.entities.Allergy;
 import com.example.olga.aa_app.database.entities.BrandName;
 import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
 import com.example.olga.aa_app.database.viewmodels.BrandNameViewModel;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+
+import io.reactivex.Scheduler;
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
@@ -27,11 +36,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
-        BrandNameViewModel brandNameViewModel = ViewModelProviders.of(this).get(BrandNameViewModel.class);
 
-        BrandName b = brandNameViewModel.getBrandNameByName("FromSoftware");
+        Single<Allergy> test = allergyViewModel.getAllergyByName("bruh2");
+        test.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DisposableSingleObserver<Allergy>() {
+                    @Override
+                    public void onSuccess(Allergy allergy) {
+                        System.out.println("shoutout");
+                    }
 
-        System.out.println(b.getName());
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("oof");
+                    }
+                });
+
 
         new Handler().postDelayed(new Runnable() {
             @Override

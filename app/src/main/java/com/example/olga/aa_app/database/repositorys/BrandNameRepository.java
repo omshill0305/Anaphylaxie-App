@@ -11,6 +11,9 @@ import com.example.olga.aa_app.database.entities.BrandName;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.reactivex.Completable;
+import io.reactivex.Single;
+
 /**
  * The repository class is a class that is created for every entity. It is used to wrap the queries
  * and to separate it from the DAOs. Because database operation cannot be performed directly on the
@@ -31,44 +34,28 @@ public class BrandNameRepository implements BrandNameDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public void insert(BrandName brandName){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            brandNameDAO.insert(brandName);
-        });
+    public Completable insert(BrandName brandName){
+        return brandNameDAO.insert(brandName);
     }
 
-    public void update(BrandName brandName){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            brandNameDAO.update(brandName);
-        });
+    public Completable update(BrandName brandName){
+        return brandNameDAO.update(brandName);
     }
 
-    public void delete(BrandName brandName){
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            brandNameDAO.delete(brandName);
-        });
+    public Completable delete(BrandName brandName){
+        return brandNameDAO.delete(brandName);
     }
 
     @Override
-    public BrandName getBrandNameByID(int id) {
-        AtomicReference<BrandName> returnValue = new AtomicReference<>();
+    public Single<BrandName> getBrandNameByID(int id) {
 
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            returnValue.set(brandNameDAO.getBrandNameByID(id));
-        });
-
-        return returnValue.get();
+        return brandNameDAO.getBrandNameByID(id);
     }
 
     @Override
-    public BrandName getBrandNameByName(String name) {
-        AtomicReference<BrandName> returnValue = new AtomicReference<>();
+    public Single<BrandName> getBrandNameByName(String name) {
 
-        ReactionDatabase.databaseWriteExecutor.execute(() ->{
-            returnValue.set(brandNameDAO.getBrandNameByName(name));
-        });
-
-        return returnValue.get();
+        return brandNameDAO.getBrandNameByName(name);
     }
 
     @Override
