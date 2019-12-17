@@ -13,14 +13,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
-/**
- * The repository class is a class that is created for every entity. It is used to wrap the queries
- * and to separate it from the DAOs. Because database operation cannot be performed directly on the
- * database itself, we will use the "databaseWriteExecutor" that we declared in the database, to
- * execute all database operations. LiveData is a exception. LiveData needs a getter in the DAO, but
- * don't need a query to get it. Simply call it to get the reference.
- */
+
 public class AllergyRepository implements AllergyDAO{
 
     private AllergyDAO allergyDAO;
@@ -36,15 +32,15 @@ public class AllergyRepository implements AllergyDAO{
 
 
     public Completable insert(Allergy allergy){
-        return allergyDAO.insert(allergy);
+        return allergyDAO.insert(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable update(Allergy allergy){
-        return allergyDAO.update(allergy);
+        return allergyDAO.update(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable delete(Allergy allergy){
-        return allergyDAO.delete(allergy);
+        return allergyDAO.delete(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     // LiveData gets reference from DAO without the use of databaseWriteExecutor
@@ -53,13 +49,12 @@ public class AllergyRepository implements AllergyDAO{
     }
 
     @Override
-    public Single<Allergy> getAllergyByID(int id) {             // Needs testing
-
-        return allergyDAO.getAllergyByID(id);
+    public Single<Allergy> getAllergyByID(int id) {
+        return allergyDAO.getAllergyByID(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Single<Allergy> getAllergyByName(String name) {
-        return allergyDAO.getAllergyByName(name);
+        return allergyDAO.getAllergyByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }

@@ -13,12 +13,15 @@ import com.example.olga.aa_app.database.daos.BrandNameDAO;
 import com.example.olga.aa_app.database.daos.EmergencySetDAO;
 import com.example.olga.aa_app.database.daos.MedicineDAO;
 import com.example.olga.aa_app.database.daos.ProfileDAO;
+import com.example.olga.aa_app.database.daos.SetsOfProfileDAO;
 import com.example.olga.aa_app.database.entities.Allergy;
 import com.example.olga.aa_app.database.entities.BrandName;
 import com.example.olga.aa_app.database.entities.EmergencySet;
 import com.example.olga.aa_app.database.entities.Medicine;
 import com.example.olga.aa_app.database.entities.Profile;
+import com.example.olga.aa_app.database.jointables.SetsOfProfile;
 
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -34,7 +37,7 @@ import io.reactivex.schedulers.Schedulers;
  * the entities field in @Database annotation.
  */
 @Database(entities = {Allergy.class, EmergencySet.class,
-        Profile.class, BrandName.class, Medicine.class}, version = 1, exportSchema = false)
+        Profile.class, BrandName.class, Medicine.class, SetsOfProfile.class}, version = 1, exportSchema = false)
 public abstract class ReactionDatabase extends RoomDatabase {
 
     private static volatile ReactionDatabase instance;
@@ -45,6 +48,7 @@ public abstract class ReactionDatabase extends RoomDatabase {
     public abstract ProfileDAO profileDAO();
     public abstract BrandNameDAO brandNameDAO();
     public abstract MedicineDAO medicineDAO();
+    public abstract SetsOfProfileDAO setsOfProfileDAO();
 
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =
@@ -74,7 +78,36 @@ public abstract class ReactionDatabase extends RoomDatabase {
             AllergyDAO allergyDAO = instance.allergyDAO();
             BrandNameDAO brandNameDAO = instance.brandNameDAO();
             MedicineDAO medicineDAO = instance.medicineDAO();
+            EmergencySetDAO emergencySetDAO = instance.emergencySetDAO();
+            ProfileDAO profileDAO = instance.profileDAO();
+            SetsOfProfileDAO setsOfProfileDAO = instance.setsOfProfileDAO();
 
+            BrandName b1 = new BrandName("FromSoftware");
+            BrandName b2 = new BrandName("Activision");
+            brandNameDAO.insert(b1);
+            brandNameDAO.insert(b2);
+
+            Medicine m1 = new Medicine("Auto Injektor");
+            Medicine m2 = new Medicine("Paracetamol");
+            medicineDAO.insert(m1);
+            medicineDAO.insert(m2);
+
+            EmergencySet emergencySet = new EmergencySet(1, 1, 5, "unit");
+            EmergencySet emergencySet2 = new EmergencySet(2, 2, 30, "mg");
+            emergencySetDAO.insert(emergencySet);
+            emergencySetDAO.insert(emergencySet2);
+
+            Profile profile = new Profile("juul", 15, 'm', true, true);
+            Profile profile2 = new Profile("bruh", 12, 'm', false, false);
+            profileDAO.insert(profile);
+            profileDAO.insert(profile2);
+
+            SetsOfProfile setsOfProfile = new SetsOfProfile(1, 2);
+            SetsOfProfile setsOfProfile2 = new SetsOfProfile(1, 1);
+            SetsOfProfile setsOfProfile3 = new SetsOfProfile(2, 2);
+            setsOfProfileDAO.insert(setsOfProfile);
+            setsOfProfileDAO.insert(setsOfProfile2);
+            setsOfProfileDAO.insert(setsOfProfile3);
 
         }
     };

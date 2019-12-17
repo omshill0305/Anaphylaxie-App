@@ -12,14 +12,9 @@ import com.example.olga.aa_app.database.entities.EmergencySet;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
-/**
- * The repository class is a class that is created for every entity. It is used to wrap the queries
- * and to separate it from the DAOs. Because database operation cannot be performed directly on the
- * database itself, we will use the "databaseWriteExecutor" that we declared in the database, to
- * execute all database operations. LiveData is a exception. LiveData needs a getter in the DAO, but
- *  * don't need a query to get it. Simply call it to get the reference.
- */
 public class EmergencySetRepository implements EmergencySetDAO{
 
     private EmergencySetDAO emergencySetDAO;
@@ -35,15 +30,15 @@ public class EmergencySetRepository implements EmergencySetDAO{
 
 
     public Completable insert(EmergencySet emergencySet){
-        return emergencySetDAO.insert(emergencySet);
+        return emergencySetDAO.insert(emergencySet).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable update(EmergencySet emergencySet){
-        return emergencySetDAO.update(emergencySet);
+        return emergencySetDAO.update(emergencySet).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable delete(EmergencySet emergencySet){
-        return emergencySetDAO.delete(emergencySet);
+        return emergencySetDAO.delete(emergencySet).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

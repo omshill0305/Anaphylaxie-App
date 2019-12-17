@@ -23,15 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="7a99430a-4411-47e4-8c4c-ae10447dd6a8">
-        <schema name="main" object-types="constraint, column, view, dataset trigger, index, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="7a99430a-4411-47e4-8c4c-ae10447dd6a8">
-      <console name="RoomDatabase" type="STANDARD" schema="main" session="Main" />
+      <console name="RoomDatabase" type="STANDARD" schema="main" session="Main"><![CDATA[select * from allergy_table]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -111,7 +107,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
-          <connect-automatically value="true" />
+          <connect-automatically value="false" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
           <environment-type value="default" />

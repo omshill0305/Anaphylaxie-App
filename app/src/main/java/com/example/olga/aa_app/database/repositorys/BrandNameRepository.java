@@ -13,14 +13,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
-/**
- * The repository class is a class that is created for every entity. It is used to wrap the queries
- * and to separate it from the DAOs. Because database operation cannot be performed directly on the
- * database itself, we will use the "databaseWriteExecutor" that we declared in the database, to
- * execute all database operations. LiveData is a exception. LiveData needs a getter in the DAO, but
- * don't need a query to get it. Simply call it to get the reference.
- */
 public class BrandNameRepository implements BrandNameDAO {
 
     private BrandNameDAO brandNameDAO;
@@ -35,27 +30,27 @@ public class BrandNameRepository implements BrandNameDAO {
 
 
     public Completable insert(BrandName brandName){
-        return brandNameDAO.insert(brandName);
+        return brandNameDAO.insert(brandName).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable update(BrandName brandName){
-        return brandNameDAO.update(brandName);
+        return brandNameDAO.update(brandName).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable delete(BrandName brandName){
-        return brandNameDAO.delete(brandName);
+        return brandNameDAO.delete(brandName).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Single<BrandName> getBrandNameByID(int id) {
 
-        return brandNameDAO.getBrandNameByID(id);
+        return brandNameDAO.getBrandNameByID(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Single<BrandName> getBrandNameByName(String name) {
 
-        return brandNameDAO.getBrandNameByName(name);
+        return brandNameDAO.getBrandNameByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

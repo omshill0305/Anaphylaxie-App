@@ -1,28 +1,18 @@
 package com.example.olga.aa_app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.olga.aa_app.database.entities.Allergy;
-import com.example.olga.aa_app.database.entities.BrandName;
 import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
-import com.example.olga.aa_app.database.viewmodels.BrandNameViewModel;
-
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-import io.reactivex.Scheduler;
 import io.reactivex.Single;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -37,20 +27,19 @@ public class MainActivity extends AppCompatActivity {
 
         AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
 
-        Single<Allergy> test = allergyViewModel.getAllergyByName("bruh2");
-        test.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DisposableSingleObserver<Allergy>() {
-                    @Override
-                    public void onSuccess(Allergy allergy) {
-                        System.out.println("shoutout");
-                    }
+        Allergy allergy = new Allergy("bruh2");
+        allergyViewModel.insert(allergy)
+                .subscribe(new DisposableCompletableObserver() {
+                @Override
+                public void onComplete() {
+                    System.out.println("it worked");
+                }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        System.out.println("oof");
-                    }
-                });
+                @Override
+                public void onError(Throwable e) {
+                    System.out.println("something went wrong");
+                }
+        });
 
 
         new Handler().postDelayed(new Runnable() {

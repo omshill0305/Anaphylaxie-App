@@ -15,15 +15,6 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
-/**
- * The ViewModel is a wrapper class for the repositories. The main purpose of this class is to call
- * methods from the repositories and provide the data that the user needs. The ViewModel exists, to
- * separate obscure the repository class and the underlying structure and classes. This is the class
- * that the Activities and Fragments will be interacting with. Again, LiveData has to be called and
- * referenced just once in the repository, as its contents are updated automatically and do not need
- * to be called again with a queries, this is why LiveData only has to be referenced once, and only
- * returned later.
- */
 public class BrandNameViewModel extends AndroidViewModel implements BrandNameDAO {
 
     private BrandNameRepository repository;

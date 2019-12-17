@@ -13,14 +13,10 @@ import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.Completable;
 import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
-/**
- * The repository class is a class that is created for every entity. It is used to wrap the queries
- * and to separate it from the DAOs. Because database operation cannot be performed directly on the
- * database itself, we will use the "databaseWriteExecutor" that we declared in the database, to
- * execute all database operations. LiveData is a exception. LiveData needs a getter in the DAO, but
- * don't need a query to get it. Simply call it to get the reference.
- */
+
 public class MedicineRepository implements MedicineDAO {
 
     private MedicineDAO medicineDAO;
@@ -36,26 +32,25 @@ public class MedicineRepository implements MedicineDAO {
 
 
     public Completable insert(Medicine medicine){
-        return medicineDAO.insert(medicine);
+        return medicineDAO.insert(medicine).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable update(Medicine medicine){
-        return medicineDAO.update(medicine);
+        return medicineDAO.update(medicine).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Completable delete(Medicine medicine){
-        return medicineDAO.delete(medicine);
+        return medicineDAO.delete(medicine).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Single<Medicine> getMedicineByID(int id) {
-        return medicineDAO.getMedicineByID(id);
+        return medicineDAO.getMedicineByID(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Single<Medicine> getMedicineByName(String name) {
-
-        return medicineDAO.getMedicineByName(name);
+        return medicineDAO.getMedicineByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

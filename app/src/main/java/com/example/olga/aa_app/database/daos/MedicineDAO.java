@@ -15,11 +15,7 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
-/**
- * DAOs hold the queries for the SQLite database as interface methods. Basic queries
- * such as insert, update or delete can be annotated with the appropriate annotation
- * e.g @Insert (see below) or need to be marked as @Query( "SQL commands come here")
- */
+
 @Dao
 public interface MedicineDAO {
 
@@ -36,7 +32,7 @@ public interface MedicineDAO {
 
     // Custom queries
 
-    @Query("SELECT * FROM medicine_table WHERE medicine_id = :id")
+    @Query("SELECT * FROM medicine_table WHERE medicineId = :id")
     Single<Medicine> getMedicineByID(int id);
 
     @Query("SELECT * FROM medicine_table WHERE name = :name")

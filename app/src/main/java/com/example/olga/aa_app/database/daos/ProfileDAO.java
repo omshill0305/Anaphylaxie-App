@@ -1,19 +1,18 @@
 package com.example.olga.aa_app.database.daos;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.olga.aa_app.database.entities.Profile;
 
+import java.util.List;
+
 import io.reactivex.Completable;
 
-/**
- * DAOs hold the queries for the SQLite database as interface methods. Basic queries
- * such as insert, update or delete can be annotated with the appropriate annotation
- * e.g @Insert (see below) or need to be marked as @Query( "SQL commands come here")
- */
 @Dao
 public interface ProfileDAO {
 
@@ -30,7 +29,7 @@ public interface ProfileDAO {
 
     // Custom queries
 
-    /*@Query("SELECT * FROM allergy_table")
-    LiveData<List<Allergy>> getAllAllergies();*/
+    @Query("SELECT * FROM profile_table")
+    LiveData<List<Profile>> getAllProfiles();
 
 }
