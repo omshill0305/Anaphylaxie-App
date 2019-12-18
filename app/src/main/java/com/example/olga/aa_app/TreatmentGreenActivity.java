@@ -7,14 +7,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 
 public class TreatmentGreenActivity extends AppCompatActivity {
-
+    Button tagButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,16 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         }
 
         showAddItemDialog1(null);
+
+
+        TableRow raw1 = (TableRow) findViewById(R.id.raw2);
+        tagButton3 = new Button(this);
+        tagButton3.setText("Kribbeln in Mund oder Rachen");
+        tagButton3.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        raw1.addView(tagButton3);
+
     }
 
     @Override
