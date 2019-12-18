@@ -80,7 +80,8 @@
                         android:id="@+id/checkBox"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:button="@drawable/circle_checkbox"
+                        android:button="@drawable/circle_checkbox_checked"
+                        android:checked="false"
                         android:gravity="center"
                         android:text="@string/diarrhea"
                         android:textAlignment="center"
@@ -109,7 +110,7 @@
                         android:id="@+id/checkBox2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/circle_checkbox"
+                        android:button="@drawable/circle_checkbox_checked"
                         android:text="@string/abdominal_pain"
                         android:textAlignment="center"
                         android:textSize="18sp" />
@@ -137,7 +138,7 @@
                         android:id="@+id/checkBox3"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:button="@drawable/circle_checkbox"
+                        android:button="@drawable/circle_checkbox_checked"
                         android:text="@string/nausea"
                         android:textAlignment="center"
                         android:textSize="18sp" />
@@ -165,7 +166,7 @@
                         android:id="@+id/checkBox4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/circle_checkbox"
+                        android:button="@drawable/circle_checkbox_checked"
                         android:text="@string/tingling_mouth_throat"
                         android:textAlignment="center"
                         android:textSize="18sp" />
@@ -193,7 +194,7 @@
                         android:id="@+id/checkBox5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/circle_checkbox"
+                        android:button="@drawable/circle_checkbox_checked"
                         android:text="@string/vomiting"
                         android:textAlignment="center"
                         android:textSize="18sp" />
