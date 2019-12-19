@@ -17,19 +17,19 @@ import java.util.ArrayList;
 import android.widget.ArrayAdapter;
 
 
-public class TreatmentGreenActivity extends AppCompatActivity {
+public class TreatmentRedActivity extends AppCompatActivity {
     Button tagButton3;
     ArrayList<String> instructionListDBEXample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_treatment_green);
+        setContentView(R.layout.activity_treatment_red);
 
         instructionListDBEXample = new ArrayList<>();
-        instructionListDBEXample.add("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion");
+        instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
         instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Bitte verabreichen Sie: AntihistaminikumDosierung des Antihistaminikums AntihistaminikumName und SteroidDosierung des Steroids SteroidName");
+        instructionListDBEXample.add("Bitte Fastjekt verabreichen");
 
 
         ListView list = (ListView) findViewById(R.id.dynamicView);
@@ -57,9 +57,7 @@ public class TreatmentGreenActivity extends AppCompatActivity {
 
         TableRow raw1 = (TableRow) findViewById(R.id.raw2);
         tagButton3 = new Button(this);
-
-        tagButton3.setText("Quddeln");
-
+        tagButton3.setText("Kribbeln in Mund und Rachen");
         tagButton3.setLayoutParams(new TableRow.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -87,7 +85,7 @@ public class TreatmentGreenActivity extends AppCompatActivity {
     }
 
     private void showAddItemDialog2(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
         builder.setTitle("Schritt 2");
 
 
@@ -107,21 +105,22 @@ public class TreatmentGreenActivity extends AppCompatActivity {
     }
 
     private void showAddItemDialog1(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
         builder.setTitle("Schritt 1");
 
 
 
-        final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
+
+        final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout_red, null);
         builder.setView(customLayout);
 
 
         builder.setPositiveButton("Weiter", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        showAddItemDialog2(null);
-                    }
-                });
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                showAddItemDialog2(null);
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
