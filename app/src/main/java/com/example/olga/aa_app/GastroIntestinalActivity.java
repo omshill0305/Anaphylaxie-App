@@ -34,7 +34,7 @@ public class GastroIntestinalActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GastroIntestinalActivity.this, TreatmentGreenActivity.class));
+                startActivity(new Intent(GastroIntestinalActivity.this, TreatmentRedActivity.class));
             }
         });
     }

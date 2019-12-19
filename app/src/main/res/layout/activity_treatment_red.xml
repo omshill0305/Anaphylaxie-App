@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="185dp"
             android:layout_marginBottom="8dp"
-            android:src="@color/colorProjektGreen"
+            android:src="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            android:text="Haut"
+            android:text="Behandlung"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -43,7 +43,7 @@
         <ScrollView
             android:id="@+id/scrollView3"
             android:layout_width="match_parent"
-            android:layout_height="418dp"
+            android:layout_height="691dp"
             android:layout_marginTop="24dp"
             android:scrollbarStyle="insideOverlay"
             app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -73,55 +73,80 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/my_button"
-                    android:gravity="center">
+                    android:background="@drawable/box_grey"
+                    android:gravity="center"
+                    android:weightSum="1">
 
-                    <CheckBox
-                        android:id="@+id/checkBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:button="@drawable/circle_checkbox"
-                        android:gravity="center"
-                        android:text="Quaddeln"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <ImageButton
-                        android:id="@+id/imageButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="?attr/colorBackgroundFloating"
-                        android:padding="5dp"
-                        app:srcCompat="@drawable/question_mark" />
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/raw1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView26"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="10dp"
+                                android:text="Du hast gewählt:"
+                                android:textAlignment="center" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/raw2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/raw3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </TableLayout>
                 </TableRow>
 
                 <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/my_button"
+                    android:background="@drawable/box_red"
                     android:gravity="center">
 
-                    <CheckBox
-                        android:id="@+id/checkBox2"
-                        android:layout_width="262dp"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/circle_checkbox"
-                        android:text="Schwellung von Lippen und Gesicht"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton4"
+                    <LinearLayout
+                        android:id="@+id/activeList"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@color/white"
-                        android:padding="5dp"
-                        app:srcCompat="@drawable/question_mark" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView27"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Was ist jetzt zu tun?"
+                            android:textAlignment="center"
+                            android:paddingBottom="5dp"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+
+                        <ListView
+                            android:id="@+id/dynamicView"
+                            android:layout_width="335dp"
+                            android:layout_height="150dp" />
+                    </LinearLayout>
+
                 </TableRow>
 
                 <TableRow
@@ -130,46 +155,23 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="5dp"
-                    android:background="@drawable/my_button"
+                    android:background="@drawable/box_grey"
                     android:gravity="center">
 
-                    <CheckBox
-                        android:id="@+id/checkBox3"
-                        android:layout_width="194dp"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/circle_checkbox"
-                        android:text="Jucken (Handflächen/ Fußsohlen/ Genitalbereich)"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton5"
+                    <TextView
+                        android:id="@+id/textView19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@color/white"
-                        android:padding="5dp"
-                        app:srcCompat="@drawable/question_mark" />
+                        android:text="Weitere Information:"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp" />
+
                 </TableRow>
 
             </TableLayout>
         </ScrollView>
 
-        <Button
-            android:id="@+id/choose"
-            android:layout_width="130dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/my_button"
-            android:text="Auswahl"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView3"
-            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.appbar.AppBarLayout
@@ -188,5 +190,10 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.gridlayout.widget.GridLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
