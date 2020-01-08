@@ -314,21 +314,25 @@
 
         <Button
             android:id="@+id/button"
-            style="@android:style/Widget.Material.Button.Borderless"
+            style="@android:style/Widget.Material.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorAccent"
             android:onClick="cancelProfileChanges"
-            android:text="@android:string/cancel" />
+            android:text="@android:string/cancel"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/button2"
-            style="@android:style/Widget.Material.Button.Borderless"
+            style="@android:style/Widget.Material.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/colorProjektGreen"
             android:onClick="saveProfileChanges"
-            android:text="@string/save" />
+            android:text="@string/save"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

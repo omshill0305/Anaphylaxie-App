@@ -42,8 +42,8 @@
 
         <ScrollView
             android:id="@+id/scrollView3"
-            android:layout_width="match_parent"
-            android:layout_height="418dp"
+            android:layout_width="411dp"
+            android:layout_height="511dp"
             android:layout_marginTop="24dp"
             android:scrollbarStyle="insideOverlay"
             app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -81,6 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:button="@drawable/circle_checkbox"
+                        android:checked="false"
                         android:gravity="center"
                         android:text="Quaddeln"
                         android:textAlignment="center"
