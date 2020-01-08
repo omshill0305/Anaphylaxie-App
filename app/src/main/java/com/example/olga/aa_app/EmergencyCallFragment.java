@@ -1,6 +1,11 @@
 package com.example.olga.aa_app;
 
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,21 +33,22 @@ import com.google.android.gms.maps.model.MarkerOptions;
  */
 public class EmergencyCallFragment extends Fragment {
 
-    MapView mMapView;
-    private GoogleMap googleMap;
+    private static final int LOCATION_REQUEST = 500;
 
     public EmergencyCallFragment() {
         // Required empty public constructor
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View v = inflater.inflate(R.layout.fragment_emergency_call, container, false);
 
-         SupportMapFragment mSupportMapFragment;
+        SupportMapFragment mSupportMapFragment;
 
         mSupportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_view);
         if (mSupportMapFragment == null) {
@@ -52,14 +58,24 @@ public class EmergencyCallFragment extends Fragment {
             fragmentTransaction.replace(R.id.map_view, mSupportMapFragment).commit();
         }
 
-        if (mSupportMapFragment != null)
-        {
+        if (mSupportMapFragment != null) {
             mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
-                @Override public void onMapReady(GoogleMap googleMap) {
+                @Override
+                public void onMapReady(final GoogleMap googleMap) {
                     if (googleMap != null) {
 
-                        double latitude = 17.385044;
-                        double longitude = 78.486671;
+                        if (getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            getActivity().requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
+                            return;
+                        }
+                        googleMap.setMyLocationEnabled(true);
+                        LocationManager myLocation = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+
+
+                        double latitude = myLocation.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
+                        double longitude = myLocation.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
+
+                        googleMap.clear();
 
                         googleMap.getUiSettings().setAllGesturesEnabled(true);
                         MarkerOptions marker = new MarkerOptions().position(
@@ -67,9 +83,9 @@ public class EmergencyCallFragment extends Fragment {
 
                         googleMap.addMarker(marker); // MAKE THIS WHATEVER YOU WANT
 
-                        //CameraPosition cameraPosition = new CameraPosition.Builder().target(latitude).zoom(15.0f).build();
-                        //CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                        //googleMap.moveCamera(cameraUpdate);
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(15.0f).build();
+                        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+                        googleMap.moveCamera(cameraUpdate);
 
                     }
 
@@ -78,8 +94,10 @@ public class EmergencyCallFragment extends Fragment {
 
         // Perform any camera updates here
 
-    }
+        }
         return v;
     }
+
+
 
 }
