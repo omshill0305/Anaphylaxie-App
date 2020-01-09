@@ -19,8 +19,6 @@ public class Profile {
     public boolean asthma;
     public boolean salbutamol;
 
-    // Things needed: Constructor, Getters for all fields and one setter for ID
-
     // gender is not checked, right now
     public Profile(String name, int age, char gender, boolean asthma, boolean salbutamol) {
         this.name = name;

@@ -1,0 +1,44 @@
+package com.example.olga.aa_app.database.viewmodels;
+
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
+import com.example.olga.aa_app.database.daos.AllergiesOfProfileDAO;
+import com.example.olga.aa_app.database.daos.SetsOfProfileDAO;
+import com.example.olga.aa_app.database.entities.Profile;
+import com.example.olga.aa_app.database.jointables.AllergiesOfProfile;
+import com.example.olga.aa_app.database.jointables.SetsOfProfile;
+import com.example.olga.aa_app.database.repositorys.AllergiesOfProfileRepository;
+import com.example.olga.aa_app.database.repositorys.SetsOfProfileRepository;
+
+import java.util.List;
+
+import io.reactivex.Completable;
+
+public class AllergiesOfProfileViewModel extends AndroidViewModel implements AllergiesOfProfileDAO {
+
+    private AllergiesOfProfileRepository repository;
+
+    public AllergiesOfProfileViewModel(@NonNull Application application) {
+        super(application);
+        repository = new AllergiesOfProfileRepository(application);
+    }
+
+    @Override
+    public Completable insert(AllergiesOfProfile allergiesOfProfile) {
+        return repository.insert(allergiesOfProfile);
+    }
+
+    @Override
+    public LiveData<List<Profile>> getProfilesWithAllergies(int allergyId) {
+        return repository.getProfilesWithAllergies(allergyId);
+    }
+
+    @Override
+    public LiveData<List<Profile>> getAllergiesOfProfile(int profileId) {
+        return repository.getAllergiesOfProfile(profileId);
+    }
+}

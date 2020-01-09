@@ -8,6 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.olga.aa_app.database.daos.AllergiesOfProfileDAO;
 import com.example.olga.aa_app.database.daos.AllergyDAO;
 import com.example.olga.aa_app.database.daos.BrandNameDAO;
 import com.example.olga.aa_app.database.daos.EmergencySetDAO;
@@ -19,6 +20,7 @@ import com.example.olga.aa_app.database.entities.BrandName;
 import com.example.olga.aa_app.database.entities.EmergencySet;
 import com.example.olga.aa_app.database.entities.Medicine;
 import com.example.olga.aa_app.database.entities.Profile;
+import com.example.olga.aa_app.database.jointables.AllergiesOfProfile;
 import com.example.olga.aa_app.database.jointables.SetsOfProfile;
 
 import java.util.Set;
@@ -37,7 +39,8 @@ import io.reactivex.schedulers.Schedulers;
  * the entities field in @Database annotation.
  */
 @Database(entities = {Allergy.class, EmergencySet.class,
-        Profile.class, BrandName.class, Medicine.class, SetsOfProfile.class}, version = 1, exportSchema = false)
+        Profile.class, BrandName.class, Medicine.class, SetsOfProfile.class,
+        AllergiesOfProfile.class}, version = 1, exportSchema = false)
 public abstract class ReactionDatabase extends RoomDatabase {
 
     private static volatile ReactionDatabase instance;
@@ -49,6 +52,7 @@ public abstract class ReactionDatabase extends RoomDatabase {
     public abstract BrandNameDAO brandNameDAO();
     public abstract MedicineDAO medicineDAO();
     public abstract SetsOfProfileDAO setsOfProfileDAO();
+    public abstract AllergiesOfProfileDAO allergiesOfProfileDAO();
 
     private static final int NUMBER_OF_THREADS = 4;
     public static final ExecutorService databaseWriteExecutor =
