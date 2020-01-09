@@ -50,11 +50,11 @@ public class GastroIntestinalActivity extends AppCompatActivity {
         });
 
         des = new HashMap();
-        des.put(getString(R.string.diarrhea), getString(R.string.info_diarrhea));
+        /*des.put(getString(R.string.diarrhea), getString(R.string.info_diarrhea));
         des.put(getString(R.string.abdominal_pain), getString(R.string.info_abdominal_pain));
         des.put(getString(R.string.nausea), getString(R.string.info_nausea));
         des.put(getString(R.string.tingling_mouth_throat), getString(R.string.info_tingling));
-        des.put(getString(R.string.vomiting), getString(R.string.info_vormiting));
+        des.put(getString(R.string.vomiting), getString(R.string.info_vormiting));*/
 
         setInfoButtons(R.id.listing_layout);
     }
