@@ -31,7 +31,7 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/profile_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/enter_name"
@@ -71,6 +71,7 @@
                 android:textSize="16sp" />
 
             <RadioGroup
+                android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
@@ -107,6 +108,12 @@
                 android:textAllCaps="true"
                 android:textSize="16sp" />
 
+            <MultiAutoCompleteTextView
+                android:id="@+id/multiAutoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_horizontal_margin" />
@@ -126,6 +133,7 @@
                     android:textSize="16sp" />
 
                 <RadioGroup
+                    android:id="@+id/asthma"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.75"
@@ -181,6 +189,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/antihistamine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -189,6 +198,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/antihistamine_dosage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -214,6 +224,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/steroid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -222,6 +233,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/steroid_dosage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -247,6 +259,7 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/autoinjector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -255,6 +268,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/autoinjector_dosage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
@@ -281,6 +295,7 @@
                     android:textSize="16sp" />
 
                 <RadioGroup
+                    android:id="@+id/salbutamol"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.75"
@@ -299,6 +314,10 @@
                         android:text="@string/no" />
                 </RadioGroup>
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_vertical_margin" />
 
         </LinearLayout>
     </ScrollView>

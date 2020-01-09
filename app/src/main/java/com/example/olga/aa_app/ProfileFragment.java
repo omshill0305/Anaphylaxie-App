@@ -10,11 +10,16 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
 
+    private Profile profile = null;
+    public static final int REQUEST_PROFILE_UPDATE = 1;
+    public static final String SEND_PROFILE = "com.example.olga.aa_app.SEND_PROFILE";
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -31,10 +36,25 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ProfileFormActivity.class);
-                startActivity(intent);
+                if (profile != null) {
+                    intent.putExtra(SEND_PROFILE, profile);
+                }
+                getActivity().startActivityForResult(intent, REQUEST_PROFILE_UPDATE);
             }
         });
         return rootView;
     }
 
+    public Profile getProfile() {
+        return  profile;
+    }
+
+    public void setProfile(Profile p) {
+        profile = p;
+        showProfile();
+    }
+
+    private void showProfile() {
+
+    }
 }
