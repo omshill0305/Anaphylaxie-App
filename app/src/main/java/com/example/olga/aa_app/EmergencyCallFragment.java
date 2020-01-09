@@ -67,27 +67,25 @@ public class EmergencyCallFragment extends Fragment {
                         if (getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                             getActivity().requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
                             return;
-                        } else {
-                            googleMap.setMyLocationEnabled(true);
-                            /*LocationManager myLocation = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-
-
-                            double latitude = myLocation.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
-                            double longitude = myLocation.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
-
-                            googleMap.clear();
-
-                            googleMap.getUiSettings().setAllGesturesEnabled(true);
-                            MarkerOptions marker = new MarkerOptions().position(
-                                    new LatLng(latitude, longitude)).title("Hello Maps");
-
-                            googleMap.addMarker(marker); // MAKE THIS WHATEVER YOU WANT
-
-                            CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(15.0f).build();
-                            CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                            googleMap.moveCamera(cameraUpdate);*/
                         }
+                        /*googleMap.setMyLocationEnabled(true);
+                        LocationManager myLocation = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
+
+                        double latitude = myLocation.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
+                        double longitude = myLocation.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
+
+                        googleMap.clear();
+
+                        googleMap.getUiSettings().setAllGesturesEnabled(true);
+                        MarkerOptions marker = new MarkerOptions().position(
+                                new LatLng(latitude, longitude)).title("Hello Maps");
+
+                        googleMap.addMarker(marker); // MAKE THIS WHATEVER YOU WANT
+
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(15.0f).build();
+                        CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+                        googleMap.moveCamera(cameraUpdate);*/
 
                     }
 
