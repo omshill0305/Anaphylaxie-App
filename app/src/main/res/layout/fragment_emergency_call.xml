@@ -76,28 +76,27 @@
 
                 <ImageView
                     android:id="@+id/box_white"
-                    android:layout_width="288dp"
-                    android:layout_height="127dp"
+                    android:layout_width="385dp"
+                    android:layout_height="134dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="26dp"
+                    android:layout_marginEnd="8dp"
                     android:background="@color/colorAccent"
                     android:padding="1dp"
                     android:src="@android:color/background_light"
-                    app:layout_constraintBottom_toTopOf="@+id/button_emergancy_call"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                 <LinearLayout
                     android:id="@+id/info_layout"
-                    android:layout_width="257dp"
-                    android:layout_height="114dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="320dp"
+                    android:layout_height="77dp"
                     android:orientation="vertical"
-                    app:layout_constraintBottom_toTopOf="@+id/button_emergancy_call"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/box_white"
+                    app:layout_constraintEnd_toEndOf="@+id/box_white"
+                    app:layout_constraintStart_toStartOf="@+id/box_white"
                     app:layout_constraintTop_toTopOf="@+id/box_white">
 
                     <TextView
@@ -106,7 +105,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="1. Von einem sicheren Ort aus anrufen"
-                        android:textAlignment="center"
                         android:textColor="@android:color/background_dark"
                         android:textSize="18sp" />
 
@@ -115,7 +113,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="2. Ruhe bewahren"
-                        android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
 
@@ -124,9 +121,176 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="3. Autoinjektor bereithalten"
-                        android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="262dp">
+
+                <ImageView
+                    android:id="@+id/box_white2"
+                    android:layout_width="384dp"
+                    android:layout_height="243dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorAccent"
+                    android:padding="1dp"
+                    android:src="@android:color/background_light"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/Scroll_questions"
+                    android:layout_width="335dp"
+                    android:layout_height="153dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:clipToPadding="false"
+                    android:contextClickable="true"
+                    android:isScrollContainer="true"
+                    android:keepScreenOn="true"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    android:overScrollMode="always"
+                    android:paddingLeft="10dp"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbars="vertical"
+                    android:verticalScrollbarPosition="right"
+                    app:layout_constraintBottom_toTopOf="@+id/button_emergancy_call"
+                    app:layout_constraintEnd_toEndOf="@+id/box_white2"
+                    app:layout_constraintHorizontal_bias="0.496"
+                    app:layout_constraintStart_toStartOf="@+id/box_white2"
+                    app:layout_constraintTop_toTopOf="@+id/box_white2"
+                    app:layout_constraintVertical_bias="0.128">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="WIE "
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/infotext_how_many"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="viele sind betroffen?"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="WAS "
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/infotext_what"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="für eine Reaktion?"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="WO "
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/infotext_where"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ist es passiert?"
+                            android:textColor="?attr/colorAccent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="WELCHE "
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/infotext_which"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Symptome?"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="WARTEN "
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/infotext_wait"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="auf Rückfragen!"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="18sp" />
+
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <ImageButton
@@ -134,171 +298,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginBottom="8dp"
                     android:backgroundTint="?attr/colorBackgroundFloating"
                     android:clickable="true"
+                    android:contentDescription="Emergency Call Button"
                     android:contextClickable="false"
                     android:src="@drawable/ic_launcher"
-                    app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/box_white" />
+                    app:layout_constraintBottom_toBottomOf="@+id/box_white2"
+                    app:layout_constraintEnd_toEndOf="@+id/box_white2"
+                    app:layout_constraintStart_toStartOf="@+id/box_white2"
+                    app:layout_constraintTop_toBottomOf="@+id/Scroll_questions" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/Scroll_questions"
-                android:layout_width="250dp"
-                android:layout_height="156dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:clipToPadding="false"
-                android:contextClickable="true"
-                android:isScrollContainer="true"
-                android:keepScreenOn="true"
-                android:nestedScrollingEnabled="false"
-                android:orientation="vertical"
-                android:overScrollMode="always"
-                android:paddingLeft="10dp"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbars="vertical"
-                android:verticalScrollbarPosition="right"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button_emergancy_call"
-                app:layout_constraintVertical_bias="0.0">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="WIE "
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/infotext_how_many"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="viele sind betroffen?"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="WAS "
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/infotext_what"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="für eine Reaktion?"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="WO "
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/infotext_where"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="ist es passiert?"
-                        android:textColor="?attr/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="WELCHE "
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/infotext_which"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Symptome?"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView15"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="WARTEN "
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/infotext_wait"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="auf Rückfragen!"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/map_view"
