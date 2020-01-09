@@ -2,11 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.olga.myapplication.MainActivity">
-    <item
-        android:layout_height="match_parent"
-        android:orderInCategory="100"
-        android:title="@string/action_language"
-        app:showAsAction="never" />
 
     <item
         android:layout_height="match_parent"

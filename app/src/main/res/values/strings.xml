@@ -52,13 +52,5 @@
     <string name="salbutamol">Salbutamol</string>
     <string name="enter_name">Enter your name</string>
     <string name="enter_birthday">Enter your birthday</string>
-
-    <string name="info_diarrhea">Water-thin diarrhea is typical without a fever. Often it is accompanied by abdominal pain.</string>
-    <string name="info_abdominal_pain">Sudden pain in stomach area. (to be improved)</string>
-    <string name="info_nausea">to be improved</string>
-    <string name="info_tingling">to be translated</string>
-    <string name="info_vormiting">to be translated</string>
-    <string name="info_rash">to be translated</string>
-    <string name="info_swelling">to be improved</string>
-    <string name="info_itching">to be improved</string>
+    <string name="title_activity_maps_example">Map</string>
 </resources>
