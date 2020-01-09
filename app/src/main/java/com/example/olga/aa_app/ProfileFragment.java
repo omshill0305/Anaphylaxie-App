@@ -1,6 +1,7 @@
 package com.example.olga.aa_app;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,11 +34,14 @@ public class ProfileFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProfileFormActivity.class);
-                if (profile != null) {
-                    intent.putExtra(SEND_PROFILE, profile);
+                Activity activity = getActivity();
+                if (activity != null) {
+                    Intent intent = new Intent(getActivity(), ProfileFormActivity.class);
+                    if (profile != null) {
+                        intent.putExtra(SEND_PROFILE, profile);
+                    }
+                    activity.startActivityForResult(intent, REQUEST_PROFILE_UPDATE);
                 }
-                getActivity().startActivityForResult(intent, REQUEST_PROFILE_UPDATE);
             }
         });
         return rootView;
