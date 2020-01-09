@@ -1,6 +1,5 @@
 package com.example.olga.aa_app.database.entities;
 
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
