@@ -3,6 +3,7 @@ package com.example.olga.aa_app;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
@@ -10,12 +11,16 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -40,6 +45,7 @@ import java.util.Locale;
 public class EmergencyCallFragment extends Fragment implements LocationListener {
 
     private static final int LOCATION_REQUEST = 500;
+    private static final int REQUEST_PHONE_CALL = 1;
     private double latitude;
     private double longitude;
     private LocationManager locationManager;
@@ -48,6 +54,7 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
     private EmergencyCallFragment _this;
     private Geocoder geocoder;
     private List<Address> addresses;
+
 
 
     public EmergencyCallFragment() {
@@ -60,10 +67,25 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View v = inflater.inflate(R.layout.fragment_emergency_call, container, false);
+        ImageButton call = v.findViewById(R.id.button_emergancy_call);
 
-        
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number = "123456";
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + number));
+                if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+                    getActivity().requestPermissions(new String[] {Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+                    return;
+
+                } else {
+                startActivity(intent);
+                }
+            }
+        });
+
 
         SupportMapFragment mSupportMapFragment;
 
