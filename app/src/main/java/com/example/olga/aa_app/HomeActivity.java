@@ -16,9 +16,14 @@ import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import io.reactivex.Completable;
+import io.reactivex.CompletableObserver;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -83,8 +88,40 @@ public class HomeActivity extends AppCompatActivity {
         initializeFragments();
 
         AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
+        Single<Allergy> allergy1 = allergyViewModel.getAllergyByName("bruh3");
 
+        CompositeDisposable d = new CompositeDisposable();
 
+        d.add(allergy1
+                .doOnSuccess(s -> System.out.println("got allergy: " + s.name))
+                .flatMapCompletable( s -> allergyViewModel.delete(s))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        System.out.println("deleted");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("something went wrong");
+                    }
+                }))
+        ;
+
+        /*d.add(allergy1
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<Allergy>() {
+                    @Override
+                    public void onSuccess(Allergy allergy) {
+                        System.out.println("it is done: " + allergy.name);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.println("something went wrong");
+                    }
+                }));*/
     }
 
     @Override

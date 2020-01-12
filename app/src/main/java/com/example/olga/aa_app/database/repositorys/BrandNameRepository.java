@@ -41,19 +41,15 @@ public class BrandNameRepository implements BrandNameDAO {
         return brandNameDAO.delete(brandName).subscribeOn(Schedulers.io());
     }
 
-    @Override
-    public Single<BrandName> getBrandNameByID(int id) {
 
+    public Single<BrandName> getBrandNameByID(int id) {
         return brandNameDAO.getBrandNameByID(id).subscribeOn(Schedulers.io());
     }
 
-    @Override
     public Single<BrandName> getBrandNameByName(String name) {
-
         return brandNameDAO.getBrandNameByName(name).subscribeOn(Schedulers.io());
     }
 
-    @Override
     public LiveData<List<BrandName>> getAllBrandNames() {
         return brandNameDAO.getAllBrandNames();
     }
