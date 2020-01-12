@@ -33,15 +33,15 @@ public class SymptomRepository implements SymptomDAO {
 
 
     public Completable insert(Symptom symptom){
-        return symptomDAO.insert(symptom).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return symptomDAO.insert(symptom).subscribeOn(Schedulers.io());
     }
 
     public Completable update(Symptom symptom){
-        return symptomDAO.update(symptom).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return symptomDAO.update(symptom).subscribeOn(Schedulers.io());
     }
 
     public Completable delete(Symptom symptom){
-        return symptomDAO.delete(symptom).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return symptomDAO.delete(symptom).subscribeOn(Schedulers.io());
     }
 
     @Override
@@ -51,12 +51,12 @@ public class SymptomRepository implements SymptomDAO {
 
     @Override
     public Single<Symptom> getAllergyByID(int id) {
-        return symptomDAO.getAllergyByID(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return symptomDAO.getAllergyByID(id).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<Symptom> getAllergyByName(String name) {
-        return symptomDAO.getAllergyByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return symptomDAO.getAllergyByName(name).subscribeOn(Schedulers.io());
     }
 
 }

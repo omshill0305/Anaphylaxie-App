@@ -98,6 +98,11 @@ public abstract class ReactionDatabase extends RoomDatabase {
             super.onOpen(db);
 
         }
+
+        @Override
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+        }
     };
 
 }

@@ -29,15 +29,15 @@ public class ProfileRepository implements ProfileDAO {
 
 
     public Completable insert(Profile allergy) {
-        return profileDAO.insert(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return profileDAO.insert(allergy).subscribeOn(Schedulers.io());
     }
 
     public Completable update(Profile allergy) {
-        return profileDAO.update(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return profileDAO.update(allergy).subscribeOn(Schedulers.io());
     }
 
     public Completable delete(Profile allergy) {
-        return profileDAO.delete(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return profileDAO.delete(allergy).subscribeOn(Schedulers.io());
     }
 
     @Override

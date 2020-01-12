@@ -30,15 +30,15 @@ public class EmergencySetRepository implements EmergencySetDAO{
 
 
     public Completable insert(EmergencySet emergencySet){
-        return emergencySetDAO.insert(emergencySet).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return emergencySetDAO.insert(emergencySet).subscribeOn(Schedulers.io());
     }
 
     public Completable update(EmergencySet emergencySet){
-        return emergencySetDAO.update(emergencySet).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return emergencySetDAO.update(emergencySet).subscribeOn(Schedulers.io());
     }
 
     public Completable delete(EmergencySet emergencySet){
-        return emergencySetDAO.delete(emergencySet).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return emergencySetDAO.delete(emergencySet).subscribeOn(Schedulers.io());
     }
 
     @Override

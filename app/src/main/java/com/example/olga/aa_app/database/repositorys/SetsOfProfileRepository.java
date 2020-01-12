@@ -34,7 +34,7 @@ public class SetsOfProfileRepository implements SetsOfProfileDAO {
 
     @Override
     public Completable insert(SetsOfProfile setsOfProfile) {
-        return setsOfProfileDAO.insert(setsOfProfile).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return setsOfProfileDAO.insert(setsOfProfile).subscribeOn(Schedulers.io());
     }
 
     @Override

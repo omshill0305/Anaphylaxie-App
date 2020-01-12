@@ -30,27 +30,27 @@ public class BrandNameRepository implements BrandNameDAO {
 
 
     public Completable insert(BrandName brandName){
-        return brandNameDAO.insert(brandName).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return brandNameDAO.insert(brandName).subscribeOn(Schedulers.io());
     }
 
     public Completable update(BrandName brandName){
-        return brandNameDAO.update(brandName).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return brandNameDAO.update(brandName).subscribeOn(Schedulers.io());
     }
 
     public Completable delete(BrandName brandName){
-        return brandNameDAO.delete(brandName).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return brandNameDAO.delete(brandName).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<BrandName> getBrandNameByID(int id) {
 
-        return brandNameDAO.getBrandNameByID(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return brandNameDAO.getBrandNameByID(id).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<BrandName> getBrandNameByName(String name) {
 
-        return brandNameDAO.getBrandNameByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return brandNameDAO.getBrandNameByName(name).subscribeOn(Schedulers.io());
     }
 
     @Override

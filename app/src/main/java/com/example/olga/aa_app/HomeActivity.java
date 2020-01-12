@@ -9,8 +9,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.example.olga.aa_app.database.entities.Allergy;
+import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import io.reactivex.Completable;
+import io.reactivex.Observable;
+import io.reactivex.Scheduler;
+import io.reactivex.Single;
+import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -70,6 +81,10 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         initializeFragments();
+
+        AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
+
+
     }
 
     @Override

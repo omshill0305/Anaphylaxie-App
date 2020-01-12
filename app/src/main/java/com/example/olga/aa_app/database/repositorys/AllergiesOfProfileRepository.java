@@ -34,7 +34,7 @@ public class AllergiesOfProfileRepository implements AllergiesOfProfileDAO {
 
     @Override
     public Completable insert(AllergiesOfProfile allergiesOfProfile) {
-        return alleriesOfProfileDAO.insert(allergiesOfProfile).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return alleriesOfProfileDAO.insert(allergiesOfProfile).subscribeOn(Schedulers.io());
     }
 
     @Override

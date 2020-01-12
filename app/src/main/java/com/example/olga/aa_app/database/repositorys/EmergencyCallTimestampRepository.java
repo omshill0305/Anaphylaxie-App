@@ -28,6 +28,6 @@ public class EmergencyCallTimestampRepository implements EmergencyCallTimestampD
 
     @Override
     public Completable insert(EmergencyCallTimestamp emergencyCallTimestamp) {
-        return emergencyCallTimestampDAO.insert(emergencyCallTimestamp).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return emergencyCallTimestampDAO.insert(emergencyCallTimestamp).subscribeOn(Schedulers.io());
     }
 }

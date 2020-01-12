@@ -33,15 +33,15 @@ public class OrgansystemRepository implements OrgansystemDAO {
 
 
     public Completable insert(Organsystem organsystem){
-        return organsystemDAO.insert(organsystem).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return organsystemDAO.insert(organsystem).subscribeOn(Schedulers.io());
     }
 
     public Completable update(Organsystem organsystem){
-        return organsystemDAO.update(organsystem).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return organsystemDAO.update(organsystem).subscribeOn(Schedulers.io());
     }
 
     public Completable delete(Organsystem organsystem){
-        return organsystemDAO.delete(organsystem).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return organsystemDAO.delete(organsystem).subscribeOn(Schedulers.io());
     }
 
     @Override
@@ -51,12 +51,12 @@ public class OrgansystemRepository implements OrgansystemDAO {
 
     @Override
     public Single<Organsystem> getOrgansystemById(int id) {
-        return organsystemDAO.getOrgansystemById(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return organsystemDAO.getOrgansystemById(id).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<Organsystem> getOrgansystemByName(String name) {
-        return organsystemDAO.getOrgansystemByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return organsystemDAO.getOrgansystemByName(name).subscribeOn(Schedulers.io());
     }
 
 }

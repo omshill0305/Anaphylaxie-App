@@ -33,6 +33,6 @@ public class ReactionTimestampRepository implements ReactionTimestampDAO {
 
     @Override
     public Completable insert(ReactionTimestamp reactionTimestamp) {
-        return reactionTimestampDAO.insert(reactionTimestamp).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return reactionTimestampDAO.insert(reactionTimestamp).subscribeOn(Schedulers.io());
     }
 }

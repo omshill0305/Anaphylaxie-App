@@ -39,12 +39,10 @@ public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
         return repository.getAllAllergies();
     }
 
-    @Override
     public Single<Allergy> getAllergyByID(int id) {
         return repository.getAllergyByID(id);
     }
 
-    @Override
     public Single<Allergy> getAllergyByName(String name) {
         return repository.getAllergyByName(name);
     }

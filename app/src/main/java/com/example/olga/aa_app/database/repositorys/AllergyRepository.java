@@ -32,15 +32,15 @@ public class AllergyRepository implements AllergyDAO{
 
 
     public Completable insert(Allergy allergy){
-        return allergyDAO.insert(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return allergyDAO.insert(allergy).subscribeOn(Schedulers.io());
     }
 
     public Completable update(Allergy allergy){
-        return allergyDAO.update(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return allergyDAO.update(allergy).subscribeOn(Schedulers.io());
     }
 
     public Completable delete(Allergy allergy){
-        return allergyDAO.delete(allergy).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return allergyDAO.delete(allergy).subscribeOn(Schedulers.io());
     }
 
     // LiveData gets reference from DAO without the use of databaseWriteExecutor
@@ -50,11 +50,11 @@ public class AllergyRepository implements AllergyDAO{
 
     @Override
     public Single<Allergy> getAllergyByID(int id) {
-        return allergyDAO.getAllergyByID(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return allergyDAO.getAllergyByID(id).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<Allergy> getAllergyByName(String name) {
-        return allergyDAO.getAllergyByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return allergyDAO.getAllergyByName(name).subscribeOn(Schedulers.io());
     }
 }

@@ -25,21 +25,6 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
-
-        Allergy allergy = new Allergy("bruh2");
-        allergyViewModel.insert(allergy)
-                .subscribe(new DisposableCompletableObserver() {
-                @Override
-                public void onComplete() {
-                    System.out.println("it worked");
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    System.out.println("something went wrong");
-                }
-        });
 
 
         new Handler().postDelayed(new Runnable() {

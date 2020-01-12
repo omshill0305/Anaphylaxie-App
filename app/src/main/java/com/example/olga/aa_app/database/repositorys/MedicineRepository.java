@@ -32,25 +32,25 @@ public class MedicineRepository implements MedicineDAO {
 
 
     public Completable insert(Medicine medicine){
-        return medicineDAO.insert(medicine).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return medicineDAO.insert(medicine).subscribeOn(Schedulers.io());
     }
 
     public Completable update(Medicine medicine){
-        return medicineDAO.update(medicine).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return medicineDAO.update(medicine).subscribeOn(Schedulers.io());
     }
 
     public Completable delete(Medicine medicine){
-        return medicineDAO.delete(medicine).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return medicineDAO.delete(medicine).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<Medicine> getMedicineByID(int id) {
-        return medicineDAO.getMedicineByID(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return medicineDAO.getMedicineByID(id).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Single<Medicine> getMedicineByName(String name) {
-        return medicineDAO.getMedicineByName(name).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return medicineDAO.getMedicineByName(name).subscribeOn(Schedulers.io());
     }
 
     @Override

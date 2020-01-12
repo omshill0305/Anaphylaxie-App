@@ -34,12 +34,12 @@ public class SessionRepository implements SessionDAO {
 
     @Override
     public Completable insert(Session session) {
-        return sessionDAO.insert(session).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return sessionDAO.insert(session).subscribeOn(Schedulers.io());
     }
 
     @Override
     public Completable delete(Session session) {
-        return sessionDAO.delete(session).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return sessionDAO.delete(session).subscribeOn(Schedulers.io());
     }
 
     @Override
