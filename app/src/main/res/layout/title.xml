@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.2"
+    android:drawablePadding="@dimen/default_margin"
+    android:fontFamily="monospace"
+    android:gravity="center"
+    android:padding="@dimen/activity_margin"
+    android:text="@string/lorem"
+    android:textSize="@dimen/title" />

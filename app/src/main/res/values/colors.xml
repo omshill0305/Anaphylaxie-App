@@ -6,4 +6,5 @@
     <color name="colorProjektGreen">#00897b</color>
     <color name="white">#ffffff</color>
     <color name="grey">#76767676</color>
+    <color name="primary_shadow">#E63246A8</color>
 </resources>
