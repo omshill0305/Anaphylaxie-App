@@ -3,7 +3,6 @@ package com.example.olga.aa_app;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
@@ -41,7 +40,6 @@ import java.util.Locale;
 public class EmergencyCallFragment extends Fragment implements LocationListener {
 
     private static final int LOCATION_REQUEST = 500;
-    private Intent intentThatCalled;
     private double latitude;
     private double longitude;
     private LocationManager locationManager;
@@ -63,11 +61,14 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         View v = inflater.inflate(R.layout.fragment_emergency_call, container, false);
+
+        
 
         SupportMapFragment mSupportMapFragment;
 
+
+        // Mapview Fragment innerhalb EmergencyCallFragment setzen
         mSupportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_view);
         if (mSupportMapFragment == null) {
             FragmentManager fragmentManager = getFragmentManager();
@@ -75,27 +76,31 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
             mSupportMapFragment = SupportMapFragment.newInstance();
             fragmentTransaction.replace(R.id.map_view, mSupportMapFragment).commit();
         }
-
+        // Map erzeugen
         if (mSupportMapFragment != null) {
             mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
                 public void onMapReady(final GoogleMap googleMap) {
                     if (googleMap != null) {
 
+                        //Permission überprüfen
                         if (getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                             getActivity().requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
                             return;
                         } else {
+                            //Map aktivieren und anzeigen
                             googleMap.setMyLocationEnabled(true);
                             locationManager = (LocationManager)  getActivity().getSystemService(Context.LOCATION_SERVICE);
                             criteria = new Criteria();
                             bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
 
+                            //letzte Location abfragen
                             Location location = locationManager.getLastKnownLocation(bestProvider);
                             if (location != null) {
                                 latitude = location.getLatitude();
                                 longitude = location.getLongitude();
 
+                                // Geocoder übersetzt latitude und longitude in die Adresse
                                 geocoder = new Geocoder(getActivity(), Locale.getDefault());
 
                                 try {
@@ -111,10 +116,12 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
                                 googleMap.clear();
 
                                 googleMap.getUiSettings().setAllGesturesEnabled(true);
+
+                                //Marker wird gesetzt
                                 MarkerOptions marker = new MarkerOptions().position(
                                         new LatLng(latitude, longitude)).title(address);
 
-
+                                //Marker wird angezeigt
                                 googleMap.addMarker(marker).showInfoWindow();
 
                                 CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(15.0f).build();
@@ -131,7 +138,6 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
                 }
             });
 
-        // Perform any camera updates here
 
         }
         return v;
@@ -140,12 +146,11 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
 
     @Override
     public void onLocationChanged(Location location) {
-        //Hey, a non null location! Sweet!
 
-        //remove location callback:
+        //Location callback löschen
         locationManager.removeUpdates(this);
 
-        //open the map:
+        //Map öffnen
         latitude = location.getLatitude();
         longitude = location.getLongitude();
     }

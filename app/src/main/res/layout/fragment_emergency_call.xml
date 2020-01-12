@@ -93,6 +93,9 @@
                     android:id="@+id/info_layout"
                     android:layout_width="320dp"
                     android:layout_height="77dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="@+id/box_white"
                     app:layout_constraintEnd_toEndOf="@+id/box_white"
@@ -123,8 +126,22 @@
                         android:text="3. Autoinjektor bereithalten"
                         android:textColor="@android:color/black"
                         android:textSize="18sp" />
-                </LinearLayout>
 
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/button_emergancy_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="46dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_bg_round"
+                    android:clickable="true"
+                    android:contextClickable="true"
+                    android:src="@drawable/ic_notruf_white"
+                    app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/box_white" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -292,22 +309,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/button_emergancy_call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="?attr/colorBackgroundFloating"
-                    android:clickable="true"
-                    android:contentDescription="Emergency Call Button"
-                    android:contextClickable="false"
-                    android:src="@drawable/ic_launcher"
-                    app:layout_constraintBottom_toBottomOf="@+id/box_white2"
-                    app:layout_constraintEnd_toEndOf="@+id/box_white2"
-                    app:layout_constraintStart_toStartOf="@+id/box_white2"
-                    app:layout_constraintTop_toBottomOf="@+id/Scroll_questions" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
