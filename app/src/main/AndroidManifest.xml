@@ -10,10 +10,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
+
     <application
         android:allowBackup="true"
-        android:label="ChariteAA"
         android:roundIcon="@mipmap/logo_round"
+        android:label="CharitéAA"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
