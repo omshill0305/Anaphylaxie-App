@@ -42,7 +42,7 @@ public class BaseView extends LinearLayout {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         setOrientation(VERTICAL);
-        setBackground(new BackgroundDrawable(new int[] {getResources().getColor(R.color.primary_shadow), baseColor}));
+        setBackground(new BackgroundDrawable(new int[] {getResources().getColor(R.color.colorPrimaryDark), baseColor}));
 
         textView = (TextView) inflater.inflate(R.layout.title, this, false);;
         textView.setText(title);
@@ -70,7 +70,7 @@ public class BaseView extends LinearLayout {
 
     public void setBaseColor(int baseColor) {
         this.baseColor = baseColor;
-        setBackground(new BackgroundDrawable(new int[] {getResources().getColor(R.color.primary_shadow), baseColor}));
+        setBackground(new BackgroundDrawable(new int[] {getResources().getColor(R.color.colorPrimaryDark), baseColor}));
         invalidate();
         requestLayout();
     }
