@@ -52,7 +52,7 @@
                 <TableLayout
                     android:id="@+id/listing_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:clipToPadding="false"
                     android:contextClickable="true"
@@ -96,6 +96,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="?attr/colorBackgroundFloating"
+                            android:contentDescription="@string/information"
                             android:padding="@dimen/default_margin"
                             android:tag="info"
                             app:srcCompat="@drawable/question_mark" />
@@ -105,9 +106,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/default_margin"
+                        android:background="@drawable/option_box"
                         android:backgroundTint="@color/reaction"
                         android:backgroundTintMode="add"
-                        android:background="@drawable/option_box"
                         android:gravity="center">
 
                         <CheckBox
@@ -126,6 +127,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
+                            android:contentDescription="@string/information"
                             android:padding="@dimen/default_margin"
                             app:srcCompat="@drawable/question_mark" />
                     </TableRow>
@@ -134,9 +136,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginBottom="@dimen/default_margin"
+                        android:background="@drawable/option_box"
                         android:backgroundTint="@color/reaction"
                         android:backgroundTintMode="add"
-                        android:background="@drawable/option_box"
                         android:gravity="center">
 
                         <CheckBox
@@ -155,6 +157,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
+                            android:contentDescription="@string/information"
                             android:padding="@dimen/default_margin"
                             app:srcCompat="@drawable/question_mark" />
                     </TableRow>
@@ -163,9 +166,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginBottom="@dimen/default_margin"
+                        android:background="@drawable/option_box"
                         android:backgroundTint="@color/reaction"
                         android:backgroundTintMode="add"
-                        android:background="@drawable/option_box"
                         android:gravity="center">
 
                         <CheckBox
@@ -184,6 +187,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
+                            android:contentDescription="@string/information"
                             android:padding="@dimen/default_margin"
                             app:srcCompat="@drawable/question_mark" />
                     </TableRow>
@@ -192,9 +196,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginBottom="@dimen/default_margin"
+                        android:background="@drawable/option_box"
                         android:backgroundTint="@color/reaction"
                         android:backgroundTintMode="add"
-                        android:background="@drawable/option_box"
                         android:gravity="center">
 
                         <CheckBox
@@ -213,6 +217,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@color/white"
+                            android:contentDescription="@string/information"
                             android:padding="@dimen/default_margin"
                             app:srcCompat="@drawable/question_mark" />
                     </TableRow>
@@ -230,7 +235,7 @@
             android:layout_marginBottom="@dimen/activity_margin"
             android:background="@color/reaction"
             android:padding="@dimen/default_margin"
-            android:text="Auswahl"
+            android:text="@string/select"
             android:textSize="@dimen/paragraph"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

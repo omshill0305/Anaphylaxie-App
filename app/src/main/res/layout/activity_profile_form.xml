@@ -280,29 +280,13 @@
                     android:text="@string/autoinjector"
                     android:textSize="@dimen/paragraph" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/autoinjector"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/autoinjector"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/product_name"
-                        android:inputType="textPersonName"
-                        android:textSize="@dimen/paragraph" />
-
-                    <EditText
-                        android:id="@+id/autoinjector_dosage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:hint="@string/dosage"
-                        android:inputType="textPersonName"
-                        android:textSize="@dimen/paragraph" />
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:hint="@string/product_name"
+                    android:inputType="textPersonName"
+                    android:textSize="@dimen/paragraph" />
 
                 <Space
                     android:layout_width="match_parent"

@@ -55,4 +55,9 @@
     <string name="title_activity_maps_example">Map</string>
     <string name="lorem" translatable="false">Lorem</string>
     <string name="treatment">Treatment</string>
+    <string name="information">Information</string>
+    <string name="select">Select</string>
+    <string name="swollen_lip_face">Swollen Lip and/or Face</string>
+    <string name="pruritus">Pruritus (palms/ soles/ genital area)</string>
+    <string name="wheals">Wheals</string>
 </resources>
