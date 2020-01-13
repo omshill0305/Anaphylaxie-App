@@ -3,7 +3,7 @@
     <color name="profile">#3E7DBD</color>
     <color name="colorPrimaryDark">#3e5cbd</color>
     <color name="emergency">#AD4371</color>
-    <color name="reaction">#00897</color>
+    <color name="reaction">#00897b</color>
     <color name="white">#ffffff</color>
     <color name="grey">#76767676</color>
 </resources>
