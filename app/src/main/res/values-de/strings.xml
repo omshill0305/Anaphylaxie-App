@@ -66,5 +66,8 @@
     <string name="title_activity_maps_example">Karte</string>
     <string name="info_wheezing">Dabei kann das pfeifende Geräusch sowohl bei der Einatmung als auch bei der  Ausatmung auftreten.</string>
     <string name="info_difficulty_in_breathing">Wenn ihr Kind ohne Anstrengung schneller atmet, das Gefühl hat, keine Luft zu bekommen oder Sie das Gefühl haben, dass </string>
+    <string name="blood_pressure_drop">Blutdruckabfall</string>
+    <string name="unconsciousness">Bewusstlosigkeit</string>
+    <string name="info_blood_pressure_drop">Falls ihr Kind ohne anderen Grund plötzlich sehr schlapp ist und liegen möchte, können sie auch ohne Messgerät davon ausgehen, dass sein Blutdruck gefallen ist. Sollte ihr Kind zusätzlich noch blass sein, ist das ein weiterer Anhalt auf einen Blutdruckabfall</string>
 
 </resources>

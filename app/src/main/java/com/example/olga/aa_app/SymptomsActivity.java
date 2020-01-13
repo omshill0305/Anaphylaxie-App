@@ -15,6 +15,8 @@ public class SymptomsActivity extends AppCompatActivity {
     Button skin;
     Button gastro;
     Button airways;
+    Button cardiovascular;
+    Button dizziness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,22 @@ public class SymptomsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SymptomsActivity.this, GastroIntestinalActivity.class));
+            }
+        });
+
+        cardiovascular = findViewById(R.id.cardiovascular);
+        cardiovascular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, CardiovascularActivity.class));
+            }
+        });
+
+        dizziness = findViewById(R.id.dizziness);
+        dizziness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, DizzinessActivity.class));
             }
         });
     }
