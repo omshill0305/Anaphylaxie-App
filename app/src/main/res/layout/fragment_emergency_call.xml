@@ -13,7 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.85">
+        android:layout_weight="0.8">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,12 +21,12 @@
             android:orientation="vertical"
             android:paddingLeft="@dimen/activity_margin"
             android:paddingRight="@dimen/activity_margin"
-            android:paddingBottom="@dimen/paragraph_margin">
+            android:paddingBottom="@dimen/activity_margin">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_margin"
+                android:layout_marginBottom="@dimen/default_margin"
                 android:background="@drawable/border_box"
                 android:backgroundTint="@color/colorAccent"
                 android:backgroundTintMode="add"
@@ -39,7 +39,7 @@
                     android:layout_gravity="center_horizontal"
                     android:text="1. Von einem sicheren Ort aus anrufen"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/header" />
 
                 <TextView
                     android:id="@+id/info_text5"
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:text="2. Ruhe bewahren"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/header" />
 
                 <TextView
                     android:id="@+id/info_text6"
@@ -55,14 +55,14 @@
                     android:layout_height="wrap_content"
                     android:text="3. Autoinjektor bereithalten"
                     android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/header" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_margin"
+                android:layout_marginBottom="@dimen/default_margin"
                 android:background="@drawable/border_box"
                 android:backgroundTint="@color/colorAccent"
                 android:backgroundTintMode="add"
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:text="WELCHE "
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
                     <TextView
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:text="Symptome?"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/header" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -115,7 +115,7 @@
                         android:text="WIE "
                         android:textAlignment="viewStart"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
                     <TextView
@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:text="viele sind betroffen?"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/header" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -138,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:text="WAS "
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
                     <TextView
@@ -147,7 +147,7 @@
                         android:layout_height="wrap_content"
                         android:text="für eine Reaktion?"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/header" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -161,7 +161,7 @@
                         android:layout_height="wrap_content"
                         android:text="WO "
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
                     <TextView
@@ -170,7 +170,7 @@
                         android:layout_height="wrap_content"
                         android:text="ist es passiert?"
                         android:textColor="?attr/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/header" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -184,7 +184,7 @@
                         android:layout_height="wrap_content"
                         android:text="WARTEN "
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
                     <TextView
@@ -193,7 +193,7 @@
                         android:layout_height="wrap_content"
                         android:text="auf Rückfragen!"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/header" />
 
 
                 </LinearLayout>
