@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_profile_black_24dp"
+        android:icon="@drawable/ic_profile"
         android:title="@string/title_profile" />
 
     <item
         android:id="@+id/navigation_notruf"
-        android:icon="@drawable/ic_notruf_red_24dp"
+        android:icon="@drawable/ic_call"
         android:title="@string/title_emergency_call" />
 
     <item

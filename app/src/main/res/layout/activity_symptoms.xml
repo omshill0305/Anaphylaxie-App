@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:base_color="@color/reaction"
-        app:icon="@drawable/ic_hospital"
+        app:icon="@drawable/ic_medical_bag"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tint="@color/white"
         app:title="@string/symptom_selection">

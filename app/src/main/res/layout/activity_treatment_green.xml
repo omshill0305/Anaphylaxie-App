@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:base_color="@color/reaction"
-        app:icon="@drawable/ic_reaction_black_24dp"
+        app:icon="@drawable/ic_treatment"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tint="@color/white"
         app:title="@string/treatment" >

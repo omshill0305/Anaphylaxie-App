@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:base_color="@color/profile"
-    app:icon="@drawable/ic_profile_black_24dp"
+    app:icon="@drawable/ic_profile"
     app:tint="@color/white"
     app:title="@string/title_profile">
 
