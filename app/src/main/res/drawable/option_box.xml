@@ -3,12 +3,12 @@
     android:shape="rectangle">
     <corners android:radius="3dp" />
     <stroke
-        android:width="5px"
-        android:color="@color/colorProjektGreen" />
+        android:width="1dp"
+        android:color="#000" />
     <solid android:color="@color/white" />
     <padding
-        android:bottom="10dp"
-        android:left="10dp"
-        android:right="10dp"
-        android:top="10dp" />
+        android:bottom="@dimen/default_margin"
+        android:left="@dimen/default_margin"
+        android:right="@dimen/default_margin"
+        android:top="@dimen/default_margin" />
 </shape>

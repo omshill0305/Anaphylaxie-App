@@ -52,12 +52,18 @@
     <string name="enter_birthday">Gebe deinen Geburtstag ein</string>
     <string name="info_diarrhea">Typisch sind wasserdünne Durchfalle, ohne dass es vorher zu Fieber gekommen wäre. Begleitende Bauchscmerzen werden oft beobachtet.</string>
     <string name="info_abdominal_pain">Plötzlich auftretende Schwerzen im Bauchraum.(to be improved)</string>
-    <string name="info_vomiting">Typisch ist schwallartiges Erbrechen, ohne, dass es vorher zu Durchfall oder Fieber gekommen wäre. Das Erbrechen kann gleich nach Verzehr eines Allergens auftreten oder erst einige Zeit (bis zu 4 Stunden) später.</string>
     <string name="info_tingling">Tritt oft schon nach kleinsten Mengen eines Allergens und gleich nach dem Verzehr auf.</string>
     <string name="info_rash">Quaddeln sind pukt- oder plateauförmige gerötete Erhebungen in der Haut, wie sie zum Beispiel etwa auch nach Brennesselberührugen auftreten. Typisch ist das weiß-rote Aussehen. Oft treten die Quaddeln zuerst im Gesicht, am Bauch, oder dem Rücken auf. Sie jucken.</string>
-    <string name="info_nausea">to be translated</string>
+    <string name="info_nausea">TBD</string>
     <string name="info_itching">Beginnt in Handflächen, Fußsohlen und dem Genitalbereich. (tbi)</string>
     <string name="info_swelling">Oft beginnt die Schwellung an den Lippen oder den Augenlidern.</string>
+    <string name="treatment">Behandlung</string>
+    <string name="information">Information</string>
+    <string name="select">Auswählen</string>
+    <string name="swollen_lip_face">Schwellung von Lippen und/oder Gesicht</string>
+    <string name="pruritus">Jucken (Handflächen/ Fußsohlen/ Genitalbereich)</string>
+    <string name="wheals">Quaddeln</string>
+    <string name="title_activity_maps_example">Karte</string>
     <string name="info_wheezing">Dabei kann das pfeifende Geräusch sowohl bei der Einatmung als auch bei der  Ausatmung auftreten.</string>
     <string name="info_difficulty_in_breathing">Wenn ihr Kind ohne Anstrengung schneller atmet, das Gefühl hat, keine Luft zu bekommen oder Sie das Gefühl haben, dass </string>
 

@@ -7,31 +7,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:paddingRight="90dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".ProfileFormActivity">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay"
-            app:layout_constraintBottom_toTopOf="@id/scrollView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                android:paddingRight="90dp"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -41,13 +38,13 @@
             app:layout_constraintBottom_toTopOf="@+id/saveCancelDialogue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout4">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/activity_horizontal_margin">
+                android:padding="@dimen/activity_margin">
 
                 <TextView
                     android:id="@+id/textView"
@@ -55,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/profile_name"
                     android:textAllCaps="true"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <EditText
                     android:id="@+id/profile_name"
@@ -63,11 +60,11 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_name"
                     android:inputType="textPersonName"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -75,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/birthday"
                     android:textAllCaps="true"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <TextView
                     android:id="@+id/birthday"
@@ -83,11 +80,11 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_birthday"
                     android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -95,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/gender"
                     android:textAllCaps="true"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <RadioGroup
                     android:id="@+id/gender"
@@ -108,24 +105,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/male" />
+                        android:text="@string/male"
+                        android:textSize="@dimen/paragraph" />
 
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/female" />
+                        android:text="@string/female"
+                        android:textSize="@dimen/paragraph" />
 
                     <RadioButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/diverse" />
+                        android:text="@string/diverse"
+                        android:textSize="@dimen/paragraph" />
                 </RadioGroup>
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/known_allergens"
                     android:textAllCaps="true"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <MultiAutoCompleteTextView
                     android:id="@+id/multiAutoCompleteTextView"
@@ -143,7 +143,7 @@
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -157,7 +157,7 @@
                         android:layout_weight="1"
                         android:text="@string/asthma"
                         android:textAllCaps="true"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/paragraph" />
 
                     <RadioGroup
                         android:id="@+id/asthma"
@@ -170,26 +170,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes"
+                            android:textSize="@dimen/paragraph" />
 
                         <RadioButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no"
+                            android:textSize="@dimen/paragraph" />
                     </RadioGroup>
 
                 </LinearLayout>
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin"
-                    android:layout_weight="1" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin"
-                    android:layout_weight="1" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -197,18 +193,18 @@
                     android:layout_height="wrap_content"
                     android:text="@string/emergency_set"
                     android:textAllCaps="true"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/antihistamine"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -222,7 +218,7 @@
                         android:layout_weight="1"
                         android:hint="@string/product_name"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/paragraph" />
 
                     <EditText
                         android:id="@+id/antihistamine_dosage"
@@ -231,19 +227,23 @@
                         android:layout_weight="0.5"
                         android:hint="@string/dosage"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/paragraph" />
                 </LinearLayout>
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_margin" />
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/steroid"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -257,7 +257,7 @@
                         android:layout_weight="1"
                         android:hint="@string/product_name"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/paragraph" />
 
                     <EditText
                         android:id="@+id/steroid_dosage"
@@ -266,47 +266,31 @@
                         android:layout_weight="0.5"
                         android:hint="@string/dosage"
                         android:inputType="textPersonName"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/paragraph" />
                 </LinearLayout>
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/autoinjector"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/paragraph" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/autoinjector"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/autoinjector"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/product_name"
-                        android:inputType="textPersonName"
-                        android:textSize="16sp" />
-
-                    <EditText
-                        android:id="@+id/autoinjector_dosage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:hint="@string/dosage"
-                        android:inputType="textPersonName"
-                        android:textSize="16sp" />
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:hint="@string/product_name"
+                    android:inputType="textPersonName"
+                    android:textSize="@dimen/paragraph" />
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_horizontal_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -319,7 +303,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/salbutamol"
-                        android:textSize="16sp" />
+                        android:textSize="@dimen/paragraph" />
 
                     <RadioGroup
                         android:id="@+id/salbutamol"
@@ -332,19 +316,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/yes" />
+                            android:text="@string/yes"
+                            android:textSize="@dimen/paragraph" />
 
                         <RadioButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="@string/no" />
+                            android:text="@string/no"
+                            android:textSize="@dimen/paragraph" />
                     </RadioGroup>
                 </LinearLayout>
 
                 <Space
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/activity_vertical_margin" />
+                    android:layout_height="@dimen/activity_margin" />
 
             </LinearLayout>
         </ScrollView>
@@ -364,10 +350,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorAccent"
+                android:backgroundTint="@color/emergency"
                 android:onClick="cancelProfileChanges"
                 android:text="@android:string/cancel"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/paragraph" />
 
             <Button
                 android:id="@+id/button2"
@@ -375,10 +362,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@color/colorProjektGreen"
+                android:backgroundTint="@color/reaction"
                 android:onClick="saveProfileChanges"
                 android:text="@string/save"
-                android:textColor="#FFFFFF" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/paragraph" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
