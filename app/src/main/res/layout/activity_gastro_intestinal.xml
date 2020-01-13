@@ -238,6 +238,7 @@
             android:padding="@dimen/default_margin"
             android:text="@string/select"
             android:textSize="@dimen/paragraph"
+            app:layout_constrainedTop_toBottomOf="@id/baseView2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
