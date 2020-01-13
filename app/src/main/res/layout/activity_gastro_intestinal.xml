@@ -48,7 +48,6 @@
                 android:layout_weight="0.85"
                 android:scrollbarStyle="insideOverlay">
 
-
                 <TableLayout
                     android:id="@+id/listing_layout"
                     android:layout_width="match_parent"

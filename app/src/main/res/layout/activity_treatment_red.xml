@@ -134,8 +134,12 @@
 
                         <ListView
                             android:id="@+id/dynamicView"
-                            android:layout_width="335dp"
-                            android:layout_height="150dp" />
+                            android:layout_width="317dp"
+                            android:layout_height="150dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp" />
                     </LinearLayout>
 
                 </TableRow>
