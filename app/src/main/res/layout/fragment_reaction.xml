@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:base_color="@color/reaction"
-    app:icon="@drawable/icons8_hospital_96"
+    app:icon="@drawable/ic_hospital"
     app:tint="@color/white"
     app:title="@string/title_reaction">
 

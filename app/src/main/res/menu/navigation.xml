@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_reaction"
-        android:icon="@drawable/icons8_hospital_96"
+        android:icon="@drawable/ic_hospital"
         android:title="@string/title_reaction" />
 
 </menu>

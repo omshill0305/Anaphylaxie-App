@@ -71,13 +71,13 @@
                 <ImageButton
                     android:id="@+id/button_emergancy_call"
                     android:layout_width="wrap_content"
-                    android:layout_height="46dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginBottom="@dimen/default_margin"
-                    android:background="@drawable/button_bg_round"
+                    android:background="@color/white"
                     android:clickable="true"
                     android:contextClickable="true"
-                    android:src="@drawable/ic_notruf_white" />
+                    android:src="@drawable/button_bg_round" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -201,26 +201,30 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/info_box"
+                android:backgroundTint="@color/emergency"
+                android:backgroundTintMode="add">
 
                 <TextView
                     android:id="@+id/textView17"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="@dimen/default_margin"
                     android:text="Du befindest dich hier:"
                     android:textAlignment="center"
                     android:textColor="@color/common_google_signin_btn_text_dark_focused"
                     android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@+id/map_view"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.gms.maps.MapView
                     android:id="@+id/map_view"
-                    android:layout_width="321dp"
-                    android:layout_height="284dp"
-                    android:layout_margin="20dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_width="0dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:paddingBottom="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
