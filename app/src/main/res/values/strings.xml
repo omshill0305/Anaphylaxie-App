@@ -53,4 +53,18 @@
     <string name="enter_name">Enter your name</string>
     <string name="enter_birthday">Enter your birthday</string>
     <string name="title_activity_maps_example">Map</string>
+    <string name="info_abdominal_pain">to be translated</string>
+    <string name="info_diarrhea">tobetranslated</string>
+    <string name="info_itching">to be translated</string>
+    <string name="info_nausea">to be added</string>
+    <string name="info_rash">to be translated</string>
+    <string name="info_swelling">to be translated</string>
+    <string name="info_tingling">to be translated</string>
+    <string name="info_vomiting">to be translated</string>
+    <string name="difficulty_in_breathing">" Difficulty in Breathing"</string>
+    <string name="hoarseness">Sudden Hoarseness</string>
+    <string name="wheezing">Wheezing</string>
+    <string name="cough">Cough</string>
+    <string name="info_difficulty_in_breathing">to be translated</string>
+    <string name="info_wheezing">to be translated</string>
 </resources>

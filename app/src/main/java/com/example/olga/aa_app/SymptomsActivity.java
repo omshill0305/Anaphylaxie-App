@@ -14,6 +14,7 @@ public class SymptomsActivity extends AppCompatActivity {
 
     Button skin;
     Button gastro;
+    Button airways;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,14 @@ public class SymptomsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SymptomsActivity.this, SkinActivity.class));
+            }
+        });
+
+        airways = findViewById(R.id.airways);
+        airways.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, AirwaysActivity.class));
             }
         });
 

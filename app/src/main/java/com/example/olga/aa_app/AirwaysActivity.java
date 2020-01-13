@@ -21,14 +21,15 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.HashMap;
 
-public class GastroIntestinalActivity extends AppCompatActivity {
+public class AirwaysActivity extends AppCompatActivity {
 
     Button choose;
     HashMap<String, String> des;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gastro_intestinal);
+        setContentView(R.layout.activity_airways);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -44,16 +45,13 @@ public class GastroIntestinalActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GastroIntestinalActivity.this, TreatmentRedActivity.class));
+                startActivity(new Intent(AirwaysActivity.this, TreatmentRedActivity.class));
             }
         });
 
         des = new HashMap();
-        des.put(getString(R.string.diarrhea), getString(R.string.info_diarrhea));
-        des.put(getString(R.string.abdominal_pain), getString(R.string.info_abdominal_pain));
-        des.put(getString(R.string.nausea), getString(R.string.info_nausea));
-        des.put(getString(R.string.tingling_mouth_throat), getString(R.string.info_tingling));
-        des.put(getString(R.string.vomiting), getString(R.string.info_vomiting));
+        des.put(getString(R.string.difficulty_in_breathing), getString(R.string.info_difficulty_in_breathing));
+        des.put(getString(R.string.wheezing), getString(R.string.info_wheezing));
 
         setInfoButtons(R.id.listing_layout);
     }
@@ -66,7 +64,7 @@ public class GastroIntestinalActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(GastroIntestinalActivity.this, R.style.MyAlertDialogStyleInfo);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(AirwaysActivity.this, R.style.MyAlertDialogStyleInfo);
                     CheckBox checkbox = (CheckBox) child.getChildAt(0);
                     builder.setTitle(checkbox.getText());
 
@@ -106,5 +104,4 @@ public class GastroIntestinalActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }

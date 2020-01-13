@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GastroIntestinalActivity">
+    tools:context=".AirwaysActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
-            android:text="@string/gastro_intestinal"
+            android:text="@string/airways"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="24sp"
@@ -92,11 +92,11 @@
                         android:id="@+id/checkBox"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
                         android:button="@drawable/circle_checkbox_checked"
                         android:checked="false"
                         android:gravity="center"
-                        android:layout_marginStart="16dp"
-                        android:text="@string/diarrhea"
+                        android:text="@string/difficulty_in_breathing"
                         android:textAlignment="center"
                         android:textSize="18sp" />
 
@@ -124,9 +124,9 @@
                         android:id="@+id/checkBox2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/circle_checkbox_checked"
-                        android:text="@string/abdominal_pain"
                         android:layout_marginStart="16dp"
+                        android:button="@drawable/circle_checkbox_checked"
+                        android:text="@string/hoarseness"
                         android:textAlignment="center"
                         android:textSize="18sp" />
 
@@ -135,7 +135,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="@color/colorProjektLightGreen"
+                        android:background="@color/white"
+                        android:clickable="false"
                         android:padding="5dp"
                         app:srcCompat="@drawable/question_mark" />
                 </TableRow>
@@ -153,10 +154,10 @@
                         android:id="@+id/checkBox3"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:button="@drawable/circle_checkbox_checked"
-                        android:text="@string/nausea"
-                        android:textAlignment="center"
                         android:layout_marginStart="16dp"
+                        android:button="@drawable/circle_checkbox_checked"
+                        android:text="@string/wheezing"
+                        android:textAlignment="center"
                         android:textSize="18sp" />
 
                     <ImageButton
@@ -164,10 +165,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="@color/white"
-                        android:clickable="false"
-                        android:contextClickable="false"
-                        android:longClickable="false"
+                        android:background="@color/colorProjektLightGreen"
+                        android:clickable="true"
                         android:padding="5dp"
                         app:srcCompat="@drawable/question_mark" />
                 </TableRow>
@@ -185,10 +184,10 @@
                         android:id="@+id/checkBox4"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:button="@drawable/circle_checkbox_checked"
-                        android:text="@string/tingling_mouth_throat"
-                        android:textAlignment="textStart"
                         android:layout_marginStart="16dp"
+                        android:button="@drawable/circle_checkbox_checked"
+                        android:text="@string/cough"
+                        android:textAlignment="center"
                         android:textSize="18sp" />
 
                     <ImageButton
@@ -196,39 +195,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:background="@color/colorProjektLightGreen"
+                        android:background="@color/white"
+                        android:clickable="false"
                         android:padding="5dp"
                         app:srcCompat="@drawable/question_mark" />
                 </TableRow>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/my_button"
-                    android:gravity="center">
-
-                    <CheckBox
-                        android:id="@+id/checkBox5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/circle_checkbox_checked"
-                        android:text="@string/vomiting"
-                        android:textAlignment="center"
-                        android:layout_marginStart="16dp"
-                        android:textSize="18sp" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@color/colorProjektLightGreen"
-                        android:padding="5dp"
-                        app:srcCompat="@drawable/question_mark" />
-                </TableRow>
             </TableLayout>
         </ScrollView>
 
