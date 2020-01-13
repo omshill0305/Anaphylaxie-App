@@ -26,7 +26,7 @@
     <com.example.olga.aa_app.BaseView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:base_color="@color/colorProjektGreen"
+        app:base_color="@color/reaction"
         app:icon="@drawable/ic_reaction_black_24dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tint="@color/white"
@@ -64,7 +64,7 @@
                     android:layout_height="50dp"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:background="@drawable/info_box"
-                    android:backgroundTint="@color/colorProjektGreen"
+                    android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:gravity="center">
 
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:background="@drawable/info_box"
-                    android:backgroundTint="@color/colorProjektGreen"
+                    android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:gravity="center">
 
@@ -145,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:background="@drawable/info_box"
-                    android:backgroundTint="@color/colorProjektGreen"
+                    android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:gravity="center">
 

@@ -19,7 +19,7 @@ public class TagSpan extends ReplacementSpan {
 
     public TagSpan(Context context) {
         super();
-        backgroundColor = context.getResources().getColor(R.color.colorAccent);
+        backgroundColor = context.getResources().getColor(R.color.emergency);
         textColor = context.getResources().getColor(R.color.white);
     }
 
