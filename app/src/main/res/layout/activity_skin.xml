@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:base_color="@color/reaction"
-            app:icon="@drawable/pimples32"
+            app:icon="@drawable/ic_head"
             app:layout_constraintBottom_toTopOf="@id/choose"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
