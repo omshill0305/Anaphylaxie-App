@@ -106,22 +106,7 @@ public class HomeActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         System.out.println("something went wrong");
                     }
-                }))
-        ;
-
-        /*d.add(allergy1
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<Allergy>() {
-                    @Override
-                    public void onSuccess(Allergy allergy) {
-                        System.out.println("it is done: " + allergy.name);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        System.out.println("something went wrong");
-                    }
-                }));*/
+                }));
     }
 
     @Override
