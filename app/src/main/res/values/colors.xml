@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#3e5cbd</color>
     <color name="emergency">#AD4371</color>
     <color name="reaction">#00897b</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
     <color name="grey">#76767676</color>
     <color name="colorProjektLightGreen">#8000897B</color>
 </resources>

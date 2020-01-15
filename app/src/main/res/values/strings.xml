@@ -77,4 +77,8 @@
     <string name="blood_pressure_drop">" Blood Pressure Drop"</string>
     <string name="unconsciousness">Unconsciousness</string>
     <string name="info_blood_pressure_drop">tbt</string>
+    <string name="fear">Indefinite Feeling of Fear</string>
+    <string name="info_wheals">tbt</string>
+    <string name="info_swollen_lip">tbt</string>
+    <string name="info_pruritus">tbt</string>
 </resources>

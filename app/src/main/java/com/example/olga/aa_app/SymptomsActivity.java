@@ -17,6 +17,7 @@ public class SymptomsActivity extends AppCompatActivity {
     Button airways;
     Button cardiovascular;
     Button dizziness;
+    Button indefinableDread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,14 @@ public class SymptomsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SymptomsActivity.this, DizzinessActivity.class));
+            }
+        });
+
+        indefinableDread = findViewById(R.id.panic);
+        indefinableDread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, IndefinableDreadActivity.class));
             }
         });
     }
