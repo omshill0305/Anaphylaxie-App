@@ -1,6 +1,7 @@
 package com.example.olga.aa_app;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import androidx.fragment.app.Fragment;
  */
 public class ProfileFragment extends Fragment {
 
+    private Profile profile = null;
+    public static final int REQUEST_PROFILE_UPDATE = 1;
+    public static final String SEND_PROFILE = "com.example.olga.aa_app.SEND_PROFILE";
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -30,11 +34,29 @@ public class ProfileFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ProfileFormActivity.class);
-                startActivity(intent);
+                Activity activity = getActivity();
+                if (activity != null) {
+                    Intent intent = new Intent(getActivity(), ProfileFormActivity.class);
+                    if (profile != null) {
+                        intent.putExtra(SEND_PROFILE, profile);
+                    }
+                    activity.startActivityForResult(intent, REQUEST_PROFILE_UPDATE);
+                }
             }
         });
         return rootView;
     }
 
+    public Profile getProfile() {
+        return  profile;
+    }
+
+    public void setProfile(Profile p) {
+        profile = p;
+        showProfile();
+    }
+
+    private void showProfile() {
+
+    }
 }

@@ -51,5 +51,34 @@
     <string name="autoinjector">Autoinjector</string>
     <string name="salbutamol">Salbutamol</string>
     <string name="enter_name">Enter your name</string>
-    <string name="enter_birthday" >Enter your birthday</string>
+    <string name="enter_birthday">Enter your birthday</string>
+    <string name="title_activity_maps_example">Map</string>
+    <string name="lorem" translatable="false">Lorem</string>
+    <string name="treatment">Treatment</string>
+    <string name="information">Information</string>
+    <string name="select">Select</string>
+    <string name="swollen_lip_face">Swollen Lip and/or Face</string>
+    <string name="pruritus">Pruritus (palms/ soles/ genital area)</string>
+    <string name="wheals">Wheals</string>
+    <string name="info_abdominal_pain">Plötzlich auftretende Schwerzen im Bauchraum.(to be improved)</string>
+    <string name="info_diarrhea">Typisch sind wasserdünne Durchfalle, ohne dass es vorher zu Fieber gekommen wäre. Begleitende Bauchscmerzen werden oft beobachtet.</string>
+    <string name="info_itching">Beginnt in Handflächen, Fußsohlen und dem Genitalbereich. (tbi)</string>
+    <string name="info_rash">Quaddeln sind pukt- oder plateauförmige gerötete Erhebungen in der Haut, wie sie zum Beispiel etwa auch nach Brennesselberührugen auftreten. Typisch ist das weiß-rote Aussehen. Oft treten die Quaddeln zuerst im Gesicht, am Bauch, oder dem Rücken auf. Sie jucken.</string>
+    <string name="info_swelling">Oft beginnt die Schwellung an den Lippen oder den Augenlidern.</string>
+    <string name="info_tingling">Tritt oft schon nach kleinsten Mengen eines Allergens und gleich nach dem Verzehr auf.</string>
+    <string name="info_nausea">TBD</string>
+    <string name="difficulty_in_breathing">" Difficulty in Breathing"</string>
+    <string name="hoarseness">Sudden Hoarseness</string>
+    <string name="wheezing">Wheezing</string>
+    <string name="cough">Cough</string>
+    <string name="info_difficulty_in_breathing">to be translated</string>
+    <string name="info_wheezing">to be translated</string>
+    <string name="info_vomiting">tbt</string>
+    <string name="blood_pressure_drop">" Blood Pressure Drop"</string>
+    <string name="unconsciousness">Unconsciousness</string>
+    <string name="info_blood_pressure_drop">tbt</string>
+    <string name="fear">Indefinite Feeling of Fear</string>
+    <string name="info_wheals">tbt</string>
+    <string name="info_swollen_lip">tbt</string>
+    <string name="info_pruritus">tbt</string>
 </resources>

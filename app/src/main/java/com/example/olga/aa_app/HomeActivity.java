@@ -1,5 +1,6 @@
 package com.example.olga.aa_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,8 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         EmergencyCall,
         Reactions;
 
-        @Override
-        public String toString() {
+        public String format() {
             switch (this) {
                 case Profiles:
                     return "Profiles";
@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
     private ReactionFragment reactionFragment = new ReactionFragment();
     private ProfileFragment profileFragment = new ProfileFragment();
     private EmergencyCallFragment emergencyCallFragment = new EmergencyCallFragment();
-    private Page currentPage = Page.Profiles;
+    private Page currentPage = Page.Reactions;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -84,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
         toolbar.setLogo(R.drawable.logo1);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_reaction);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         initializeFragments();
 
@@ -116,16 +117,29 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ProfileFragment.REQUEST_PROFILE_UPDATE) {
+            if (resultCode == RESULT_OK) {
+                Profile p = (Profile) data.getSerializableExtra(ProfileFormActivity.UPDATED_PROFILE);
+                if (p != null) {
+                    profileFragment.setProfile(p);
+                }
+            }
+        }
+    }
+
     private void initializeFragments() {
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()
-                .add(R.id.main_frame, reactionFragment, Page.Reactions.toString())
-                .hide(reactionFragment).commit();
+                .add(R.id.main_frame, profileFragment, Page.Profiles.format())
+                .hide(profileFragment).commit();
         fm.beginTransaction()
-                .add(R.id.main_frame, emergencyCallFragment, Page.EmergencyCall.toString())
+                .add(R.id.main_frame, emergencyCallFragment, Page.EmergencyCall.format())
                 .hide(emergencyCallFragment).commit();
         fm.beginTransaction()
-                .add(R.id.main_frame, profileFragment, Page.Profiles.toString())
+                .add(R.id.main_frame, reactionFragment, Page.Reactions.format())
                 .commit();
     }
 

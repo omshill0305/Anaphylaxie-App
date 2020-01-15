@@ -1,11 +1,12 @@
 package com.example.olga.aa_app;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Profile {
+public class Profile implements Serializable {
     private ArrayList<Reaction> reactions = new ArrayList<>();
     private Reaction currentReaction = null;
 
@@ -29,8 +30,7 @@ public class Profile {
                    String steroidName, String steroidDosierung, String autoinjektorName, boolean salbutamol) {
         this.profilName = profilName;
         Calendar calendar = new GregorianCalendar(birthYear, birthMonth, birthDay);
-        Date birthdate = calendar.getTime();
-        this.birthday= birthdate;
+        this.birthday = calendar.getTime();
         this.sex = sex;
         this.allergies = allergies;
         this.asthma = asthma;
@@ -96,14 +96,12 @@ public class Profile {
 
         //if month difference is in negative then reduce years by one
         //and calculate the number of months.
-        if (months < 0)
-        {
+        if (months < 0) {
             years--;
             months = 12 - birthMonth + currMonth;
             if (now.get(Calendar.DATE) < birthDay.get(Calendar.DATE))
                 months--;
-        } else if (months == 0 && now.get(Calendar.DATE) < birthDay.get(Calendar.DATE))
-        {
+        } else if (months == 0 && now.get(Calendar.DATE) < birthDay.get(Calendar.DATE)) {
             years--;
             months = 11;
         }
@@ -111,17 +109,13 @@ public class Profile {
         //Calculate the days
         if (now.get(Calendar.DATE) > birthDay.get(Calendar.DATE))
             days = now.get(Calendar.DATE) - birthDay.get(Calendar.DATE);
-        else if (now.get(Calendar.DATE) < birthDay.get(Calendar.DATE))
-        {
+        else if (now.get(Calendar.DATE) < birthDay.get(Calendar.DATE)) {
             int today = now.get(Calendar.DAY_OF_MONTH);
             now.add(Calendar.MONTH, -1);
             days = now.getActualMaximum(Calendar.DAY_OF_MONTH) - birthDay.get(Calendar.DAY_OF_MONTH) + today;
-        }
-        else
-        {
+        } else {
             days = 0;
-            if (months == 12)
-            {
+            if (months == 12) {
                 years++;
                 months = 0;
             }
@@ -218,15 +212,27 @@ public class Profile {
         for (String allergy : allergies) allergiesString += allergy + " ";
         String asthmaString = asthma ? "JA" : "NEIN";
         String profilinfoString = "Name: " + profilName +
-                                "\nAlter: " + getAge() +
-                                "\nGeschlecht: " + sex +
-                                "\nAllergien: " + allergiesString +
-                                "\nAsthma: " + asthmaString;
+                "\nAlter: " + getAge() +
+                "\nGeschlecht: " + sex +
+                "\nAllergien: " + allergiesString +
+                "\nAsthma: " + asthmaString;
         String salbutamolString = salbutamol ? "JA" : "NEIN";
         String notfallsetString = "Antihistaminikum: " + antihistaminikumName + ", " + antihistaminikumDosierung +
-                                "\nSteroid: " + steroidName + ", " + steroidDosierung +
-                                "\nAutoinjektor: " + autoinjektorName +
-                                "\nSalbutamol: " + salbutamolString;
+                "\nSteroid: " + steroidName + ", " + steroidDosierung +
+                "\nAutoinjektor: " + autoinjektorName +
+                "\nSalbutamol: " + salbutamolString;
         return profilinfoString + "\n" + notfallsetString;
+    }
+
+    public boolean equalProfileInformation(Profile p) {
+        if (p != null) {
+            return false;
+        }
+        return  profilName == p.profilName && birthday == p.birthday && sex == p.sex
+                && allergies == p.allergies && asthma == p.asthma
+                && antihistaminikumName == p.antihistaminikumName
+                && antihistaminikumDosierung == p.antihistaminikumDosierung
+                && steroidName == p.steroidName && steroidDosierung == p.steroidDosierung
+                && autoinjektorName == p.autoinjektorName && salbutamol == p.salbutamol;
     }
 }

@@ -4,22 +4,43 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TableRow;
+import java.util.ArrayList;
+import android.widget.ArrayAdapter;
 
 
 public class TreatmentGreenActivity extends AppCompatActivity {
-
+    Button tagButton3;
+    ArrayList<String> instructionListDBEXample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_green);
+
+        instructionListDBEXample = new ArrayList<>();
+        instructionListDBEXample.add("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion");
+        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
+        instructionListDBEXample.add("Bitte verabreichen Sie: AntihistaminikumDosierung des Antihistaminikums AntihistaminikumName und SteroidDosierung des Steroids SteroidName");
+
+
+        ListView list = (ListView) findViewById(R.id.dynamicView);
+        String[] instructionList = new String[instructionListDBEXample.size()];
+        for (int i = 0; i < instructionList.length; i++) {
+
+            instructionList[i] = (i+1) + ". " + instructionListDBEXample.get(i);
+
+        }
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_adapter_view, R.id.textView18, instructionList);
+        list.setAdapter(arrayAdapter);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -32,6 +53,18 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         }
 
         showAddItemDialog1(null);
+
+
+        TableRow raw1 = (TableRow) findViewById(R.id.raw2);
+        tagButton3 = new Button(this);
+
+        tagButton3.setText("Quddeln");
+
+        tagButton3.setLayoutParams(new TableRow.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        raw1.addView(tagButton3);
+
     }
 
     @Override

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TreatmentGreenActivity">
+    tools:context=".GastroIntestinalActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -23,4 +23,149 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.example.olga.aa_app.BaseView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:base_color="@color/reaction"
+        app:icon="@drawable/ic_reaction_black_24dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:tint="@color/white"
+        app:title="@string/treatment" >
+
+        <ScrollView
+            android:id="@+id/scrollView3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:scrollbarStyle="insideOverlay">
+
+            <TableLayout
+                android:id="@+id/listing_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:clipToPadding="false"
+                android:contextClickable="true"
+                android:isScrollContainer="true"
+                android:keepScreenOn="true"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                android:overScrollMode="always"
+                android:paddingLeft="@dimen/activity_margin"
+                android:paddingRight="@dimen/activity_margin"
+                android:paddingBottom="@dimen/activity_margin"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:scrollbars="vertical"
+                android:verticalScrollbarPosition="right">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/info_box"
+                    android:backgroundTint="@color/reaction"
+                    android:backgroundTintMode="add"
+                    android:gravity="center">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/raw1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView26"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Du hast gewählt:"
+                                android:textAlignment="center"
+                                android:textSize="@dimen/header" />
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/raw2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                        </TableRow>
+
+                        <TableRow
+                            android:id="@+id/raw3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </TableLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/info_box"
+                    android:backgroundTint="@color/reaction"
+                    android:backgroundTintMode="add"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:id="@+id/activeList"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView27"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="@dimen/default_margin"
+                            android:text="Was ist jetzt zu tun?"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/header" />
+
+                        <ListView
+                            android:id="@+id/dynamicView"
+                            android:layout_width="317dp"
+                            android:layout_height="150dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/info_box"
+                    android:backgroundTint="@color/reaction"
+                    android:backgroundTintMode="add"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weitere Information:"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/header" />
+
+                </TableRow>
+
+            </TableLayout>
+        </ScrollView>
+    </com.example.olga.aa_app.BaseView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
