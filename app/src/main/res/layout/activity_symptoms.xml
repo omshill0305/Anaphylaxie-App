@@ -24,7 +24,6 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.example.olga.aa_app.BaseView
-        android:id="@+id/baseView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:base_color="@color/reaction"

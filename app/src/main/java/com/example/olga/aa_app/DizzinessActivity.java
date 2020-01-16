@@ -21,14 +21,15 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.HashMap;
 
-public class SkinActivity extends AppCompatActivity {
+public class DizzinessActivity extends AppCompatActivity {
 
     Button choose;
     HashMap<String, String> des;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_skin);
+        setContentView(R.layout.activity_dizziness);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -44,14 +45,11 @@ public class SkinActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SkinActivity.this, TreatmentRedActivity.class));
+                startActivity(new Intent(DizzinessActivity.this, TreatmentRedActivity.class));
             }
         });
 
         des = new HashMap();
-        des.put(getString(R.string.wheals), getString(R.string.info_wheals));
-        des.put(getString(R.string.swollen_lip_face), getString(R.string.info_swollen_lip));
-        des.put(getString(R.string.pruritus), getString(R.string.info_pruritus));
 
         setInfoButtons(R.id.listing_layout);
     }
@@ -64,7 +62,7 @@ public class SkinActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-                    AlertDialog.Builder builder = new AlertDialog.Builder(SkinActivity.this, R.style.MyAlertDialogStyleInfo);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(DizzinessActivity.this, R.style.MyAlertDialogStyleInfo);
                     CheckBox checkbox = (CheckBox) child.getChildAt(0);
                     builder.setTitle(checkbox.getText());
 
@@ -104,5 +102,4 @@ public class SkinActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }

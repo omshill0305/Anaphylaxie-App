@@ -16,9 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeActivity extends AppCompatActivity {
 
     private enum Page {
-        Profiles,
-        EmergencyCall,
-        Reactions;
+        Profiles, EmergencyCall, Reactions;
 
         public String format() {
             switch (this) {
@@ -38,8 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     private EmergencyCallFragment emergencyCallFragment = new EmergencyCallFragment();
     private Page currentPage = Page.Reactions;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -65,7 +62,6 @@ public class HomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logo1);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_reaction);
@@ -96,24 +92,24 @@ public class HomeActivity extends AppCompatActivity {
     private void initializeFragments() {
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction()
-                .add(R.id.main_frame, profileFragment, Page.Profiles.format())
-                .hide(profileFragment).commit();
+            .add(R.id.main_frame, profileFragment, Page.Profiles.format())
+            .hide(profileFragment)
+            .commit();
         fm.beginTransaction()
-                .add(R.id.main_frame, emergencyCallFragment, Page.EmergencyCall.format())
-                .hide(emergencyCallFragment).commit();
-        fm.beginTransaction()
-                .add(R.id.main_frame, reactionFragment, Page.Reactions.format())
-                .commit();
+            .add(R.id.main_frame, emergencyCallFragment, Page.EmergencyCall.format())
+            .hide(emergencyCallFragment)
+            .commit();
+        fm.beginTransaction().add(R.id.main_frame, reactionFragment, Page.Reactions.format()).commit();
     }
 
     private void setPage(Page page) {
         if (currentPage == page) {
             return;
         }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .hide(getFragmentFromPage(currentPage))
-                .show(getFragmentFromPage(page)).commit();
+        getSupportFragmentManager().beginTransaction()
+            .hide(getFragmentFromPage(currentPage))
+            .show(getFragmentFromPage(page))
+            .commit();
         currentPage = page;
     }
 

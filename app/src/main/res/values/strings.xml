@@ -74,4 +74,12 @@
     <string name="info_difficulty_in_breathing">to be translated</string>
     <string name="info_wheezing">to be translated</string>
     <string name="info_vomiting">tbt</string>
+    <string name="blood_pressure_drop">" Blood Pressure Drop"</string>
+    <string name="unconsciousness">Unconsciousness</string>
+    <string name="info_blood_pressure_drop">tbt</string>
+    <string name="fear">Indefinite Feeling of Fear</string>
+    <string name="info_wheals">tbt</string>
+    <string name="info_swollen_lip">tbt</string>
+    <string name="info_pruritus">tbt</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

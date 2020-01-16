@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.example.olga.aa_app.BaseView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:base_color="@color/profile"
@@ -14,46 +13,235 @@
         android:layout_height="0dp"
         android:layout_weight="0.8">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
-            android:paddingBottom="@dimen/activity_margin">
+            android:layout_marginLeft="@dimen/activity_margin"
+            android:layout_marginRight="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:background="@drawable/info_box"
+            android:backgroundTint="@color/profile"
+            android:backgroundTintMode="add">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:text="@string/no_profile"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/header"
+                app:layout_constraintBottom_toTopOf="@id/profile_data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TableLayout
+                android:id="@+id/profile_data"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:background="@drawable/info_box"
-                android:backgroundTint="@color/profile"
-                android:backgroundTintMode="add"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@id/profile_form_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_name">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
 
-                    android:layout_marginBottom="@dimen/activity_margin"
-                    android:text="@string/no_profile"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:fontFamily="sans-serif"
+                        android:paddingEnd="@dimen/default_margin"
+                        android:text="@string/birthday"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
 
-                <Button
-                    android:id="@+id/profile_form_btn"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/profile"
-                    android:padding="@dimen/default_margin"
-                    android:text="@string/create_profile"
-                    android:textSize="@dimen/paragraph" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/birthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
 
-        </LinearLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gender"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
+
+                    <TextView
+                        android:id="@+id/gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/known_allergens"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
+
+                    <TextView
+                        android:id="@+id/allergens"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asthma"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
+
+                    <TextView
+                        android:id="@+id/asthma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/antihistamine"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
+
+                    <TextView
+                        android:id="@+id/antihistamine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/steroid"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
+
+                    <TextView
+                        android:id="@+id/steroid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/autoinjector"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
+
+                    <TextView
+                        android:id="@+id/autoinjector"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_margin">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/salbutamol"
+                        android:textAllCaps="false"
+                        android:textColor="@color/profile"
+                        android:textSize="@dimen/paragraph" />
+
+                    <TextView
+                        android:id="@+id/salbutamol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/paragraph" />
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/profile_form_btn"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/profile"
+                android:padding="@dimen/default_margin"
+                android:text="@string/create_profile"
+                android:textSize="@dimen/paragraph"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_data" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 </com.example.olga.aa_app.BaseView>
