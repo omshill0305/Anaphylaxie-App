@@ -29,9 +29,9 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <com.example.olga.aa_app.BaseView
-            android:id="@+id/baseView2"
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             app:base_color="@color/reaction"
             app:icon="@drawable/stomach"
             app:layout_constraintBottom_toTopOf="@id/choose"
@@ -42,10 +42,9 @@
             app:title="@string/gastro_intestinal">
 
             <ScrollView
-                android:id="@+id/scrollView3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.85"
+                android:layout_weight="0.8"
                 android:scrollbarStyle="insideOverlay">
 
                 <TableLayout
@@ -240,7 +239,8 @@
             android:textSize="@dimen/paragraph"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

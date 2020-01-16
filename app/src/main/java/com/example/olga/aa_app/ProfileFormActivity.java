@@ -44,7 +44,6 @@ public class ProfileFormActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logo1);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -59,14 +58,19 @@ public class ProfileFormActivity extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
 
-        birthdayPicker = new DatePickerDialog(ProfileFormActivity.this, R.style.BirthdayPickerStyle,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int y, int m, int d) {
-                        birthday.setText(Utility.fmtDate(y, m, d));
-                        birthdayPicker.onSaveInstanceState();
-                    }
-                }, year, month, day);
+        birthdayPicker = new DatePickerDialog(ProfileFormActivity.this,
+            R.style.BirthdayPickerStyle,
+            new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int y, int m, int d) {
+                    birthday.setText(Utility.fmtDate(y, m, d));
+                    birthdayPicker.onSaveInstanceState();
+                }
+            },
+            year,
+            month,
+            day
+        );
         birthdayPicker.getDatePicker().setMaxDate(calendar.getTimeInMillis());
         birthday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +82,10 @@ public class ProfileFormActivity extends AppCompatActivity {
             }
         });
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, ALLERGENS);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+            android.R.layout.simple_dropdown_item_1line,
+            ALLERGENS
+        );
 
         multiComplete = findViewById(R.id.multiAutoCompleteTextView);
         multiComplete.setAdapter(adapter);
@@ -88,7 +95,11 @@ public class ProfileFormActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int last = allergyTags.length();
                 allergyTags.append(adapterView.getItemAtPosition(i).toString()).append(" ");
-                allergyTags.setSpan(new TagSpan(ProfileFormActivity.this), last, allergyTags.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                allergyTags.setSpan(new TagSpan(ProfileFormActivity.this),
+                    last,
+                    allergyTags.length() - 1,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
                 multiComplete.setText(allergyTags);
                 multiComplete.setSelection(allergyTags.length());
             }
@@ -111,7 +122,7 @@ public class ProfileFormActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra(UPDATED_PROFILE,profile);
+        intent.putExtra(UPDATED_PROFILE, profile);
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -164,9 +175,20 @@ public class ProfileFormActivity extends AppCompatActivity {
             return null;
         }
 
-        return new Profile(name, date.getYear(), date.getMonth(), date.getDayOfMonth(), gender,
-                allergens, asthma.equals(getString(R.string.yes)), antihistamine, antihistamineDosage,
-                steroid, steroidDosage, autoinjector, salbutamol.equals(getString(R.string.yes)));
+        return new Profile(name,
+            date.getYear(),
+            date.getMonth(),
+            date.getDayOfMonth(),
+            gender,
+            allergens,
+            asthma.equals(getString(R.string.yes)),
+            antihistamine,
+            antihistamineDosage,
+            steroid,
+            steroidDosage,
+            autoinjector,
+            salbutamol.equals(getString(R.string.yes))
+        );
     }
 
     private void receiveProfile(Profile p) {
