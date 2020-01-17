@@ -5,7 +5,4 @@
     <dimen name="title">28sp</dimen>
     <dimen name="header">18sp</dimen>
     <dimen name="paragraph">14sp</dimen>
-    <dimen name="small_icon">28dp</dimen>
-    <dimen name="medium_icon">44dp</dimen>
-    <dimen name="large_icon">60dp</dimen>
 </resources>
