@@ -7,32 +7,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class SymptomsActivity extends AppCompatActivity {
-
-    Button skin;
-    Button gastro;
-    Button airways;
-    Button cardiovascular;
-    Button dizziness;
-    Button indefinableDread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptoms);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.logo1);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+        }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        skin = findViewById(R.id.skin);
+        Button skin = findViewById(R.id.skin);
         skin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +36,7 @@ public class SymptomsActivity extends AppCompatActivity {
             }
         });
 
-        airways = findViewById(R.id.airways);
+        Button airways = findViewById(R.id.airways);
         airways.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +44,7 @@ public class SymptomsActivity extends AppCompatActivity {
             }
         });
 
-        gastro = findViewById(R.id.gastro_intestinal);
+        Button gastro = findViewById(R.id.gastro_intestinal);
         gastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +52,7 @@ public class SymptomsActivity extends AppCompatActivity {
             }
         });
 
-        cardiovascular = findViewById(R.id.cardiovascular);
+        Button cardiovascular = findViewById(R.id.cardiovascular);
         cardiovascular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +60,7 @@ public class SymptomsActivity extends AppCompatActivity {
             }
         });
 
-        dizziness = findViewById(R.id.dizziness);
+        Button dizziness = findViewById(R.id.dizziness);
         dizziness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +68,7 @@ public class SymptomsActivity extends AppCompatActivity {
             }
         });
 
-        indefinableDread = findViewById(R.id.panic);
+        Button indefinableDread = findViewById(R.id.panic);
         indefinableDread.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +84,6 @@ public class SymptomsActivity extends AppCompatActivity {
 
         return true;
     }
-
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (getFragmentManager().getBackStackEntryCount() == 0) {
