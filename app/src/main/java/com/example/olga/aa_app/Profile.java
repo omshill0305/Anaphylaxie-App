@@ -250,16 +250,16 @@ public class Profile implements Serializable {
         if (profile != null) {
             return false;
         }
-        return name == profile.name
-               && birthday == profile.birthday
+        return name.equals(profile.name)
+               && birthday.compareTo(profile.birthday) == 0
                && sex == profile.sex
-               && allergies == profile.allergies
+               && allergies.equals(profile.allergies)
                && asthma == profile.asthma
-               && antihistamine == profile.antihistamine
-               && antihistamineDosage == profile.antihistamineDosage
-               && steroid == profile.steroid
-               && steroidDosage == profile.steroidDosage
-               && autoinjector == profile.autoinjector
+               && antihistamine.equals(profile.antihistamine)
+               && antihistamineDosage.equals(profile.antihistamineDosage)
+               && steroid.equals(profile.steroid)
+               && steroidDosage.equals(profile.steroidDosage)
+               && autoinjector.equals(profile.autoinjector)
                && salbutamol == profile.salbutamol;
     }
 }
