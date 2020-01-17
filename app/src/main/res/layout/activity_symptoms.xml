@@ -59,6 +59,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/ic_head"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/skin"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -73,6 +74,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/stomach"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/gastro_intestinal"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -96,6 +98,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/cardiogram"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/cardiovascular"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -110,6 +113,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/lung"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/airways"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -133,6 +137,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/headache"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/dizziness"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -147,6 +152,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/runny"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/runny_nose"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -170,6 +176,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/ghost"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/panic"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -184,6 +191,7 @@
                     android:backgroundTint="@color/reaction"
                     android:backgroundTintMode="add"
                     android:drawableTop="@drawable/question_mark"
+                    android:drawableTint="@android:color/black"
                     android:text="@string/no_idea"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
