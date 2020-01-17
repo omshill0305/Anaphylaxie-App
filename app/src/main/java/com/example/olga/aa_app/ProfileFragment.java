@@ -17,7 +17,7 @@ import com.example.olga.aa_app.utility.Utility;
 import java.util.Calendar;
 
 /**
- * A simple {@link Fragment} subclass.
+ * The Profile page/tab of the main activity.
  */
 public class ProfileFragment extends Fragment {
 
@@ -51,27 +51,32 @@ public class ProfileFragment extends Fragment {
         return rootView;
     }
 
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile p) {
-        if (p != null) {
-            profile = p;
-            showProfile();
-        } else if (profile != null) {
-            profile = null;
-            hideProfile();
+    /**
+     * If p is null the profile overview will be hidden, else it will show the overview and fill in the data.
+     *
+     * @param profile profile data
+     */
+    public void updateProfileOverview(Profile profile) {
+        if (profile != null) {
+            this.profile = profile;
+            showOverview();
+        } else if (this.profile != null) {
+            this.profile = null;
+            hideOverview();
         }
     }
 
-    private void showProfile() {
+    /**
+     * Shows and fills the table layout view with the existing profile data.
+     */
+    private void showOverview() {
         Activity activity = getActivity();
         if (activity == null) {
             return;
         }
+        // Personal Data
         TextView name = activity.findViewById(R.id.profile_name);
-        name.setText(profile.getProfilName());
+        name.setText(profile.getName());
         TableLayout data = activity.findViewById(R.id.profile_data);
         data.setVisibility(View.VISIBLE);
         TextView birthday = data.findViewById(R.id.birthday);
@@ -82,24 +87,30 @@ public class ProfileFragment extends Fragment {
         int year = calendar.get(Calendar.YEAR);
         birthday.setText(Utility.fmtDate(year, month, day));
         TextView gender = data.findViewById(R.id.gender);
-        gender.setText(profile.getSex());
+        gender.setText(genderToString(profile.getSex()));
         // TODO: Allergens...
         // TextView allergens = data.findViewById(R.id.allergens);
         TextView asthma = data.findViewById(R.id.asthma);
         asthma.setText(profile.hasAsthma() ? R.string.yes : R.string.no);
+
+        // Emergency Set
         TextView antihistamine = data.findViewById(R.id.antihistamine);
-        antihistamine.setText(profile.getAntihistaminikumDosierung() + " " + profile.getAntihistaminikumName());
+        antihistamine.setText(profile.getAntihistamineDosage() + " " + profile.getAntihistamine());
         TextView steroid = data.findViewById(R.id.steroid);
-        steroid.setText(profile.getSteroidDosierung() + " " + profile.getSteroidName());
+        steroid.setText(profile.getSteroidDosage() + " " + profile.getSteroid());
         TextView autoinjector = data.findViewById(R.id.autoinjector);
-        autoinjector.setText(profile.getAutoinjektorName());
+        autoinjector.setText(profile.getAutoinjector());
         TextView salbumatol = data.findViewById(R.id.salbutamol);
         salbumatol.setText(profile.takesSalbutamol() ? R.string.yes : R.string.no);
+
         Button button = activity.findViewById(R.id.profile_form_btn);
         button.setText(R.string.edit_profile);
     }
 
-    private void hideProfile() {
+    /**
+     * Resets the view by hiding the table layout and reverting the text views to the default values.
+     */
+    private void hideOverview() {
         Activity activity = getActivity();
         if (activity == null) {
             return;
@@ -110,5 +121,18 @@ public class ProfileFragment extends Fragment {
         name.setText(R.string.no_profile);
         TableLayout data = activity.findViewById(R.id.profile_data);
         data.setVisibility(View.GONE);
+    }
+
+    private String genderToString(Profile.Gender gender) {
+        switch (gender) {
+            case Male:
+                return getString(R.string.male);
+            case Female:
+                return getString(R.string.female);
+            case Diverse:
+                return getString(R.string.diverse);
+            default:
+                return "";
+        }
     }
 }

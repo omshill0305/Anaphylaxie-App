@@ -36,7 +36,8 @@ public class HomeActivity extends AppCompatActivity {
     private EmergencyCallFragment emergencyCallFragment = new EmergencyCallFragment();
     private Page currentPage = Page.Reactions;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener =
+        new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -83,7 +84,7 @@ public class HomeActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Profile p = (Profile) data.getSerializableExtra(ProfileFormActivity.UPDATED_PROFILE);
                 if (p != null) {
-                    profileFragment.setProfile(p);
+                    profileFragment.updateProfileOverview(p);
                 }
             }
         }

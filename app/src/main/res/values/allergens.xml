@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="allergens">
+        <item>@string/milk</item>
+        <item>@string/chicken_egg</item>
+        <item>@string/wheat</item>
+        <item>@string/dinkel_wheat</item>
+        <item>@string/legumes</item>
+        <item>@string/edible_nuts</item>
+        <item>@string/fish</item>
+        <item>@string/crustaceans</item>
+        <item>@string/mollusk</item>
+        <item>@string/lupine</item>
+        <item>@string/celery</item>
+        <item>@string/mustard</item>
+        <item>@string/sesame_seed</item>
+        <item>@string/pine_nuts</item>
+        <item>@string/sunflower_seeds</item>
+        <item>@string/poppy</item>
+        <item>@string/rice</item>
+        <item>@string/corn</item>
+        <item>@string/apples</item>
+        <item>@string/peach</item>
+        <item>@string/strawberries</item>
+        <item>@string/bananas</item>
+        <item>@string/apricot</item>
+        <item>@string/plum</item>
+        <item>@string/tomato</item>
+        <item>@string/pineapple</item>
+        <item>@string/grapes</item>
+        <item>@string/cherry</item>
+    </string-array>
+</resources>

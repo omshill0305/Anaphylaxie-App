@@ -75,5 +75,32 @@
     <string name="info_swollen_lip">Oft beginnt die Schwellung an den Lippen oder den Augenlidern.</string>
     <string name="info_pruritus">Falls ihr Kind Neurodermitis hat, fangen die von der  Neurodermitis betroffenen Stellen zuerst an, zu jucken. </string>
     <string name="edit_profile">Profil bearbeiten</string>
-
+    <string name="milk">Milch</string>
+    <string name="chicken_egg">Hühnerei</string>
+    <string name="wheat">Weizen</string>
+    <string name="dinkel_wheat">Dinkel</string>
+    <string name="legumes">Hülsenfrüchte</string>
+    <string name="edible_nuts">Nüsse/Schalenfrüchte</string>
+    <string name="fish">Fisch</string>
+    <string name="crustaceans">Krebstiere</string>
+    <string name="mollusk">Weichtier</string>
+    <string name="lupine">Lupine</string>
+    <string name="celery">Sellerie</string>
+    <string name="mustard">Senf</string>
+    <string name="sesame_seed">Sesamsamen</string>
+    <string name="pine_nuts">Pinienkerne</string>
+    <string name="sunflower_seeds">Sonnenblumenkerne</string>
+    <string name="poppy">Mohn</string>
+    <string name="rice">Reis</string>
+    <string name="corn">Mais</string>
+    <string name="apples">Äpfel</string>
+    <string name="peach">Pfirsisch</string>
+    <string name="strawberries">Erdbeeren</string>
+    <string name="bananas">Bananen</string>
+    <string name="apricot">Aprikose</string>
+    <string name="plum">Pflaume</string>
+    <string name="tomato">Tomate</string>
+    <string name="pineapple">Ananas</string>
+    <string name="grapes">Weintrauben</string>
+    <string name="cherry">Kirsche</string>
 </resources>

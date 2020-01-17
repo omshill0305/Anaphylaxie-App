@@ -82,4 +82,33 @@
     <string name="info_swollen_lip">tbt</string>
     <string name="info_pruritus">tbt</string>
     <string name="edit_profile">Edit Profile</string>
+
+    <string name="milk">Milk</string>
+    <string name="chicken_egg">Chicken Egg</string>
+    <string name="wheat">Wheat</string>
+    <string name="dinkel_wheat">Dinkel Wheat</string>
+    <string name="legumes">Legumes</string>
+    <string name="edible_nuts">Edible Nuts</string>
+    <string name="fish">Fish</string>
+    <string name="crustaceans">Crustaceans</string>
+    <string name="mollusk">Mollusk</string>
+    <string name="lupine">Lupine</string>
+    <string name="celery">Celery</string>
+    <string name="mustard">Mustard</string>
+    <string name="sesame_seed">Sesame Seed</string>
+    <string name="pine_nuts">Pine Nuts</string>
+    <string name="sunflower_seeds">Sunflower Seeds</string>
+    <string name="poppy">Poppy</string>
+    <string name="rice">Rice</string>
+    <string name="corn">Corn</string>
+    <string name="apples">Apples</string>
+    <string name="peach">Peach</string>
+    <string name="strawberries">Strawberries</string>
+    <string name="bananas">Bananas</string>
+    <string name="apricot">Apricot</string>
+    <string name="plum">Plum</string>
+    <string name="tomato">Tomato</string>
+    <string name="pineapple">Pineapple</string>
+    <string name="grapes">Grapes</string>
+    <string name="cherry">Cherry</string>
 </resources>
