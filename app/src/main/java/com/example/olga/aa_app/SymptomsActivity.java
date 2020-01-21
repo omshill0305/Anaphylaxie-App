@@ -75,6 +75,22 @@ public class SymptomsActivity extends AppCompatActivity {
                 startActivity(new Intent(SymptomsActivity.this, IndefinableDreadActivity.class));
             }
         });
+
+        Button runny_nose = findViewById(R.id.runny_nose);
+        runny_nose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, TreatmentRedActivity.class));
+            }
+        });
+
+        Button no_idea = findViewById(R.id.no_idea);
+        no_idea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, TreatmentRedActivity.class));
+            }
+        });
     }
 
     @Override
