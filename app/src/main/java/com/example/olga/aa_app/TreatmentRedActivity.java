@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,12 @@ public class TreatmentRedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_red);
 
+        Intent intent = getIntent();
+        String symptom = intent.getStringExtra("symptom");
         instructionListDBEXample = new ArrayList<>();
+        if (symptom.equalsIgnoreCase("quaddeln")) {
+            instructionListDBEXample.add("quaddeln");
+        }
         instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
         instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
         instructionListDBEXample.add("Bitte Fastjekt verabreichen");

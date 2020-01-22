@@ -44,7 +44,9 @@ public class SkinActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SkinActivity.this, TreatmentRedActivity.class));
+                Intent intent = new Intent(SkinActivity.this, TreatmentRedActivity.class);
+                intent.putExtra("symptom", "quaddeln");
+                startActivity(intent);
             }
         });
 
