@@ -27,8 +27,13 @@ public class Algorithm {
     }};
 
 
+    public static String evaluate(Profile profile) {
+        Reaction reaction = profile.getCurrentReaction();
+        return evaluate(reaction);
+    }
 
     public static String evaluate(Reaction reaction) {
+
         ArrayList<Symptom> symptoms = reaction.getSymptoms();
         if (isUnconcious(symptoms)) {
             return algorithm5();

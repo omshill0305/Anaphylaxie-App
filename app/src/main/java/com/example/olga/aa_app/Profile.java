@@ -12,6 +12,8 @@ public class Profile implements Serializable {
         Male, Female, Diverse
     }
 
+    public static Profile currentProfile = null;
+
     private ArrayList<Reaction> reactions = new ArrayList<>();
     private Reaction currentReaction = null;
 
@@ -57,6 +59,7 @@ public class Profile implements Serializable {
     }
 
     public Reaction getCurrentReaction() {
+        if (currentReaction == null) startReaction(new Reaction());
         return currentReaction;
     }
 

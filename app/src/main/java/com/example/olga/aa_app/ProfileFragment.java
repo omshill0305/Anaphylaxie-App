@@ -58,6 +58,7 @@ public class ProfileFragment extends Fragment {
      */
     public void updateProfileOverview(Profile profile) {
         if (profile != null) {
+            Profile.currentProfile = profile;
             this.profile = profile;
             showOverview();
         } else if (this.profile != null) {

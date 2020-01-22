@@ -27,15 +27,8 @@ public class TreatmentRedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_red);
 
-        Intent intent = getIntent();
-        String symptom = intent.getStringExtra("symptom");
-        instructionListDBEXample = new ArrayList<>();
-        if (symptom.equalsIgnoreCase("quaddeln")) {
-            instructionListDBEXample.add("quaddeln");
-        }
-        instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
-        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Bitte Fastjekt verabreichen");
+        makeInstructions();
+
 
 
         ListView list = (ListView) findViewById(R.id.dynamicView);
@@ -69,6 +62,18 @@ public class TreatmentRedActivity extends AppCompatActivity {
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         raw1.addView(tagButton3);
 
+    }
+
+    private void makeInstructions() {
+
+
+        Intent intent = getIntent();
+        String evaluatedAlgorithm = intent.getStringExtra("evaluatedAlgorithm");
+
+
+        instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
+        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
+        instructionListDBEXample.add("Bitte Fastjekt verabreichen");
     }
 
     @Override

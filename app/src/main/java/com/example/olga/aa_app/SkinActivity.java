@@ -44,8 +44,13 @@ public class SkinActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SkinActivity.this, TreatmentRedActivity.class);
-                intent.putExtra("symptom", "quaddeln");
+                String algorithm = evaluateAlgorithmAndDetermineNextScreen();
+                Intent intent;
+                if (algorithm.equalsIgnoreCase("algorithm1"))
+                    intent = new Intent(SkinActivity.this, TreatmentGreenActivity.class);
+                else intent = new Intent(SkinActivity.this, TreatmentRedActivity.class);
+
+                intent.putExtra("evaluatedAlgorithm", "");
                 startActivity(intent);
             }
         });
@@ -56,6 +61,29 @@ public class SkinActivity extends AppCompatActivity {
         des.put(getString(R.string.pruritus), getString(R.string.info_pruritus));
 
         setInfoButtons(R.id.listing_layout);
+    }
+
+    private String evaluateAlgorithmAndDetermineNextScreen() {
+
+        //TODO: what if no profile
+        Profile profile = Profile.currentProfile;
+        Reaction reaction = profile.getCurrentReaction();
+
+        CheckBox quaddeln = (CheckBox)findViewById(R.id.checkBox);
+        if (quaddeln.isChecked()) {
+            reaction.addSymptom(new Symptom("quaddeln"));
+        }
+        CheckBox schwellung = (CheckBox)findViewById(R.id.checkBox2);
+        if (schwellung.isChecked()) {
+            reaction.addSymptom(new Symptom("schwellung"));
+        }
+        CheckBox jucken = (CheckBox)findViewById(R.id.checkBox3);
+        if (jucken.isChecked()) {
+            reaction.addSymptom(new Symptom("jucken"));
+        }
+
+        //TODO: what if no profile
+        return Algorithm.evaluate(profile);
     }
 
     private void setInfoButtons(int id){
