@@ -275,6 +275,9 @@ public class ProfileFormActivity extends AppCompatActivity {
     }
 
     private Profile.Gender genderFromString(String gender) {
+        if (gender == null) {
+            return null;
+        }
         if (gender.equalsIgnoreCase(getString(R.string.male))) {
             return Profile.Gender.Male;
         } else if (gender.equalsIgnoreCase(getString(R.string.female))) {
