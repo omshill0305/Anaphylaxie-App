@@ -2,7 +2,7 @@
 <resources>
     <string-array name="autoinjectors">
         <item>Emerade</item>
-        <item>Autoinjektor</item>
+        <item>Fastjekt</item>
         <item>Jext</item>
     </string-array>
 </resources>
