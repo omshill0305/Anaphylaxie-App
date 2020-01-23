@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,11 +27,30 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_green);
 
+        Intent intent = getIntent();
+        String evaluatedAlgorithm = intent.getStringExtra("evaluatedAlgorithm"); //symptoms and algorithm number
+
         instructionListDBEXample = new ArrayList<>();
+        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
         instructionListDBEXample.add("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion");
         instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Bitte verabreichen Sie: AntihistaminikumDosierung des Antihistaminikums AntihistaminikumName und SteroidDosierung des Steroids SteroidName");
-
+        if (Profile.currentProfile != null) {
+            Profile profile = Profile.currentProfile;
+            if (profile.getAntihistamineDosage() != null && profile.getAntihistamine() != null)
+                instructionListDBEXample.add("Bitte verabreichen Sie: " + profile.getAntihistamineDosage() +
+                    " des Antihistaminikums " + profile.getAntihistamine());
+            else instructionListDBEXample.add("Bitte verabreichen Sie das Antihistaminikum");
+            if (profile.getSteroidDosage() != null && profile.getSteroid() != null)
+                instructionListDBEXample.add("Bitte verabreichen Sie: " + profile.getSteroidDosage() +
+                    " des Steroids " + profile.getSteroid());
+            else instructionListDBEXample.add("Bitte verabreichen Sie das Steroid");
+            if (profile.getAutoinjector() != null)
+                instructionListDBEXample.add("Bitte den Autoinjektor " + profile.getAutoinjector() + " bereithalten und im Zweifelsfall auch benutzen");
+            else instructionListDBEXample.add("Bitte den Autoinjektor bereithalten und im Zweifelsfall auch benutzen");
+        } else {
+            instructionListDBEXample.add("Bitte verabreichen Sie das Antihistaminikum und das Steroid");
+            instructionListDBEXample.add("Bitte den Autoinjektor bereithalten und im Zweifelsfall auch benutzen");
+        }
 
         ListView list = (ListView) findViewById(R.id.dynamicView);
         String[] instructionList = new String[instructionListDBEXample.size()];
@@ -52,7 +72,7 @@ public class TreatmentGreenActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
-        showAddItemDialog1(null);
+        //showAddItemDialog1(null);
 
 
         TableRow raw1 = (TableRow) findViewById(R.id.raw2);

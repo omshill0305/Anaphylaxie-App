@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SkinActivity extends AppCompatActivity {
@@ -44,13 +45,13 @@ public class SkinActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String algorithm = evaluateAlgorithmAndDetermineNextScreen();
+                String evaluatedAlgorithm = evaluateAlgorithmAndDetermineNextScreen();
                 Intent intent;
-                if (algorithm.equalsIgnoreCase("algorithm1"))
+                if (evaluatedAlgorithm.contains("algorithm1"))
                     intent = new Intent(SkinActivity.this, TreatmentGreenActivity.class);
                 else intent = new Intent(SkinActivity.this, TreatmentRedActivity.class);
 
-                intent.putExtra("evaluatedAlgorithm", "");
+                intent.putExtra("evaluatedAlgorithm", evaluatedAlgorithm);
                 startActivity(intent);
             }
         });
@@ -64,26 +65,30 @@ public class SkinActivity extends AppCompatActivity {
     }
 
     private String evaluateAlgorithmAndDetermineNextScreen() {
-
-        //TODO: what if no profile
+        Reaction reaction;
         Profile profile = Profile.currentProfile;
-        Reaction reaction = profile.getCurrentReaction();
+
+        String output = "";
+
+        if (profile != null) reaction = profile.getCurrentReaction();
+        else reaction = new Reaction();
 
         CheckBox quaddeln = (CheckBox)findViewById(R.id.checkBox);
         if (quaddeln.isChecked()) {
             reaction.addSymptom(new Symptom("quaddeln"));
+            output += ", Quaddeln";
         }
         CheckBox schwellung = (CheckBox)findViewById(R.id.checkBox2);
         if (schwellung.isChecked()) {
             reaction.addSymptom(new Symptom("schwellung"));
+            output += ", Schwellung von Lippen und Gesicht";
         }
         CheckBox jucken = (CheckBox)findViewById(R.id.checkBox3);
         if (jucken.isChecked()) {
             reaction.addSymptom(new Symptom("jucken"));
+            output += ", Jucken";
         }
-
-        //TODO: what if no profile
-        return Algorithm.evaluate(profile);
+        return Algorithm.evaluate(reaction) + output;
     }
 
     private void setInfoButtons(int id){
