@@ -9,7 +9,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -86,24 +89,68 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_extra, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        } else if (getFragmentManager().getBackStackEntryCount() == 1) {
+            moveTaskToBack(false);
+        } else {
+            getFragmentManager().popBackStack();
+        }
+        return true;
+    }
+
     private HashMap<String, String> setup(String category) {
         BaseView container = findViewById(R.id.content);
+        Button choose = findViewById(R.id.choose);
         switch (category) {
             case SymptomsActivity.CATEGORY_AIRWAYS:
                 container.setIcon(R.drawable.lung);
                 container.setTitle(getString(R.string.airways));
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
+                    }
+                });
                 return getAirwaysDescription();
             case SymptomsActivity.CATEGORY_CARDIOVASCULAR:
                 container.setIcon(R.drawable.cardiogram);
                 container.setTitle(getString(R.string.cardiovascular));
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
+                    }
+                });
                 return getCardiovascularDescription();
             case SymptomsActivity.CATEGORY_GASTRO_INTESTINAL:
                 container.setIcon(R.drawable.stomach);
                 container.setTitle(getString(R.string.gastro_intestinal));
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
+                    }
+                });
                 return getGastroIntestinalDescription();
             case SymptomsActivity.CATEGORY_SKIN:
                 container.setIcon(R.drawable.ic_head);
                 container.setTitle(getString(R.string.skin));
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
+                    }
+                });
                 return getSkinDescription();
             default:
                 return null;
