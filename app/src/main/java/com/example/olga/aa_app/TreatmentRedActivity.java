@@ -27,7 +27,11 @@ public class TreatmentRedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_red);
 
-        makeInstructions();
+
+        instructionListDBEXample = new ArrayList<>();
+        instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
+        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
+        instructionListDBEXample.add("Bitte den Autoinjektor verabreichen");
 
 
 
@@ -64,17 +68,6 @@ public class TreatmentRedActivity extends AppCompatActivity {
 
     }
 
-    private void makeInstructions() {
-
-
-        Intent intent = getIntent();
-        String evaluatedAlgorithm = intent.getStringExtra("evaluatedAlgorithm");
-
-
-        instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
-        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Bitte Fastjekt verabreichen");
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
