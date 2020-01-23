@@ -61,17 +61,15 @@
     <string name="pruritus">Pruritus (palms/ soles/ genital area)</string>
     <string name="wheals">Wheals</string>
     <string name="info_abdominal_pain">Plötzlich auftretende Schwerzen im Bauchraum.(to be improved)</string>
-    <string name="info_diarrhea">Typisch sind wasserdünne Durchfalle, ohne dass es vorher zu Fieber gekommen wäre. Begleitende Bauchscmerzen werden oft beobachtet.</string>
-    <string name="info_itching">Beginnt in Handflächen, Fußsohlen und dem Genitalbereich. (tbi)</string>
     <string name="info_rash">Quaddeln sind pukt- oder plateauförmige gerötete Erhebungen in der Haut, wie sie zum Beispiel etwa auch nach Brennesselberührugen auftreten. Typisch ist das weiß-rote Aussehen. Oft treten die Quaddeln zuerst im Gesicht, am Bauch, oder dem Rücken auf. Sie jucken.</string>
     <string name="info_swelling">Oft beginnt die Schwellung an den Lippen oder den Augenlidern.</string>
     <string name="info_tingling">Tritt oft schon nach kleinsten Mengen eines Allergens und gleich nach dem Verzehr auf.</string>
-    <string name="info_nausea">TBD</string>
+    <string name="info_nausea">info nausea</string>
     <string name="difficulty_in_breathing">" Difficulty in Breathing"</string>
     <string name="hoarseness">Sudden Hoarseness</string>
     <string name="wheezing">Wheezing</string>
     <string name="cough">Cough</string>
-    <string name="info_difficulty_in_breathing">to be translated</string>
+    <string name="info_difficulty_in_breathing">info breathing</string>
     <string name="info_wheezing">to be translated</string>
     <string name="info_vomiting">tbt</string>
     <string name="blood_pressure_drop">" Blood Pressure Drop"</string>
@@ -111,5 +109,8 @@
     <string name="pineapple">Pineapple</string>
     <string name="grapes">Grapes</string>
     <string name="cherry">Cherry</string>
-    <string name="data_security">data text translated</string>
+    <string name="data_security">Data Protection</string>
+    <string name="info_data_security">tbt Unsere Website erfasst mit jedem Aufruf verschiedene allgemeine Daten und Informationen, die in sog. Logfiles des Servers gespeichert werden. Zu diesen Daten zählen etwa Ihre IP-Adresse, Ihr Browsertyp und Ihre Browserversion, Ihr Betriebssystem, die Internetseite, von der Sie auf unsere Website gelangt sind, die Unterwebseiten, welche über ein zugreifendes System auf unserer Internetseite angesteuert werden, das Datum und die Uhrzeit eines Zugriffs auf unsere Website und Ihr Internet-Service-Provider. Die Verarbeitung der Daten erfolgt auf Grundlage von Art. 6 I lit. b) DSGVO. Nach dieser Vorschrift ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags, dessen Vertragspartei Sie sind, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich. Mit der Nutzung unserer Seite nehmen Sie unser Angebot auf Abschluss eines entsprechenden (unentgeltlichen) Nutzungsvertrages stillschweigend an. Im Übrigen ist die Verarbeitung auch über Art. 6 I lit. f) DSGVO gerechtfertigt, da wir ein berechtigtes Interesse an der Verarbeitung haben und Ihre Interessen, Grundrechte und Grundfreiheiten nicht überwiegen. Das Interesse besteht darin, unser Webangebot ordnungsgemäß auszuliefern und die Funktionsfähigkeit unserer Systeme zu schützen.</string>
+    <string name="info_diarrhea">info diarrhea</string>
+    <string name="info_itching">info itching</string>
 </resources>
