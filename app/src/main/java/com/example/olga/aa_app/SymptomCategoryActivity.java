@@ -118,7 +118,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
+                        chooseActivity("");
                     }
                 });
                 return getAirwaysDescription();
@@ -128,7 +128,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
+                        chooseActivity("");
                     }
                 });
                 return getCardiovascularDescription();
@@ -138,7 +138,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
+                        chooseActivity("");
                     }
                 });
                 return getGastroIntestinalDescription();
@@ -148,7 +148,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
+                        chooseActivity("algorithm1");
                     }
                 });
                 return getSkinDescription();
@@ -156,6 +156,43 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 return null;
         }
     }
+
+    private void chooseActivity(String evaluatedAlgorithm) {
+        Intent intent;
+        if (evaluatedAlgorithm.contains("algorithm1"))
+            intent = new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class);
+        else intent = new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class);
+
+        intent.putExtra("evaluatedAlgorithm", evaluatedAlgorithm);
+        startActivity(intent);
+    }
+
+    /*private String evaluateAlgorithmAndDetermineNextScreen() {
+        Reaction reaction;
+        Profile profile = Profile.currentProfile;
+
+        String output = "";
+
+        if (profile != null) reaction = profile.getCurrentReaction();
+        else reaction = new Reaction();
+
+        CheckBox quaddeln = (CheckBox)findViewById(R.id.checkBox);
+        if (quaddeln.isChecked()) {
+            reaction.addSymptom(new Symptom("quaddeln"));
+            output += ", Quaddeln";
+        }
+        CheckBox schwellung = (CheckBox)findViewById(R.id.checkBox2);
+        if (schwellung.isChecked()) {
+            reaction.addSymptom(new Symptom("schwellung"));
+            output += ", Schwellung von Lippen und Gesicht";
+        }
+        CheckBox jucken = (CheckBox)findViewById(R.id.checkBox3);
+        if (jucken.isChecked()) {
+            reaction.addSymptom(new Symptom("jucken"));
+            output += ", Jucken";
+        }
+        return Algorithm.evaluate(reaction) + output;
+    }*/
 
     private HashMap<String, String> getAirwaysDescription() {
         HashMap<String, String> des = new HashMap<>(4);
