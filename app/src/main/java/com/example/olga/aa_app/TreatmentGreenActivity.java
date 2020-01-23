@@ -27,13 +27,10 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_green);
 
-        Intent intent = getIntent();
-        String evaluatedAlgorithm = intent.getStringExtra("evaluatedAlgorithm"); //symptoms and algorithm number
 
         instructionListDBEXample = new ArrayList<>();
         instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
         instructionListDBEXample.add("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion");
-        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
         if (Profile.currentProfile != null) {
             Profile profile = Profile.currentProfile;
             if (profile.getAntihistamineDosage() != null && profile.getAntihistamine() != null)
@@ -74,8 +71,21 @@ public class TreatmentGreenActivity extends AppCompatActivity {
 
         //showAddItemDialog1(null);
 
+        Intent intent = getIntent();
+        String evaluatedAlgorithm = intent.getStringExtra("evaluatedAlgorithm"); //symptoms and algorithm number
 
-        TableRow raw1 = (TableRow) findViewById(R.id.raw2);
+        for (String symptom : evaluatedAlgorithm.split(", ")) {
+            if (!symptom.contains("algorithm")) {
+                TableRow raw1 = (TableRow) findViewById(R.id.raw2);
+                Button tagButton = new Button(this);
+                tagButton.setText(symptom);
+                tagButton.setLayoutParams(new TableRow.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT));
+                raw1.addView(tagButton);
+            }
+        }
+        /*TableRow raw1 = (TableRow) findViewById(R.id.raw2);
         tagButton3 = new Button(this);
 
         tagButton3.setText("Quddeln");
@@ -83,7 +93,7 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         tagButton3.setLayoutParams(new TableRow.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
-        raw1.addView(tagButton3);
+        raw1.addView(tagButton3);*/
 
     }
 
