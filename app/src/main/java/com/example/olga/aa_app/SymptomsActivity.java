@@ -13,6 +13,12 @@ import androidx.appcompat.widget.Toolbar;
 
 public class SymptomsActivity extends AppCompatActivity {
 
+    public static final String SELECTED_CATEGORY = "com.example.olga.aa_app.SELECTED_CATEGORY";
+    public static final String CATEGORY_AIRWAYS = "CATEGORY_AIRWAYS";
+    public static final String CATEGORY_CARDIOVASCULAR = "CATEGORY_CARDIOVASCULAR";
+    public static final String CATEGORY_GASTRO_INTESTINAL = "CATEGORY_GASTRO_INTESTINAL";
+    public static final String CATEGORY_SKIN = "CATEGORY_SKIN";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,36 +35,16 @@ public class SymptomsActivity extends AppCompatActivity {
         }
 
         Button skin = findViewById(R.id.skin);
-        skin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, SkinActivity.class));
-            }
-        });
+        skin.setOnClickListener(categoryOnCLickListener(CATEGORY_SKIN));
 
         Button airways = findViewById(R.id.airways);
-        airways.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, AirwaysActivity.class));
-            }
-        });
+        airways.setOnClickListener(categoryOnCLickListener(CATEGORY_AIRWAYS));
 
         Button gastro = findViewById(R.id.gastro_intestinal);
-        gastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, GastroIntestinalActivity.class));
-            }
-        });
+        gastro.setOnClickListener(categoryOnCLickListener(CATEGORY_GASTRO_INTESTINAL));
 
         Button cardiovascular = findViewById(R.id.cardiovascular);
-        cardiovascular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, CardiovascularActivity.class));
-            }
-        });
+        cardiovascular.setOnClickListener(categoryOnCLickListener(CATEGORY_CARDIOVASCULAR));
 
         Button dizziness = findViewById(R.id.dizziness);
         dizziness.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +96,17 @@ public class SymptomsActivity extends AppCompatActivity {
             getFragmentManager().popBackStack();
         }
         return true;
+    }
+
+    private View.OnClickListener categoryOnCLickListener(final String category) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SymptomsActivity.this, SymptomCategoryActivity.class);
+                intent.putExtra(SELECTED_CATEGORY, category);
+                startActivity(intent);
+            }
+        };
     }
 }
 
