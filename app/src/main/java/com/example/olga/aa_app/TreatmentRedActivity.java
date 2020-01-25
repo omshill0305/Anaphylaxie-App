@@ -29,7 +29,7 @@ public class TreatmentRedActivity extends AppCompatActivity {
         instructionListDBEXample = new ArrayList<>();
         instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
         instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Bitte Fastjekt verabreichen");
+        instructionListDBEXample.add("Bitte den Autoinjektor verabreichen");
 
 
         ListView list = (ListView) findViewById(R.id.dynamicView);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DizzinessActivity">
+    tools:context=".SymptomCategoryActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -33,19 +33,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:base_color="@color/reaction"
-            app:icon="@drawable/headache"
+            app:icon="@drawable/ic_hospital"
             app:layout_constraintBottom_toTopOf="@id/choose"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/white"
-            app:title="@string/dizziness">
+            app:title="@string/lorem">
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.8"
                 android:scrollbarStyle="insideOverlay">
+
 
                 <TableLayout
                     android:id="@+id/listing_layout"
@@ -66,72 +67,9 @@
                     android:scrollbars="vertical"
                     android:verticalScrollbarPosition="right">
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginBottom="@dimen/default_margin"
-                        android:background="@drawable/option_box"
-                        android:backgroundTint="@color/reaction"
-                        android:backgroundTintMode="add"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <CheckBox
-                            android:id="@+id/checkBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:button="@drawable/circle_checkbox_checked"
-                            android:checked="false"
-                            android:drawablePadding="@dimen/default_margin"
-                            android:gravity="center"
-                            android:text="@string/diarrhea"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/paragraph" />
-
-                        <ImageButton
-                            android:id="@+id/button3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorProjektLightGreen"
-                            android:contentDescription="@string/information"
-                            android:padding="@dimen/default_margin"
-                            android:tag="info"
-                            app:srcCompat="@drawable/question_mark" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/default_margin"
-                        android:background="@drawable/option_box"
-                        android:backgroundTint="@color/reaction"
-                        android:backgroundTintMode="add"
-                        android:gravity="center">
-
-                        <CheckBox
-                            android:id="@+id/checkBox2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:button="@drawable/circle_checkbox_checked"
-                            android:drawablePadding="@dimen/default_margin"
-                            android:text="@string/abdominal_pain"
-                            android:textAlignment="center"
-                            android:textSize="@dimen/paragraph" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/colorProjektLightGreen"
-                            android:contentDescription="@string/information"
-                            android:padding="@dimen/default_margin"
-                            app:srcCompat="@drawable/question_mark" />
-                    </TableRow>
-
                 </TableLayout>
             </ScrollView>
+
         </com.example.olga.aa_app.BaseView>
 
         <Button
@@ -151,6 +89,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/content" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

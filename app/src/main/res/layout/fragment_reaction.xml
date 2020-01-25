@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:base_color="@color/reaction"
-    app:icon="@drawable/icons8_hospital_96"
+    app:icon="@drawable/ic_hospital"
     app:tint="@color/white"
     app:title="@string/title_reaction">
 
@@ -14,50 +14,50 @@
         android:layout_height="0dp"
         android:layout_weight="0.8">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
-            android:paddingBottom="@dimen/activity_margin">
+            android:layout_marginLeft="@dimen/activity_margin"
+            android:layout_marginRight="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/activity_margin"
+            android:background="@drawable/info_box"
+            android:backgroundTint="@color/reaction"
+            android:backgroundTintMode="add"
+            tools:layout_conversion_absoluteHeight="120dp"
+            tools:layout_conversion_absoluteWidth="379dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="146dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:background="@drawable/info_box"
-                android:backgroundTint="@color/reaction"
-                android:backgroundTintMode="add"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:text="@string/no_symptoms"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/header"
+                app:layout_constraintBottom_toTopOf="@+id/button2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/activity_margin"
-                    android:text="@string/no_symptoms"
-                    android:textAlignment="center"
-
-                    android:textColor="@android:color/black"
-
-                    android:textSize="18sp" />
-
-                <Button
-                    android:id="@+id/button2"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/reaction"
-                    android:onClick="onClick"
-                    android:padding="@dimen/default_margin"
-                    android:text="@string/choose_symptoms"
-                    android:textSize="@dimen/paragraph" />
-            </LinearLayout>
-
-        </LinearLayout>
+            <Button
+                android:id="@+id/button2"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:background="@color/reaction"
+                android:onClick="onClick"
+                android:padding="@dimen/default_margin"
+                android:text="@string/choose_symptoms"
+                android:textSize="@dimen/paragraph"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 
 </com.example.olga.aa_app.BaseView>

@@ -7,64 +7,46 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class SymptomsActivity extends AppCompatActivity {
 
-    Button skin;
-    Button gastro;
-    Button airways;
-    Button cardiovascular;
-    Button dizziness;
-    Button indefinableDread;
+    public static final String SELECTED_CATEGORY = "com.example.olga.aa_app.SELECTED_CATEGORY";
+    public static final String CATEGORY_AIRWAYS = "CATEGORY_AIRWAYS";
+    public static final String CATEGORY_CARDIOVASCULAR = "CATEGORY_CARDIOVASCULAR";
+    public static final String CATEGORY_GASTRO_INTESTINAL = "CATEGORY_GASTRO_INTESTINAL";
+    public static final String CATEGORY_SKIN = "CATEGORY_SKIN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_symptoms);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.drawable.logo1);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+        }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Button skin = findViewById(R.id.skin);
+        skin.setOnClickListener(categoryOnCLickListener(CATEGORY_SKIN));
 
-        skin = findViewById(R.id.skin);
-        skin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, SkinActivity.class));
-            }
-        });
+        Button airways = findViewById(R.id.airways);
+        airways.setOnClickListener(categoryOnCLickListener(CATEGORY_AIRWAYS));
 
-        airways = findViewById(R.id.airways);
-        airways.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, AirwaysActivity.class));
-            }
-        });
+        Button gastro = findViewById(R.id.gastro_intestinal);
+        gastro.setOnClickListener(categoryOnCLickListener(CATEGORY_GASTRO_INTESTINAL));
 
-        gastro = findViewById(R.id.gastro_intestinal);
-        gastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, GastroIntestinalActivity.class));
-            }
-        });
+        Button cardiovascular = findViewById(R.id.cardiovascular);
+        cardiovascular.setOnClickListener(categoryOnCLickListener(CATEGORY_CARDIOVASCULAR));
 
-        cardiovascular = findViewById(R.id.cardiovascular);
-        cardiovascular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, CardiovascularActivity.class));
-            }
-        });
-
-        dizziness = findViewById(R.id.dizziness);
+        Button dizziness = findViewById(R.id.dizziness);
         dizziness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,11 +54,27 @@ public class SymptomsActivity extends AppCompatActivity {
             }
         });
 
-        indefinableDread = findViewById(R.id.panic);
+        Button indefinableDread = findViewById(R.id.panic);
         indefinableDread.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SymptomsActivity.this, IndefinableDreadActivity.class));
+            }
+        });
+
+        Button runny_nose = findViewById(R.id.runny_nose);
+        runny_nose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, TreatmentRedActivity.class));
+            }
+        });
+
+        Button no_idea = findViewById(R.id.no_idea);
+        no_idea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SymptomsActivity.this, TreatmentRedActivity.class));
             }
         });
     }
@@ -89,7 +87,6 @@ public class SymptomsActivity extends AppCompatActivity {
         return true;
     }
 
-
     public boolean onOptionsItemSelected(MenuItem item) {
         if (getFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
@@ -99,6 +96,17 @@ public class SymptomsActivity extends AppCompatActivity {
             getFragmentManager().popBackStack();
         }
         return true;
+    }
+
+    private View.OnClickListener categoryOnCLickListener(final String category) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SymptomsActivity.this, SymptomCategoryActivity.class);
+                intent.putExtra(SELECTED_CATEGORY, category);
+                startActivity(intent);
+            }
+        };
     }
 }
 

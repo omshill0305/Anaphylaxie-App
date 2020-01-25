@@ -14,6 +14,9 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -54,6 +57,8 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
     private EmergencyCallFragment _this;
     private Geocoder geocoder;
     private List<Address> addresses;
+    private SupportMapFragment mSupportMapFragment;
+    private FragmentTransaction ft;
 
 
 
@@ -73,7 +78,7 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String number = "123456";
+                String number = "112";
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:" + number));
                 if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
@@ -87,8 +92,8 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
         });
 
 
-        SupportMapFragment mSupportMapFragment;
 
+        ft = getFragmentManager().beginTransaction();
 
         // Mapview Fragment innerhalb EmergencyCallFragment setzen
         mSupportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_view);
@@ -98,6 +103,7 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
             mSupportMapFragment = SupportMapFragment.newInstance();
             fragmentTransaction.replace(R.id.map_view, mSupportMapFragment).commit();
         }
+
         // Map erzeugen
         if (mSupportMapFragment != null) {
             mSupportMapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -108,6 +114,7 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
                         //Permission überprüfen
                         if (getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                             getActivity().requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
+                            ft.detach(_this).attach(_this).commit();
                             return;
                         } else {
                             //Map aktivieren und anzeigen
@@ -162,6 +169,7 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
 
 
         }
+        setHasOptionsMenu(true);
         return v;
     }
 
@@ -175,6 +183,7 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
         //Map öffnen
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        ft.detach(_this).attach(_this).commit();
     }
 
     @Override
@@ -190,5 +199,24 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.dataprotection:
+                Intent intent = new Intent(getActivity(), DataProtectionActivity.class);
+                getActivity().startActivity(intent);
+                return true;
+        }
+        return false;
     }
 }

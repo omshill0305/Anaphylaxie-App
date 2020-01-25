@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -28,10 +29,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
+/**
+ * Profile Form
+ * <p>
+ * Checks user input and saves the profile data if valid. The saved profile
+ * can be viewed in the profile tab
+ * (ProfileFragment).
+ */
 public class ProfileFormActivity extends AppCompatActivity {
 
+    // Message to signal the main activity (HomeActivity) that profile data
+    // was updated and/or saved.
     public static final String UPDATED_PROFILE = "com.example.olga.aa_app.UPDATED_PROFILE";
-    private static final String[] ALLERGENS = new String[]{"Belgium", "France", "Italy", "Germany", "Spain"};
+
     private Profile profile = null;
     private DatePickerDialog birthdayPicker;
     private MultiAutoCompleteTextView multiComplete;
@@ -44,7 +54,6 @@ public class ProfileFormActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.drawable.logo1);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -59,14 +68,19 @@ public class ProfileFormActivity extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
 
-        birthdayPicker = new DatePickerDialog(ProfileFormActivity.this, R.style.BirthdayPickerStyle,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int y, int m, int d) {
-                        birthday.setText(Utility.fmtDate(y, m, d));
-                        birthdayPicker.onSaveInstanceState();
-                    }
-                }, year, month, day);
+        birthdayPicker = new DatePickerDialog(ProfileFormActivity.this,
+            R.style.BirthdayPickerStyle,
+            new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int y, int m, int d) {
+                    birthday.setText(Utility.fmtDate(y, m, d));
+                    birthdayPicker.onSaveInstanceState();
+                }
+            },
+            year,
+            month,
+            day
+        );
         birthdayPicker.getDatePicker().setMaxDate(calendar.getTimeInMillis());
         birthday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,17 +92,22 @@ public class ProfileFormActivity extends AppCompatActivity {
             }
         });
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, ALLERGENS);
-
-        multiComplete = findViewById(R.id.multiAutoCompleteTextView);
-        multiComplete.setAdapter(adapter);
+        multiComplete = findViewById(R.id.known_allergens);
+        multiComplete.setAdapter(new ArrayAdapter<>(this,
+            android.R.layout.simple_dropdown_item_1line,
+            getResources().getStringArray(R.array.allergens)
+        ));
         multiComplete.setTokenizer(new SpaceTokenizer());
         multiComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int last = allergyTags.length();
                 allergyTags.append(adapterView.getItemAtPosition(i).toString()).append(" ");
-                allergyTags.setSpan(new TagSpan(ProfileFormActivity.this), last, allergyTags.length() - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                allergyTags.setSpan(new TagSpan(ProfileFormActivity.this),
+                    last,
+                    allergyTags.length() - 1,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                );
                 multiComplete.setText(allergyTags);
                 multiComplete.setSelection(allergyTags.length());
             }
@@ -103,6 +122,12 @@ public class ProfileFormActivity extends AppCompatActivity {
             }
         });
 
+        Spinner autoinjector = findViewById(R.id.autoinjector);
+        autoinjector.setAdapter(new ArrayAdapter<>(this,
+            android.R.layout.simple_spinner_dropdown_item,
+            getResources().getStringArray(R.array.autoinjectors)
+        ));
+
         Intent intent = getIntent();
         Profile p = (Profile) intent.getSerializableExtra(ProfileFragment.SEND_PROFILE);
         receiveProfile(p);
@@ -111,7 +136,7 @@ public class ProfileFormActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra(UPDATED_PROFILE,profile);
+        intent.putExtra(UPDATED_PROFILE, profile);
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -128,7 +153,7 @@ public class ProfileFormActivity extends AppCompatActivity {
             return;
         }
 
-        if (profile == null || !profile.equalProfileInformation(p)) {
+        if (profile == null || !profile.same(p)) {
             profile = p;
             // TODO: Save...
             Utility.showToast(getApplicationContext(), "Changes were saved!");
@@ -141,12 +166,12 @@ public class ProfileFormActivity extends AppCompatActivity {
     private Profile sendProfile() {
         // Profile Data
         String name = ((EditText) findViewById(R.id.profile_name)).getText().toString();
-        DatePicker date = birthdayPicker.getDatePicker();
-        String gender = getRadioGroupValue(R.id.gender);
+        TextView birthday = findViewById(R.id.birthday);
+        Profile.Gender gender = genderFromString(getRadioGroupValue(R.id.gender));
         ArrayList<String> allergens = new ArrayList<>(Arrays.asList(allergyTags.toString().split(" ")));
         String asthma = getRadioGroupValue(R.id.asthma);
 
-        if (gender == null || asthma == null) {
+        if (name.isEmpty() || gender == null || asthma == null || birthday.getText().length() == 0) {
             return null;
         }
 
@@ -155,18 +180,30 @@ public class ProfileFormActivity extends AppCompatActivity {
         String antihistamineDosage = ((EditText) findViewById(R.id.antihistamine_dosage)).getText().toString();
         String steroid = ((EditText) findViewById(R.id.steroid)).getText().toString();
         String steroidDosage = ((EditText) findViewById(R.id.steroid_dosage)).getText().toString();
-        String autoinjector = ((EditText) findViewById(R.id.autoinjector)).getText().toString();
-        // TODO: Can this even have a dosage?
-        // String autoinjectorDosage = ((EditText) findViewById(R.id.autoinjector_dosage)).getText().toString();
+        Spinner autoinjector = findViewById(R.id.autoinjector);
         String salbutamol = getRadioGroupValue(R.id.salbutamol);
 
-        if (salbutamol == null) {
+        if (salbutamol == null || autoinjector.getSelectedItem() == null) {
             return null;
         }
 
-        return new Profile(name, date.getYear(), date.getMonth(), date.getDayOfMonth(), gender,
-                allergens, asthma.equals(getString(R.string.yes)), antihistamine, antihistamineDosage,
-                steroid, steroidDosage, autoinjector, salbutamol.equals(getString(R.string.yes)));
+        DatePicker date = birthdayPicker.getDatePicker();
+        String[] autoInjectors = getResources().getStringArray(R.array.autoinjectors);
+
+        return new Profile(name,
+            date.getYear(),
+            date.getMonth(),
+            date.getDayOfMonth(),
+            gender,
+            allergens,
+            asthma.equals(getString(R.string.yes)),
+            antihistamine,
+            antihistamineDosage,
+            steroid,
+            steroidDosage,
+            autoInjectors[autoinjector.getSelectedItemPosition()],
+            salbutamol.equals(getString(R.string.yes))
+        );
     }
 
     private void receiveProfile(Profile p) {
@@ -175,7 +212,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         }
         profile = p;
         // Profile Name
-        ((EditText) findViewById(R.id.profile_name)).setText(p.getProfilName());
+        ((EditText) findViewById(R.id.profile_name)).setText(p.getName());
         // Birthday
         final Calendar calendar = Calendar.getInstance();
         calendar.setTime(p.getBirthday());
@@ -186,23 +223,31 @@ public class ProfileFormActivity extends AppCompatActivity {
         birthday.setText(Utility.fmtDate(year, month, day));
         birthdayPicker.updateDate(year, month, day);
         // Gender
-        setRadioGroupValue(R.id.gender, p.getSex());
+        setRadioGroupValue(R.id.gender, genderToString(p.getSex()));
         // TODO: Allergens...
         // Asthma
         setRadioGroupValue(R.id.asthma, getString(p.hasAsthma() ? R.string.yes : R.string.no));
 
         // Antihistamine
-        ((EditText) findViewById(R.id.antihistamine)).setText(p.getAntihistaminikumName());
-        ((EditText) findViewById(R.id.antihistamine_dosage)).setText(p.getSteroidDosierung());
+        ((EditText) findViewById(R.id.antihistamine)).setText(p.getAntihistamine());
+        ((EditText) findViewById(R.id.antihistamine_dosage)).setText(p.getSteroidDosage());
         // Steroid
-        ((EditText) findViewById(R.id.steroid)).setText(p.getSteroidName());
-        ((EditText) findViewById(R.id.steroid_dosage)).setText(p.getSteroidDosierung());
+        ((EditText) findViewById(R.id.steroid)).setText(p.getSteroid());
+        ((EditText) findViewById(R.id.steroid_dosage)).setText(p.getSteroidDosage());
         // Autoinjector
-        ((EditText) findViewById(R.id.autoinjector)).setText(p.getAutoinjektorName());
+        Spinner autoinjector = findViewById(R.id.autoinjector);
+        ArrayAdapter<String> autoinjectorAdapter = (ArrayAdapter<String>) autoinjector.getAdapter();
+        autoinjector.setSelection(autoinjectorAdapter.getPosition(p.getAutoinjector()));
         // Salbutamol
         setRadioGroupValue(R.id.salbutamol, getString(p.takesSalbutamol() ? R.string.yes : R.string.no));
     }
 
+    /**
+     * Helper method to retrieve the selected radio button value of a radio group.
+     *
+     * @param id The id of the radio group.
+     * @return Selected radio button value or null if nothing is selected.
+     */
     private String getRadioGroupValue(int id) {
         int checkedButton = ((RadioGroup) findViewById(id)).getCheckedRadioButtonId();
         if (checkedButton == -1) {
@@ -212,6 +257,12 @@ public class ProfileFormActivity extends AppCompatActivity {
         return button.getText().toString();
     }
 
+    /**
+     * Helper method to set the value of a radio button in a radio group.
+     *
+     * @param id    The id of the radio group.
+     * @param value The value of the radio button that will be selected.
+     */
     private void setRadioGroupValue(int id, String value) {
         RadioGroup radioGroup = findViewById(id);
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
@@ -220,6 +271,34 @@ public class ProfileFormActivity extends AppCompatActivity {
                 button.setChecked(true);
                 break;
             }
+        }
+    }
+
+    private Profile.Gender genderFromString(String gender) {
+        if (gender == null) {
+            return null;
+        }
+        if (gender.equalsIgnoreCase(getString(R.string.male))) {
+            return Profile.Gender.Male;
+        } else if (gender.equalsIgnoreCase(getString(R.string.female))) {
+            return Profile.Gender.Female;
+        } else if (gender.equalsIgnoreCase(getString(R.string.diverse))) {
+            return Profile.Gender.Diverse;
+        } else {
+            return null;
+        }
+    }
+
+    private String genderToString(Profile.Gender gender) {
+        switch (gender) {
+            case Male:
+                return getString(R.string.male);
+            case Female:
+                return getString(R.string.female);
+            case Diverse:
+                return getString(R.string.diverse);
+            default:
+                return "";
         }
     }
 }

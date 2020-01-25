@@ -12,6 +12,4 @@
     android:text="@string/lorem"
     android:textSize="@dimen/title"
     android:typeface="monospace"
-    app:autoSizeMaxTextSize="32sp"
-    app:autoSizeTextType="uniform"
     tool:showIn="@layout/fragment_emergency_call" />
