@@ -98,6 +98,10 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                     }
                 });
             }
+            else {
+                ImageButton info_button = (ImageButton) row.getChildAt(1);
+                info_button.setEnabled(false);
+            }
             root.addView(row);
         }
         names.recycle();
