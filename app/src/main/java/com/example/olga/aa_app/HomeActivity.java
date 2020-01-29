@@ -125,4 +125,14 @@ public class HomeActivity extends AppCompatActivity {
         }
         return profileFragment;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.dataprotection:
+                return false;
+        }
+        return false;
+    }
 }
