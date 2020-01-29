@@ -172,6 +172,36 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                     }
                 });
                 break;
+            case SymptomsActivity.CATEGORY_DIZZINESS:
+                container.setIcon(R.drawable.headache);
+                container.setTitle("Dizziness");
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
+                    }
+                });
+                break;
+            case SymptomsActivity.CATEGORY_RUNNY_NOSE:
+                container.setIcon(R.drawable.runny);
+                container.setTitle("Runny Nose");
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
+                    }
+                });
+                break;
+            case SymptomsActivity.CATEGORY_INDEFINABLE_DREAD:
+                container.setIcon(R.drawable.ghost);
+                container.setTitle("Indefinable Dread");
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
+                    }
+                });
+                break;
             default:
                 break;
         }
@@ -213,6 +243,12 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 return resources.obtainTypedArray(R.array.gastro_intestinal_symptoms);
             case SymptomsActivity.CATEGORY_SKIN:
                 return resources.obtainTypedArray(R.array.skin_symptoms);
+            case SymptomsActivity.CATEGORY_DIZZINESS:
+                return resources.obtainTypedArray(R.array.dizziness_symptoms);
+            case SymptomsActivity.CATEGORY_RUNNY_NOSE:
+                return resources.obtainTypedArray(R.array.runny_nose_symptoms);
+            case SymptomsActivity.CATEGORY_INDEFINABLE_DREAD:
+                return resources.obtainTypedArray(R.array.indefinable_dread_symptoms);
             default:
                 return null;
         }
@@ -229,6 +265,12 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 return resources.obtainTypedArray(R.array.gastro_intestinal_descriptions);
             case SymptomsActivity.CATEGORY_SKIN:
                 return resources.obtainTypedArray(R.array.skin_descriptions);
+            case SymptomsActivity.CATEGORY_DIZZINESS:
+                return resources.obtainTypedArray(R.array.dizziness_description);
+            case SymptomsActivity.CATEGORY_RUNNY_NOSE:
+                return resources.obtainTypedArray(R.array.runny_nose_description);
+            case SymptomsActivity.CATEGORY_INDEFINABLE_DREAD:
+                return resources.obtainTypedArray(R.array.indefinable_dread_description);
             default:
                 return null;
         }

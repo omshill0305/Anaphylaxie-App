@@ -18,6 +18,9 @@ public class SymptomsActivity extends AppCompatActivity {
     public static final String CATEGORY_CARDIOVASCULAR = "CATEGORY_CARDIOVASCULAR";
     public static final String CATEGORY_GASTRO_INTESTINAL = "CATEGORY_GASTRO_INTESTINAL";
     public static final String CATEGORY_SKIN = "CATEGORY_SKIN";
+    public static final String CATEGORY_DIZZINESS = "CATEGORY_DIZZINESS";
+    public static final String CATEGORY_RUNNY_NOSE = "CATEGORY_RUNNY_NOSE";
+    public static final String CATEGORY_INDEFINABLE_DREAD = "CATEGORY_INDEFINABLE_DREAD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,28 +50,13 @@ public class SymptomsActivity extends AppCompatActivity {
         cardiovascular.setOnClickListener(categoryOnCLickListener(CATEGORY_CARDIOVASCULAR));
 
         Button dizziness = findViewById(R.id.dizziness);
-        dizziness.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, DizzinessActivity.class));
-            }
-        });
+        dizziness.setOnClickListener(categoryOnCLickListener(CATEGORY_DIZZINESS));
 
         Button indefinableDread = findViewById(R.id.panic);
-        indefinableDread.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, IndefinableDreadActivity.class));
-            }
-        });
+        indefinableDread.setOnClickListener(categoryOnCLickListener(CATEGORY_INDEFINABLE_DREAD));
 
         Button runny_nose = findViewById(R.id.runny_nose);
-        runny_nose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SymptomsActivity.this, TreatmentRedActivity.class));
-            }
-        });
+        runny_nose.setOnClickListener(categoryOnCLickListener(CATEGORY_RUNNY_NOSE));
 
         Button no_idea = findViewById(R.id.no_idea);
         no_idea.setOnClickListener(new View.OnClickListener() {
