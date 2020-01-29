@@ -113,4 +113,14 @@
     <string name="info_data_security">tbt Unsere Website erfasst mit jedem Aufruf verschiedene allgemeine Daten und Informationen, die in sog. Logfiles des Servers gespeichert werden. Zu diesen Daten zählen etwa Ihre IP-Adresse, Ihr Browsertyp und Ihre Browserversion, Ihr Betriebssystem, die Internetseite, von der Sie auf unsere Website gelangt sind, die Unterwebseiten, welche über ein zugreifendes System auf unserer Internetseite angesteuert werden, das Datum und die Uhrzeit eines Zugriffs auf unsere Website und Ihr Internet-Service-Provider. Die Verarbeitung der Daten erfolgt auf Grundlage von Art. 6 I lit. b) DSGVO. Nach dieser Vorschrift ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags, dessen Vertragspartei Sie sind, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich. Mit der Nutzung unserer Seite nehmen Sie unser Angebot auf Abschluss eines entsprechenden (unentgeltlichen) Nutzungsvertrages stillschweigend an. Im Übrigen ist die Verarbeitung auch über Art. 6 I lit. f) DSGVO gerechtfertigt, da wir ein berechtigtes Interesse an der Verarbeitung haben und Ihre Interessen, Grundrechte und Grundfreiheiten nicht überwiegen. Das Interesse besteht darin, unser Webangebot ordnungsgemäß auszuliefern und die Funktionsfähigkeit unserer Systeme zu schützen.</string>
     <string name="info_diarrhea">Water-thin diarrhea is typical without a fever beforehand. Accompanying abdominal pain is often observed.</string>
     <string name="info_itching">" Starts in the palms of the hands, soles of the feet and the genital area."</string>
+    <string name="your_symptom_selection">You selected the following symptoms</string>
+    <string name="what_todo">What has to be done now?</string>
+    <string name="further_information">Further Information</string>
+
+    <string name="starting_reaction">Possible Starting Reaction</string>
+    <string name="dangerous_reaction">Severe Reaction</string>
+    <string name="stay_calm">Calm down.</string>
+    <string name="treatment_green_medicine">Give %1$s <b>%2$s</b> and %3$s <b>%4$s</b>.</string>
+    <string name="treatment_red_medicine">"Inject the Autoinjector."</string>
+    <string name="after_treatment">Keep monitoring the patient\'s condition. If the condition worsens, call the emergency call service.</string>
 </resources>
