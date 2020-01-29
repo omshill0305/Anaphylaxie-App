@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 /**
  * Selection of symptoms of a category
+ * <p>
+ * The header is set in setup and the content of the activity is created dynamically in onCreate.
  */
 public class SymptomCategoryActivity extends AppCompatActivity {
 
@@ -73,12 +75,12 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             if (descriptions.getResourceId(i, 0) != 0) {
                 final String description = descriptions.getString(i);
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
-                info_button.setBackground(getDrawable(R.color.colorProjektLightGreen));
+                info_button.setColorFilter(getColor(R.color.colorPrimaryDark));
                 info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SymptomCategoryActivity.this,
-                            R.style.MyAlertDialogStyleInfo
+                                R.style.MyAlertDialogStyleInfo
                         );
                         builder.setTitle(checkBox.getText());
 
@@ -97,10 +99,10 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                         dialog.show();
                     }
                 });
-            }
-            else {
+            } else {
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
                 info_button.setEnabled(false);
+                info_button.setAlpha(0.5f);
             }
             root.addView(row);
         }
@@ -143,7 +145,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 });
                 break;
             case SymptomsActivity.CATEGORY_CARDIOVASCULAR:
-                container.setIcon(R.drawable.cardiogram);
+                container.setIcon(R.drawable.ic_cardiogram);
                 container.setTitle(getString(R.string.cardiovascular));
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -179,6 +181,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
 
     /**
      * TODO: Change Symptom, Reaction and Algorithm class to use identifiers.
+     *
      * @return Returns string resource identifiers of selected checkboxes.
      */
     private ArrayList<Integer> getSelectedSymptoms() {

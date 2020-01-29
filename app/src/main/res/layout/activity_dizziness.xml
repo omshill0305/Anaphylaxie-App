@@ -97,7 +97,7 @@
                             android:contentDescription="@string/information"
                             android:padding="@dimen/default_margin"
                             android:tag="info"
-                            app:srcCompat="@drawable/question_mark" />
+                            app:srcCompat="@drawable/ic_info" />
                     </TableRow>
 
                     <TableRow
@@ -127,7 +127,7 @@
                             android:background="@color/colorProjektLightGreen"
                             android:contentDescription="@string/information"
                             android:padding="@dimen/default_margin"
-                            app:srcCompat="@drawable/question_mark" />
+                            app:srcCompat="@drawable/ic_info" />
                     </TableRow>
 
                 </TableLayout>
