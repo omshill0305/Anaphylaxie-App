@@ -32,13 +32,21 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         }
 
         TextView medicines = findViewById(R.id.medicine);
-        medicines.setText(getString(R.string.treatment_green_medicine,
-            "Dosierung",
-            "Antihistaminikum",
-            "Dosierung",
-            "Steroid"
-        ));
+        TextView standby = findViewById(R.id.standby);
 
+        if (Profile.currentProfile != null) {
+            medicines.setText(getString(
+                R.string.treatment_green_medicine,
+                Profile.currentProfile.getAntihistamineDosage(),
+                Profile.currentProfile.getAntihistamine(),
+                Profile.currentProfile.getSteroidDosage(),
+                Profile.currentProfile.getSteroid()
+            ));
+            standby.setText(getString(R.string.after_treatment_green, Profile.currentProfile.getAutoinjector()));
+        } else {
+            medicines.setText(getString(R.string.treatment_green_medicine, "", "", "", ""));
+            standby.setText(getString(R.string.after_treatment_green, ""));
+        }
         showAddItemDialog1(null);
 
         TextView selection = findViewById(R.id.selection);

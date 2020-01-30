@@ -31,6 +31,13 @@ public class TreatmentRedActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
+        TextView medicine = findViewById(R.id.medicine);
+        if (Profile.currentProfile != null) {
+            medicine.setText(getString(R.string.treatment_red_medicine, Profile.currentProfile.getAutoinjector()));
+        } else {
+            medicine.setText(getString(R.string.treatment_red_medicine, ""));
+        }
+
         showAddItemDialog1(null);
 
         TextView selection = findViewById(R.id.selection);
@@ -43,9 +50,7 @@ public class TreatmentRedActivity extends AppCompatActivity {
                 startActivity(new Intent(TreatmentRedActivity.this, SymptomsActivity.class));
             }
         });
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
