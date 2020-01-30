@@ -8,12 +8,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import android.widget.TextView;
 
@@ -35,24 +33,13 @@ public class TreatmentGreenActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
-        LinearLayout instructions = findViewById(R.id.instructions);
-
-        LayoutInflater inflater = getLayoutInflater();
-        TextView stay_calm = (TextView) inflater.inflate(R.layout.instruction, instructions, false);
-        stay_calm.setText(R.string.stay_calm);
-        TextView medicines = (TextView) inflater.inflate(R.layout.instruction, instructions, false);
+        TextView medicines = findViewById(R.id.medicine);
         medicines.setText(getString(R.string.treatment_green_medicine,
                 "Dosierung",
                 "Antihistaminikum",
                 "Dosierung",
                 "Steroid"
         ));
-        TextView after_treatment = (TextView) inflater.inflate(R.layout.instruction, instructions, false);
-        after_treatment.setText(R.string.after_treatment);
-
-        instructions.addView(stay_calm);
-        instructions.addView(medicines);
-        instructions.addView(after_treatment);
 
         showAddItemDialog1(null);
 

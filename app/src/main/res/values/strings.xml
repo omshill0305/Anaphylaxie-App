@@ -122,6 +122,7 @@
     <string name="stay_calm">Calm down.</string>
     <string name="treatment_green_medicine">Give %1$s <b>%2$s</b> and %3$s <b>%4$s</b>.</string>
     <string name="treatment_red_medicine">"Inject the Autoinjector."</string>
-    <string name="after_treatment">Keep monitoring the patient\'s condition. If the condition worsens, call the emergency call service.</string>
+    <string name="after_treatment_green">Keep monitoring the patient\'s condition. Call the emergency call service when in doubt.</string>
+    <string name="after_treatment_red">Call the emergency call service.</string>
     <string name="back_to_selection">Back to selection</string>
 </resources>

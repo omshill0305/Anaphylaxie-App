@@ -114,6 +114,7 @@
     <string name="stay_calm">Bewahren Sie Ruhe.</string>
     <string name="treatment_green_medicine">Verabreichen Sie %1$s <b>%2$s</b> und %3$s <b>%4$s</b>.</string>
     <string name="treatment_red_medicine">Verabreichen Sie den Autoinjektor.</string>
-    <string name="after_treatment">Beobachten Sie weiterhin den Zustand des Patienten. Rufen Sie den Notrufdienst an, wenn sich der Zustand verschlechtert.</string>
+    <string name="after_treatment_green">Beobachten Sie weiterhin den Zustand des Patienten. Wählen Sie im Zweifel den Notruf.</string>
     <string name="back_to_selection">Zurück zur Auswahl</string>
+    <string name="after_treatment_red">Wählen Sie den Notruf.</string>
 </resources>
