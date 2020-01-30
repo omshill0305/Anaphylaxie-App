@@ -3,6 +3,8 @@ package com.example.olga.aa_app;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.olga.aa_app.utility.TagSpan;
 
 public class TreatmentGreenActivity extends AppCompatActivity {
 
@@ -47,10 +51,19 @@ public class TreatmentGreenActivity extends AppCompatActivity {
             medicines.setText(getString(R.string.treatment_green_medicine, "", "", "", ""));
             standby.setText(getString(R.string.after_treatment_green, ""));
         }
-        showAddItemDialog1(null);
 
         TextView selection = findViewById(R.id.selection);
-        selection.setText(R.string.wheals);
+        StringBuilder selectedReactions = new StringBuilder();
+        if (Profile.currentProfile != null) {
+            for (Symptom symptom: Profile.currentProfile.getCurrentReaction().getSymptoms()) {
+                selectedReactions.append(getString(symptom.getName())).append(", ");
+            }
+        }
+        if (selectedReactions.length() > 2) {
+            selection.setText(selectedReactions.substring(0, selectedReactions.length() - 2));
+        }
+
+        showAddItemDialog1(null);
 
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {

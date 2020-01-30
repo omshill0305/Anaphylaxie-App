@@ -41,7 +41,15 @@ public class TreatmentRedActivity extends AppCompatActivity {
         showAddItemDialog1(null);
 
         TextView selection = findViewById(R.id.selection);
-        selection.setText(R.string.tingling_mouth_throat);
+        StringBuilder selectedReactions = new StringBuilder();
+        if (Profile.currentProfile != null) {
+            for (Symptom symptom: Profile.currentProfile.getCurrentReaction().getSymptoms()) {
+                selectedReactions.append(getString(symptom.getName())).append(", ");
+            }
+        }
+        if (selectedReactions.length() > 2) {
+            selection.setText(selectedReactions.substring(0, selectedReactions.length() - 2));
+        }
 
         Button back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
