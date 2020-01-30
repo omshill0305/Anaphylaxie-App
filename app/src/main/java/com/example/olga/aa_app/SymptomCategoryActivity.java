@@ -78,7 +78,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SymptomCategoryActivity.this,
-                            R.style.MyAlertDialogStyleInfo
+                                R.style.MyAlertDialogStyleInfo
                         );
                         builder.setTitle(checkBox.getText());
 
@@ -97,8 +97,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                         dialog.show();
                     }
                 });
-            }
-            else {
+            } else {
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
                 info_button.setEnabled(false);
             }
@@ -174,7 +173,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 break;
             case SymptomsActivity.CATEGORY_DIZZINESS:
                 container.setIcon(R.drawable.headache);
-                container.setTitle("Dizziness");
+                container.setTitle(getString(R.string.dizziness));
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -184,7 +183,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 break;
             case SymptomsActivity.CATEGORY_RUNNY_NOSE:
                 container.setIcon(R.drawable.runny);
-                container.setTitle("Runny Nose");
+                container.setTitle(getString(R.string.runny_nose));
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -194,7 +193,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 break;
             case SymptomsActivity.CATEGORY_INDEFINABLE_DREAD:
                 container.setIcon(R.drawable.ghost);
-                container.setTitle("Indefinable Dread");
+                container.setTitle(getString(R.string.panic));
                 choose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -209,6 +208,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
 
     /**
      * TODO: Change Symptom, Reaction and Algorithm class to use identifiers.
+     *
      * @return Returns string resource identifiers of selected checkboxes.
      */
     private ArrayList<Integer> getSelectedSymptoms() {
