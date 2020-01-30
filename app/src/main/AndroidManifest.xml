@@ -47,14 +47,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".DizzinessActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".IndefinableDreadActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".TreatmentGreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
