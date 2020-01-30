@@ -78,8 +78,8 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(
-                                SymptomCategoryActivity.this,
-                                R.style.MyAlertDialogStyleInfo
+                            SymptomCategoryActivity.this,
+                            R.style.MyAlertDialogStyleInfo
                         );
                         builder.setTitle(checkBox.getText());
 
@@ -156,15 +156,15 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 break;
             case SymptomsActivity.CATEGORY_DIZZINESS:
                 container.setIcon(R.drawable.headache);
-                container.setTitle("Dizziness");
+                container.setTitle(getString(R.string.dizziness));
                 break;
             case SymptomsActivity.CATEGORY_RUNNY_NOSE:
                 container.setIcon(R.drawable.runny);
-                container.setTitle("Runny Nose");
+                container.setTitle(getString(R.string.runny_nose));
                 break;
             case SymptomsActivity.CATEGORY_INDEFINABLE_DREAD:
                 container.setIcon(R.drawable.ghost);
-                container.setTitle("Indefinable Dread");
+                container.setTitle(getString(R.string.panic));
                 break;
             default:
                 break;
