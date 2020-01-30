@@ -1,10 +1,5 @@
 package com.example.olga.aa_app;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class TreatmentGreenActivity extends AppCompatActivity {
 
@@ -35,10 +33,10 @@ public class TreatmentGreenActivity extends AppCompatActivity {
 
         TextView medicines = findViewById(R.id.medicine);
         medicines.setText(getString(R.string.treatment_green_medicine,
-                "Dosierung",
-                "Antihistaminikum",
-                "Dosierung",
-                "Steroid"
+            "Dosierung",
+            "Antihistaminikum",
+            "Dosierung",
+            "Steroid"
         ));
 
         showAddItemDialog1(null);
@@ -78,10 +76,8 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
         builder.setTitle("Schritt 2");
 
-
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout2, null);
         builder.setView(customLayout);
-
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -97,10 +93,8 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
         builder.setTitle("Schritt 1");
 
-
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
         builder.setView(customLayout);
-
 
         builder.setPositiveButton("Weiter", new DialogInterface.OnClickListener() {
             @Override
