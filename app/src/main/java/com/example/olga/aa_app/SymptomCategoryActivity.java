@@ -23,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Selection of symptoms of a category
@@ -78,8 +77,9 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(SymptomCategoryActivity.this,
-                            R.style.MyAlertDialogStyleInfo
+                        AlertDialog.Builder builder = new AlertDialog.Builder(
+                                SymptomCategoryActivity.this,
+                                R.style.MyAlertDialogStyleInfo
                         );
                         builder.setTitle(checkBox.getText());
 
@@ -98,8 +98,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                         dialog.show();
                     }
                 });
-            }
-            else {
+            } else {
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
                 info_button.setEnabled(false);
             }
@@ -131,77 +130,41 @@ public class SymptomCategoryActivity extends AppCompatActivity {
     private void setup(String symptomCategory) {
         category = symptomCategory;
         Button choose = findViewById(R.id.choose);
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseActivity(evaluateAlgorithm());
+            }
+        });
         BaseView container = findViewById(R.id.content);
         switch (category) {
             case SymptomsActivity.CATEGORY_AIRWAYS:
                 container.setIcon(R.drawable.lung);
                 container.setTitle(getString(R.string.airways));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        chooseActivity(evaluateAlgorithm());
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_CARDIOVASCULAR:
                 container.setIcon(R.drawable.cardiogram);
                 container.setTitle(getString(R.string.cardiovascular));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        chooseActivity(evaluateAlgorithm());
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_GASTRO_INTESTINAL:
                 container.setIcon(R.drawable.stomach);
                 container.setTitle(getString(R.string.gastro_intestinal));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        chooseActivity(evaluateAlgorithm());
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_SKIN:
                 container.setIcon(R.drawable.ic_head);
                 container.setTitle(getString(R.string.skin));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        chooseActivity(evaluateAlgorithm());
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_DIZZINESS:
                 container.setIcon(R.drawable.headache);
                 container.setTitle("Dizziness");
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        chooseActivity(evaluateAlgorithm());
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_RUNNY_NOSE:
                 container.setIcon(R.drawable.runny);
                 container.setTitle("Runny Nose");
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        chooseActivity(evaluateAlgorithm());
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_INDEFINABLE_DREAD:
                 container.setIcon(R.drawable.ghost);
                 container.setTitle("Indefinable Dread");
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        chooseActivity(evaluateAlgorithm());
-                    }
-                });
                 break;
             default:
                 break;
@@ -211,22 +174,26 @@ public class SymptomCategoryActivity extends AppCompatActivity {
     private String evaluateAlgorithm() {
         Reaction reaction;
         Profile profile = Profile.currentProfile;
-        ArrayList<String> symptoms = getSelectedSymptoms();
+        ArrayList<Integer> symptoms = getSelectedSymptoms();
 
-        if (profile != null) reaction = profile.getCurrentReaction();
-        else reaction = new Reaction();
+        if (profile != null) {
+            reaction = profile.getCurrentReaction();
+        } else {
+            reaction = new Reaction();
+        }
 
-        for(String symptom : symptoms) {
+        for (Integer symptom : symptoms) {
             reaction.addSymptom(new Symptom(symptom));
         }
         return Algorithm.evaluate(reaction);
     }
 
     /**
-     * TODO: Change Symptom, Reaction and Algorithm class to use identifiers.
+     * Searches for checked checkboxes and returns their mapped resource identifier.
+     *
      * @return Returns string resource identifiers of selected checkboxes.
      */
-    private ArrayList<String> getSelectedSymptoms() {
+    private ArrayList<Integer> getSelectedSymptoms() {
         TypedArray names = getSymptomResources();
         if (names == null || names.length() == 0) {
             return new ArrayList<>();
@@ -234,14 +201,13 @@ public class SymptomCategoryActivity extends AppCompatActivity {
 
         TableLayout root = findViewById(R.id.listing_layout);
         int len = Math.min(names.length(), root.getChildCount());
-        ArrayList<String> selection = new ArrayList<>(len);
+        ArrayList<Integer> selection = new ArrayList<>(len);
 
         for (int i = 0; i < len; i++) {
             TableRow row = (TableRow) root.getChildAt(i);
             CheckBox checkBox = (CheckBox) row.getChildAt(0);
-            if (checkBox.isSelected()) {
-                System.out.println(names.getString(i));
-                selection.add(names.getString(i));
+            if (checkBox.isChecked()) {
+                selection.add(names.getResourceId(i, 0));
             }
         }
         names.recycle();
@@ -250,21 +216,14 @@ public class SymptomCategoryActivity extends AppCompatActivity {
 
     private void chooseActivity(String evaluatedAlgorithm) {
         Intent intent;
-        if (evaluatedAlgorithm.contains("algorithm1"))
+        if (evaluatedAlgorithm.equalsIgnoreCase(Algorithm.ALGORITHM_1)) {
             intent = new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class);
-        else intent = new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class);
+        } else {
+            intent = new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class);
+        }
 
         intent.putExtra("evaluatedAlgorithm", evaluatedAlgorithm);
         startActivity(intent);
-    }
-
-    private HashMap<String, String> getAirwaysDescription() {
-        HashMap<String, String> des = new HashMap<>(4);
-        des.put(getString(R.string.difficulty_in_breathing), getString(R.string.info_difficulty_in_breathing));
-        des.put(getString(R.string.hoarseness), null);
-        des.put(getString(R.string.wheezing), getString(R.string.info_wheezing));
-        des.put(getString(R.string.cough), null);
-        return des;
     }
 
     private TypedArray getSymptomResources() {
