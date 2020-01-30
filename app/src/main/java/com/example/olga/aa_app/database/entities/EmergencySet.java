@@ -1,56 +1,72 @@
 package com.example.olga.aa_app.database.entities;
 
+
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-import static androidx.room.ForeignKey.CASCADE;
-import static androidx.room.ForeignKey.RESTRICT;
+import java.io.Serializable;
 
-@Entity(tableName = "emergencyset_table", foreignKeys = {
-        @ForeignKey(
-                entity = BrandName.class,
-                parentColumns = "brandNameId",
-                childColumns = "brandNameId",
-                onDelete = RESTRICT,
-                onUpdate = CASCADE
-        ),
-        @ForeignKey(entity = Medicine.class,
-                parentColumns = "medicineId",
-                childColumns = "medicineId",
-                onDelete = RESTRICT,
-                onUpdate = CASCADE)
-}, indices =
-    {@Index (value = "brandNameId"), @Index(value =  "medicineId")}) // Don't forget to change the table name when copy and pasting
-public class EmergencySet {
+
+@Entity(tableName = "emergencyset_table", indices = {@Index(value = "emergencySetId", unique = true)}) // Don't forget to change the table name when copy and pasting
+public class EmergencySet implements Serializable {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int emergencySetId;
+    private long emergencySetId;
 
-    public int brandNameId;
-    public int medicineId;
-
-    public float dosage;
-
-    public String dosageUnit;
+    private String brandName;
+    private String medicine;
+    private String dosage;
+    private String dosageUnit;
 
     // Things needed: Constructor, Getters for all fields and one setter for ID
 
-    public EmergencySet(int brandNameId, int medicineId, float dosage, @NonNull String dosageUnit) {
-        this.brandNameId = brandNameId;
-        this.medicineId = medicineId;
+    public EmergencySet(String brandName, String medicine, String dosage, @NonNull String dosageUnit) {
+        this.brandName = brandName;
+        this.medicine = medicine;
         this.dosage = dosage;
         this.dosageUnit = dosageUnit;
     }
 
-    public int getEmergencySetId() {
+    public long getEmergencySetId() {
         return emergencySetId;
     }
 
-    public void setEmergencySetId(int emergencySetId) {
+    public void setEmergencySetId(long emergencySetId) {
         this.emergencySetId = emergencySetId;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(String medicine) {
+        this.medicine = medicine;
+    }
+
+    public String getDosage() {
+        return dosage;
+    }
+
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+
+    public String getDosageUnit() {
+        return dosageUnit;
+    }
+
+    public void setDosageUnit(String dosageUnit) {
+        this.dosageUnit = dosageUnit;
     }
 }

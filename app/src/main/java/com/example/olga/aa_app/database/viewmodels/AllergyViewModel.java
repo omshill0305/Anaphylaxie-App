@@ -23,15 +23,20 @@ public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
         repository = new AllergyRepository(application);
     }
 
-    public Completable insert(Allergy allergy){
+    public Single<Long> insert(Allergy allergy){
         return repository.insert(allergy);
     }
 
-    public Completable update(Allergy allergy){
+    @Override
+    public Single<Long[]> insertAll(List<Allergy> allergies) {
+        return repository.insertAll(allergies);
+    }
+
+    public Single<Integer> update(Allergy allergy){
         return repository.update(allergy);
     }
 
-    public Completable delete(Allergy allergy){
+    public Single<Integer> delete(Allergy allergy){
         return repository.delete(allergy);
     }
 
@@ -39,11 +44,12 @@ public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
         return repository.getAllAllergies();
     }
 
-    public Single<Allergy> getAllergyByID(int id) {
+    public Single<Allergy> getAllergyByID(long id) {
         return repository.getAllergyByID(id);
     }
 
     public Single<Allergy> getAllergyByName(String name) {
         return repository.getAllergyByName(name);
     }
+
 }

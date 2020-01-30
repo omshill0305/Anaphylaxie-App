@@ -33,17 +33,7 @@ public class SetsOfProfileRepository implements SetsOfProfileDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
     @Override
-    public Completable insert(SetsOfProfile setsOfProfile) {
+    public Single<Long> insert(SetsOfProfile setsOfProfile) {
         return setsOfProfileDAO.insert(setsOfProfile).subscribeOn(Schedulers.io());
-    }
-
-    @Override
-    public LiveData<List<Profile>> getProfilesWithEmergencySet(int emergencySetId) {
-        return setsOfProfileDAO.getProfilesWithEmergencySet(emergencySetId);
-    }
-
-    @Override
-    public LiveData<List<Profile>> getEmergencySetsOfProfile(int profileId) {
-        return setsOfProfileDAO.getEmergencySetsOfProfile(profileId);
     }
 }

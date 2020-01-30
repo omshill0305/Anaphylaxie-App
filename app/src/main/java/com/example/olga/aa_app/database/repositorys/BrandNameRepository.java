@@ -29,20 +29,20 @@ public class BrandNameRepository implements BrandNameDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public Completable insert(BrandName brandName){
+    public Single<Long> insert(BrandName brandName){
         return brandNameDAO.insert(brandName).subscribeOn(Schedulers.io());
     }
 
-    public Completable update(BrandName brandName){
+    public Single<Integer> update(BrandName brandName){
         return brandNameDAO.update(brandName).subscribeOn(Schedulers.io());
     }
 
-    public Completable delete(BrandName brandName){
+    public Single<Integer> delete(BrandName brandName){
         return brandNameDAO.delete(brandName).subscribeOn(Schedulers.io());
     }
 
 
-    public Single<BrandName> getBrandNameByID(int id) {
+    public Single<BrandName> getBrandNameByID(long id) {
         return brandNameDAO.getBrandNameByID(id).subscribeOn(Schedulers.io());
     }
 

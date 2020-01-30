@@ -7,6 +7,7 @@ import com.example.olga.aa_app.database.entities.EmergencyCallTimestamp;
 import com.example.olga.aa_app.database.entities.ReactionTimestamp;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 
 
 @Dao
@@ -15,7 +16,7 @@ public interface EmergencyCallTimestampDAO {
     // Base Operations
 
     @Insert
-    Completable insert(EmergencyCallTimestamp emergencyCallTimestamp);
+    Single<Long> insert(EmergencyCallTimestamp emergencyCallTimestamp);
 
     // Queries
 

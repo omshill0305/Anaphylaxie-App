@@ -31,20 +31,20 @@ public class MedicineRepository implements MedicineDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public Completable insert(Medicine medicine){
+    public Single<Long> insert(Medicine medicine){
         return medicineDAO.insert(medicine).subscribeOn(Schedulers.io());
     }
 
-    public Completable update(Medicine medicine){
+    public Single<Integer> update(Medicine medicine){
         return medicineDAO.update(medicine).subscribeOn(Schedulers.io());
     }
 
-    public Completable delete(Medicine medicine){
+    public Single<Integer> delete(Medicine medicine){
         return medicineDAO.delete(medicine).subscribeOn(Schedulers.io());
     }
 
     @Override
-    public Single<Medicine> getMedicineByID(int id) {
+    public Single<Medicine> getMedicineByID(long id) {
         return medicineDAO.getMedicineByID(id).subscribeOn(Schedulers.io());
     }
 

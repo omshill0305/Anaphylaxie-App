@@ -17,6 +17,7 @@ import com.example.olga.aa_app.database.repositorys.SetsOfProfileRepository;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 
 public class AllergiesOfProfileViewModel extends AndroidViewModel implements AllergiesOfProfileDAO {
 
@@ -28,17 +29,17 @@ public class AllergiesOfProfileViewModel extends AndroidViewModel implements All
     }
 
     @Override
-    public Completable insert(AllergiesOfProfile allergiesOfProfile) {
+    public Single<Long> insert(AllergiesOfProfile allergiesOfProfile) {
         return repository.insert(allergiesOfProfile);
     }
 
     @Override
-    public LiveData<List<Profile>> getProfilesWithAllergies(int allergyId) {
+    public LiveData<List<Profile>> getProfilesWithAllergies(long allergyId) {
         return repository.getProfilesWithAllergies(allergyId);
     }
 
     @Override
-    public LiveData<List<Profile>> getAllergiesOfProfile(int profileId) {
+    public LiveData<List<Profile>> getAllergiesOfProfile(long profileId) {
         return repository.getAllergiesOfProfile(profileId);
     }
 }

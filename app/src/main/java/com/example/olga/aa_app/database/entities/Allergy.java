@@ -9,7 +9,7 @@ public class Allergy {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int allergyId;
+    private long allergyId;
 
     public String name;
 
@@ -19,12 +19,19 @@ public class Allergy {
         this.name = name;
     }
 
-    public int getAllergyId() {
+    public long getAllergyId() {
         return allergyId;
     }
 
-    public void setAllergyId(int allergyId) {
+    public void setAllergyId(long allergyId) {
         this.allergyId = allergyId;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

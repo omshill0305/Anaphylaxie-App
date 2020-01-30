@@ -11,7 +11,7 @@ import com.example.olga.aa_app.database.entities.EmergencySet;
 
 import java.util.List;
 
-import io.reactivex.Completable;
+import io.reactivex.Single;
 
 
 @Dao
@@ -20,13 +20,13 @@ public interface EmergencySetDAO {
     // Base Operations
 
     @Insert
-    Completable insert(EmergencySet emergencySet);
+    Single<Long> insert(EmergencySet emergencySet);
 
     @Update
-    Completable update(EmergencySet emergencySet);
+    Single<Integer> update(EmergencySet emergencySet);
 
     @Delete
-    Completable delete(EmergencySet emergencySet);
+    Single<Integer> delete(EmergencySet emergencySet);
 
     // Custom queries
     @Query("SELECT * FROM emergencyset_table")

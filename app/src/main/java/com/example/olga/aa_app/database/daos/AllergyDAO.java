@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -21,13 +22,16 @@ public interface AllergyDAO {
     // Base Operations
 
     @Insert
-    Completable insert(Allergy allergy);
+    Single<Long> insert(Allergy allergy);
+
+    @Insert
+    Single<Long[]> insertAll(List<Allergy> allergies);
 
     @Update
-    Completable update(Allergy allergy);
+    Single<Integer> update(Allergy allergy);
 
     @Delete
-    Completable delete(Allergy allergy);
+    Single<Integer> delete(Allergy allergy);
 
     // Queries
 
@@ -35,7 +39,7 @@ public interface AllergyDAO {
     LiveData<List<Allergy>> getAllAllergies();
 
     @Query("SELECT * FROM allergy_table WHERE allergyId = :id")
-    Single<Allergy> getAllergyByID(int id);
+    Single<Allergy> getAllergyByID(long id);
 
     @Query("SELECT * FROM allergy_table WHERE name = :name")
     Single<Allergy> getAllergyByName(String name);

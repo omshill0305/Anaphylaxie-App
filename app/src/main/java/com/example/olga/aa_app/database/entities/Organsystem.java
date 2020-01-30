@@ -10,7 +10,7 @@ public class Organsystem {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int organsystemId;
+    private long organsystemId;
 
     public String organsystemName;
     public String description;
@@ -22,11 +22,11 @@ public class Organsystem {
         this.description = description;
     }
 
-    public int getOrgansystemId() {
+    public long getOrgansystemId() {
         return organsystemId;
     }
 
-    public void setOrgansystemId(int organsystemId) {
+    public void setOrgansystemId(long organsystemId) {
         this.organsystemId = organsystemId;
     }
 }

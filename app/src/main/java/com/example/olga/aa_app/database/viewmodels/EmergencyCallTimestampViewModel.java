@@ -13,6 +13,7 @@ import com.example.olga.aa_app.database.repositorys.EmergencyCallTimestampReposi
 import com.example.olga.aa_app.database.repositorys.ReactionTimestampRepository;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 
 public class EmergencyCallTimestampViewModel extends AndroidViewModel implements EmergencyCallTimestampDAO {
 
@@ -24,7 +25,7 @@ public class EmergencyCallTimestampViewModel extends AndroidViewModel implements
     }
 
     @Override
-    public Completable insert(EmergencyCallTimestamp emergencyCallTimestamp) {
+    public Single<Long> insert(EmergencyCallTimestamp emergencyCallTimestamp) {
         return repository.insert(emergencyCallTimestamp);
     }
 

@@ -14,7 +14,7 @@ public class Session {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int sessionId;
+    private long sessionId;
 
     public Timestamp sessionStart;
     public Timestamp sessionEnd;
@@ -25,11 +25,11 @@ public class Session {
         this.sessionStart = new Timestamp(new Date().getTime());
     }
 
-    public int getSessionId() {
+    public long getSessionId() {
         return sessionId;
     }
 
-    public void setSessionId(int sessionId) {
+    public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
     }
 }

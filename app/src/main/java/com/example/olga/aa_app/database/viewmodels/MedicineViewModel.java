@@ -28,20 +28,20 @@ public class MedicineViewModel extends AndroidViewModel implements MedicineDAO {
         repository = new MedicineRepository(application);
     }
 
-    public Completable insert(Medicine medicineRepository){
+    public Single<Long> insert(Medicine medicineRepository){
         return repository.insert(medicineRepository);
     }
 
-    public Completable update(Medicine medicineRepository){
+    public Single<Integer> update(Medicine medicineRepository){
         return repository.update(medicineRepository);
     }
 
-    public Completable delete(Medicine medicineRepository){
+    public Single<Integer> delete(Medicine medicineRepository){
         return repository.delete(medicineRepository);
     }
 
     @Override
-    public Single<Medicine> getMedicineByID(int id) {
+    public Single<Medicine> getMedicineByID(long id) {
         return repository.getMedicineByID(id);
     }
 

@@ -24,20 +24,20 @@ public class BrandNameViewModel extends AndroidViewModel implements BrandNameDAO
         repository = new BrandNameRepository(application);
     }
 
-    public Completable insert(BrandName brandName){
+    public Single<Long> insert(BrandName brandName){
         return repository.insert(brandName);
     }
 
-    public Completable update(BrandName brandName){
+    public Single<Integer> update(BrandName brandName){
         return repository.update(brandName);
     }
 
-    public Completable delete(BrandName brandName){
+    public Single<Integer> delete(BrandName brandName){
         return repository.delete(brandName);
     }
 
     @Override
-    public Single<BrandName> getBrandNameByID(int id) {
+    public Single<BrandName> getBrandNameByID(long id) {
         return repository.getBrandNameByID(id);
     }
 

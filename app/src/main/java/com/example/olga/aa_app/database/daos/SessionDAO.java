@@ -22,10 +22,10 @@ public interface SessionDAO {
     // Base Operations
 
     @Insert
-    Completable insert(Session session);
+    Single<Long> insert(Session session);
 
     @Delete
-    Completable delete(Session session);
+    Single<Integer> delete(Session session);
 
     // Queries
 

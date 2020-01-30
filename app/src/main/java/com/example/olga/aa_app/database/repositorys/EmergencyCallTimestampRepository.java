@@ -9,6 +9,7 @@ import com.example.olga.aa_app.database.entities.EmergencyCallTimestamp;
 import com.example.olga.aa_app.database.entities.ReactionTimestamp;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -27,7 +28,7 @@ public class EmergencyCallTimestampRepository implements EmergencyCallTimestampD
     /* ----------------------------------DAO queries--------------------------------------------*/
 
     @Override
-    public Completable insert(EmergencyCallTimestamp emergencyCallTimestamp) {
+    public Single<Long> insert(EmergencyCallTimestamp emergencyCallTimestamp) {
         return emergencyCallTimestampDAO.insert(emergencyCallTimestamp).subscribeOn(Schedulers.io());
     }
 }

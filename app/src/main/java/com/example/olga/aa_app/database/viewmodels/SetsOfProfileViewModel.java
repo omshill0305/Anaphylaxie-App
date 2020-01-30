@@ -14,6 +14,7 @@ import com.example.olga.aa_app.database.repositorys.SetsOfProfileRepository;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 
 public class SetsOfProfileViewModel extends AndroidViewModel implements SetsOfProfileDAO {
 
@@ -25,17 +26,7 @@ public class SetsOfProfileViewModel extends AndroidViewModel implements SetsOfPr
     }
 
     @Override
-    public Completable insert(SetsOfProfile setsOfProfile) {
+    public Single<Long> insert(SetsOfProfile setsOfProfile) {
         return repository.insert(setsOfProfile);
-    }
-
-    @Override
-    public LiveData<List<Profile>> getProfilesWithEmergencySet(int emergencySetId) {
-        return repository.getProfilesWithEmergencySet(emergencySetId);
-    }
-
-    @Override
-    public LiveData<List<Profile>> getEmergencySetsOfProfile(int profileId) {
-        return repository.getEmergencySetsOfProfile(profileId);
     }
 }

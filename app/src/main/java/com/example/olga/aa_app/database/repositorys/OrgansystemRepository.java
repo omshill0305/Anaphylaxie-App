@@ -32,15 +32,15 @@ public class OrgansystemRepository implements OrgansystemDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public Completable insert(Organsystem organsystem){
+    public Single<Long> insert(Organsystem organsystem){
         return organsystemDAO.insert(organsystem).subscribeOn(Schedulers.io());
     }
 
-    public Completable update(Organsystem organsystem){
+    public Single<Integer> update(Organsystem organsystem){
         return organsystemDAO.update(organsystem).subscribeOn(Schedulers.io());
     }
 
-    public Completable delete(Organsystem organsystem){
+    public Single<Integer> delete(Organsystem organsystem){
         return organsystemDAO.delete(organsystem).subscribeOn(Schedulers.io());
     }
 
@@ -50,7 +50,7 @@ public class OrgansystemRepository implements OrgansystemDAO {
     }
 
     @Override
-    public Single<Organsystem> getOrgansystemById(int id) {
+    public Single<Organsystem> getOrgansystemById(long id) {
         return organsystemDAO.getOrgansystemById(id).subscribeOn(Schedulers.io());
     }
 

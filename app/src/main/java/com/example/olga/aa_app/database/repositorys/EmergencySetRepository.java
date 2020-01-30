@@ -12,6 +12,7 @@ import com.example.olga.aa_app.database.entities.EmergencySet;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -29,15 +30,15 @@ public class EmergencySetRepository implements EmergencySetDAO{
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public Completable insert(EmergencySet emergencySet){
+    public Single<Long> insert(EmergencySet emergencySet){
         return emergencySetDAO.insert(emergencySet).subscribeOn(Schedulers.io());
     }
 
-    public Completable update(EmergencySet emergencySet){
+    public Single<Integer> update(EmergencySet emergencySet){
         return emergencySetDAO.update(emergencySet).subscribeOn(Schedulers.io());
     }
 
-    public Completable delete(EmergencySet emergencySet){
+    public Single<Integer> delete(EmergencySet emergencySet){
         return emergencySetDAO.delete(emergencySet).subscribeOn(Schedulers.io());
     }
 

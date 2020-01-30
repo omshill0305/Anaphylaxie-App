@@ -15,6 +15,7 @@ import com.example.olga.aa_app.database.jointables.SetsOfProfile;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -33,17 +34,17 @@ public class AllergiesOfProfileRepository implements AllergiesOfProfileDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
     @Override
-    public Completable insert(AllergiesOfProfile allergiesOfProfile) {
+    public Single<Long> insert(AllergiesOfProfile allergiesOfProfile) {
         return alleriesOfProfileDAO.insert(allergiesOfProfile).subscribeOn(Schedulers.io());
     }
 
     @Override
-    public LiveData<List<Profile>> getProfilesWithAllergies(int allergyId) {
+    public LiveData<List<Profile>> getProfilesWithAllergies(long allergyId) {
         return alleriesOfProfileDAO.getProfilesWithAllergies(allergyId);
     }
 
     @Override
-    public LiveData<List<Profile>> getAllergiesOfProfile(int profileId) {
+    public LiveData<List<Profile>> getAllergiesOfProfile(long profileId) {
         return alleriesOfProfileDAO.getAllergiesOfProfile(profileId);
     }
 }

@@ -13,7 +13,7 @@ public class BrandName {
     // autoGenerate equals a serial or autoincrement
 
     @PrimaryKey(autoGenerate = true)
-    private int brandNameId;
+    private long brandNameId;
 
     public String name;
 
@@ -24,11 +24,11 @@ public class BrandName {
         this.name = name;
     }
 
-    public int getBrandNameId() {
+    public long getBrandNameId() {
         return brandNameId;
     }
 
-    public void setBrandNameId(int brandNameId) {
+    public void setBrandNameId(long brandNameId) {
         this.brandNameId = brandNameId;
     }
 

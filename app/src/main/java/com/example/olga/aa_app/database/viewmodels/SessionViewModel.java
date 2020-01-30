@@ -27,11 +27,11 @@ public class SessionViewModel extends AndroidViewModel implements SessionDAO {
         repository = new SessionRepository(application);
     }
 
-    public Completable insert(Session session){
+    public Single<Long> insert(Session session){
         return repository.insert(session);
     }
 
-    public Completable delete(Session session){
+    public Single<Integer> delete(Session session){
         return repository.delete(session);
     }
 

@@ -13,21 +13,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.olga.aa_app.database.entities.Allergy;
+import com.example.olga.aa_app.database.entities.Profile;
 import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
+import com.example.olga.aa_app.database.viewmodels.ProfileViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import io.reactivex.Completable;
-import io.reactivex.CompletableObserver;
-import io.reactivex.Observable;
-import io.reactivex.Scheduler;
-import io.reactivex.Single;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.DisposableCompletableObserver;
-import io.reactivex.observers.DisposableSingleObserver;
-import io.reactivex.schedulers.Schedulers;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -75,6 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -83,28 +76,20 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_reaction);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        initializeFragments();
 
         AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
-        Single<Allergy> allergy1 = allergyViewModel.getAllergyByName("bruh3");
 
-        CompositeDisposable d = new CompositeDisposable();
-
-        d.add(allergy1
-                .doOnSuccess(s -> System.out.println("got allergy: " + s.name))
-                .flatMapCompletable( s -> allergyViewModel.delete(s))
+        allergyViewModel.insert(new Allergy("placeholder"))
+                .flatMap(s -> {
+                    Allergy a = new Allergy("b");
+                    a.setAllergyId(s);
+                    return allergyViewModel.delete(a);
+                })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableCompletableObserver() {
-                    @Override
-                    public void onComplete() {
-                        System.out.println("deleted");
-                    }
+                .subscribe();
 
-                    @Override
-                    public void onError(Throwable e) {
-                        System.out.println("something went wrong");
-                    }
-                }));
+        initializeFragments();
+
     }
 
     @Override
@@ -119,9 +104,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ProfileFragment.REQUEST_PROFILE_UPDATE) {
             if (resultCode == RESULT_OK) {
-                Profile p = (Profile) data.getSerializableExtra(ProfileFormActivity.UPDATED_PROFILE);
-                if (p != null) {
-                    profileFragment.updateProfileOverview(p);
+                ProfileForm profileForm = (ProfileForm) data.getSerializableExtra(ProfileFormActivity.UPDATED_PROFILE);
+                if (profileForm != null) {
+                    profileFragment.updateProfileOverview(profileForm);
                 }
             }
         }

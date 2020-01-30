@@ -14,6 +14,7 @@ import com.example.olga.aa_app.database.jointables.SetsOfProfile;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -32,7 +33,7 @@ public class ReactionTimestampRepository implements ReactionTimestampDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
     @Override
-    public Completable insert(ReactionTimestamp reactionTimestamp) {
+    public Single<Long> insert(ReactionTimestamp reactionTimestamp) {
         return reactionTimestampDAO.insert(reactionTimestamp).subscribeOn(Schedulers.io());
     }
 }

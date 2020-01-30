@@ -21,18 +21,18 @@ public interface BrandNameDAO {
     // Base Operations
 
     @Insert
-    Completable insert(BrandName brandName);
+    Single<Long> insert(BrandName brandName);
 
     @Update
-    Completable update(BrandName brandName);
+    Single<Integer> update(BrandName brandName);
 
     @Delete
-    Completable delete(BrandName brandName);
+    Single<Integer> delete(BrandName brandName);
 
     // Custom queries
 
     @Query("SELECT * FROM brandname_table WHERE brandNameId = :id")
-    Single<BrandName> getBrandNameByID(int id);
+    Single<BrandName> getBrandNameByID(long id);
 
     @Query("SELECT * FROM brandname_table WHERE name = :name")
     Single<BrandName> getBrandNameByName(String name);

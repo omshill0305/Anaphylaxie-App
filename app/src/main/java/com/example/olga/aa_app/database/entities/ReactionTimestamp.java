@@ -36,18 +36,18 @@ import static androidx.room.ForeignKey.RESTRICT;
 public class ReactionTimestamp {
 
     @PrimaryKey(autoGenerate = true)
-    private int reactionTimestampId;
+    private long reactionTimestampId;
     private Timestamp timestamp;
 
     private int symptomId;
     private int profileId;
     private int sessionId;
 
-    public int getReactionTimestampId() {
+    public long getReactionTimestampId() {
         return reactionTimestampId;
     }
 
-    public void setReactionTimestampId(int reactionTimestampId) {
+    public void setReactionTimestampId(long reactionTimestampId) {
         this.reactionTimestampId = reactionTimestampId;
     }
 

@@ -13,20 +13,35 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.example.olga.aa_app.database.entities.Profile;
+import com.example.olga.aa_app.database.viewmodels.ProfileViewModel;
 import com.example.olga.aa_app.utility.Utility;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicReference;
+
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * The Profile page/tab of the main activity.
  */
 public class ProfileFragment extends Fragment {
 
-    private Profile profile = null;
+    private long currentProfileId;
+    private ProfileForm currentProfile;
     public static final int REQUEST_PROFILE_UPDATE = 1;
     public static final String SEND_PROFILE = "com.example.olga.aa_app.SEND_PROFILE";
+
+    private ProfileViewModel profileViewModel;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -36,7 +51,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        rootView.findViewById(R.id.profile_data).setVisibility(View.GONE);
         Button button = rootView.findViewById(R.id.profile_form_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,28 +58,37 @@ public class ProfileFragment extends Fragment {
                 Activity activity = getActivity();
                 if (activity != null) {
                     Intent intent = new Intent(getActivity(), ProfileFormActivity.class);
-                    if (profile != null) {
-                        intent.putExtra(SEND_PROFILE, profile);
+                    if (currentProfile != null) {
+                        intent.putExtra(SEND_PROFILE, currentProfile);
                     }
                     activity.startActivityForResult(intent, REQUEST_PROFILE_UPDATE);
                 }
             }
         });
         setHasOptionsMenu(true);
+
+        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        currentProfileId = 1; // TODO: Remove manual set profile id
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        showOverview();
     }
 
     /**
      * If p is null the profile overview will be hidden, else it will show the overview and fill in the data.
      *
-     * @param profile profile data
+     * @param profileForm profileForm
      */
-    public void updateProfileOverview(Profile profile) {
-        if (profile != null) {
-            this.profile = profile;
+    public void updateProfileOverview(ProfileForm profileForm) {
+        if (profileForm != null) {
+            this.currentProfile = profileForm;
+            this.currentProfileId = profileForm.getId();
             showOverview();
-        } else if (this.profile != null) {
-            this.profile = null;
+        } else if (this.currentProfile == null) {
             hideOverview();
         }
     }
@@ -78,37 +101,77 @@ public class ProfileFragment extends Fragment {
         if (activity == null) {
             return;
         }
-        // Personal Data
-        TextView name = activity.findViewById(R.id.profile_name);
-        name.setText(profile.getName());
-        TableLayout data = activity.findViewById(R.id.profile_data);
-        data.setVisibility(View.VISIBLE);
-        TextView birthday = data.findViewById(R.id.birthday);
-        final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(profile.getBirthday());
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-        int month = calendar.get(Calendar.MONTH);
-        int year = calendar.get(Calendar.YEAR);
-        birthday.setText(Utility.fmtDate(year, month, day));
-        TextView gender = data.findViewById(R.id.gender);
-        gender.setText(genderToString(profile.getSex()));
-        // TODO: Allergens...
-        // TextView allergens = data.findViewById(R.id.allergens);
-        TextView asthma = data.findViewById(R.id.asthma);
-        asthma.setText(profile.hasAsthma() ? R.string.yes : R.string.no);
 
-        // Emergency Set
-        TextView antihistamine = data.findViewById(R.id.antihistamine);
-        antihistamine.setText(profile.getAntihistamineDosage() + " " + profile.getAntihistamine());
-        TextView steroid = data.findViewById(R.id.steroid);
-        steroid.setText(profile.getSteroidDosage() + " " + profile.getSteroid());
-        TextView autoinjector = data.findViewById(R.id.autoinjector);
-        autoinjector.setText(profile.getAutoinjector());
-        TextView salbumatol = data.findViewById(R.id.salbutamol);
-        salbumatol.setText(profile.takesSalbutamol() ? R.string.yes : R.string.no);
+        CompositeDisposable d = new CompositeDisposable();
 
-        Button button = activity.findViewById(R.id.profile_form_btn);
-        button.setText(R.string.edit_profile);
+        createProfileForm()
+                .subscribeWith(new DisposableSingleObserver<ProfileForm>() {
+                    @Override
+                    public void onSuccess(ProfileForm profileForm) {
+                        TextView name = activity.findViewById(R.id.profile_name);
+                        name.setText(profileForm.getName());
+                        TableLayout data = activity.findViewById(R.id.profile_data);
+                        data.setVisibility(View.VISIBLE);
+                        TextView birthday = data.findViewById(R.id.birthday);
+                        final Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(profileForm.getBirthday());
+                        int day = calendar.get(Calendar.DAY_OF_MONTH);
+                        int month = calendar.get(Calendar.MONTH);
+                        int year = calendar.get(Calendar.YEAR);
+                        birthday.setText(Utility.fmtDate(year, month, day));
+                        TextView gender = data.findViewById(R.id.gender);
+                        gender.setText(profileForm.genderToString());
+                        // TODO: Allergens...
+                        // TextView allergens = data.findViewById(R.id.allergens);
+                        TextView asthma = data.findViewById(R.id.asthma);
+                        asthma.setText(profileForm.hasAsthma() ? R.string.yes : R.string.no);
+
+                        // Emergency Set
+                        TextView antihistamine = data.findViewById(R.id.antihistamine);
+                        antihistamine.setText(profileForm.getAntihistamineDosage() + " " + profileForm.getAntihistamine());
+                        TextView steroid = data.findViewById(R.id.steroid);
+                        steroid.setText(profileForm.getSteroidDosage() + " " + profileForm.getSteroid());
+                        TextView autoinjector = data.findViewById(R.id.autoinjector);
+                        autoinjector.setText(profileForm.getAutoinjector());
+                        TextView salbutamol = data.findViewById(R.id.salbutamol);
+                        salbutamol.setText(profileForm.takesSalbutamol() ? R.string.yes : R.string.no);
+
+                        Button button = activity.findViewById(R.id.profile_form_btn);
+                        button.setText(R.string.edit_profile);
+
+                        currentProfile = profileForm;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        hideOverview();
+                        System.out.println("Could not retrieve profile..."); // TODO: Toast message maybe
+                    }
+                });
+
+    }
+
+    private Single<ProfileForm> createProfileForm(){
+
+        final AtomicReference<Profile> retrievedProfile = new AtomicReference<>();
+
+        return profileViewModel.getProfileByProfileId(currentProfileId)
+                .doOnSuccess(s -> {
+                    retrievedProfile.set(s);
+                    System.out.println("Retrieved profile with id: " + retrievedProfile.get().getProfileId());
+                })
+                .flatMap(s -> profileViewModel.getAllEmergencySetsOfProfileByProfileId(currentProfileId))
+                .doOnSuccess(s -> System.out.println("Retrieved emergency set with " + s.size() + " entries"))
+                .map( a -> {
+                    Profile profile = retrievedProfile.get();
+                    ArrayList<String> allergies = new ArrayList<>();
+
+                    ProfileForm form = new ProfileForm(profile, a);
+
+                    return form;
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     /**

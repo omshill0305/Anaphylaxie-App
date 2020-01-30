@@ -22,13 +22,13 @@ public interface OrgansystemDAO {
     // Base Operations
 
     @Insert
-    Completable insert(Organsystem organsystem);
+    Single<Long> insert(Organsystem organsystem);
 
     @Update
-    Completable update(Organsystem organsystem);
+    Single<Integer> update(Organsystem organsystem);
 
     @Delete
-    Completable delete(Organsystem organsystem);
+    Single<Integer> delete(Organsystem organsystem);
 
     // Queries
 
@@ -36,7 +36,7 @@ public interface OrgansystemDAO {
     LiveData<List<Organsystem>> getAllOrgansystems();
 
     @Query("SELECT * FROM organsystem_table WHERE organsystemId = :id")
-    Single<Organsystem> getOrgansystemById(int id);
+    Single<Organsystem> getOrgansystemById(long id);
 
     @Query("SELECT * FROM organsystem_table WHERE organsystemName = :name")
     Single<Organsystem> getOrgansystemByName(String name);

@@ -6,6 +6,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 
+import androidx.lifecycle.ViewModelProviders;
+
+import com.example.olga.aa_app.database.viewmodels.ProfileViewModel;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableCompletableObserver;
+
 public class MainActivity extends Activity {
     private static int SPLASH_TIME_OUT = 2000;
 
@@ -14,8 +22,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
-
 
         new Handler().postDelayed(new Runnable() {
             @Override

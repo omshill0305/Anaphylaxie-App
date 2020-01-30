@@ -17,6 +17,7 @@ import com.example.olga.aa_app.database.repositorys.SetsOfProfileRepository;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 
 public class ReactionTimestampViewModel extends AndroidViewModel implements ReactionTimestampDAO {
 
@@ -28,7 +29,7 @@ public class ReactionTimestampViewModel extends AndroidViewModel implements Reac
     }
 
     @Override
-    public Completable insert(ReactionTimestamp reactionTimestamp) {
+    public Single<Long> insert(ReactionTimestamp reactionTimestamp) {
         return repository.insert(reactionTimestamp);
     }
 

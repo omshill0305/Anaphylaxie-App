@@ -22,13 +22,13 @@ public interface SymptomDAO {
     // Base Operations
 
     @Insert
-    Completable insert(Symptom symptom);
+    Single<Long> insert(Symptom symptom);
 
     @Update
-    Completable update(Symptom symptom);
+    Single<Integer> update(Symptom symptom);
 
     @Delete
-    Completable delete(Symptom symptom);
+    Single<Integer> delete(Symptom symptom);
 
     // Queries
 
@@ -36,8 +36,8 @@ public interface SymptomDAO {
     LiveData<List<Symptom>> getAllSymptoms();
 
     @Query("SELECT * FROM symptom_table WHERE symptomId = :id")
-    Single<Symptom> getAllergyByID(int id);
+    Single<Symptom> getSymptomByID(long id);
 
     @Query("SELECT * FROM symptom_table WHERE symptomName = :name")
-    Single<Symptom> getAllergyByName(String name);
+    Single<Symptom> getSymptomByName(String name);
 }

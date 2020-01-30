@@ -11,7 +11,7 @@ public class Medicine {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int medicineId;
+    private long medicineId;
 
     public String name;
 
@@ -21,11 +21,11 @@ public class Medicine {
         this.name = name;
     }
 
-    public int getMedicineId() {
+    public long getMedicineId() {
         return medicineId;
     }
 
-    public void setMedicineId(int medicineId) {
+    public void setMedicineId(long medicineId) {
         this.medicineId = medicineId;
     }
 }

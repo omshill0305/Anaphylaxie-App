@@ -29,17 +29,17 @@ import static androidx.room.ForeignKey.RESTRICT;
 public class EmergencyCallTimestamp {
 
     @PrimaryKey(autoGenerate = true)
-    private int emergencyTimestampId;
+    private long emergencyTimestampId;
     private Timestamp timestamp;
 
-    private int profileId;
-    private int sessionId;
+    private long profileId;
+    private long sessionId;
 
-    public int getEmergencyTimestampId() {
+    public long getEmergencyTimestampId() {
         return emergencyTimestampId;
     }
 
-    public void setEmergencyTimestampId(int emergencyTimestampId) {
+    public void setEmergencyTimestampId(long emergencyTimestampId) {
         this.emergencyTimestampId = emergencyTimestampId;
     }
 
@@ -51,19 +51,19 @@ public class EmergencyCallTimestamp {
         this.timestamp = timestamp;
     }
 
-    public int getProfileId() {
+    public long getProfileId() {
         return profileId;
     }
 
-    public void setProfileId(int profileId) {
+    public void setProfileId(long profileId) {
         this.profileId = profileId;
     }
 
-    public int getSessionId() {
+    public long getSessionId() {
         return sessionId;
     }
 
-    public void setSessionId(int sessionId) {
+    public void setSessionId(long sessionId) {
         this.sessionId = sessionId;
     }
 }

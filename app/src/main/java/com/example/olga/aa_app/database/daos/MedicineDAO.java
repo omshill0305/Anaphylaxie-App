@@ -22,18 +22,18 @@ public interface MedicineDAO {
     // Base Operations
 
     @Insert
-    Completable insert(Medicine medicine);
+    Single<Long> insert(Medicine medicine);
 
     @Update
-    Completable update(Medicine medicine);
+    Single<Integer> update(Medicine medicine);
 
     @Delete
-    Completable delete(Medicine medicine);
+    Single<Integer> delete(Medicine medicine);
 
     // Custom queries
 
     @Query("SELECT * FROM medicine_table WHERE medicineId = :id")
-    Single<Medicine> getMedicineByID(int id);
+    Single<Medicine> getMedicineByID(long id);
 
     @Query("SELECT * FROM medicine_table WHERE name = :name")
     Single<Medicine> getMedicineByName(String name);

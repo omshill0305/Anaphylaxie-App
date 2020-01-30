@@ -33,12 +33,12 @@ public class SessionRepository implements SessionDAO {
     /* ----------------------------------DAO queries--------------------------------------------*/
 
     @Override
-    public Completable insert(Session session) {
+    public Single<Long> insert(Session session) {
         return sessionDAO.insert(session).subscribeOn(Schedulers.io());
     }
 
     @Override
-    public Completable delete(Session session) {
+    public Single<Integer> delete(Session session) {
         return sessionDAO.delete(session).subscribeOn(Schedulers.io());
     }
 

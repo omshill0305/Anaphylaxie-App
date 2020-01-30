@@ -22,26 +22,26 @@ public class Symptom {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
-    private int symptomId;
+    private long symptomId;
 
     public String symptomName;
     public String description;
 
-    public int organsystemId;
+    public long organsystemId;
 
     // Things needed: Constructor, Getters for all fields and one setter for ID
 
-    public Symptom(String symptomName, String description, int organsystemId) {
+    public Symptom(String symptomName, String description, long organsystemId) {
         this.symptomName = symptomName;
         this.description = description;
         this.organsystemId = organsystemId;
     }
 
-    public int getSymptomId() {
+    public long getSymptomId() {
         return symptomId;
     }
 
-    public void setSymptomId(int symptomId) {
+    public void setSymptomId(long symptomId) {
         this.symptomId = symptomId;
     }
 }

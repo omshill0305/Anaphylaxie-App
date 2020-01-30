@@ -34,6 +34,7 @@ import com.example.olga.aa_app.database.entities.Symptom;
 import com.example.olga.aa_app.database.jointables.AllergiesOfProfile;
 import com.example.olga.aa_app.database.jointables.SetsOfProfile;
 
+import java.util.Observable;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

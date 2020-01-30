@@ -27,15 +27,15 @@ public class OrgansystemViewModel extends AndroidViewModel implements Organsyste
         repository = new OrgansystemRepository(application);
     }
 
-    public Completable insert(Organsystem organsystem){
+    public Single<Long> insert(Organsystem organsystem){
         return repository.insert(organsystem);
     }
 
-    public Completable update(Organsystem organsystem){
+    public Single<Integer> update(Organsystem organsystem){
         return repository.update(organsystem);
     }
 
-    public Completable delete(Organsystem organsystem){
+    public Single<Integer> delete(Organsystem organsystem){
         return repository.delete(organsystem);
     }
 
@@ -43,7 +43,7 @@ public class OrgansystemViewModel extends AndroidViewModel implements Organsyste
         return repository.getAllOrgansystems();
     }
 
-    public Single<Organsystem> getOrgansystemById(int id) {
+    public Single<Organsystem> getOrgansystemById(long id) {
         return repository.getOrgansystemById(id);
     }
 

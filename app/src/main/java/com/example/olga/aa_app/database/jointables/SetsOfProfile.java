@@ -19,6 +19,7 @@ import com.example.olga.aa_app.database.entities.Profile;
         }, indices =
         {@Index(value = "profileId"), @Index(value =  "emergencySetId")})
 public class SetsOfProfile {
+
     public final int profileId;
     public final int emergencySetId;
 
@@ -26,4 +27,5 @@ public class SetsOfProfile {
         this.profileId = profileId;
         this.emergencySetId = emergencySetId;
     }
+
 }

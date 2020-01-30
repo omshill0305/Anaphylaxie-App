@@ -31,15 +31,20 @@ public class AllergyRepository implements AllergyDAO{
     /* ----------------------------------DAO queries--------------------------------------------*/
 
 
-    public Completable insert(Allergy allergy){
+    public Single<Long> insert(Allergy allergy){
         return allergyDAO.insert(allergy).subscribeOn(Schedulers.io());
     }
 
-    public Completable update(Allergy allergy){
+    @Override
+    public Single<Long[]> insertAll(List<Allergy> allergies) {
+        return allergyDAO.insertAll(allergies).subscribeOn(Schedulers.io());
+    }
+
+    public Single<Integer> update(Allergy allergy){
         return allergyDAO.update(allergy).subscribeOn(Schedulers.io());
     }
 
-    public Completable delete(Allergy allergy){
+    public Single<Integer> delete(Allergy allergy){
         return allergyDAO.delete(allergy).subscribeOn(Schedulers.io());
     }
 
@@ -49,7 +54,7 @@ public class AllergyRepository implements AllergyDAO{
     }
 
     @Override
-    public Single<Allergy> getAllergyByID(int id) {
+    public Single<Allergy> getAllergyByID(long id) {
         return allergyDAO.getAllergyByID(id).subscribeOn(Schedulers.io());
     }
 

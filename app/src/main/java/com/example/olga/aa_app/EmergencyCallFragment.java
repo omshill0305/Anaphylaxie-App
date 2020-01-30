@@ -134,28 +134,28 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
 
                                 try {
                                     addresses = geocoder.getFromLocation(latitude, longitude, 1);
+
+                                    String address = addresses.get(0).getAddressLine(0);
+
+                                    googleMap.clear();
+
+                                    googleMap.getUiSettings().setAllGesturesEnabled(true);
+
+                                    //Marker wird gesetzt
+                                    MarkerOptions marker = new MarkerOptions().position(
+                                            new LatLng(latitude, longitude)).title(address);
+
+                                    //Marker wird angezeigt
+                                    googleMap.addMarker(marker).showInfoWindow();
+
+                                    CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(15.0f).build();
+                                    CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+                                    googleMap.moveCamera(cameraUpdate);
+
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                     Toast.makeText(getContext(), "Leider kann deine Adresse nicht gefunden werden.", Toast.LENGTH_SHORT).show();
-
                                 }
-
-                                String address = addresses.get(0).getAddressLine(0);
-
-                                googleMap.clear();
-
-                                googleMap.getUiSettings().setAllGesturesEnabled(true);
-
-                                //Marker wird gesetzt
-                                MarkerOptions marker = new MarkerOptions().position(
-                                        new LatLng(latitude, longitude)).title(address);
-
-                                //Marker wird angezeigt
-                                googleMap.addMarker(marker).showInfoWindow();
-
-                                CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(15.0f).build();
-                                CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                                googleMap.moveCamera(cameraUpdate);
                             }
                             else{
                                 locationManager.requestLocationUpdates(bestProvider, 1000, 0, _this);

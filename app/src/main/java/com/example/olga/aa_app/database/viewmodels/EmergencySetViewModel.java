@@ -13,6 +13,7 @@ import com.example.olga.aa_app.database.repositorys.EmergencySetRepository;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.Single;
 
 public class EmergencySetViewModel extends AndroidViewModel implements EmergencySetDAO {
 
@@ -23,15 +24,15 @@ public class EmergencySetViewModel extends AndroidViewModel implements Emergency
         repository = new EmergencySetRepository(application);
     }
 
-    public Completable insert(EmergencySet emergencySet){
+    public Single<Long> insert(EmergencySet emergencySet){
         return repository.insert(emergencySet);
     }
 
-    public Completable update(EmergencySet emergencySet){
+    public Single<Integer> update(EmergencySet emergencySet){
         return repository.update(emergencySet);
     }
 
-    public Completable delete(EmergencySet emergencySet){
+    public Single<Integer> delete(EmergencySet emergencySet){
         return repository.delete(emergencySet);
     }
 
