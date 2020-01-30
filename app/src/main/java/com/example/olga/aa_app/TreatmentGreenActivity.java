@@ -6,23 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
-
-import java.util.ArrayList;
 
 import android.widget.TextView;
 
 
 public class TreatmentGreenActivity extends AppCompatActivity {
-    Button tagButton3;
-    ArrayList<String> instructionListDBEXample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,44 +35,37 @@ public class TreatmentGreenActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
-        /*instructionListDBEXample = new ArrayList<>();
-        instructionListDBEXample.add("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion");
-        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Bitte verabreichen Sie: AntihistaminikumDosierung des Antihistaminikums AntihistaminikumName und SteroidDosierung des Steroids SteroidName");
-
-
-        ListView list = (ListView) findViewById(R.id.dynamicView);
-        String[] instructionList = new String[instructionListDBEXample.size()];
-        for (int i = 0; i < instructionList.length; i++) {
-
-            instructionList[i] = (i + 1) + ". " + instructionListDBEXample.get(i);
-
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_adapter_view, R.id.textView18, instructionList);
-        list.setAdapter(arrayAdapter);*/
-
         LinearLayout instructions = findViewById(R.id.instructions);
 
-        TextView stay_calm = new TextView(this);
+        LayoutInflater inflater = getLayoutInflater();
+        TextView stay_calm = (TextView) inflater.inflate(R.layout.instruction, instructions, false);
         stay_calm.setText(R.string.stay_calm);
-        TextView after_treatment = new TextView(this);
+        TextView medicines = (TextView) inflater.inflate(R.layout.instruction, instructions, false);
+        medicines.setText(getString(R.string.treatment_green_medicine,
+                "Dosierung",
+                "Antihistaminikum",
+                "Dosierung",
+                "Steroid"
+        ));
+        TextView after_treatment = (TextView) inflater.inflate(R.layout.instruction, instructions, false);
         after_treatment.setText(R.string.after_treatment);
-        TextView medicines = new TextView(this);
-        medicines.setText(R.string.treatment_green_medicine);
+
+        instructions.addView(stay_calm);
+        instructions.addView(medicines);
+        instructions.addView(after_treatment);
 
         showAddItemDialog1(null);
 
+        TextView selection = findViewById(R.id.selection);
+        selection.setText(R.string.wheals);
 
-        TableRow raw1 = (TableRow) findViewById(R.id.raw2);
-        tagButton3 = new Button(this);
-
-        tagButton3.setText(R.string.wheals);
-
-        tagButton3.setLayoutParams(new TableRow.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-        raw1.addView(tagButton3);
-
+        Button back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TreatmentGreenActivity.this, SymptomsActivity.class));
+            }
+        });
     }
 
     @Override
@@ -135,6 +124,4 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-
 }

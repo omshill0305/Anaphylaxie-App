@@ -23,142 +23,155 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.example.olga.aa_app.BaseView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:base_color="@color/reaction"
-        app:icon="@drawable/ic_treatment"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:tint="@color/white"
-        app:title="@string/treatment" >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ScrollView
+        <com.example.olga.aa_app.BaseView
+            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:scrollbarStyle="insideOverlay">
+            app:base_color="@color/reaction"
+            app:icon="@drawable/ic_treatment"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toTopOf="@id/back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white"
+            app:title="@string/treatment">
 
-            <LinearLayout
-                android:id="@+id/listing_layout"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:clipToPadding="false"
-                android:contextClickable="true"
-                android:isScrollContainer="true"
-                android:keepScreenOn="true"
-                android:nestedScrollingEnabled="false"
-                android:orientation="vertical"
-                android:overScrollMode="always"
-                android:paddingLeft="@dimen/activity_margin"
-                android:paddingRight="@dimen/activity_margin"
-                android:paddingBottom="@dimen/activity_margin"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbars="vertical"
-                android:verticalScrollbarPosition="right">
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:scrollbarStyle="insideOverlay">
 
-                <TableRow
+                <LinearLayout
+                    android:id="@+id/listing_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:background="@drawable/info_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
-                    android:gravity="center">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:clipToPadding="false"
+                    android:contextClickable="true"
+                    android:isScrollContainer="true"
+                    android:keepScreenOn="true"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    android:overScrollMode="always"
+                    android:paddingLeft="@dimen/activity_margin"
+                    android:paddingRight="@dimen/activity_margin"
+                    android:paddingBottom="@dimen/activity_margin"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:scrollbars="vertical"
+                    android:verticalScrollbarPosition="right">
 
-                    <TableLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:background="@drawable/info_box"
+                        android:backgroundTint="@color/reaction"
+                        android:backgroundTintMode="add">
 
-                        <TableRow
+                        <TextView
+                            android:id="@+id/selection_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/your_symptom_selection"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/header"
+                            app:layout_constraintBottom_toTopOf="@id/selection"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/selection"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/selection_title" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/instructions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:background="@drawable/info_box"
+                        android:backgroundTint="@color/reaction"
+                        android:backgroundTintMode="add"
+                        android:orientation="vertical">
+
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:text="@string/starting_reaction"
+                            android:textAlignment="center"
+                            android:textColor="@color/reaction"
+                            android:textSize="@dimen/header" />
 
-                        </TableRow>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:text="@string/what_todo"
+                            android:textAlignment="viewStart"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/paragraph"
+                            android:textStyle="bold" />
 
-                        <TableRow
-                            android:id="@+id/raw1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
+                    </LinearLayout>
 
-                            <TextView
-                                android:id="@+id/textView26"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/your_symptom_selection"
-                                android:textAlignment="center"
-                                android:textColor="@android:color/black"
-                                android:textSize="@dimen/header" />
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/raw2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/raw3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </TableLayout>
-                </TableRow>
-
-                <LinearLayout
-                    android:id="@+id/instructions"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:background="@drawable/info_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
-                    android:orientation="vertical">
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/default_margin"
-                        android:text="@string/starting_reaction"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/header"
-                        android:textStyle="bold" />
+                        android:background="@drawable/info_box"
+                        android:backgroundTint="@color/reaction"
+                        android:backgroundTintMode="add"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/default_margin"
-                        android:text="@string/what_todo"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/reaction"
-                        android:textSize="@dimen/paragraph" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/further_information"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/header" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:background="@drawable/info_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/further_information"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/header" />
+                    </LinearLayout>
 
                 </LinearLayout>
+            </ScrollView>
+        </com.example.olga.aa_app.BaseView>
 
-            </LinearLayout>
-        </ScrollView>
-    </com.example.olga.aa_app.BaseView>
+        <Button
+            android:id="@+id/back"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:background="@color/reaction"
+            android:padding="@dimen/default_margin"
+            android:text="@string/back_to_selection"
+            android:textSize="@dimen/paragraph"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
