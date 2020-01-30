@@ -149,12 +149,13 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.dataprotection:
-                Intent intent = new Intent(getActivity(), DataProtectionActivity.class);
-                getActivity().startActivity(intent);
-                return true;
+        if (item.getItemId() == R.id.dataprotection) {
+            Activity activity = getActivity();
+            if (activity != null) {
+                Intent intent = new Intent(activity, DataProtectionActivity.class);
+                activity.startActivity(intent);
+            }
+            return true;
         }
         return false;
     }

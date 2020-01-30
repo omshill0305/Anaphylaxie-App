@@ -11,15 +11,20 @@ public class Symptom implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        if (o instanceof Symptom)
+        if (o instanceof Symptom) {
             return ((Symptom) o).name.compareTo(name);
+        }
         return -1;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Symptom)) return false;
-        if (o == this) return true;
+        if (!(o instanceof Symptom)) {
+            return false;
+        }
+        if (o == this) {
+            return true;
+        }
         return ((Symptom) o).name.equalsIgnoreCase(name);
     }
 

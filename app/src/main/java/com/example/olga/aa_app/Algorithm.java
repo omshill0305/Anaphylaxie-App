@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * Algorithms to evaluate the severity of a reaction.
+ */
 public class Algorithm {
 
-    private static HashMap<String,String> organSystems = new HashMap<String,String>(){{
+    private static HashMap<String, String> organSystems = new HashMap<String, String>() {{
         put("quaddeln", "haut");
         put("schwellung", "haut");
         put("jucken", "haut");
@@ -26,8 +29,6 @@ public class Algorithm {
         put("husten", "atemwege");
     }};
 
-
-
     public static String evaluate(Reaction reaction) {
         ArrayList<Symptom> symptoms = reaction.getSymptoms();
         if (isUnconcious(symptoms)) {
@@ -43,8 +44,6 @@ public class Algorithm {
         }
         return "";
     }
-
-
 
     private static boolean isUnconcious(ArrayList<Symptom> symptoms) {
         //bewusstlosigkeit
@@ -74,14 +73,12 @@ public class Algorithm {
 
     private static HashSet<String> getOrganSystems(ArrayList<Symptom> symptoms) {
         HashSet<String> os = new HashSet<>();
-        for(Symptom symptom : symptoms) {
+        for (Symptom symptom : symptoms) {
             String system = organSystems.get(symptom.toString());
             os.add(system);
         }
         return os;
     }
-
-
 
     private static String algorithm1() {
         return "algorithm1";

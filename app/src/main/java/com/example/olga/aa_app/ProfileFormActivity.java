@@ -38,7 +38,7 @@ import java.util.Calendar;
  */
 public class ProfileFormActivity extends AppCompatActivity {
 
-    // Message to signal the main activity (HomeActivity) that profile data
+    // Message to signal the main activity that profile data
     // was updated and/or saved.
     public static final String UPDATED_PROFILE = "com.example.olga.aa_app.UPDATED_PROFILE";
 

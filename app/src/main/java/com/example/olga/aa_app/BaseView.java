@@ -14,7 +14,9 @@ import androidx.annotation.Nullable;
 import com.example.olga.aa_app.utility.BackgroundDrawable;
 
 /**
- * Root view for screens with header.
+ * Root view for screens with an header.
+ * <p>
+ * This view is used for the main content background and layout as well setting up a title and icon.
  */
 public class BaseView extends LinearLayout {
 
@@ -36,7 +38,8 @@ public class BaseView extends LinearLayout {
             title = styleAttributes.getString(R.styleable.BaseView_title);
             icon = styleAttributes.getResourceId(R.styleable.BaseView_icon, 0);
             tint = styleAttributes.getColor(R.styleable.BaseView_tint, tint);
-        } finally {
+        }
+        finally {
             styleAttributes.recycle();
         }
 
@@ -44,7 +47,8 @@ public class BaseView extends LinearLayout {
         setOrientation(VERTICAL);
         setBackground(new BackgroundDrawable(new int[] {getResources().getColor(R.color.colorPrimaryDark), baseColor}));
 
-        textView = (TextView) inflater.inflate(R.layout.title, this, false);;
+        textView = (TextView) inflater.inflate(R.layout.title, this, false);
+        ;
         textView.setText(title);
         textView.setTextColor(tint);
         // 0 is an invalid id!
