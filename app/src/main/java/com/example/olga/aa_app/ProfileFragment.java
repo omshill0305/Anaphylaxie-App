@@ -87,9 +87,8 @@ public class ProfileFragment extends Fragment {
         if (profileForm != null) {
             this.currentProfile = profileForm;
             this.currentProfileId = profileForm.getId();
+
             showOverview();
-        } else if (this.currentProfile == null) {
-            hideOverview();
         }
     }
 

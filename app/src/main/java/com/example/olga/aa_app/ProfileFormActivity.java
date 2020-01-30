@@ -191,6 +191,7 @@ public class ProfileFormActivity extends AppCompatActivity {
                     .subscribeWith(new DisposableCompletableObserver() {
                         @Override
                         public void onComplete() {
+                            oldProfileForm = updatedProfileForm;
                             Utility.showToast(getApplicationContext(), "Profile was created");
                             onBackPressed();
                         }
@@ -266,6 +267,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         EmergencySet emergencySetAntihistamine = new EmergencySet(p.getAntihistamine(), "Antihistaminikum", p.getAntihistamineDosage(), "ml");
         EmergencySet emergencySetSteroid = new EmergencySet(p.getSteroid(), "Steroid" , p.getSteroidDosage(), "ml");
         EmergencySet emergencySetAutoInjektor = new EmergencySet(p.getAutoinjector(), "Auto-Injektor", "-", "-");
+        //TODO: Split and assign dosage string to dosage and dosage unit
 
         return emergencySetViewModel.insert(emergencySetAntihistamine)
                 .flatMap(s -> setsOfProfileViewModel.insert(new SetsOfProfile(1, s.intValue())))
@@ -309,8 +311,6 @@ public class ProfileFormActivity extends AppCompatActivity {
         DatePicker date = birthdayPicker.getDatePicker();
         String[] autoInjectors = getResources().getStringArray(R.array.autoinjectors);
 
-        //TODO: May fail cause these are object reference but not sure
-
         ProfileForm profileForm = new ProfileForm();
 
         if(oldProfileForm != null){
@@ -335,6 +335,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         return profileForm;
     }
 
+
     private void receiveProfile(ProfileForm profile) {
         if (oldProfileForm == null) {
             return;
@@ -352,7 +353,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         birthday.setText(Utility.fmtDate(year, month, day));
         birthdayPicker.updateDate(year, month, day);
         // Gender
-        setRadioGroupValue(R.id.gender, genderToString(profile.getGender())); //TODO: was gendertostring() before
+        setRadioGroupValue(R.id.gender, genderToString(profile.getGender()));
         // TODO: Allergens...
         // Asthma
         setRadioGroupValue(R.id.asthma, getString(profile.hasAsthma() ? R.string.yes : R.string.no));
@@ -366,7 +367,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         // Autoinjector
         Spinner autoinjector = findViewById(R.id.autoinjector);
         ArrayAdapter<String> autoinjectorAdapter = (ArrayAdapter<String>) autoinjector.getAdapter();
-        autoinjector.setSelection(autoinjectorAdapter.getPosition(profile.getAutoinjector())); //TODO: Get position to pick correct autoinjector
+        autoinjector.setSelection(autoinjectorAdapter.getPosition(profile.getAutoinjector()));
         // Salbutamol
         setRadioGroupValue(R.id.salbutamol, getString(profile.takesSalbutamol() ? R.string.yes : R.string.no));
 
@@ -401,19 +402,6 @@ public class ProfileFormActivity extends AppCompatActivity {
                 button.setChecked(true);
                 break;
             }
-        }
-    }
-
-    private int returnAutoInjectorPosition(String autoInjector){
-        switch (autoInjector) {
-            case "Emerad":
-                return 1;
-            case "2":
-                return 2;
-            case "3":
-                return 3;
-            default:
-                return 1;
         }
     }
 
