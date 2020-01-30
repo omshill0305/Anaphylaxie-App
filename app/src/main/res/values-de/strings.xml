@@ -105,4 +105,19 @@
     <string name="cherry">Kirsche</string>
     <string name="info_data_security">Unsere Website erfasst mit jedem Aufruf verschiedene allgemeine Daten und Informationen, die in sog. Logfiles des Servers gespeichert werden. Zu diesen Daten zählen etwa Ihre IP-Adresse, Ihr Browsertyp und Ihre Browserversion, Ihr Betriebssystem, die Internetseite, von der Sie auf unsere Website gelangt sind, die Unterwebseiten, welche über ein zugreifendes System auf unserer Internetseite angesteuert werden, das Datum und die Uhrzeit eines Zugriffs auf unsere Website und Ihr Internet-Service-Provider. Wir benötigen die vorgenannten Daten, um die Inhalte unserer Internetseite korrekt auszuliefern und die dauerhafte Funktionsfähigkeit unserer informationstechnologischen Systeme und der Technik unserer Internetseite zu gewährleisten. Die gespeicherten Daten werden nur zu statistischen Zwecken ausgewertet. Rückschlüsse auf Ihre Person werden aus den Daten nicht gezogen, insbesondere werden die Server-Logfiles getrennt von Ihren sonstigen personenbezogenen Daten gespeichert. Personenbezogene Nutzerprofile können nicht gebildet werden. Die Verarbeitung der Daten erfolgt auf Grundlage von Art. 6 I lit. b) DSGVO. Nach dieser Vorschrift ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags, dessen Vertragspartei Sie sind, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich. Mit der Nutzung unserer Seite nehmen Sie unser Angebot auf Abschluss eines entsprechenden (unentgeltlichen) Nutzungsvertrages stillschweigend an. Im Übrigen ist die Verarbeitung auch über Art. 6 I lit. f) DSGVO gerechtfertigt, da wir ein berechtigtes Interesse an der Verarbeitung haben und Ihre Interessen, Grundrechte und Grundfreiheiten nicht überwiegen. Das Interesse besteht darin, unser Webangebot ordnungsgemäß auszuliefern und die Funktionsfähigkeit unserer Systeme zu schützen.</string>
     <string name="data_security">Datenschutzerklärung</string>
+    <string name="your_symptom_selection">Du hast folgende Symptome gewählt</string>
+    <string name="what_todo">Was ist jetzt zu tun?</string>
+    <string name="further_information">Weitere Informationen</string>
+
+    <string name="starting_reaction">Möglicher Beginn einer anaphylaktischen Reaktion</string>
+    <string name="dangerous_reaction">Schwere anaphylaktische Reaktion</string>
+    <string name="stay_calm">Bewahren Sie Ruhe.</string>
+    <string name="treatment_green_medicine">Verabreichen Sie das\n
+        - Antihistaminikum %1$s <b>%2$s</b> und das\n
+        - Steroid %3$s <b>%4$s</b>.</string>
+    <string name="treatment_red_medicine">Verabreichen Sie den Autoinjektor %1s.</string>
+    <string name="after_treatment_green">Halten Sie den Autoinjektor %1$s bereit und wählen Sie
+        im Zweifel den Notruf.</string>
+    <string name="back_to_selection">Zurück zur Auswahl</string>
+    <string name="after_treatment_red">Wählen Sie den Notruf.</string>
 </resources>
