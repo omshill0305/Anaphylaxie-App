@@ -20,6 +20,7 @@
         <item>@string/info_blood_pressure_drop</item>
         <item>0</item>
     </array>
+
     <array name="gastro_intestinal_symptoms">
         <item>@string/diarrhea</item>
         <item>@string/abdominal_pain</item>
@@ -34,6 +35,7 @@
         <item>@string/info_tingling</item>
         <item>@string/info_vomiting</item>
     </array>
+
     <array name="skin_symptoms">
         <item>@string/wheals</item>
         <item>@string/swollen_lip_face</item>
@@ -43,5 +45,26 @@
         <item>@string/info_wheals</item>
         <item>@string/info_swollen_lip</item>
         <item>@string/info_pruritus</item>
+    </array>
+
+    <array name="dizziness_symptoms">
+        <item>@string/dizziness</item>
+    </array>
+    <array name="dizziness_description">
+        <item>0</item>
+    </array>
+
+    <array name="runny_nose_symptoms">
+        <item>@string/runny_nose</item>
+    </array>
+    <array name="runny_nose_description">
+        <item>0</item>
+    </array>
+
+    <array name="indefinable_dread_symptoms">
+        <item>@string/panic</item>
+    </array>
+    <array name="indefinable_dread_description">
+        <item>0</item>
     </array>
 </resources>

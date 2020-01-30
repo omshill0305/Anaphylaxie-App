@@ -6,65 +6,77 @@ import java.util.HashSet;
 
 public class Algorithm {
 
-    private static HashMap<String,String> organSystems = new HashMap<String,String>(){{
-        put("quaddeln", "haut");
-        put("schwellung", "haut");
-        put("jucken", "haut");
+    public final static String ALGORITHM_1 = "algorithm1";
+    public final static String ALGORITHM_2 = "algorithm2";
+    public final static String ALGORITHM_3 = "algorithm3";
+    public final static String ALGORITHM_4 = "algorithm4";
+    public final static String ALGORITHM_5 = "algorithm5";
 
-        put("schwindel", "sonstiges");
-        put("fliessschnupfen", "sonstiges");
-        put("angstgefuehl", "sonstiges");
+    private final static String SKIN = "haut";
+    private final static String OTHERS = "sonstiges";
+    private final static String GASTROINTESTINAL = "magendarm";
+    private final static String AIRWAYS = "atemwege";
+    private final static String CARDIOVASCULAR = "herzkreislauf";
 
-        put("durchfall", "magendarm");
-        put("bauchschmerzen", "magendarm");
-        put("uebelkeit", "magendarm");
-        put("kribbeln", "magendarm");
-        put("erbrechen", "magendarm");
+    private static HashMap<Integer, String> organSystems = new HashMap<Integer, String>() {{
+        put(R.string.wheals, SKIN);
+        put(R.string.swollen_lip_face, SKIN);
+        put(R.string.pruritus, SKIN);
 
-        put("heiserkeit", "atemwege");
-        put("pfeifen", "atemwege");
-        put("husten", "atemwege");
+        put(R.string.dizziness, OTHERS);
+        put(R.string.runny_nose, OTHERS);
+        put(R.string.panic, OTHERS);
+
+        put(R.string.diarrhea, GASTROINTESTINAL);
+        put(R.string.abdominal_pain, GASTROINTESTINAL);
+        put(R.string.nausea, GASTROINTESTINAL);
+        put(R.string.tingling_mouth_throat, GASTROINTESTINAL);
+        put(R.string.vomiting, GASTROINTESTINAL);
+
+        put(R.string.difficulty_in_breathing, AIRWAYS);
+        put(R.string.hoarseness, AIRWAYS);
+        put(R.string.wheezing, AIRWAYS);
+        put(R.string.cough, AIRWAYS);
+
+        put(R.string.unconsciousness, CARDIOVASCULAR);
+        put(R.string.blood_pressure_drop, CARDIOVASCULAR);
     }};
-
-
 
     public static String evaluate(Reaction reaction) {
         ArrayList<Symptom> symptoms = reaction.getSymptoms();
-        if (isUnconcious(symptoms)) {
-            return algorithm5();
+        if (isUnconscious(symptoms)) {
+            return ALGORITHM_5;
         } else if (hasBloodPressureDrop(symptoms)) {
-            return algorithm4();
+            return ALGORITHM_4;
         } else if (hasShortnessOfBreath(symptoms)) {
-            return algorithm3();
+            return ALGORITHM_3;
         } else if (twoOrganSystems(symptoms)) {
-            return algorithm2();
+            return ALGORITHM_2;
         } else if (oneOrganSystem(symptoms)) {
-            return algorithm1();
+            return ALGORITHM_1;
         }
         return "";
     }
 
-
-
-    private static boolean isUnconcious(ArrayList<Symptom> symptoms) {
+    private static boolean isUnconscious(ArrayList<Symptom> symptoms) {
         //bewusstlosigkeit
-        return symptoms.contains(new Symptom("bewusstlosigkeit"));
+        return symptoms.contains(new Symptom(R.string.unconsciousness));
     }
 
     private static boolean hasBloodPressureDrop(ArrayList<Symptom> symptoms) {
         // kreislauf ohne bewussstlosigkeit, so blutdruckabfall only
-        return symptoms.contains(new Symptom("blutdruckabfall"));
+        return symptoms.contains(new Symptom(R.string.blood_pressure_drop));
     }
 
     private static boolean hasShortnessOfBreath(ArrayList<Symptom> symptoms) {
         //atemnot
-        return symptoms.contains(new Symptom("atemnot"));
+        return symptoms.contains(new Symptom(R.string.difficulty_in_breathing));
     }
 
     private static boolean twoOrganSystems(ArrayList<Symptom> symptoms) {
         //2 Organsysteme oder atemwege
         HashSet<String> os = getOrganSystems(symptoms);
-        return os.size() > 1 || os.contains("atemwege");
+        return os.size() > 1 || os.contains(AIRWAYS);
     }
 
     private static boolean oneOrganSystem(ArrayList<Symptom> symptoms) {
@@ -74,32 +86,10 @@ public class Algorithm {
 
     private static HashSet<String> getOrganSystems(ArrayList<Symptom> symptoms) {
         HashSet<String> os = new HashSet<>();
-        for(Symptom symptom : symptoms) {
-            String system = organSystems.get(symptom.toString());
+        for (Symptom symptom : symptoms) {
+            String system = organSystems.get(symptom.getName());
             os.add(system);
         }
         return os;
-    }
-
-
-
-    private static String algorithm1() {
-        return "algorithm1";
-    }
-
-    private static String algorithm2() {
-        return "algorithm2";
-    }
-
-    private static String algorithm3() {
-        return "algorithm3";
-    }
-
-    private static String algorithm4() {
-        return "algorithm4";
-    }
-
-    private static String algorithm5() {
-        return "algorithm5";
     }
 }

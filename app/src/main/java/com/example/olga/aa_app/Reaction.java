@@ -10,11 +10,13 @@ public class Reaction {
     }
 
     public void addSymptom(Symptom symptom) {
-        if (!symptoms.contains(symptom)) symptoms.add(symptom);
+        if (!symptoms.contains(symptom)) {
+            symptoms.add(symptom);
+        }
     }
 
-    public void addSymptoms(Symptom[] strings) {
-        for (Symptom symptom : strings) {
+    public void addSymptoms(Symptom[] symptoms) {
+        for (Symptom symptom : symptoms) {
             addSymptom(symptom);
         }
     }
