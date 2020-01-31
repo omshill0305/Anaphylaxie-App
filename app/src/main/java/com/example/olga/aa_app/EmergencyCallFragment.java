@@ -1,7 +1,7 @@
 package com.example.olga.aa_app;
 
-
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,7 +19,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -41,9 +40,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * The Emergency Call page/tab of the main activity.
  */
 public class EmergencyCallFragment extends Fragment implements LocationListener {
 
@@ -57,21 +55,15 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
     private EmergencyCallFragment _this;
     private Geocoder geocoder;
     private List<Address> addresses;
-    private SupportMapFragment mSupportMapFragment;
     private FragmentTransaction ft;
-
-
 
     public EmergencyCallFragment() {
         // Required empty public constructor
         this._this = this;
     }
 
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_emergency_call, container, false);
         ImageButton call = v.findViewById(R.id.button_emergancy_call);
 
@@ -81,22 +73,22 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
                 String number = "112";
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:" + number));
-                if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-                    getActivity().requestPermissions(new String[] {Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+                if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                    getActivity().requestPermissions(new String[] {Manifest.permission.CALL_PHONE}, REQUEST_PHONE_CALL);
                     return;
 
                 } else {
-                startActivity(intent);
+                    startActivity(intent);
                 }
             }
         });
 
-
-
         ft = getFragmentManager().beginTransaction();
 
         // Mapview Fragment innerhalb EmergencyCallFragment setzen
-        mSupportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_view);
+        SupportMapFragment mSupportMapFragment =
+            (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_view);
         if (mSupportMapFragment == null) {
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -112,14 +104,21 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
                     if (googleMap != null) {
 
                         //Permission überprüfen
-                        if (getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                            getActivity().requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
+                        if (getActivity().checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED
+                            && getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                               != PackageManager.PERMISSION_GRANTED) {
+                            getActivity().requestPermissions(
+                                new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
+                                LOCATION_REQUEST
+                            );
                             ft.detach(_this).attach(_this).commit();
                             return;
                         } else {
                             //Map aktivieren und anzeigen
                             googleMap.setMyLocationEnabled(true);
-                            locationManager = (LocationManager)  getActivity().getSystemService(Context.LOCATION_SERVICE);
+                            locationManager =
+                                (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
                             criteria = new Criteria();
                             bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true)).toString();
 
@@ -134,30 +133,36 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
 
                                 try {
                                     addresses = geocoder.getFromLocation(latitude, longitude, 1);
-
-                                    String address = addresses.get(0).getAddressLine(0);
-
-                                    googleMap.clear();
-
-                                    googleMap.getUiSettings().setAllGesturesEnabled(true);
-
-                                    //Marker wird gesetzt
-                                    MarkerOptions marker = new MarkerOptions().position(
-                                            new LatLng(latitude, longitude)).title(address);
-
-                                    //Marker wird angezeigt
-                                    googleMap.addMarker(marker).showInfoWindow();
-
-                                    CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitude, longitude)).zoom(15.0f).build();
-                                    CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
-                                    googleMap.moveCamera(cameraUpdate);
-
                                 } catch (IOException e) {
                                     e.printStackTrace();
-                                    Toast.makeText(getContext(), "Leider kann deine Adresse nicht gefunden werden.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(
+                                        getContext(),
+                                        "Leider kann deine Adresse nicht gefunden werden.",
+                                        Toast.LENGTH_SHORT
+                                    ).show();
+
                                 }
-                            }
-                            else{
+
+                                String address = addresses.get(0).getAddressLine(0);
+
+                                googleMap.clear();
+
+                                googleMap.getUiSettings().setAllGesturesEnabled(true);
+
+                                //Marker wird gesetzt
+                                MarkerOptions marker = new MarkerOptions().position(new LatLng(latitude, longitude))
+                                    .title(address);
+
+                                //Marker wird angezeigt
+                                googleMap.addMarker(marker).showInfoWindow();
+
+                                CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(
+                                    latitude,
+                                    longitude
+                                )).zoom(15.0f).build();
+                                CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
+                                googleMap.moveCamera(cameraUpdate);
+                            } else {
                                 locationManager.requestLocationUpdates(bestProvider, 1000, 0, _this);
                             }
 
@@ -167,12 +172,10 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
                 }
             });
 
-
         }
         setHasOptionsMenu(true);
         return v;
     }
-
 
     @Override
     public void onLocationChanged(Location location) {
@@ -210,12 +213,13 @@ public class EmergencyCallFragment extends Fragment implements LocationListener 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.dataprotection:
-                Intent intent = new Intent(getActivity(), DataProtectionActivity.class);
-                getActivity().startActivity(intent);
-                return true;
+        if (item.getItemId() == R.id.dataprotection) {
+            Activity activity = getActivity();
+            if (activity != null) {
+                Intent intent = new Intent(activity, DataProtectionActivity.class);
+                activity.startActivity(intent);
+            }
+            return true;
         }
         return false;
     }

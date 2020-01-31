@@ -6,6 +6,9 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 
+/**
+ * Boiler plate functions
+ */
 public final class Utility {
     public static void showToast(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();

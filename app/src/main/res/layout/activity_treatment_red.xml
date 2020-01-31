@@ -30,22 +30,18 @@
         app:icon="@drawable/ic_treatment"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tint="@color/white"
-        app:title="@string/treatment" >
+        app:title="@string/treatment">
 
         <ScrollView
-            android:id="@+id/scrollView3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
             android:scrollbarStyle="insideOverlay">
 
 
-            <TableLayout
-                android:id="@+id/listing_layout"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:clipToPadding="false"
                 android:contextClickable="true"
                 android:isScrollContainer="true"
                 android:keepScreenOn="true"
@@ -54,118 +50,178 @@
                 android:overScrollMode="always"
                 android:paddingLeft="@dimen/activity_margin"
                 android:paddingRight="@dimen/activity_margin"
-                android:paddingBottom="@dimen/activity_margin"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:scrollbars="vertical"
                 android:verticalScrollbarPosition="right">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:background="@drawable/info_box"
-                    android:backgroundTint="@color/emergency"
-                    android:backgroundTintMode="add"
-                    android:gravity="center">
-
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/raw1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:id="@+id/textView26"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Du hast gewählt:"
-                                android:textAlignment="center"
-                                android:textSize="@dimen/header" />
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/raw2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/raw3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </TableLayout>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/default_margin"
-                    android:background="@drawable/info_box"
-                    android:backgroundTint="@color/emergency"
-                    android:backgroundTintMode="add"
-                    android:gravity="center">
-
-                    <LinearLayout
-                        android:id="@+id/activeList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView27"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="@dimen/default_margin"
-                            android:text="Was ist jetzt zu tun?"
-                            android:textAlignment="center"
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/header" />
-
-                        <ListView
-                            android:id="@+id/dynamicView"
-                            android:layout_width="317dp"
-                            android:layout_height="150dp"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginEnd="24dp"
-                            android:paddingStart="16dp"
-                            android:paddingEnd="16dp" />
-                    </LinearLayout>
-
-                </TableRow>
-
-                <TableRow
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:background="@drawable/info_box"
                     android:backgroundTint="@color/emergency"
-                    android:backgroundTintMode="add"
-                    android:gravity="center">
+                    android:backgroundTintMode="add">
 
                     <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/selection_title"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Weitere Information:"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="@string/your_symptom_selection"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
+                        android:textSize="@dimen/subheader"
+                        app:layout_constraintBottom_toTopOf="@id/selection"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/selection"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/selection_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/instructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/info_box"
+                    android:backgroundTint="@color/emergency"
+                    android:backgroundTintMode="add"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="@string/dangerous_reaction"
+                        android:textAlignment="center"
+                        android:textColor="@color/emergency"
                         android:textSize="@dimen/header" />
 
-                </TableRow>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:text="@string/what_todo"
+                        android:textAlignment="viewStart"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/subheader"
+                        android:textStyle="bold" />
 
-            </TableLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1. "
+                            android:textColor="@color/emergency"
+                            android:textSize="@dimen/subheader"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:text="@string/stay_calm"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/subheader" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2. "
+                            android:textColor="@color/emergency"
+                            android:textSize="@dimen/subheader"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/medicine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:text="@string/treatment_red_medicine"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/subheader" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3. "
+                            android:textColor="@color/emergency"
+                            android:textSize="@dimen/subheader"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:text="@string/after_treatment_red"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/subheader" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/info_box"
+                    android:backgroundTint="@color/emergency"
+                    android:backgroundTintMode="add"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/further_information"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/subheader" />
+
+                </LinearLayout>
+
+            </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/back"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_margin"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/activity_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:background="@color/emergency"
+            android:padding="@dimen/default_margin"
+            android:text="@string/back_to_selection" />
+
     </com.example.olga.aa_app.BaseView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

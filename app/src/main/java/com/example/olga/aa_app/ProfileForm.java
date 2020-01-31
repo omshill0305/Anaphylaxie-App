@@ -13,6 +13,8 @@ import java.util.List;
 
 public class ProfileForm implements Serializable {
 
+    public static Profile currentProfile = null;
+
     private ArrayList<Reaction> reactions = new ArrayList<>();
     private Reaction currentReaction = null;
 
@@ -124,6 +126,7 @@ public class ProfileForm implements Serializable {
     }
 
     public Reaction getCurrentReaction() {
+        if (currentReaction == null) startReaction(new Reaction());
         return currentReaction;
     }
 
