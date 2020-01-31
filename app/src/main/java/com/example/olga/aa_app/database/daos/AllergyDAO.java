@@ -43,4 +43,7 @@ public interface AllergyDAO {
 
     @Query("SELECT * FROM allergy_table WHERE name = :name")
     Single<Allergy> getAllergyByName(String name);
+
+    @Query("DELETE FROM allergy_table")
+    Completable clearAllergies();
 }

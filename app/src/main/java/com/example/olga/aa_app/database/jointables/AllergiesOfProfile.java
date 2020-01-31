@@ -19,10 +19,10 @@ import com.example.olga.aa_app.database.entities.Profile;
         }, indices =
         {@Index(value = "profileId"), @Index(value =  "allergyId")})
 public class AllergiesOfProfile {
-    public final int profileId;
-    public final int allergyId;
+    public final long profileId;
+    public final long allergyId;
 
-    public AllergiesOfProfile(final int profileId, final int allergyId){
+    public AllergiesOfProfile(final long profileId, final long allergyId){
         this.profileId = profileId;
         this.allergyId = allergyId;
     }

@@ -52,4 +52,8 @@ public class AllergyViewModel extends AndroidViewModel implements AllergyDAO {
         return repository.getAllergyByName(name);
     }
 
+    @Override
+    public Completable clearAllergies() {
+        return repository.clearAllergies();
+    }
 }

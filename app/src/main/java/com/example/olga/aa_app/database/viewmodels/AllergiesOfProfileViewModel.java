@@ -34,12 +34,7 @@ public class AllergiesOfProfileViewModel extends AndroidViewModel implements All
     }
 
     @Override
-    public LiveData<List<Profile>> getProfilesWithAllergies(long allergyId) {
-        return repository.getProfilesWithAllergies(allergyId);
-    }
-
-    @Override
-    public LiveData<List<Profile>> getAllergiesOfProfile(long profileId) {
-        return repository.getAllergiesOfProfile(profileId);
+    public Completable clearAll() {
+        return repository.clearAll();
     }
 }

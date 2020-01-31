@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.Completable;
+import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -61,5 +62,10 @@ public class AllergyRepository implements AllergyDAO{
     @Override
     public Single<Allergy> getAllergyByName(String name) {
         return allergyDAO.getAllergyByName(name).subscribeOn(Schedulers.io());
+    }
+
+    @Override
+    public Completable clearAllergies() {
+        return allergyDAO.clearAllergies().subscribeOn(Schedulers.io());
     }
 }

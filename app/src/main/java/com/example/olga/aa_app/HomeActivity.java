@@ -18,7 +18,13 @@ import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
 import com.example.olga.aa_app.database.viewmodels.ProfileViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -79,17 +85,46 @@ public class HomeActivity extends AppCompatActivity {
 
         AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
 
-        allergyViewModel.insert(new Allergy("placeholder"))
+        Allergy test = new Allergy("Test");
+        test.setAllergyId(1);
+        allergyViewModel.clearAllergies()
+                .andThen(allergyViewModel.insert(test))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+
+        Observable.fromIterable(allergeneList())
+                .map(a -> allergyViewModel.insert(a))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+
+        /*allergyViewModel.insert(new Allergy("placeholder"))
                 .flatMap(s -> {
                     Allergy a = new Allergy("b");
                     a.setAllergyId(s);
                     return allergyViewModel.delete(a);
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe();*/
 
         initializeFragments();
 
+    }
+
+    private ArrayList<Allergy> allergeneList(){
+        ArrayList<Allergy> allergies = new ArrayList<>();
+
+        String[] stringArray = getResources().getStringArray(R.array.allergens);
+
+        for(int i = 0 ; i < stringArray.length; i++){
+            Allergy a = new Allergy(stringArray[i]);
+            //a.setAllergyId(i + 1);
+
+            allergies.add(a);
+        }
+
+        return allergies;
     }
 
     @Override

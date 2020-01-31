@@ -3,9 +3,11 @@ package com.example.olga.aa_app.database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 
 @Entity(tableName = "allergy_table")    // Don't forget to change the table name when copy and pasting
-public class Allergy {
+public class Allergy implements Serializable {
 
     // autoGenerate equals a serial or autoincrement
     @PrimaryKey(autoGenerate = true)
@@ -33,5 +35,10 @@ public class Allergy {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

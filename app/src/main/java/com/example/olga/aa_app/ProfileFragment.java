@@ -17,12 +17,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.olga.aa_app.database.entities.Allergy;
+import com.example.olga.aa_app.database.entities.EmergencySet;
 import com.example.olga.aa_app.database.entities.Profile;
+import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
 import com.example.olga.aa_app.database.viewmodels.ProfileViewModel;
 import com.example.olga.aa_app.utility.Utility;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 import io.reactivex.Single;
@@ -42,6 +46,7 @@ public class ProfileFragment extends Fragment {
     public static final String SEND_PROFILE = "com.example.olga.aa_app.SEND_PROFILE";
 
     private ProfileViewModel profileViewModel;
+    private AllergyViewModel allergyViewModel;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -68,6 +73,7 @@ public class ProfileFragment extends Fragment {
         setHasOptionsMenu(true);
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
         currentProfileId = 1; // TODO: Remove manual set profile id
         return rootView;
     }
@@ -121,7 +127,8 @@ public class ProfileFragment extends Fragment {
                         TextView gender = data.findViewById(R.id.gender);
                         gender.setText(profileForm.genderToString());
                         // TODO: Allergens...
-                        // TextView allergens = data.findViewById(R.id.allergens);
+                        TextView allergens = data.findViewById(R.id.allergens);
+                        allergens.setText(profileForm.allergensToString());
                         TextView asthma = data.findViewById(R.id.asthma);
                         asthma.setText(profileForm.hasAsthma() ? R.string.yes : R.string.no);
 
@@ -153,6 +160,7 @@ public class ProfileFragment extends Fragment {
     private Single<ProfileForm> createProfileForm(){
 
         final AtomicReference<Profile> retrievedProfile = new AtomicReference<>();
+        final AtomicReference<List<EmergencySet>> retrievedEmergencySets = new AtomicReference<>();
 
         return profileViewModel.getProfileByProfileId(currentProfileId)
                 .doOnSuccess(s -> {
@@ -160,12 +168,16 @@ public class ProfileFragment extends Fragment {
                     System.out.println("Retrieved profile with id: " + retrievedProfile.get().getProfileId());
                 })
                 .flatMap(s -> profileViewModel.getAllEmergencySetsOfProfileByProfileId(currentProfileId))
-                .doOnSuccess(s -> System.out.println("Retrieved emergency set with " + s.size() + " entries"))
-                .map( a -> {
+                .doOnSuccess(s -> {
+                    retrievedEmergencySets.set(s);
+                    System.out.println("Retrieved emergency set with " + s.size() + " entries");
+                })
+                .flatMap(s -> profileViewModel.getAllAllergiesOfProfileByProfileId(currentProfileId))
+                .map( allergies -> {
                     Profile profile = retrievedProfile.get();
-                    ArrayList<String> allergies = new ArrayList<>();
+                    List<EmergencySet> emergencySets = retrievedEmergencySets.get();
 
-                    ProfileForm form = new ProfileForm(profile, a);
+                    ProfileForm form = new ProfileForm(profile, emergencySets, allergies);
 
                     return form;
                 })

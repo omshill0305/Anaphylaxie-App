@@ -20,10 +20,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.olga.aa_app.database.entities.Allergy;
 import com.example.olga.aa_app.database.entities.EmergencySet;
 import com.example.olga.aa_app.database.entities.Profile;
+import com.example.olga.aa_app.database.jointables.AllergiesOfProfile;
 import com.example.olga.aa_app.database.jointables.SetsOfProfile;
 import com.example.olga.aa_app.database.viewmodels.AllergiesOfProfileViewModel;
 import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
@@ -37,6 +40,7 @@ import com.example.olga.aa_app.utility.Utility;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -44,6 +48,7 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -61,9 +66,11 @@ public class ProfileFormActivity extends AppCompatActivity {
     public static final String UPDATED_PROFILE = "com.example.olga.aa_app.UPDATED_PROFILE";
 
     private ProfileForm oldProfileForm;
+    private ArrayList<Allergy> listOfAllergies;
     private DatePickerDialog birthdayPicker;
     private MultiAutoCompleteTextView multiComplete;
     private SpannableStringBuilder allergyTags = new SpannableStringBuilder();
+    private ArrayList<Allergy> selectedAllergies;
 
     private ProfileViewModel profileViewModel;
     private AllergyViewModel allergyViewModel;
@@ -74,6 +81,14 @@ public class ProfileFormActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // creates instances of needed view models.
+        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
+        setsOfProfileViewModel = ViewModelProviders.of(this).get(SetsOfProfileViewModel.class);
+        allergiesOfProfileViewModel = ViewModelProviders.of(this).get(AllergiesOfProfileViewModel.class);
+        emergencySetViewModel = ViewModelProviders.of(this).get(EmergencySetViewModel.class);
+
         setContentView(R.layout.activity_profile_form);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -116,11 +131,14 @@ public class ProfileFormActivity extends AppCompatActivity {
             }
         });
 
+        listOfAllergies = new ArrayList<>();
+
         multiComplete = findViewById(R.id.known_allergens);
-        multiComplete.setAdapter(new ArrayAdapter<>(this,
-            android.R.layout.simple_dropdown_item_1line,
-            getResources().getStringArray(R.array.allergens)
-        ));
+        ArrayAdapter<Allergy> adapter = new ArrayAdapter<Allergy>(this,
+                android.R.layout.simple_dropdown_item_1line,
+                listOfAllergies);
+
+        multiComplete.setAdapter(adapter);
         multiComplete.setTokenizer(new SpaceTokenizer());
         multiComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -146,19 +164,22 @@ public class ProfileFormActivity extends AppCompatActivity {
             }
         });
 
+
+        //Observes the allergie table and changes the content of the adapter
+        allergyViewModel.getAllAllergies().observe(this, new Observer<List<Allergy>>() {
+            @Override
+            public void onChanged(List<Allergy> allergies) {
+                listOfAllergies = new ArrayList<>(allergies);
+                adapter.clear();
+                adapter.addAll(allergies);
+            }
+        });
+
         Spinner autoinjector = findViewById(R.id.autoinjector);
         autoinjector.setAdapter(new ArrayAdapter<>(this,
             android.R.layout.simple_spinner_dropdown_item,
             getResources().getStringArray(R.array.autoinjectors)
         ));
-
-        // creates instances of needed view models.
-        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
-        allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
-        setsOfProfileViewModel = ViewModelProviders.of(this).get(SetsOfProfileViewModel.class);
-        allergiesOfProfileViewModel = ViewModelProviders.of(this).get(AllergiesOfProfileViewModel.class);
-        emergencySetViewModel = ViewModelProviders.of(this).get(EmergencySetViewModel.class);
-
 
         Intent intent = getIntent();
         oldProfileForm = (ProfileForm) intent.getSerializableExtra(ProfileFragment.SEND_PROFILE);
@@ -188,7 +209,12 @@ public class ProfileFormActivity extends AppCompatActivity {
         if (oldProfileForm == null){
             createProfileInDB(updatedProfileForm)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableCompletableObserver() {
+                    .subscribeWith(new DisposableObserver<Single<Long>>() {
+                        @Override
+                        public void onNext(Single<Long> longSingle) {
+
+                        }
+
                         @Override
                         public void onComplete() {
                             oldProfileForm = updatedProfileForm;
@@ -206,7 +232,12 @@ public class ProfileFormActivity extends AppCompatActivity {
         else if(!oldProfileForm.same(updatedProfileForm)) {
             updateProfileInDB(updatedProfileForm)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableCompletableObserver() {
+                    .subscribeWith(new DisposableObserver<Single<Long>>() {
+                        @Override
+                        public void onNext(Single<Long> longSingle) {
+
+                        }
+
                         @Override
                         public void onComplete() {
                             oldProfileForm = updatedProfileForm;
@@ -226,7 +257,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         }
     }
 
-    private Completable updateProfileInDB(ProfileForm p){
+    private Observable<Single<Long>> updateProfileInDB(ProfileForm p){
         Profile updatedProfile = p.getProfile();
         updatedProfile.setName(p.getName());
         updatedProfile.setBirthday(p.getBirthday());
@@ -246,6 +277,8 @@ public class ProfileFormActivity extends AppCompatActivity {
         EmergencySet updatedAutoInjektor = p.getEmergencySets().get(2);
         updatedAutoInjektor.setBrandName(p.getAutoinjector());
 
+        ArrayList<Allergy> test1 = new ArrayList<>(p.getAllergies());
+
         return profileViewModel.update(updatedProfile)
                 .flatMap(s -> emergencySetViewModel.update(updatedAntihistamine))
                 .doOnSuccess(s -> System.out.println("updated lines antihistamine: " + s))
@@ -253,12 +286,15 @@ public class ProfileFormActivity extends AppCompatActivity {
                 .doOnSuccess(s -> System.out.println("updated lines steroid: " + s))
                 .flatMap(s -> emergencySetViewModel.update(updatedAutoInjektor))
                 .doOnSuccess(s -> System.out.println("updated lines autoinjektor: " + s))
-                .toCompletable()
-                .subscribeOn(Schedulers.io())
+                .flatMapCompletable(s -> allergiesOfProfileViewModel.clearAll())
+                .andThen(Observable.just(p.getAllergies()))
+                .flatMapIterable(a -> a)
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())))
                 .observeOn(AndroidSchedulers.mainThread());
+
     }
 
-    private Completable createProfileInDB(ProfileForm p){
+    private Observable<Single<Long>> createProfileInDB(ProfileForm p){
         //TODO: Reactivate creating profile when need again
         Profile createdProfile = new Profile(p.getName(), p.getBirthday(), p.getAge(), p.getGender(), p.hasAsthma(), p.takesSalbutamol());
 
@@ -269,6 +305,11 @@ public class ProfileFormActivity extends AppCompatActivity {
         EmergencySet emergencySetAutoInjektor = new EmergencySet(p.getAutoinjector(), "Auto-Injektor", "-", "-");
         //TODO: Split and assign dosage string to dosage and dosage unit
 
+
+        Observable.just(p.getAllergies())
+                .flatMapIterable(a -> a)
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())));
+
         return emergencySetViewModel.insert(emergencySetAntihistamine)
                 .flatMap(s -> setsOfProfileViewModel.insert(new SetsOfProfile(1, s.intValue())))
                 .doOnSuccess(s -> System.out.println("Inserted antihistamine"))
@@ -278,7 +319,9 @@ public class ProfileFormActivity extends AppCompatActivity {
                 .flatMap(s -> emergencySetViewModel.insert(emergencySetAutoInjektor))
                 .flatMap(s -> setsOfProfileViewModel.insert(new SetsOfProfile(1, s.intValue())))
                 .doOnSuccess(s -> System.out.println("Inserted autoinjektor"))
-                .toCompletable()
+                .flatMapObservable(s -> Observable.just(p.getAllergies()))
+                .flatMapIterable(a -> a)
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())))
                 .observeOn(AndroidSchedulers.mainThread());
 
         //TODO: Store and delete inserted information if whole chain was not successful
@@ -290,6 +333,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         TextView birthday = findViewById(R.id.birthday);
         Profile.Gender gender = genderFromString(getRadioGroupValue(R.id.gender));
         ArrayList<String> allergens = new ArrayList<>(Arrays.asList(allergyTags.toString().split(" ")));
+        ArrayList<Allergy> selectedAllergies = getListOfAllergiesFromTags(allergens);
         String asthma = getRadioGroupValue(R.id.asthma);
 
         if (name.isEmpty() || gender == null || asthma == null || birthday.getText().length() == 0) {
@@ -322,7 +366,7 @@ public class ProfileFormActivity extends AppCompatActivity {
                 date.getMonth(),
                 date.getDayOfMonth(),
                 gender,
-                allergens,
+                selectedAllergies,
                 asthma.equals(getString(R.string.yes)),
                 antihistamine,
                 antihistamineDosage,
@@ -333,6 +377,21 @@ public class ProfileFormActivity extends AppCompatActivity {
         );
 
         return profileForm;
+    }
+
+
+    private ArrayList<Allergy> getListOfAllergiesFromTags(ArrayList<String> strings){
+        ArrayList<Allergy> allergies = new ArrayList<>();
+
+        for(String s : strings){
+            for(Allergy a : listOfAllergies){
+                if(s.equals(a.getName())){
+                    allergies.add(a);
+                }
+            }
+        }
+
+        return allergies;
     }
 
 
@@ -359,6 +418,8 @@ public class ProfileFormActivity extends AppCompatActivity {
         setRadioGroupValue(R.id.asthma, getString(profile.hasAsthma() ? R.string.yes : R.string.no));
 
         // Antihistamine
+
+        ((EditText) findViewById(R.id.known_allergens)).setText(profile.allergensToString());
         ((EditText) findViewById(R.id.antihistamine)).setText(profile.getAntihistamine());
         ((EditText) findViewById(R.id.antihistamine_dosage)).setText(profile.getAntihistamineDosage());
         // Steroid

@@ -1,5 +1,6 @@
 package com.example.olga.aa_app;
 
+import com.example.olga.aa_app.database.entities.Allergy;
 import com.example.olga.aa_app.database.entities.EmergencySet;
 import com.example.olga.aa_app.database.entities.Profile;
 
@@ -19,12 +20,12 @@ public class ProfileForm implements Serializable {
     private Profile profile;
     private long id;
     private List<EmergencySet> emergencySets;
+    private List<Allergy> allergies;
 
     //Profilinformationen
     private String name;
     private Date birthday;
     private Profile.Gender gender;
-    private ArrayList<String> allergies;
     private boolean asthma;
 
     //Notfallset
@@ -40,10 +41,11 @@ public class ProfileForm implements Serializable {
     }
 
     //TODO: Add allergies to profileForm
-    public ProfileForm(Profile profile, List<EmergencySet> emergencySetList) {
+    public ProfileForm(Profile profile, List<EmergencySet> emergencySetList, List<Allergy> allergies) {
         this.profile = profile;
         this.id = profile.getProfileId();
         this.emergencySets = emergencySetList;
+        this.allergies = allergies;
 
         this.name = profile.getName();
         this.birthday = profile.getBirthday();
@@ -67,7 +69,7 @@ public class ProfileForm implements Serializable {
         this.name = profileForm.getName();
         this.birthday = profileForm.getBirthday();
         this.gender = profileForm.getGender();
-        // allergies
+        this.allergies = profileForm.getAllergies();
         this.asthma = profileForm.hasAsthma();
 
         this.antihistamine = profileForm.getEmergencySets().get(0).getBrandName();
@@ -78,7 +80,7 @@ public class ProfileForm implements Serializable {
         this.salbutamol = profile.isSalbutamol();
     }
 
-    public void changeProfileForm(String name, int birthYear, int birthMonth, int birthDay, Profile.Gender gender, ArrayList<String> allergies,
+    public void changeProfileForm(String name, int birthYear, int birthMonth, int birthDay, Profile.Gender gender, ArrayList<Allergy> allergies,
                                   boolean asthma, String antihistamine, String antihistamineDosage, String steroid,
                                   String steroidDosage, String autoinjector, boolean salbutamol)
     {
@@ -86,7 +88,7 @@ public class ProfileForm implements Serializable {
         Calendar calendar = new GregorianCalendar(birthYear, birthMonth, birthDay);
         this.birthday = calendar.getTime();
         this.gender = gender;
-        this.allergies = allergies;
+        this.allergies = allergies;   //TODO: Bring back allergies
         this.asthma = asthma;
         this.antihistamine = antihistamine;
         this.antihistamineDosage = antihistamineDosage;
@@ -137,7 +139,7 @@ public class ProfileForm implements Serializable {
         return gender;
     }
 
-    public ArrayList<String> getAllergies() {
+    public List<Allergy> getAllergies() {
         return allergies;
     }
 
@@ -233,6 +235,17 @@ public class ProfileForm implements Serializable {
             default:
                 return "";
         }
+    }
+
+    public String allergensToString(){
+        String string = "";
+        if(allergies != null){
+            for(Allergy a : allergies){
+                string += a.getName() + " ";
+            }
+        }
+
+        return string;
     }
 
     /*@Override

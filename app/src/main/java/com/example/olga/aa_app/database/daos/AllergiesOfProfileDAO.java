@@ -21,14 +21,7 @@ public interface AllergiesOfProfileDAO {
     @Insert
     Single<Long> insert(AllergiesOfProfile allergiesOfProfile);
 
-    // Queries
-
-    @Query("select * from profile_table inner join allergies_of_profiles_table using (profileId) where allergies_of_profiles_table.allergyId = :allergyId")
-    LiveData<List<Profile>> getProfilesWithAllergies(final long allergyId);
-
-    @Query("select * from profile_table left outer join allergies_of_profiles_table on " +
-            "profile_table.profileId = allergies_of_profiles_table.profileId where" +
-            " allergies_of_profiles_table.profileId = :profileId")
-    LiveData<List<Profile>> getAllergiesOfProfile(final long profileId);
+    @Query("DELETE FROM allergies_of_profiles_table")
+    Completable clearAll();
 
 }
