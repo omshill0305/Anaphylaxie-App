@@ -52,6 +52,6 @@ public class ProfileTest {
         profile.startReaction(reaction);
         assertEquals(reaction, profile.getCurrentReaction());
         profile.endReaction();
-        assertEquals(null, profile.getCurrentReaction());
+        assertNotEquals(reaction, profile.getCurrentReaction());
     }
 }

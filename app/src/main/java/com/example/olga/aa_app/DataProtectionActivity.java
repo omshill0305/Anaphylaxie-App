@@ -1,12 +1,15 @@
 package com.example.olga.aa_app;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
+/**
+ * Data Protection of the Application
+ */
 public class DataProtectionActivity extends AppCompatActivity {
 
     @Override

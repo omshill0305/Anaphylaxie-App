@@ -1,46 +1,25 @@
 package com.example.olga.aa_app;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TableRow;
-import java.util.ArrayList;
-import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class TreatmentRedActivity extends AppCompatActivity {
-    Button tagButton3;
-    ArrayList<String> instructionListDBEXample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_red);
-
-        instructionListDBEXample = new ArrayList<>();
-        instructionListDBEXample.add("Es bestehen Anzeichen für eine schwere Reaktion");
-        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Bitte den Autoinjektor verabreichen");
-
-
-        ListView list = (ListView) findViewById(R.id.dynamicView);
-        String[] instructionList = new String[instructionListDBEXample.size()];
-        for (int i = 0; i < instructionList.length; i++) {
-
-            instructionList[i] = (i+1) + ". " + instructionListDBEXample.get(i);
-
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_adapter_view, R.id.textView18, instructionList);
-        list.setAdapter(arrayAdapter);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -52,17 +31,33 @@ public class TreatmentRedActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
+        TextView medicine = findViewById(R.id.medicine);
+        if (Profile.currentProfile != null) {
+            medicine.setText(getString(R.string.treatment_red_medicine, Profile.currentProfile.getAutoinjector()));
+        } else {
+            medicine.setText(getString(R.string.treatment_red_medicine, ""));
+        }
+
         showAddItemDialog1(null);
 
+        TextView selection = findViewById(R.id.selection);
+        StringBuilder selectedReactions = new StringBuilder();
+        if (Profile.currentProfile != null) {
+            for (Symptom symptom: Profile.currentProfile.getCurrentReaction().getSymptoms()) {
+                selectedReactions.append(getString(symptom.getName())).append(", ");
+            }
+        }
+        if (selectedReactions.length() > 2) {
+            selection.setText(selectedReactions.substring(0, selectedReactions.length() - 2));
+        }
 
-        TableRow raw1 = (TableRow) findViewById(R.id.raw2);
-        tagButton3 = new Button(this);
-        tagButton3.setText("Kribbeln in Mund und Rachen");
-        tagButton3.setLayoutParams(new TableRow.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-        raw1.addView(tagButton3);
-
+        Button back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TreatmentRedActivity.this, SymptomsActivity.class));
+            }
+        });
     }
 
     @Override
@@ -88,11 +83,8 @@ public class TreatmentRedActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
         builder.setTitle("Schritt 2");
 
-
-
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout2, null);
         builder.setView(customLayout);
-
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -108,12 +100,8 @@ public class TreatmentRedActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
         builder.setTitle("Schritt 1");
 
-
-
-
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout_red, null);
         builder.setView(customLayout);
-
 
         builder.setPositiveButton("Weiter", new DialogInterface.OnClickListener() {
             @Override
@@ -124,7 +112,4 @@ public class TreatmentRedActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-
-
 }

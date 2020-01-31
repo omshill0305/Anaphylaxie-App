@@ -8,6 +8,11 @@ import android.graphics.PixelFormat;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 
+/**
+ * Draws a linear gradient over 1/4 of the screen.
+ * <p>
+ * This is used for the gradient background in the BaseView class.
+ */
 public class BackgroundDrawable extends Drawable {
     private int[] color;
 
@@ -21,11 +26,7 @@ public class BackgroundDrawable extends Drawable {
         float width = getBounds().width();
         float height = getBounds().height() * 0.25f;
 
-        paint.setShader(
-            new LinearGradient(
-                0, 0, width, height, color, null, Shader.TileMode.MIRROR
-            )
-        );
+        paint.setShader(new LinearGradient(0, 0, width, height, color, null, Shader.TileMode.MIRROR));
         canvas.drawRect(0, 0, width, height, paint);
     }
 

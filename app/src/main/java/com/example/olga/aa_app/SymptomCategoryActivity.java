@@ -22,14 +22,16 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.olga.aa_app.utility.Utility;
+
 import java.util.ArrayList;
 
 /**
  * Selection of symptoms of a category
+ * <p>
+ * The header is set in setup and the content of the activity is created dynamically in onCreate.
  */
 public class SymptomCategoryActivity extends AppCompatActivity {
-
-    String category = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +49,11 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        category = intent.getStringExtra(SymptomsActivity.SELECTED_CATEGORY);
-
+        String category = intent.getStringExtra(SymptomsActivity.SELECTED_CATEGORY);
         setup(category);
 
-        TypedArray names = getSymptomResources();
-        TypedArray descriptions = getDescriptionResources();
+        TypedArray names = getSymptomResources(category);
+        TypedArray descriptions = getDescriptionResources(category);
 
         if (names == null || descriptions == null || names.length() != descriptions.length()) {
             return;
@@ -73,12 +74,12 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             if (descriptions.getResourceId(i, 0) != 0) {
                 final String description = descriptions.getString(i);
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
-                info_button.setBackground(getDrawable(R.color.colorProjektLightGreen));
+                info_button.setColorFilter(getColor(R.color.colorPrimaryDark));
                 info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SymptomCategoryActivity.this,
-                                R.style.MyAlertDialogStyleInfo
+                            R.style.MyAlertDialogStyleInfo
                         );
                         builder.setTitle(checkBox.getText());
 
@@ -100,6 +101,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             } else {
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
                 info_button.setEnabled(false);
+                info_button.setAlpha(0.5f);
             }
             root.addView(row);
         }
@@ -126,93 +128,79 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         return true;
     }
 
-    private void setup(String symptomCategory) {
-        category = symptomCategory;
+    private void setup(final String category) {
         Button choose = findViewById(R.id.choose);
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Reaction reaction = getCurrentReaction(category);
+                if (reaction.isEmpty() || Profile.currentProfile == null) {
+                    Utility.showToast(SymptomCategoryActivity.this, getString(R.string.min_symptom));
+                } else {
+                    chooseActivity(Algorithm.evaluate(reaction));
+                }
+            }
+        });
         BaseView container = findViewById(R.id.content);
         switch (category) {
             case SymptomsActivity.CATEGORY_AIRWAYS:
                 container.setIcon(R.drawable.lung);
                 container.setTitle(getString(R.string.airways));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_CARDIOVASCULAR:
-                container.setIcon(R.drawable.cardiogram);
+                container.setIcon(R.drawable.ic_cardiogram);
                 container.setTitle(getString(R.string.cardiovascular));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_GASTRO_INTESTINAL:
                 container.setIcon(R.drawable.stomach);
                 container.setTitle(getString(R.string.gastro_intestinal));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class));
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_SKIN:
                 container.setIcon(R.drawable.ic_head);
                 container.setTitle(getString(R.string.skin));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_DIZZINESS:
                 container.setIcon(R.drawable.headache);
                 container.setTitle(getString(R.string.dizziness));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_RUNNY_NOSE:
                 container.setIcon(R.drawable.runny);
                 container.setTitle(getString(R.string.runny_nose));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
-                    }
-                });
                 break;
             case SymptomsActivity.CATEGORY_INDEFINABLE_DREAD:
                 container.setIcon(R.drawable.ghost);
                 container.setTitle(getString(R.string.panic));
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class));
-                    }
-                });
                 break;
             default:
                 break;
         }
     }
 
+    private Reaction getCurrentReaction(String category) {
+        Reaction reaction;
+        Profile profile = Profile.currentProfile;
+
+        if (profile != null) {
+            reaction = profile.getCurrentReaction();
+        } else {
+            reaction = new Reaction();
+        }
+
+        ArrayList<Integer> symptoms = getSelectedSymptoms(category);
+        for (Integer symptom : symptoms) {
+            reaction.addSymptom(new Symptom(symptom));
+        }
+
+        return reaction;
+    }
+
     /**
-     * TODO: Change Symptom, Reaction and Algorithm class to use identifiers.
+     * Searches for checked checkboxes and returns their mapped resource identifier.
      *
      * @return Returns string resource identifiers of selected checkboxes.
      */
-    private ArrayList<Integer> getSelectedSymptoms() {
-        TypedArray names = getSymptomResources();
+    private ArrayList<Integer> getSelectedSymptoms(String category) {
+        TypedArray names = getSymptomResources(category);
         if (names == null || names.length() == 0) {
             return new ArrayList<>();
         }
@@ -224,7 +212,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         for (int i = 0; i < len; i++) {
             TableRow row = (TableRow) root.getChildAt(i);
             CheckBox checkBox = (CheckBox) row.getChildAt(0);
-            if (checkBox.isSelected()) {
+            if (checkBox.isChecked()) {
                 selection.add(names.getResourceId(i, 0));
             }
         }
@@ -232,7 +220,19 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         return selection;
     }
 
-    private TypedArray getSymptomResources() {
+    private void chooseActivity(String evaluatedAlgorithm) {
+        Intent intent;
+        if (evaluatedAlgorithm.equalsIgnoreCase(Algorithm.ALGORITHM_1)) {
+            intent = new Intent(SymptomCategoryActivity.this, TreatmentGreenActivity.class);
+        } else {
+            intent = new Intent(SymptomCategoryActivity.this, TreatmentRedActivity.class);
+        }
+
+        intent.putExtra("evaluatedAlgorithm", evaluatedAlgorithm);
+        startActivity(intent);
+    }
+
+    private TypedArray getSymptomResources(String category) {
         Resources resources = getResources();
         switch (category) {
             case SymptomsActivity.CATEGORY_AIRWAYS:
@@ -254,7 +254,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         }
     }
 
-    private TypedArray getDescriptionResources() {
+    private TypedArray getDescriptionResources(String category) {
         Resources resources = getResources();
         switch (category) {
             case SymptomsActivity.CATEGORY_AIRWAYS:
