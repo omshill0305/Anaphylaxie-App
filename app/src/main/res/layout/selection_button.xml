@@ -26,5 +26,5 @@
         android:background="@color/white"
         android:contentDescription="@string/information"
         android:padding="@dimen/default_margin"
-        app:srcCompat="@drawable/question_mark" />
+        app:srcCompat="@drawable/ic_info" />
 </TableRow>

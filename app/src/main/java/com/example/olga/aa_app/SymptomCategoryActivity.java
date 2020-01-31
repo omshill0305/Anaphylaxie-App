@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 /**
  * Selection of symptoms of a category
+ * <p>
+ * The header is set in setup and the content of the activity is created dynamically in onCreate.
  */
 public class SymptomCategoryActivity extends AppCompatActivity {
 
@@ -73,7 +75,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             if (descriptions.getResourceId(i, 0) != 0) {
                 final String description = descriptions.getString(i);
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
-                info_button.setBackground(getDrawable(R.color.colorProjektLightGreen));
+                info_button.setColorFilter(getColor(R.color.colorPrimaryDark));
                 info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -101,6 +103,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             } else {
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
                 info_button.setEnabled(false);
+                info_button.setAlpha(0.5f);
             }
             root.addView(row);
         }
@@ -143,7 +146,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 container.setTitle(getString(R.string.airways));
                 break;
             case SymptomsActivity.CATEGORY_CARDIOVASCULAR:
-                container.setIcon(R.drawable.cardiogram);
+                container.setIcon(R.drawable.ic_cardiogram);
                 container.setTitle(getString(R.string.cardiovascular));
                 break;
             case SymptomsActivity.CATEGORY_GASTRO_INTESTINAL:

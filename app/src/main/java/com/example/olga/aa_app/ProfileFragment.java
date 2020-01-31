@@ -100,6 +100,7 @@ public class ProfileFragment extends Fragment {
 
         // Emergency Set
         TextView antihistamine = data.findViewById(R.id.antihistamine);
+        // TODO: String formatting
         antihistamine.setText(profile.getAntihistamineDosage() + " " + profile.getAntihistamine());
         TextView steroid = data.findViewById(R.id.steroid);
         steroid.setText(profile.getSteroidDosage() + " " + profile.getSteroid());

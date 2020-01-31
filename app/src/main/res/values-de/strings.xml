@@ -107,4 +107,19 @@
     <string name="data_security">Datenschutzerklärung</string>
     <string name="step">Schritt %1$d</string>
     <string name="continue_">Weiter</string>
+    <string name="your_symptom_selection">Du hast folgende Symptome gewählt</string>
+    <string name="what_todo">Was ist jetzt zu tun?</string>
+    <string name="further_information">Weitere Informationen</string>
+
+    <string name="starting_reaction">Möglicher Beginn einer anaphylaktischen Reaktion</string>
+    <string name="dangerous_reaction">Schwere anaphylaktische Reaktion</string>
+    <string name="stay_calm">Bewahren Sie Ruhe.</string>
+    <string name="treatment_green_medicine">Verabreichen Sie das\n
+        - Antihistaminikum %1$s <b>%2$s</b> und das\n
+        - Steroid %3$s <b>%4$s</b>.</string>
+    <string name="treatment_red_medicine">Verabreichen Sie den Autoinjektor %1s.</string>
+    <string name="after_treatment_green">Halten Sie den Autoinjektor %1$s bereit und wählen Sie
+        im Zweifel den Notruf.</string>
+    <string name="back_to_selection">Zurück zur Auswahl</string>
+    <string name="after_treatment_red">Wählen Sie den Notruf.</string>
 </resources>
