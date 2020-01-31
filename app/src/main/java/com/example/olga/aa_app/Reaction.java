@@ -15,6 +15,10 @@ public class Reaction {
         return symptoms;
     }
 
+    public boolean isEmpty() {
+        return symptoms.isEmpty();
+    }
+
     public void addSymptom(Symptom symptom) {
         if (!symptoms.contains(symptom)) {
             symptoms.add(symptom);

@@ -22,6 +22,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.olga.aa_app.utility.Utility;
+
 import java.util.ArrayList;
 
 /**
@@ -30,8 +32,6 @@ import java.util.ArrayList;
  * The header is set in setup and the content of the activity is created dynamically in onCreate.
  */
 public class SymptomCategoryActivity extends AppCompatActivity {
-
-    String category = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +49,11 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        category = intent.getStringExtra(SymptomsActivity.SELECTED_CATEGORY);
-
+        String category = intent.getStringExtra(SymptomsActivity.SELECTED_CATEGORY);
         setup(category);
 
-        TypedArray names = getSymptomResources();
-        TypedArray descriptions = getDescriptionResources();
+        TypedArray names = getSymptomResources(category);
+        TypedArray descriptions = getDescriptionResources(category);
 
         if (names == null || descriptions == null || names.length() != descriptions.length()) {
             return;
@@ -79,8 +78,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
                 info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(
-                            SymptomCategoryActivity.this,
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SymptomCategoryActivity.this,
                             R.style.MyAlertDialogStyleInfo
                         );
                         builder.setTitle(checkBox.getText());
@@ -130,13 +128,17 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         return true;
     }
 
-    private void setup(String symptomCategory) {
-        category = symptomCategory;
+    private void setup(final String category) {
         Button choose = findViewById(R.id.choose);
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chooseActivity(evaluateAlgorithm());
+                Reaction reaction = getCurrentReaction(category);
+                if (reaction.isEmpty()) {
+                    Utility.showToast(SymptomCategoryActivity.this, getString(R.string.min_symptom));
+                } else {
+                    chooseActivity(Algorithm.evaluate(reaction));
+                }
             }
         });
         BaseView container = findViewById(R.id.content);
@@ -174,10 +176,9 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         }
     }
 
-    private String evaluateAlgorithm() {
+    private Reaction getCurrentReaction(String category) {
         Reaction reaction;
         Profile profile = Profile.currentProfile;
-        ArrayList<Integer> symptoms = getSelectedSymptoms();
 
         if (profile != null) {
             reaction = profile.getCurrentReaction();
@@ -185,10 +186,12 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             reaction = new Reaction();
         }
 
+        ArrayList<Integer> symptoms = getSelectedSymptoms(category);
         for (Integer symptom : symptoms) {
             reaction.addSymptom(new Symptom(symptom));
         }
-        return Algorithm.evaluate(reaction);
+
+        return reaction;
     }
 
     /**
@@ -196,8 +199,8 @@ public class SymptomCategoryActivity extends AppCompatActivity {
      *
      * @return Returns string resource identifiers of selected checkboxes.
      */
-    private ArrayList<Integer> getSelectedSymptoms() {
-        TypedArray names = getSymptomResources();
+    private ArrayList<Integer> getSelectedSymptoms(String category) {
+        TypedArray names = getSymptomResources(category);
         if (names == null || names.length() == 0) {
             return new ArrayList<>();
         }
@@ -229,7 +232,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private TypedArray getSymptomResources() {
+    private TypedArray getSymptomResources(String category) {
         Resources resources = getResources();
         switch (category) {
             case SymptomsActivity.CATEGORY_AIRWAYS:
@@ -251,7 +254,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
         }
     }
 
-    private TypedArray getDescriptionResources() {
+    private TypedArray getDescriptionResources(String category) {
         Resources resources = getResources();
         switch (category) {
             case SymptomsActivity.CATEGORY_AIRWAYS:
