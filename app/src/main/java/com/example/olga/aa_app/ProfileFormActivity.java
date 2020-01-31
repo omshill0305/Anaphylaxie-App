@@ -47,6 +47,7 @@ import io.reactivex.Observable;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -209,9 +210,9 @@ public class ProfileFormActivity extends AppCompatActivity {
         if (oldProfileForm == null){
             createProfileInDB(updatedProfileForm)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableObserver<Single<Long>>() {
+                    .subscribeWith(new DisposableObserver<Disposable>() {
                         @Override
-                        public void onNext(Single<Long> longSingle) {
+                        public void onNext(Disposable disposable) {
 
                         }
 
@@ -232,9 +233,9 @@ public class ProfileFormActivity extends AppCompatActivity {
         else if(!oldProfileForm.same(updatedProfileForm)) {
             updateProfileInDB(updatedProfileForm)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableObserver<Single<Long>>() {
+                    .subscribeWith(new DisposableObserver<Disposable>() {
                         @Override
-                        public void onNext(Single<Long> longSingle) {
+                        public void onNext(Disposable disposable) {
 
                         }
 
@@ -257,7 +258,7 @@ public class ProfileFormActivity extends AppCompatActivity {
         }
     }
 
-    private Observable<Single<Long>> updateProfileInDB(ProfileForm p){
+    private Observable<Disposable> updateProfileInDB(ProfileForm p){
         Profile updatedProfile = p.getProfile();
         updatedProfile.setName(p.getName());
         updatedProfile.setBirthday(p.getBirthday());
@@ -289,12 +290,12 @@ public class ProfileFormActivity extends AppCompatActivity {
                 .flatMapCompletable(s -> allergiesOfProfileViewModel.clearAll())
                 .andThen(Observable.just(p.getAllergies()))
                 .flatMapIterable(a -> a)
-                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())))
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())).subscribe())
                 .observeOn(AndroidSchedulers.mainThread());
 
     }
 
-    private Observable<Single<Long>> createProfileInDB(ProfileForm p){
+    private Observable<Disposable> createProfileInDB(ProfileForm p){
         //TODO: Reactivate creating profile when need again
         Profile createdProfile = new Profile(p.getName(), p.getBirthday(), p.getAge(), p.getGender(), p.hasAsthma(), p.takesSalbutamol());
 
@@ -321,7 +322,7 @@ public class ProfileFormActivity extends AppCompatActivity {
                 .doOnSuccess(s -> System.out.println("Inserted autoinjektor"))
                 .flatMapObservable(s -> Observable.just(p.getAllergies()))
                 .flatMapIterable(a -> a)
-                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())))
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())).subscribe())
                 .observeOn(AndroidSchedulers.mainThread());
 
         //TODO: Store and delete inserted information if whole chain was not successful
