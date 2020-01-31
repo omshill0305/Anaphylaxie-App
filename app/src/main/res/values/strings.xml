@@ -130,7 +130,7 @@
         emergency call service when in doubt.</string>
     <string name="after_treatment_red">Call the emergency call service.</string>
     <string name="back_to_selection">Back to selection</string>
-    <string name="min_symptom">You need to select at least one symptom.</string>
+    <string name="min_symptom">You need to create a profile and to select at least one symptom.</string>
     <string name="find_safe_place">Find a safe place to call from.</string>
     <string name="keep_autoinjector_ready">Keep the autoinjector ready.</string>
     <string name="which">WHICH</string>
