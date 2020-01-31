@@ -131,4 +131,12 @@
     <string name="after_treatment_red">Call the emergency call service.</string>
     <string name="back_to_selection">Back to selection</string>
     <string name="min_symptom">You need to select at least one symptom.</string>
+    <string name="find_safe_place">Find a safe place to call from.</string>
+    <string name="keep_autoinjector_ready">Keep the autoinjector ready.</string>
+    <string name="which">WHICH</string>
+    <string name="how">HOW</string>
+    <string name="what">WHAT</string>
+    <string name="where">WHERE</string>
+    <string name="wait">WAIT</string>
+    <string name="you_are_here">You are here</string>
 </resources>

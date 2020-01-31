@@ -91,8 +91,14 @@ public class ProfileFragment extends Fragment {
         birthday.setText(Utility.fmtDate(year, month, day));
         TextView gender = data.findViewById(R.id.gender);
         gender.setText(genderToString(Profile.currentProfile.getSex()));
-        // TODO: Allergens...
-        // TextView allergens = data.findViewById(R.id.allergens);
+        StringBuilder a = new StringBuilder();
+        for (String allergy: Profile.currentProfile.getAllergies()) {
+            a.append(allergy).append(", ");
+        }
+        if (a.length() > 2) {
+            TextView allergens = data.findViewById(R.id.allergens);
+            allergens.setText(a.substring(0, a.length() - 2));
+        }
         TextView asthma = data.findViewById(R.id.asthma);
         asthma.setText(Profile.currentProfile.hasAsthma() ? R.string.yes : R.string.no);
 

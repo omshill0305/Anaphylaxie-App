@@ -224,7 +224,19 @@ public class ProfileFormActivity extends AppCompatActivity {
         birthdayPicker.updateDate(year, month, day);
         // Gender
         setRadioGroupValue(R.id.gender, genderToString(p.getSex()));
-        // TODO: Allergens...
+        // Allergies
+        int start = 0;
+        for (String allergy: p.getAllergies()) {
+            allergyTags.append(allergy).append(" ");
+            allergyTags.setSpan(new TagSpan(ProfileFormActivity.this),
+                start,
+                allergyTags.length() - 1,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            );
+            start = allergyTags.length();
+        }
+        multiComplete.setText(allergyTags);
+        multiComplete.setSelection(allergyTags.length());
         // Asthma
         setRadioGroupValue(R.id.asthma, getString(p.hasAsthma() ? R.string.yes : R.string.no));
 

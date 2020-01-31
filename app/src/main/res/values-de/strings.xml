@@ -123,4 +123,11 @@
     <string name="back_to_selection">Zurück zur Auswahl</string>
     <string name="after_treatment_red">Wählen Sie den Notruf.</string>
     <string name="min_symptom">Du musst mindestens ein Symptom ausgewählt haben.</string>
+    <string name="find_safe_place">Suchen Sie einen sicheren Ort zum Anrufen auf.</string>
+    <string name="keep_autoinjector_ready">Halten Sie den Autoinjektor bereit.</string>
+    <string name="which">WELCHE</string>
+    <string name="how">WIE</string>
+    <string name="what">WAS</string>
+    <string name="where">WO</string>
+    <string name="you_are_here">Du bist hier</string>
 </resources>
