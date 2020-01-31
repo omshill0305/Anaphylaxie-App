@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ProfileFragment.REQUEST_PROFILE_UPDATE) {
             if (resultCode == RESULT_OK) {
-                Profile p = (Profile) data.getSerializableExtra(ProfileFormActivity.UPDATED_PROFILE);
+                ProfileForm p = (ProfileForm) data.getSerializableExtra(ProfileFormActivity.UPDATED_PROFILE);
                 if (p != null) {
                     profileFragment.updateProfileOverview(p);
                 }

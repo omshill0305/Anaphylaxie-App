@@ -38,15 +38,15 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         TextView medicines = findViewById(R.id.medicine);
         TextView standby = findViewById(R.id.standby);
 
-        if (Profile.currentProfile != null) {
+        if (ProfileForm.currentProfile != null) {
             medicines.setText(getString(
                 R.string.treatment_green_medicine,
-                Profile.currentProfile.getAntihistamineDosage(),
-                Profile.currentProfile.getAntihistamine(),
-                Profile.currentProfile.getSteroidDosage(),
-                Profile.currentProfile.getSteroid()
+                    ProfileForm.currentProfile.getAntihistamineDosage(),
+                    ProfileForm.currentProfile.getAntihistamine(),
+                    ProfileForm.currentProfile.getSteroidDosage(),
+                    ProfileForm.currentProfile.getSteroid()
             ));
-            standby.setText(getString(R.string.after_treatment_green, Profile.currentProfile.getAutoinjector()));
+            standby.setText(getString(R.string.after_treatment_green, ProfileForm.currentProfile.getAutoinjector()));
         } else {
             medicines.setText(getString(R.string.treatment_green_medicine, "", "", "", ""));
             standby.setText(getString(R.string.after_treatment_green, ""));
@@ -54,8 +54,8 @@ public class TreatmentGreenActivity extends AppCompatActivity {
 
         TextView selection = findViewById(R.id.selection);
         StringBuilder selectedReactions = new StringBuilder();
-        if (Profile.currentProfile != null) {
-            for (Symptom symptom: Profile.currentProfile.getCurrentReaction().getSymptoms()) {
+        if (ProfileForm.currentProfile != null) {
+            for (Symptom symptom: ProfileForm.currentProfile.getCurrentReaction().getSymptoms()) {
                 selectedReactions.append(getString(symptom.getName())).append(", ");
             }
         }

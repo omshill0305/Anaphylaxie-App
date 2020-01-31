@@ -32,8 +32,8 @@ public class TreatmentRedActivity extends AppCompatActivity {
         }
 
         TextView medicine = findViewById(R.id.medicine);
-        if (Profile.currentProfile != null) {
-            medicine.setText(getString(R.string.treatment_red_medicine, Profile.currentProfile.getAutoinjector()));
+        if (ProfileForm.currentProfile != null) {
+            medicine.setText(getString(R.string.treatment_red_medicine, ProfileForm.currentProfile.getAutoinjector()));
         } else {
             medicine.setText(getString(R.string.treatment_red_medicine, ""));
         }
@@ -42,8 +42,8 @@ public class TreatmentRedActivity extends AppCompatActivity {
 
         TextView selection = findViewById(R.id.selection);
         StringBuilder selectedReactions = new StringBuilder();
-        if (Profile.currentProfile != null) {
-            for (Symptom symptom: Profile.currentProfile.getCurrentReaction().getSymptoms()) {
+        if (ProfileForm.currentProfile != null) {
+            for (Symptom symptom: ProfileForm.currentProfile.getCurrentReaction().getSymptoms()) {
                 selectedReactions.append(getString(symptom.getName())).append(", ");
             }
         }

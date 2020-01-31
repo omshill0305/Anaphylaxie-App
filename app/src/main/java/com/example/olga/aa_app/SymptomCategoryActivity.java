@@ -134,7 +134,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Reaction reaction = getCurrentReaction(category);
-                if (reaction.isEmpty() || Profile.currentProfile == null) {
+                if (reaction.isEmpty() || ProfileForm.currentProfile == null) {
                     Utility.showToast(SymptomCategoryActivity.this, getString(R.string.min_symptom));
                 } else {
                     chooseActivity(Algorithm.evaluate(reaction));
@@ -178,7 +178,7 @@ public class SymptomCategoryActivity extends AppCompatActivity {
 
     private Reaction getCurrentReaction(String category) {
         Reaction reaction;
-        Profile profile = Profile.currentProfile;
+        ProfileForm profile = ProfileForm.currentProfile;
 
         if (profile != null) {
             reaction = profile.getCurrentReaction();

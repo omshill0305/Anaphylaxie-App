@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ProfileForm implements Serializable {
 
-    public static Profile currentProfile = null;
+    public static ProfileForm currentProfile = null;
 
     private ArrayList<Reaction> reactions = new ArrayList<>();
     private Reaction currentReaction = null;
@@ -61,6 +61,8 @@ public class ProfileForm implements Serializable {
         this.steroidDosage = String.valueOf(emergencySetList.get(1).getDosage());
         this.autoinjector = emergencySetList.get(2).getBrandName();
         this.salbutamol = profile.isSalbutamol();
+
+        currentProfile = this;
     }
 
     public ProfileForm(ProfileForm profileForm){
