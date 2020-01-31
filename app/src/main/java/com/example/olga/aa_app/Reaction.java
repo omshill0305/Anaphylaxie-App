@@ -21,8 +21,8 @@ public class Reaction {
         }
     }
 
-    public void addSymptoms(Symptom[] strings) {
-        for (Symptom symptom : strings) {
+    public void addSymptoms(Symptom[] symptoms) {
+        for (Symptom symptom : symptoms) {
             addSymptom(symptom);
         }
     }

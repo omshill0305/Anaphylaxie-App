@@ -345,7 +345,7 @@
 
         <Button
             android:id="@+id/cancel"
-            style="@style/Widget.AppCompat.Button.Small"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/profile"
@@ -362,7 +362,7 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/reaction"
+            android:backgroundTint="@color/profile"
             android:onClick="saveProfileChanges"
             android:text="@string/save"
             android:textColor="@color/white"

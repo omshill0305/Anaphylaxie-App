@@ -115,4 +115,19 @@
     <string name="info_itching">" Starts in the palms of the hands, soles of the feet and the genital area."</string>
     <string name="step">Step %1$d</string>
     <string name="continue_">Continue</string>
+    <string name="your_symptom_selection">You selected the following symptoms</string>
+    <string name="what_todo">What has to be done now?</string>
+    <string name="further_information">Further Information</string>
+
+    <string name="starting_reaction">Possible Starting Reaction</string>
+    <string name="dangerous_reaction">Severe Reaction</string>
+    <string name="stay_calm">Calm down.</string>
+    <string name="treatment_green_medicine">Give the\n
+        - antihistamine %1$s <b>%2$s</b> and the\n
+        - steroid %3$s <b>%4$s</b>.</string>
+    <string name="treatment_red_medicine">"Inject the Autoinjector %1$s."</string>
+    <string name="after_treatment_green">Keep the autoinjector %1$s around and call the
+        emergency call service when in doubt.</string>
+    <string name="after_treatment_red">Call the emergency call service.</string>
+    <string name="back_to_selection">Back to selection</string>
 </resources>
