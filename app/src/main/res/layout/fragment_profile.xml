@@ -230,10 +230,11 @@
 
             <Button
                 android:id="@+id/profile_form_btn"
-                style="@style/ColouredButton"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:background="@color/profile"
                 android:padding="@dimen/default_margin"
                 android:text="@string/create_profile"
                 android:textSize="@dimen/paragraph"

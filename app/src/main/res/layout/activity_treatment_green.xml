@@ -65,9 +65,11 @@
                         android:id="@+id/selection_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/your_symptom_selection"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
+                        android:textSize="@dimen/subheader"
                         app:layout_constraintBottom_toTopOf="@id/selection"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +79,6 @@
                         android:id="@+id/selection"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@android:color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +121,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/stay_calm"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/paragraph" />
+                        android:textSize="@dimen/subheader" />
 
                     <TextView
                         android:id="@+id/medicine"
@@ -129,7 +130,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/treatment_green_medicine"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/paragraph" />
+                        android:textSize="@dimen/subheader" />
 
                     <TextView
                         android:id="@+id/standby"
@@ -138,7 +139,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/after_treatment_green"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/paragraph" />
+                        android:textSize="@dimen/subheader" />
 
                 </LinearLayout>
 
@@ -157,7 +158,7 @@
                         android:text="@string/further_information"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/header" />
+                        android:textSize="@dimen/subheader" />
 
                 </LinearLayout>
 
@@ -176,7 +177,6 @@
             android:background="@color/reaction"
             android:padding="@dimen/default_margin"
             android:text="@string/back_to_selection"
-            android:textSize="@dimen/paragraph"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -352,7 +352,6 @@
             android:onClick="cancelProfileChanges"
             android:text="@android:string/cancel"
             android:textColor="@color/white"
-            android:textSize="@dimen/paragraph"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/save"
             app:layout_constraintStart_toStartOf="parent" />
@@ -366,7 +365,6 @@
             android:onClick="saveProfileChanges"
             android:text="@string/save"
             android:textColor="@color/white"
-            android:textSize="@dimen/paragraph"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cancel" />

@@ -37,25 +37,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/default_margin"
                     android:text="1. Von einem sicheren Ort aus anrufen"
                     android:textColor="@android:color/background_dark"
-                    android:textSize="@dimen/header" />
+                    android:textSize="@dimen/subheader" />
 
                 <TextView
                     android:id="@+id/info_text5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
                     android:text="2. Ruhe bewahren"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/header" />
+                    android:textSize="@dimen/subheader" />
 
                 <TextView
                     android:id="@+id/info_text6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
                     android:text="3. Autoinjektor bereithalten"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/header" />
+                    android:textSize="@dimen/subheader" />
 
             </LinearLayout>
 
@@ -214,7 +217,7 @@
                     android:text="Du befindest dich hier:"
                     android:textAlignment="center"
                     android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/subheader"
                     app:layout_constraintBottom_toTopOf="@+id/map_view"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
