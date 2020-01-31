@@ -156,6 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:textColor="@android:color/black"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -229,11 +230,10 @@
 
             <Button
                 android:id="@+id/profile_form_btn"
-                style="@style/Widget.AppCompat.Button.Colored"
+                style="@style/ColouredButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/profile"
                 android:padding="@dimen/default_margin"
                 android:text="@string/create_profile"
                 android:textSize="@dimen/paragraph"

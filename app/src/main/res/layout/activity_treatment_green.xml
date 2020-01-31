@@ -68,7 +68,6 @@
                         android:text="@string/your_symptom_selection"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/header"
                         app:layout_constraintBottom_toTopOf="@id/selection"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +77,7 @@
                         android:id="@+id/selection"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
                         android:text="@string/what_todo"
                         android:textAlignment="viewStart"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/paragraph"
+                        android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
                     <TextView
