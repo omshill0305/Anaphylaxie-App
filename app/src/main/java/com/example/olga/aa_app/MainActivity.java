@@ -10,8 +10,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.example.olga.aa_app.database.entities.Allergy;
+import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +76,31 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setSelectedItemId(R.id.navigation_reaction);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
+
+        allergyViewModel.clearAllergies()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+
+        Observable.fromIterable(allergeneList())
+                .map(a -> allergyViewModel.insert(a).subscribe())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
+
         initializeFragments();
+    }
+
+    private ArrayList<Allergy> allergeneList(){
+        ArrayList<Allergy> allergies = new ArrayList<>();
+        String[] stringArray = getResources().getStringArray(R.array.allergens);
+        for(int i = 0 ; i < stringArray.length; i++){
+            Allergy a = new Allergy(stringArray[i]);
+            a.setAllergyId(i + 1);
+            allergies.add(a);
+        }
+        return allergies;
     }
 
     @Override
