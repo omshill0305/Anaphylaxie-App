@@ -24,7 +24,6 @@ import java.util.Calendar;
  */
 public class ProfileFragment extends Fragment {
 
-    private Profile profile = null;
     public static final int REQUEST_PROFILE_UPDATE = 1;
     public static final String SEND_PROFILE = "com.example.olga.aa_app.SEND_PROFILE";
 
@@ -43,9 +42,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Activity activity = getActivity();
                 if (activity != null) {
-                    Intent intent = new Intent(getActivity(), ProfileFormActivity.class);
-                    if (profile != null) {
-                        intent.putExtra(SEND_PROFILE, profile);
+                    Intent intent = new Intent(activity, ProfileFormActivity.class);
+                    if (Profile.currentProfile != null) {
+                        intent.putExtra(SEND_PROFILE, Profile.currentProfile);
                     }
                     activity.startActivityForResult(intent, REQUEST_PROFILE_UPDATE);
                 }
@@ -62,10 +61,10 @@ public class ProfileFragment extends Fragment {
      */
     public void updateProfileOverview(Profile profile) {
         if (profile != null) {
-            this.profile = profile;
+            Profile.currentProfile = profile;
             showOverview();
-        } else if (this.profile != null) {
-            this.profile = null;
+        } else if (Profile.currentProfile != null) {
+            Profile.currentProfile = null;
             hideOverview();
         }
     }
@@ -80,32 +79,39 @@ public class ProfileFragment extends Fragment {
         }
         // Personal Data
         TextView name = activity.findViewById(R.id.profile_name);
-        name.setText(profile.getName());
+        name.setText(Profile.currentProfile.getName());
         TableLayout data = activity.findViewById(R.id.profile_data);
         data.setVisibility(View.VISIBLE);
         TextView birthday = data.findViewById(R.id.birthday);
         final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(profile.getBirthday());
+        calendar.setTime(Profile.currentProfile.getBirthday());
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
         birthday.setText(Utility.fmtDate(year, month, day));
         TextView gender = data.findViewById(R.id.gender);
-        gender.setText(genderToString(profile.getSex()));
-        // TODO: Allergens...
-        // TextView allergens = data.findViewById(R.id.allergens);
+        gender.setText(genderToString(Profile.currentProfile.getSex()));
+        StringBuilder a = new StringBuilder();
+        for (String allergy: Profile.currentProfile.getAllergies()) {
+            a.append(allergy).append(", ");
+        }
+        if (a.length() > 2) {
+            TextView allergens = data.findViewById(R.id.allergens);
+            allergens.setText(a.substring(0, a.length() - 2));
+        }
         TextView asthma = data.findViewById(R.id.asthma);
-        asthma.setText(profile.hasAsthma() ? R.string.yes : R.string.no);
+        asthma.setText(Profile.currentProfile.hasAsthma() ? R.string.yes : R.string.no);
 
         // Emergency Set
         TextView antihistamine = data.findViewById(R.id.antihistamine);
-        antihistamine.setText(profile.getAntihistamineDosage() + " " + profile.getAntihistamine());
+        // TODO: String formatting
+        antihistamine.setText(Profile.currentProfile.getAntihistamineDosage() + " " + Profile.currentProfile.getAntihistamine());
         TextView steroid = data.findViewById(R.id.steroid);
-        steroid.setText(profile.getSteroidDosage() + " " + profile.getSteroid());
+        steroid.setText(Profile.currentProfile.getSteroidDosage() + " " + Profile.currentProfile.getSteroid());
         TextView autoinjector = data.findViewById(R.id.autoinjector);
-        autoinjector.setText(profile.getAutoinjector());
+        autoinjector.setText(Profile.currentProfile.getAutoinjector());
         TextView salbumatol = data.findViewById(R.id.salbutamol);
-        salbumatol.setText(profile.takesSalbutamol() ? R.string.yes : R.string.no);
+        salbumatol.setText(Profile.currentProfile.takesSalbutamol() ? R.string.yes : R.string.no);
 
         Button button = activity.findViewById(R.id.profile_form_btn);
         button.setText(R.string.edit_profile);
@@ -149,12 +155,13 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.dataprotection:
-                Intent intent = new Intent(getActivity(), DataProtectionActivity.class);
-                getActivity().startActivity(intent);
-                return true;
+        if (item.getItemId() == R.id.dataprotection) {
+            Activity activity = getActivity();
+            if (activity != null) {
+                Intent intent = new Intent(activity, DataProtectionActivity.class);
+                activity.startActivity(intent);
+            }
+            return true;
         }
         return false;
     }

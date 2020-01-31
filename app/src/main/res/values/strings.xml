@@ -113,4 +113,30 @@
     <string name="info_data_security">"Every time this application is accessed, it collects various general data and information that is stored in so-called log files on the server. These data include, for example, your IP address, your operating system, the date and time access to this application and your Internet service provider. The data is processed on the basis of Art. 6 I lit. b) GDPR. According to this provision, the processing of personal data is necessary to fulfill a contract to which you are a party or to carry out pre-contractual measures. By using this application, you are tacitly accepting our offer to conclude a corresponding (free) usage contract. Incidentally, processing is also possible under Art. 6 I lit. f) GDPR justified because we have a legitimate interest in processing and your interests, fundamental rights and freedoms do not outweigh them. The interest is to properly deliver this application and to protect the functionality of our systems. "</string>
     <string name="info_diarrhea">Water-thin diarrhea is typical without a fever beforehand. Accompanying abdominal pain is often observed.</string>
     <string name="info_itching">" Starts in the palms of the hands, soles of the feet and the genital area."</string>
+    <string name="step">Step %1$d</string>
+    <string name="continue_">Continue</string>
+    <string name="your_symptom_selection">You selected the following symptoms</string>
+    <string name="what_todo">What has to be done now?</string>
+    <string name="further_information">Further Information</string>
+
+    <string name="starting_reaction">Possible Starting Reaction</string>
+    <string name="dangerous_reaction">Severe Reaction</string>
+    <string name="stay_calm">Calm down.</string>
+    <string name="treatment_green_medicine">Give the patient:\n
+        - antihistamine %1$s <b>%2$s</b>\n
+        - steroid %3$s <b>%4$s</b></string>
+    <string name="treatment_red_medicine">"Inject the Autoinjector %1$s."</string>
+    <string name="after_treatment_green">Keep the autoinjector %1$s around and call the
+        emergency call service when in doubt.</string>
+    <string name="after_treatment_red">Call the emergency call service.</string>
+    <string name="back_to_selection">Back to selection</string>
+    <string name="min_symptom">You need to select at least one symptom.</string>
+    <string name="find_safe_place">Find a safe place to call from.</string>
+    <string name="keep_autoinjector_ready">Keep the autoinjector ready.</string>
+    <string name="which">WHICH</string>
+    <string name="how">HOW</string>
+    <string name="what">WHAT</string>
+    <string name="where">WHERE</string>
+    <string name="wait">WAIT</string>
+    <string name="you_are_here">You are here</string>
 </resources>

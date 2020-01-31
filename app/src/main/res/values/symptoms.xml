@@ -31,7 +31,7 @@
     <array name="gastro_intestinal_descriptions">
         <item>@string/info_diarrhea</item>
         <item>@string/info_abdominal_pain</item>
-        <item>@string/info_nausea</item>
+        <item>0</item>
         <item>@string/info_tingling</item>
         <item>@string/info_vomiting</item>
     </array>
