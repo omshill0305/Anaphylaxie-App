@@ -1,63 +1,29 @@
 package com.example.olga.aa_app;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TableRow;
-import java.util.ArrayList;
-import android.widget.ArrayAdapter;
 
+import com.example.olga.aa_app.utility.TagSpan;
 
 public class TreatmentGreenActivity extends AppCompatActivity {
-    Button tagButton3;
-    ArrayList<String> instructionListDBEXample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_green);
-
-
-        instructionListDBEXample = new ArrayList<>();
-        instructionListDBEXample.add("Bitte bewahren Sie Ruhe");
-        instructionListDBEXample.add("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion");
-        if (Profile.currentProfile != null) {
-            Profile profile = Profile.currentProfile;
-            if (profile.getAntihistamineDosage() != null && profile.getAntihistamine() != null)
-                instructionListDBEXample.add("Bitte verabreichen Sie: " + profile.getAntihistamineDosage() +
-                    " des Antihistaminikums " + profile.getAntihistamine());
-            else instructionListDBEXample.add("Bitte verabreichen Sie das Antihistaminikum");
-            if (profile.getSteroidDosage() != null && profile.getSteroid() != null)
-                instructionListDBEXample.add("Bitte verabreichen Sie: " + profile.getSteroidDosage() +
-                    " des Steroids " + profile.getSteroid());
-            else instructionListDBEXample.add("Bitte verabreichen Sie das Steroid");
-            if (profile.getAutoinjector() != null)
-                instructionListDBEXample.add("Bitte den Autoinjektor " + profile.getAutoinjector() + " bereithalten und im Zweifelsfall auch benutzen");
-            else instructionListDBEXample.add("Bitte den Autoinjektor bereithalten und im Zweifelsfall auch benutzen");
-        } else {
-            instructionListDBEXample.add("Bitte verabreichen Sie das Antihistaminikum und das Steroid");
-            instructionListDBEXample.add("Bitte den Autoinjektor bereithalten und im Zweifelsfall auch benutzen");
-        }
-
-        ListView list = (ListView) findViewById(R.id.dynamicView);
-        String[] instructionList = new String[instructionListDBEXample.size()];
-        for (int i = 0; i < instructionList.length; i++) {
-
-            instructionList[i] = (i+1) + ". " + instructionListDBEXample.get(i);
-
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_adapter_view, R.id.textView18, instructionList);
-        list.setAdapter(arrayAdapter);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,32 +35,43 @@ public class TreatmentGreenActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
-        //showAddItemDialog1(null);
+        TextView medicines = findViewById(R.id.medicine);
+        TextView standby = findViewById(R.id.standby);
 
-        Intent intent = getIntent();
-        String evaluatedAlgorithm = intent.getStringExtra("evaluatedAlgorithm"); //symptoms and algorithm number
+        if (Profile.currentProfile != null) {
+            medicines.setText(getString(
+                R.string.treatment_green_medicine,
+                Profile.currentProfile.getAntihistamineDosage(),
+                Profile.currentProfile.getAntihistamine(),
+                Profile.currentProfile.getSteroidDosage(),
+                Profile.currentProfile.getSteroid()
+            ));
+            standby.setText(getString(R.string.after_treatment_green, Profile.currentProfile.getAutoinjector()));
+        } else {
+            medicines.setText(getString(R.string.treatment_green_medicine, "", "", "", ""));
+            standby.setText(getString(R.string.after_treatment_green, ""));
+        }
 
-        for (String symptom : evaluatedAlgorithm.split(", ")) {
-            if (!symptom.contains("algorithm")) {
-                TableRow raw1 = (TableRow) findViewById(R.id.raw2);
-                Button tagButton = new Button(this);
-                tagButton.setText(symptom);
-                tagButton.setLayoutParams(new TableRow.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT));
-                raw1.addView(tagButton);
+        TextView selection = findViewById(R.id.selection);
+        StringBuilder selectedReactions = new StringBuilder();
+        if (Profile.currentProfile != null) {
+            for (Symptom symptom: Profile.currentProfile.getCurrentReaction().getSymptoms()) {
+                selectedReactions.append(getString(symptom.getName())).append(", ");
             }
         }
-        /*TableRow raw1 = (TableRow) findViewById(R.id.raw2);
-        tagButton3 = new Button(this);
+        if (selectedReactions.length() > 2) {
+            selection.setText(selectedReactions.substring(0, selectedReactions.length() - 2));
+        }
 
-        tagButton3.setText("Quddeln");
+        showAddItemDialog1(null);
 
-        tagButton3.setLayoutParams(new TableRow.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-        raw1.addView(tagButton3);*/
-
+        Button back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TreatmentGreenActivity.this, SymptomsActivity.class));
+            }
+        });
     }
 
     @Override
@@ -120,11 +97,8 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
         builder.setTitle("Schritt 2");
 
-
-
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout2, null);
         builder.setView(customLayout);
-
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -140,22 +114,16 @@ public class TreatmentGreenActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
         builder.setTitle("Schritt 1");
 
-
-
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout, null);
         builder.setView(customLayout);
 
-
         builder.setPositiveButton("Weiter", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-                        showAddItemDialog2(null);
-                    }
-                });
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                showAddItemDialog2(null);
+            }
+        });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
-
-
 }

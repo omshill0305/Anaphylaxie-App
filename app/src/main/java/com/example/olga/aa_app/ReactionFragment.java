@@ -1,6 +1,6 @@
 package com.example.olga.aa_app;
 
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,33 +14,32 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 /**
- * A simple {@link Fragment} subclass.
+ * The Reaction page/tab of the main activity.
  */
-public class ReactionFragment extends Fragment implements View.OnClickListener {
-    private Button chooseBt;
+public class ReactionFragment extends Fragment {
 
     public ReactionFragment() {
         // Required empty public constructor
 
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_reaction, container, false);
-        Button chooseBt = (Button) rootView.findViewById(R.id.button2);
-        chooseBt.setOnClickListener(this);
+        Button chooseBt = rootView.findViewById(R.id.button2);
+        chooseBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity activity = getActivity();
+                if (activity != null) {
+                    Intent intent = new Intent(activity, SymptomsActivity.class);
+                    activity.startActivity(intent);
+                }
+            }
+        });
         setHasOptionsMenu(true);
         return rootView;
-    }
-
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(getActivity(), SymptomsActivity.class);
-        getActivity().startActivity(intent);
     }
 
     @Override
@@ -52,12 +51,13 @@ public class ReactionFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.dataprotection:
-                Intent intent = new Intent(getActivity(), DataProtectionActivity.class);
-                getActivity().startActivity(intent);
-                return true;
+        if (item.getItemId() == R.id.dataprotection) {
+            Activity activity = getActivity();
+            if (activity != null) {
+                Intent intent = new Intent(activity, DataProtectionActivity.class);
+                activity.startActivity(intent);
+            }
+            return true;
         }
         return false;
     }

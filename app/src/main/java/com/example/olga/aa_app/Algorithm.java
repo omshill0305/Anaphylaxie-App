@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * Algorithms to evaluate the severity of a reaction.
+ */
 public class Algorithm {
 
     public final static String ALGORITHM_1 = "algorithm1";
