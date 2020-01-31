@@ -85,10 +85,7 @@ public class HomeActivity extends AppCompatActivity {
 
         AllergyViewModel allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
 
-        /*Allergy test = new Allergy("Test");
-        test.setAllergyId(1);
-        allergyViewModel.clearAllergies()
-                .andThen(Observable.fromIterable(allergeneList()))
+        /*Observable.fromIterable(allergeneList())
                 .map(a -> allergyViewModel.insert(a).subscribe())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -105,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
 
         for(int i = 0 ; i < stringArray.length; i++){
             Allergy a = new Allergy(stringArray[i]);
-            //a.setAllergyId(i + 1);
+            a.setAllergyId(i + 1);
 
             allergies.add(a);
         }
