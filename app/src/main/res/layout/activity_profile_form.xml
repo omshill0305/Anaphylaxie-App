@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/profile_name"
                     android:textAllCaps="true"
-                    android:textColor="?attr/colorPrimary"
+                    android:textAppearance="@style/AppTheme.HeadLine"
                     android:textSize="@dimen/paragraph" />
 
                 <EditText
@@ -79,7 +79,7 @@
                         android:layout_weight="0.5"
                         android:text="@string/birthday"
                         android:textAllCaps="true"
-                        android:textColor="?attr/colorPrimary"
+                        android:textAppearance="@style/AppTheme.HeadLine"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/gender"
                     android:textAllCaps="true"
-                    android:textColor="?attr/colorPrimary"
+                    android:textAppearance="@style/AppTheme.HeadLine"
                     android:textSize="@dimen/paragraph" />
 
                 <RadioGroup
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/known_allergens"
                     android:textAllCaps="true"
-                    android:textColor="?attr/colorPrimary"
+                    android:textAppearance="@style/AppTheme.HeadLine"
                     android:textSize="@dimen/paragraph" />
 
                 <MultiAutoCompleteTextView
@@ -169,7 +169,7 @@
                         android:layout_weight="0.5"
                         android:text="@string/asthma"
                         android:textAllCaps="true"
-                        android:textColor="?attr/colorPrimary"
+                        android:textAppearance="@style/AppTheme.HeadLine"
                         android:textSize="@dimen/paragraph" />
 
                     <RadioGroup
@@ -203,7 +203,7 @@
                     android:layout_marginBottom="@dimen/activity_margin"
                     android:text="@string/emergency_set"
                     android:textAllCaps="true"
-                    android:textColor="?attr/colorPrimary"
+                    android:textAppearance="@style/AppTheme.HeadLine"
                     android:textSize="@dimen/paragraph" />
 
                 <TextView

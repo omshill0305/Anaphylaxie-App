@@ -49,7 +49,6 @@
     <string name="wheezing">Pfeifende Atmung</string>
     <string name="cough">Husten</string>
     <string name="enter_name">Gebe deinen Namen ein</string>
-    <string name="enter_birthday">Gebe deinen Geburtstag ein</string>
     <string name="info_diarrhea">Typisch sind wasserdünne Durchfalle, ohne dass es vorher zu Fieber gekommen wäre. Begleitende Bauchscmerzen werden oft beobachtet.</string>
     <string name="info_abdominal_pain">Plötzlich auftretende Schwerzen im Bauchraum.</string>
     <string name="info_tingling">Tritt oft schon nach kleinsten Mengen eines Allergens und gleich nach dem Verzehr auf.</string>
@@ -122,7 +121,7 @@
         im Zweifel den Notruf.</string>
     <string name="back_to_selection">Zurück zur Auswahl</string>
     <string name="after_treatment_red">Wählen Sie den Notruf.</string>
-    <string name="min_symptom">Du musst ein Profil erstellt haben und mindestens ein Symptom ausgewählt haben.</string>
+    <string name="min_symptom">Du musst mindestens ein Symptom ausgewählt haben.</string>
     <string name="find_safe_place">Suchen Sie einen sicheren Ort zum Anrufen auf.</string>
     <string name="keep_autoinjector_ready">Halten Sie den Autoinjektor bereit.</string>
     <string name="which">WELCHE</string>
@@ -133,4 +132,5 @@
     <string name="you_are_here">Du bist hier</string>
     <string name="anaphylaxis">Anaphylaxie</string>
     <string name="first_aid_for">Erste Hilfe für</string>
+    <string name="required_profile">Du musst zuerst ein Profil erstellen.</string>
 </resources>

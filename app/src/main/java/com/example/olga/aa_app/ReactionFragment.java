@@ -13,6 +13,8 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.olga.aa_app.utility.Utility;
+
 /**
  * The Reaction page/tab of the main activity.
  */
@@ -33,8 +35,12 @@ public class ReactionFragment extends Fragment {
             public void onClick(View v) {
                 Activity activity = getActivity();
                 if (activity != null) {
-                    Intent intent = new Intent(activity, SymptomsActivity.class);
-                    activity.startActivity(intent);
+                    if (Profile.currentProfile == null) {
+                        Utility.showToast(activity.getApplicationContext(), getString(R.string.required_profile));
+                    } else {
+                        Intent intent = new Intent(activity, SymptomsActivity.class);
+                        activity.startActivity(intent);
+                    }
                 }
             }
         });

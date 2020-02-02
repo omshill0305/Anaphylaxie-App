@@ -41,7 +41,7 @@
                         android:layout_height="wrap_content"
                         android:text="1. "
                         android:textColor="?attr/colorPrimary"
-                        android:textSize="@dimen/subheader"
+                        android:textSize="@dimen/paragraph"
                         android:textStyle="bold" />
 
                     <TextView
@@ -50,8 +50,8 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/find_safe_place"
-                        android:textColor="@android:color/background_dark"
-                        android:textSize="@dimen/subheader" />
+                        android:textAppearance="@style/AppTheme.Text"
+                        android:textColor="@android:color/background_dark" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -64,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:text="2. "
                         android:textColor="?attr/colorPrimary"
-                        android:textSize="@dimen/subheader"
+                        android:textSize="@dimen/paragraph"
                         android:textStyle="bold" />
 
                     <TextView
@@ -72,8 +72,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/stay_calm"
-                        android:textColor="@color/dark_grey"
-                        android:textSize="@dimen/subheader" />
+                        android:textAppearance="@style/AppTheme.Text"
+                        android:textColor="@color/dark_grey" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:text="3. "
                         android:textColor="?attr/colorPrimary"
-                        android:textSize="@dimen/subheader"
+                        android:textSize="@dimen/paragraph"
                         android:textStyle="bold" />
 
                     <TextView
@@ -94,8 +94,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/keep_autoinjector_ready"
-                        android:textColor="@color/dark_grey"
-                        android:textSize="@dimen/subheader" />
+                        android:textAppearance="@style/AppTheme.Text"
+                        android:textColor="@color/dark_grey" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -234,14 +234,13 @@
                 android:background="@drawable/info_box">
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:text="@string/you_are_here"
                     android:textAlignment="center"
-                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                    android:textSize="@dimen/subheader"
+                    android:textAppearance="@style/AppTheme.HeadLine"
                     app:layout_constraintBottom_toTopOf="@+id/map_view"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -256,7 +255,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

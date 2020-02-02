@@ -51,7 +51,7 @@
     <string name="autoinjector">Autoinjector</string>
     <string name="salbutamol">Salbutamol</string>
     <string name="enter_name">Enter your name</string>
-    <string name="enter_birthday">Enter your birthday</string>
+    <string name="enter_birthday" translatable="false">TT.MM.JJJJ</string>
     <string name="title_activity_maps_example">Map</string>
     <string name="lorem" translatable="false">Lorem</string>
     <string name="treatment">Treatment</string>
@@ -130,7 +130,7 @@
         emergency call service when in doubt.</string>
     <string name="after_treatment_red">Call the emergency call service.</string>
     <string name="back_to_selection">Back to selection</string>
-    <string name="min_symptom">You need to create a profile and to select at least one symptom.</string>
+    <string name="min_symptom">You need to select at least one symptom.</string>
     <string name="find_safe_place">Find a safe place to call from.</string>
     <string name="keep_autoinjector_ready">Keep the autoinjector ready.</string>
     <string name="which">WHICH</string>
@@ -144,4 +144,5 @@
     <string name="powered_by" translatable="false">Powered By</string>
     <string name="charite" translatable="false">Charité</string>
     <string name="htw" translatable="false">HTW</string>
+    <string name="required_profile">You have to create a profile first.</string>
 </resources>

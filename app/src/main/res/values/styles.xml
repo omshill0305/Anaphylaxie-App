@@ -26,6 +26,27 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
+    <style name="AppTheme.Title">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/title</item>
+    </style>
+
+    <style name="AppTheme.SubTitle">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/sub_title</item>
+    </style>
+
+    <style name="AppTheme.HeadLine">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">@dimen/header</item>
+    </style>
+
+    <style name="AppTheme.Text">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/paragraph</item>
+    </style>
+
     <style name="BirthdayPickerStyle" parent="android:Theme.Material.Light.Dialog">
         <item name="android:datePickerStyle">@style/BirthdayPicker</item>
         <item name="android:colorAccent">@color/accent</item>

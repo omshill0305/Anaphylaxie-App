@@ -104,9 +104,24 @@ public class TreatmentGreenActivity extends AppCompatActivity {
     }
 
     private void showMedicine() {
+        String antihistamine = "";
+        String antihistamineDosage = "";
+        String steroid = "";
+        String steroidDosage = "";
+        if (Profile.currentProfile != null) {
+            antihistamine = Profile.currentProfile.getAntihistamine();
+            antihistamineDosage = Profile.currentProfile.getAntihistamineDosage();
+            steroid = Profile.currentProfile.getSteroid();
+            steroidDosage = Profile.currentProfile.getSteroidDosage();
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Reaction_Alert);
         builder.setTitle(getString(R.string.step, 2))
-            .setMessage(getString(R.string.treatment_green_medicine, "", "", "", ""))
+            .setMessage(getString(R.string.treatment_green_medicine,
+                antihistamineDosage,
+                antihistamine,
+                steroidDosage,
+                steroid
+            ))
             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {

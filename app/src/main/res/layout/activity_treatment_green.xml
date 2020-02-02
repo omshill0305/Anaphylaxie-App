@@ -64,8 +64,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/your_symptom_selection"
                         android:textAlignment="center"
-                        android:textColor="@color/dark_grey"
-                        android:textSize="@dimen/subheader"
+                        android:textAppearance="@style/AppTheme.HeadLine"
                         app:layout_constraintBottom_toTopOf="@id/selection"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +74,7 @@
                         android:id="@+id/selection"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:textAppearance="@style/AppTheme.Text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -96,6 +96,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/starting_reaction"
                         android:textAlignment="center"
+                        android:textAppearance="@style/AppTheme.HeadLine"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header" />
 
@@ -105,8 +106,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/what_todo"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/dark_grey"
-                        android:textSize="@dimen/header"
+                        android:textAppearance="@style/AppTheme.Text"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -119,7 +119,7 @@
                             android:layout_height="wrap_content"
                             android:text="1. "
                             android:textColor="?attr/colorPrimary"
-                            android:textSize="@dimen/subheader"
+                            android:textSize="@dimen/paragraph"
                             android:textStyle="bold" />
 
                         <TextView
@@ -127,8 +127,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/default_margin"
                             android:text="@string/stay_calm"
-                            android:textColor="@color/dark_grey"
-                            android:textSize="@dimen/subheader" />
+                            android:textAppearance="@style/AppTheme.Text" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -141,7 +140,7 @@
                             android:layout_height="wrap_content"
                             android:text="2. "
                             android:textColor="?attr/colorPrimary"
-                            android:textSize="@dimen/subheader"
+                            android:textSize="@dimen/paragraph"
                             android:textStyle="bold" />
 
                         <TextView
@@ -150,8 +149,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/default_margin"
                             android:text="@string/treatment_green_medicine"
-                            android:textColor="@color/dark_grey"
-                            android:textSize="@dimen/subheader" />
+                            android:textAppearance="@style/AppTheme.Text" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -164,7 +162,7 @@
                             android:layout_height="wrap_content"
                             android:text="3. "
                             android:textColor="?attr/colorPrimary"
-                            android:textSize="@dimen/subheader"
+                            android:textSize="@dimen/paragraph"
                             android:textStyle="bold" />
 
                         <TextView
@@ -173,8 +171,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/default_margin"
                             android:text="@string/after_treatment_green"
-                            android:textColor="@color/dark_grey"
-                            android:textSize="@dimen/subheader" />
+                            android:textAppearance="@style/AppTheme.Text" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -191,8 +188,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/further_information"
                         android:textAlignment="center"
-                        android:textColor="@color/dark_grey"
-                        android:textSize="@dimen/subheader" />
+                        android:textAppearance="@style/AppTheme.HeadLine" />
 
                 </LinearLayout>
 

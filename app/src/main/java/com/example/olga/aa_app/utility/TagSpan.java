@@ -2,6 +2,7 @@ package com.example.olga.aa_app.utility;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.text.style.ReplacementSpan;
@@ -15,12 +16,10 @@ public class TagSpan extends ReplacementSpan {
 
     private final float CORNER_RADIUS = 50.0f;
     private int backgroundColor;
-    private int textColor;
 
     public TagSpan(Context context) {
         super();
-        backgroundColor = context.getResources().getColor(R.color.emergency);
-        textColor = context.getResources().getColor(R.color.white);
+        backgroundColor = context.getResources().getColor(R.color.accent);
     }
 
     @Override
@@ -40,7 +39,7 @@ public class TagSpan extends ReplacementSpan {
         paint.setStrokeWidth(stroke_width);
         canvas.drawRoundRect(rect, CORNER_RADIUS, CORNER_RADIUS, paint);
         paint.setStyle(Paint.Style.FILL);
-        paint.setColor(textColor);
+        paint.setColor(Color.WHITE);
         canvas.drawText(text, start, end, x + (stroke_width + CORNER_RADIUS) / 2, y, paint);
     }
 

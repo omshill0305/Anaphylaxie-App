@@ -35,8 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
-            android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin"
+            android:paddingLeft="@dimen/default_margin"
+            android:paddingRight="@dimen/default_margin"
             android:paddingBottom="@dimen/activity_margin"
             android:stretchColumns="*">
 
@@ -53,12 +53,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/ic_head"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/skin"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
 
                 <Button
@@ -66,12 +68,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/stomach"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/gastro_intestinal"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
             </TableRow>
 
@@ -88,12 +92,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/ic_cardiogram"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/cardiovascular"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
 
                 <Button
@@ -101,12 +107,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/lung"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/airways"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
             </TableRow>
 
@@ -123,12 +131,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/headache"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/dizziness"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
 
                 <Button
@@ -136,12 +146,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/runny"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/runny_nose"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
             </TableRow>
 
@@ -158,12 +170,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/ghost"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/panic"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
 
                 <Button
@@ -171,12 +185,14 @@
                     style="@android:style/Widget.Material.Light.Button.Borderless"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
                     android:background="@drawable/option_box"
                     android:drawableTop="@drawable/ic_info"
-                    android:drawableTint="@color/dark_grey"
                     android:text="@string/no_idea"
                     android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textAppearance="@style/AppTheme.Text"
                     android:textSize="@dimen/paragraph" />
             </TableRow>
         </TableLayout>

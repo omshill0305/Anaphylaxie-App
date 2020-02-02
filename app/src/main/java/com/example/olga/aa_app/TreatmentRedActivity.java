@@ -94,9 +94,13 @@ public class TreatmentRedActivity extends AppCompatActivity {
     }
 
     private void showMedicine() {
+        String autoinjector = "";
+        if (Profile.currentProfile != null) {
+            autoinjector = Profile.currentProfile.getAutoinjector();
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Emergency_Alert);
         builder.setTitle(getString(R.string.step, 2))
-            .setMessage(getString(R.string.treatment_red_medicine, ""))
+            .setMessage(getString(R.string.treatment_red_medicine, autoinjector))
             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
