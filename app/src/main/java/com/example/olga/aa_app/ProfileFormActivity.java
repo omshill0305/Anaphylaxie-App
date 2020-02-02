@@ -20,7 +20,19 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.example.olga.aa_app.database.entities.Allergy;
+import com.example.olga.aa_app.database.entities.EmergencySet;
+import com.example.olga.aa_app.database.entities.Profile;
+import com.example.olga.aa_app.database.jointables.AllergiesOfProfile;
+import com.example.olga.aa_app.database.jointables.SetsOfProfile;
+import com.example.olga.aa_app.database.viewmodels.AllergiesOfProfileViewModel;
+import com.example.olga.aa_app.database.viewmodels.AllergyViewModel;
+import com.example.olga.aa_app.database.viewmodels.EmergencySetViewModel;
+import com.example.olga.aa_app.database.viewmodels.ProfileViewModel;
+import com.example.olga.aa_app.database.viewmodels.SetsOfProfileViewModel;
 import com.example.olga.aa_app.utility.SpaceTokenizer;
 import com.example.olga.aa_app.utility.TagSpan;
 import com.example.olga.aa_app.utility.Utility;
@@ -28,6 +40,18 @@ import com.example.olga.aa_app.utility.Utility;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
+
+import io.reactivex.Completable;
+import io.reactivex.Observable;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableCompletableObserver;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Profile Form
@@ -38,18 +62,34 @@ import java.util.Calendar;
  */
 public class ProfileFormActivity extends AppCompatActivity {
 
-    // Message to signal the main activity that profile data
+    // Message to signal the main activity (HomeActivity) that profile data
     // was updated and/or saved.
     public static final String UPDATED_PROFILE = "com.example.olga.aa_app.UPDATED_PROFILE";
 
-    private Profile profile = null;
+    private ProfileForm oldProfileForm;
+    private ArrayList<Allergy> listOfAllergies;
     private DatePickerDialog birthdayPicker;
     private MultiAutoCompleteTextView multiComplete;
     private SpannableStringBuilder allergyTags = new SpannableStringBuilder();
+    private ArrayList<Allergy> selectedAllergies;
+
+    private ProfileViewModel profileViewModel;
+    private AllergyViewModel allergyViewModel;
+    private SetsOfProfileViewModel setsOfProfileViewModel;
+    private AllergiesOfProfileViewModel allergiesOfProfileViewModel;
+    private EmergencySetViewModel emergencySetViewModel;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // creates instances of needed view models.
+        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        allergyViewModel = ViewModelProviders.of(this).get(AllergyViewModel.class);
+        setsOfProfileViewModel = ViewModelProviders.of(this).get(SetsOfProfileViewModel.class);
+        allergiesOfProfileViewModel = ViewModelProviders.of(this).get(AllergiesOfProfileViewModel.class);
+        emergencySetViewModel = ViewModelProviders.of(this).get(EmergencySetViewModel.class);
+
         setContentView(R.layout.activity_profile_form);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -92,11 +132,14 @@ public class ProfileFormActivity extends AppCompatActivity {
             }
         });
 
+        listOfAllergies = new ArrayList<>();
+
         multiComplete = findViewById(R.id.known_allergens);
-        multiComplete.setAdapter(new ArrayAdapter<>(this,
-            android.R.layout.simple_dropdown_item_1line,
-            getResources().getStringArray(R.array.allergens)
-        ));
+        ArrayAdapter<Allergy> adapter = new ArrayAdapter<Allergy>(this,
+                android.R.layout.simple_dropdown_item_1line,
+                listOfAllergies);
+
+        multiComplete.setAdapter(adapter);
         multiComplete.setTokenizer(new SpaceTokenizer());
         multiComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -122,6 +165,17 @@ public class ProfileFormActivity extends AppCompatActivity {
             }
         });
 
+
+        //Observes the allergie table and changes the content of the adapter
+        allergyViewModel.getAllAllergies().observe(this, new Observer<List<Allergy>>() {
+            @Override
+            public void onChanged(List<Allergy> allergies) {
+                listOfAllergies = new ArrayList<>(allergies);
+                adapter.clear();
+                adapter.addAll(allergies);
+            }
+        });
+
         Spinner autoinjector = findViewById(R.id.autoinjector);
         autoinjector.setAdapter(new ArrayAdapter<>(this,
             android.R.layout.simple_spinner_dropdown_item,
@@ -129,14 +183,14 @@ public class ProfileFormActivity extends AppCompatActivity {
         ));
 
         Intent intent = getIntent();
-        Profile p = (Profile) intent.getSerializableExtra(ProfileFragment.SEND_PROFILE);
-        receiveProfile(p);
+        oldProfileForm = (ProfileForm) intent.getSerializableExtra(ProfileFragment.SEND_PROFILE);
+        receiveProfile(oldProfileForm);
     }
 
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra(UPDATED_PROFILE, profile);
+        intent.putExtra(UPDATED_PROFILE, oldProfileForm);
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -147,28 +201,140 @@ public class ProfileFormActivity extends AppCompatActivity {
     }
 
     public void saveProfileChanges(View view) {
-        Profile p = sendProfile();
-        if (p == null) {
+        ProfileForm updatedProfileForm = sendProfile();
+        if (updatedProfileForm == null) {
             Utility.showToast(getApplicationContext(), "Not all fields have been filled out.");
             return;
         }
 
-        if (profile == null || !profile.same(p)) {
-            profile = p;
-            // TODO: Save...
-            Utility.showToast(getApplicationContext(), "Changes were saved!");
-            this.onBackPressed();
-        } else {
+        if (oldProfileForm == null){
+            createProfileInDB(updatedProfileForm)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableObserver<Disposable>() {
+                        @Override
+                        public void onNext(Disposable disposable) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            oldProfileForm = updatedProfileForm;
+                            Utility.showToast(getApplicationContext(), "Profile was created");
+                            onBackPressed();
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Utility.showToast(getApplicationContext(), "Profile could not be created. Please try again!");
+                            onBackPressed();
+                        }
+                    });
+        }
+        else if(!oldProfileForm.same(updatedProfileForm)) {
+            updateProfileInDB(updatedProfileForm)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableObserver<Disposable>() {
+                        @Override
+                        public void onNext(Disposable disposable) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            oldProfileForm = updatedProfileForm;
+                            Utility.showToast(getApplicationContext(), "Changes were saved!");
+                            onBackPressed();
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Utility.showToast(getApplicationContext(), "Changes could not be saved, please try again");
+                            onBackPressed();
+                        }
+                    });
+        }
+        else {
             Utility.showToast(getApplicationContext(), "Nothing was changed.");
         }
     }
 
-    private Profile sendProfile() {
+    private Observable<Disposable> updateProfileInDB(ProfileForm p){
+        Profile updatedProfile = p.getProfile();
+        updatedProfile.setName(p.getName());
+        updatedProfile.setBirthday(p.getBirthday());
+        updatedProfile.setAge(p.getAge());  //TODO: Age needs to be calculated again... maybe
+        updatedProfile.setGender(p.getGender());
+        updatedProfile.setAsthma(p.hasAsthma());
+        updatedProfile.setSalbutamol(p.takesSalbutamol());
+
+        EmergencySet updatedAntihistamine = p.getEmergencySets().get(0);
+        updatedAntihistamine.setBrandName(p.getAntihistamine());
+        updatedAntihistamine.setDosage(p.getAntihistamineDosage());
+
+        EmergencySet updatedSteroid = p.getEmergencySets().get(1);
+        updatedSteroid.setBrandName(p.getSteroid());
+        updatedSteroid.setDosage(p.getSteroidDosage());
+
+        EmergencySet updatedAutoInjektor = p.getEmergencySets().get(2);
+        updatedAutoInjektor.setBrandName(p.getAutoinjector());
+
+        ArrayList<Allergy> test1 = new ArrayList<>(p.getAllergies());
+
+        return profileViewModel.update(updatedProfile)
+                .flatMap(s -> emergencySetViewModel.update(updatedAntihistamine))
+                .doOnSuccess(s -> System.out.println("updated lines antihistamine: " + s))
+                .flatMap(s -> emergencySetViewModel.update(updatedSteroid))
+                .doOnSuccess(s -> System.out.println("updated lines steroid: " + s))
+                .flatMap(s -> emergencySetViewModel.update(updatedAutoInjektor))
+                .doOnSuccess(s -> System.out.println("updated lines autoinjektor: " + s))
+                .flatMapCompletable(s -> allergiesOfProfileViewModel.clearAll())
+                .andThen(Observable.just(p.getAllergies()))
+                .flatMapIterable(a -> a)
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())).subscribe())
+                .observeOn(AndroidSchedulers.mainThread());
+
+    }
+
+    private Observable<Disposable> createProfileInDB(ProfileForm p){
+        //TODO: Reactivate creating profile when need again
+        Profile createdProfile = new Profile(p.getName(), p.getBirthday(), p.getAge(), p.getGender(), p.hasAsthma(), p.takesSalbutamol());
+
+        profileViewModel.insert(createdProfile).subscribe();
+
+        EmergencySet emergencySetAntihistamine = new EmergencySet(p.getAntihistamine(), "Antihistaminikum", p.getAntihistamineDosage(), "ml");
+        EmergencySet emergencySetSteroid = new EmergencySet(p.getSteroid(), "Steroid" , p.getSteroidDosage(), "ml");
+        EmergencySet emergencySetAutoInjektor = new EmergencySet(p.getAutoinjector(), "Auto-Injektor", "-", "-");
+        //TODO: Split and assign dosage string to dosage and dosage unit
+
+
+        Observable.just(p.getAllergies())
+                .flatMapIterable(a -> a)
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())));
+
+        return emergencySetViewModel.insert(emergencySetAntihistamine)
+                .flatMap(s -> setsOfProfileViewModel.insert(new SetsOfProfile(1, s.intValue())))
+                .doOnSuccess(s -> System.out.println("Inserted antihistamine"))
+                .flatMap(s -> emergencySetViewModel.insert(emergencySetSteroid))
+                .flatMap(s -> setsOfProfileViewModel.insert(new SetsOfProfile(1, s.intValue())))
+                .doOnSuccess(s -> System.out.println("inserted steroid"))
+                .flatMap(s -> emergencySetViewModel.insert(emergencySetAutoInjektor))
+                .flatMap(s -> setsOfProfileViewModel.insert(new SetsOfProfile(1, s.intValue())))
+                .doOnSuccess(s -> System.out.println("Inserted autoinjektor"))
+                .flatMapObservable(s -> Observable.just(p.getAllergies()))
+                .flatMapIterable(a -> a)
+                .map(a -> allergiesOfProfileViewModel.insert(new AllergiesOfProfile(p.getId(), a.getAllergyId())).subscribe())
+                .observeOn(AndroidSchedulers.mainThread());
+
+        //TODO: Store and delete inserted information if whole chain was not successful
+    }
+
+    private ProfileForm sendProfile() {
         // Profile Data
         String name = ((EditText) findViewById(R.id.profile_name)).getText().toString();
         TextView birthday = findViewById(R.id.birthday);
         Profile.Gender gender = genderFromString(getRadioGroupValue(R.id.gender));
         ArrayList<String> allergens = new ArrayList<>(Arrays.asList(allergyTags.toString().split(" ")));
+        ArrayList<Allergy> selectedAllergies = getListOfAllergiesFromTags(allergens);
         String asthma = getRadioGroupValue(R.id.asthma);
 
         if (name.isEmpty() || gender == null || asthma == null || birthday.getText().length() == 0) {
@@ -190,32 +356,56 @@ public class ProfileFormActivity extends AppCompatActivity {
         DatePicker date = birthdayPicker.getDatePicker();
         String[] autoInjectors = getResources().getStringArray(R.array.autoinjectors);
 
-        return new Profile(name,
-            date.getYear(),
-            date.getMonth(),
-            date.getDayOfMonth(),
-            gender,
-            allergens,
-            asthma.equals(getString(R.string.yes)),
-            antihistamine,
-            antihistamineDosage,
-            steroid,
-            steroidDosage,
-            autoInjectors[autoinjector.getSelectedItemPosition()],
-            salbutamol.equals(getString(R.string.yes))
+        ProfileForm profileForm = new ProfileForm();
+
+        if(oldProfileForm != null){
+            profileForm = new ProfileForm(oldProfileForm);
+        }
+        profileForm.changeProfileForm(
+                name,
+                date.getYear(),
+                date.getMonth(),
+                date.getDayOfMonth(),
+                gender,
+                selectedAllergies,
+                asthma.equals(getString(R.string.yes)),
+                antihistamine,
+                antihistamineDosage,
+                steroid,
+                steroidDosage,
+                autoInjectors[autoinjector.getSelectedItemPosition()],
+                salbutamol.equals(getString(R.string.yes))
         );
+
+        return profileForm;
     }
 
-    private void receiveProfile(Profile p) {
-        if (p == null) {
+
+    private ArrayList<Allergy> getListOfAllergiesFromTags(ArrayList<String> strings){
+        ArrayList<Allergy> allergies = new ArrayList<>();
+
+        for(String s : strings){
+            for(Allergy a : listOfAllergies){
+                if(s.equals(a.getName())){
+                    allergies.add(a);
+                }
+            }
+        }
+
+        return allergies;
+    }
+
+
+    private void receiveProfile(ProfileForm profile) {
+        if (oldProfileForm == null) {
             return;
         }
-        profile = p;
+
         // Profile Name
-        ((EditText) findViewById(R.id.profile_name)).setText(p.getName());
+        ((EditText) findViewById(R.id.profile_name)).setText(profile.getName());
         // Birthday
         final Calendar calendar = Calendar.getInstance();
-        calendar.setTime(p.getBirthday());
+        calendar.setTime(profile.getBirthday());  // TODO: Birthday
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
@@ -223,35 +413,26 @@ public class ProfileFormActivity extends AppCompatActivity {
         birthday.setText(Utility.fmtDate(year, month, day));
         birthdayPicker.updateDate(year, month, day);
         // Gender
-        setRadioGroupValue(R.id.gender, genderToString(p.getSex()));
-        // Allergies
-        int start = 0;
-        for (String allergy: p.getAllergies()) {
-            allergyTags.append(allergy).append(" ");
-            allergyTags.setSpan(new TagSpan(ProfileFormActivity.this),
-                start,
-                allergyTags.length() - 1,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            );
-            start = allergyTags.length();
-        }
-        multiComplete.setText(allergyTags);
-        multiComplete.setSelection(allergyTags.length());
+        setRadioGroupValue(R.id.gender, genderToString(profile.getGender()));
+        // TODO: Allergens...
         // Asthma
-        setRadioGroupValue(R.id.asthma, getString(p.hasAsthma() ? R.string.yes : R.string.no));
+        setRadioGroupValue(R.id.asthma, getString(profile.hasAsthma() ? R.string.yes : R.string.no));
 
         // Antihistamine
-        ((EditText) findViewById(R.id.antihistamine)).setText(p.getAntihistamine());
-        ((EditText) findViewById(R.id.antihistamine_dosage)).setText(p.getSteroidDosage());
+
+        ((EditText) findViewById(R.id.known_allergens)).setText(profile.allergensToString());
+        ((EditText) findViewById(R.id.antihistamine)).setText(profile.getAntihistamine());
+        ((EditText) findViewById(R.id.antihistamine_dosage)).setText(profile.getAntihistamineDosage());
         // Steroid
-        ((EditText) findViewById(R.id.steroid)).setText(p.getSteroid());
-        ((EditText) findViewById(R.id.steroid_dosage)).setText(p.getSteroidDosage());
+        ((EditText) findViewById(R.id.steroid)).setText(profile.getSteroid());
+        ((EditText) findViewById(R.id.steroid_dosage)).setText(profile.getSteroidDosage());
         // Autoinjector
         Spinner autoinjector = findViewById(R.id.autoinjector);
         ArrayAdapter<String> autoinjectorAdapter = (ArrayAdapter<String>) autoinjector.getAdapter();
-        autoinjector.setSelection(autoinjectorAdapter.getPosition(p.getAutoinjector()));
+        autoinjector.setSelection(autoinjectorAdapter.getPosition(profile.getAutoinjector()));
         // Salbutamol
-        setRadioGroupValue(R.id.salbutamol, getString(p.takesSalbutamol() ? R.string.yes : R.string.no));
+        setRadioGroupValue(R.id.salbutamol, getString(profile.takesSalbutamol() ? R.string.yes : R.string.no));
+
     }
 
     /**
