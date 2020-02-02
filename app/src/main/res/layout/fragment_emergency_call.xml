@@ -127,6 +127,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/which"
+                        android:textAllCaps="true"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
@@ -149,6 +150,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/how"
                         android:textAlignment="viewStart"
+                        android:textAllCaps="true"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
@@ -170,6 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/what"
+                        android:textAllCaps="true"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
@@ -191,6 +194,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/where"
+                        android:textAllCaps="true"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
@@ -212,6 +216,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wait"
+                        android:textAllCaps="true"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
