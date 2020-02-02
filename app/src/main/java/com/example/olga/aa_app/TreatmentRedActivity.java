@@ -38,12 +38,10 @@ public class TreatmentRedActivity extends AppCompatActivity {
             medicine.setText(getString(R.string.treatment_red_medicine, ""));
         }
 
-        showAddItemDialog1(null);
-
         TextView selection = findViewById(R.id.selection);
         StringBuilder selectedReactions = new StringBuilder();
         if (Profile.currentProfile != null) {
-            for (Symptom symptom: Profile.currentProfile.getCurrentReaction().getSymptoms()) {
+            for (Symptom symptom : Profile.currentProfile.getCurrentReaction().getSymptoms()) {
                 selectedReactions.append(getString(symptom.getName())).append(", ");
             }
         }
@@ -58,6 +56,8 @@ public class TreatmentRedActivity extends AppCompatActivity {
                 startActivity(new Intent(TreatmentRedActivity.this, SymptomsActivity.class));
             }
         });
+
+        startStepByStepInstructions();
     }
 
     @Override
@@ -79,36 +79,30 @@ public class TreatmentRedActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showAddItemDialog2(View view) {
+    private void startStepByStepInstructions() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
-        builder.setTitle("Schritt 2");
-
-        final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout2, null);
-        builder.setView(customLayout);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-
-            }
-        });
+        builder.setTitle(getString(R.string.step, 1))
+            .setMessage("Es bestehen Anzeichen für eine schwere Reaktion")
+            .setPositiveButton(R.string.continue_, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
+                    showMedicine();
+                }
+            });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    private void showAddItemDialog1(View view) {
+    private void showMedicine() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
-        builder.setTitle("Schritt 1");
+        builder.setTitle(getString(R.string.step, 2))
+            .setMessage(getString(R.string.treatment_red_medicine, ""))
+            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int i) {
 
-        final View customLayout = getLayoutInflater().inflate(R.layout.custom_layout_red, null);
-        builder.setView(customLayout);
-
-        builder.setPositiveButton("Weiter", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                showAddItemDialog2(null);
-            }
-        });
+                }
+            });
         AlertDialog dialog = builder.create();
         dialog.show();
     }

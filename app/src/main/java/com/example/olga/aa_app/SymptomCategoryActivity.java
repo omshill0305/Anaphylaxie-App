@@ -12,10 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
@@ -74,26 +72,21 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             if (descriptions.getResourceId(i, 0) != 0) {
                 final String description = descriptions.getString(i);
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
-                info_button.setColorFilter(getColor(R.color.colorPrimaryDark));
+                info_button.setColorFilter(getColor(R.color.accent));
                 info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(SymptomCategoryActivity.this,
                             R.style.MyAlertDialogStyleInfo
                         );
-                        builder.setTitle(checkBox.getText());
+                        builder.setTitle(checkBox.getText())
+                            .setMessage(description)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
 
-                        LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.custom_layout_red, root, false);
-                        TextView textView = (TextView) layout.getChildAt(0);
-                        textView.setText(description);
-                        builder.setView(layout);
-
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int i) {
-
-                            }
-                        });
+                                }
+                            });
                         AlertDialog dialog = builder.create();
                         dialog.show();
                     }
