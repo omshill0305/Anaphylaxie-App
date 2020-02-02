@@ -80,7 +80,7 @@ public class TreatmentRedActivity extends AppCompatActivity {
     }
 
     private void startStepByStepInstructions() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Emergency_Alert);
         builder.setTitle(getString(R.string.step, 1))
             .setMessage("Es bestehen Anzeichen für eine schwere Reaktion")
             .setPositiveButton(R.string.continue_, new DialogInterface.OnClickListener() {
@@ -94,7 +94,7 @@ public class TreatmentRedActivity extends AppCompatActivity {
     }
 
     private void showMedicine() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle2);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Emergency_Alert);
         builder.setTitle(getString(R.string.step, 2))
             .setMessage(getString(R.string.treatment_red_medicine, ""))
             .setPositiveButton("OK", new DialogInterface.OnClickListener() {

@@ -7,7 +7,7 @@
     tools:context=".DataProtectionActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout2"
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
@@ -26,18 +26,18 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_margin"
         android:layout_marginTop="@dimen/activity_margin"
         android:layout_marginBottom="@dimen/default_margin"
         android:text="@string/data_security"
-        android:textColor="@android:color/black"
+        android:textColor="@color/dark_grey"
         android:textSize="@dimen/header"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout2" />
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -49,7 +49,7 @@
         android:layout_weight="0.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2">
+        app:layout_constraintTop_toBottomOf="@id/textView">
 
         <LinearLayout
             android:layout_width="match_parent"

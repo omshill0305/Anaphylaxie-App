@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".SymptomCategoryActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -27,7 +25,7 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:base_color="@color/reaction"
+        app:base_color="?attr/colorPrimary"
         app:icon="@drawable/ic_hospital"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tint="@color/white"
@@ -38,7 +36,6 @@
             android:layout_height="0dp"
             android:layout_weight="0.8"
             android:scrollbarStyle="insideOverlay">
-
 
             <TableLayout
                 android:id="@+id/listing_layout"
@@ -68,12 +65,11 @@
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginEnd="@dimen/activity_margin"
             android:layout_marginBottom="@dimen/default_margin"
-            android:background="@color/reaction"
+            android:background="?attr/colorPrimary"
             android:padding="@dimen/default_margin"
             android:text="@string/select"
             android:textSize="@dimen/paragraph" />
 
     </com.example.olga.aa_app.BaseView>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

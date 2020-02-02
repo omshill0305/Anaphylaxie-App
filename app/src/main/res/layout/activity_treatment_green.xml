@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".TreatmentGreenActivity">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -26,7 +24,7 @@
     <com.example.olga.aa_app.BaseView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:base_color="@color/reaction"
+        app:base_color="?attr/colorPrimary"
         app:icon="@drawable/ic_treatment"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tint="@color/white"
@@ -57,9 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
-                    android:background="@drawable/info_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add">
+                    android:background="@drawable/info_box">
 
                     <TextView
                         android:id="@+id/selection_title"
@@ -68,7 +64,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/your_symptom_selection"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/subheader"
                         app:layout_constraintBottom_toTopOf="@id/selection"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -92,8 +88,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:background="@drawable/info_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:orientation="vertical">
 
                     <TextView
@@ -102,7 +96,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/starting_reaction"
                         android:textAlignment="center"
-                        android:textColor="@color/reaction"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header" />
 
                     <TextView
@@ -111,7 +105,7 @@
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/what_todo"
                         android:textAlignment="viewStart"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
@@ -124,7 +118,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1. "
-                            android:textColor="@color/reaction"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="@dimen/subheader"
                             android:textStyle="bold" />
 
@@ -133,7 +127,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/default_margin"
                             android:text="@string/stay_calm"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dark_grey"
                             android:textSize="@dimen/subheader" />
                     </LinearLayout>
 
@@ -146,7 +140,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2. "
-                            android:textColor="@color/reaction"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="@dimen/subheader"
                             android:textStyle="bold" />
 
@@ -156,7 +150,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/default_margin"
                             android:text="@string/treatment_green_medicine"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dark_grey"
                             android:textSize="@dimen/subheader" />
                     </LinearLayout>
 
@@ -169,7 +163,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="3. "
-                            android:textColor="@color/reaction"
+                            android:textColor="?attr/colorPrimary"
                             android:textSize="@dimen/subheader"
                             android:textStyle="bold" />
 
@@ -179,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/default_margin"
                             android:text="@string/after_treatment_green"
-                            android:textColor="@android:color/black"
+                            android:textColor="@color/dark_grey"
                             android:textSize="@dimen/subheader" />
                     </LinearLayout>
 
@@ -190,8 +184,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:background="@drawable/info_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:orientation="vertical">
 
                     <TextView
@@ -199,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/further_information"
                         android:textAlignment="center"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/subheader" />
 
                 </LinearLayout>
@@ -216,7 +208,7 @@
             android:layout_marginTop="@dimen/default_margin"
             android:layout_marginEnd="@dimen/activity_margin"
             android:layout_marginBottom="@dimen/default_margin"
-            android:background="@color/reaction"
+            android:background="?attr/colorPrimary"
             android:padding="@dimen/default_margin"
             android:text="@string/back_to_selection"
             app:layout_constraintBottom_toBottomOf="parent"

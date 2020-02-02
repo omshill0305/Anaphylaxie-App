@@ -90,7 +90,7 @@ public class TreatmentGreenActivity extends AppCompatActivity {
     }
 
     private void startStepByStepInstructions() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Reaction_Alert);
         builder.setTitle(getString(R.string.step, 1))
             .setMessage("Es handelt sich wahrscheinlich um eine beginnende anaphylaktische Reaktion")
             .setPositiveButton(R.string.continue_, new DialogInterface.OnClickListener() {
@@ -104,7 +104,7 @@ public class TreatmentGreenActivity extends AppCompatActivity {
     }
 
     private void showMedicine() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Alert);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Reaction_Alert);
         builder.setTitle(getString(R.string.step, 2))
             .setMessage(getString(R.string.treatment_green_medicine, "", "", "", ""))
             .setPositiveButton("OK", new DialogInterface.OnClickListener() {

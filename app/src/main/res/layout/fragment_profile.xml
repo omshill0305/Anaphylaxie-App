@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:base_color="@color/profile"
+    android:theme="@style/AppTheme.Profile"
+    app:base_color="?attr/colorPrimary"
     app:icon="@drawable/ic_profile"
     app:tint="@color/white"
     app:title="@string/title_profile">
@@ -19,9 +20,7 @@
             android:layout_marginLeft="@dimen/activity_margin"
             android:layout_marginRight="@dimen/activity_margin"
             android:layout_marginBottom="@dimen/default_margin"
-            android:background="@drawable/info_box"
-            android:backgroundTint="@color/profile"
-            android:backgroundTintMode="add">
+            android:background="@drawable/info_box">
 
             <TextView
                 android:id="@+id/profile_name"
@@ -30,7 +29,7 @@
                 android:layout_marginBottom="@dimen/default_margin"
                 android:text="@string/no_profile"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
+                android:textColor="@color/dark_grey"
                 android:textSize="@dimen/header"
                 app:layout_constraintBottom_toTopOf="@id/profile_data"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +59,7 @@
                         android:paddingEnd="@dimen/default_margin"
                         android:text="@string/birthday"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -68,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -82,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/gender"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -90,7 +89,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -104,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/known_allergens"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -112,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -126,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/asthma"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -134,7 +133,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -148,7 +147,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/antihistamine"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -156,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -170,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/steroid"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -178,7 +177,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -192,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/autoinjector"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -200,7 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -214,7 +213,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/salbutamol"
                         android:textAllCaps="false"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -222,7 +221,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </TableRow>
 
@@ -234,7 +233,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/profile"
+                android:background="?attr/colorPrimary"
                 android:padding="@dimen/default_margin"
                 android:text="@string/create_profile"
                 android:textSize="@dimen/paragraph"

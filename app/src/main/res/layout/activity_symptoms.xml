@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -26,7 +25,7 @@
     <com.example.olga.aa_app.BaseView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:base_color="@color/reaction"
+        app:base_color="?attr/colorPrimary"
         app:icon="@drawable/ic_medical_bag"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:tint="@color/white"
@@ -56,10 +55,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/ic_head"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/skin"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -71,10 +68,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/stomach"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/gastro_intestinal"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -95,10 +90,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/ic_cardiogram"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/cardiovascular"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -110,10 +103,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/lung"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/airways"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -134,10 +125,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/headache"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/dizziness"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -149,10 +138,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/runny"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/runny_nose"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -173,10 +160,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/ghost"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/panic"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />
@@ -188,10 +173,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="4dp"
                     android:background="@drawable/option_box"
-                    android:backgroundTint="@color/reaction"
-                    android:backgroundTintMode="add"
                     android:drawableTop="@drawable/ic_info"
-                    android:drawableTint="@android:color/black"
+                    android:drawableTint="@color/dark_grey"
                     android:text="@string/no_idea"
                     android:textAlignment="center"
                     android:textSize="@dimen/paragraph" />

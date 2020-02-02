@@ -1,21 +1,34 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/profile</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/emergency</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar">
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorPrimary">@color/dark_grey</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.Profile" parent="AppTheme">
+        <item name="colorPrimary">@color/profile</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.Emergency" parent="AppTheme">
+        <item name="colorPrimary">@color/emergency</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.Reaction" parent="AppTheme">
+        <item name="colorPrimary">@color/reaction</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
 
     <style name="BirthdayPickerStyle" parent="android:Theme.Material.Light.Dialog">
         <item name="android:datePickerStyle">@style/BirthdayPicker</item>
+        <item name="android:colorAccent">@color/accent</item>
     </style>
 
     <style name="BirthdayPicker" parent="android:Widget.Material.DatePicker">
@@ -25,35 +38,24 @@
     <style name="AppTheme.AppBarOverlay" parent="Theme.AppCompat.Light" />
 
     <style name="AppTheme.PopupOverlay" parent="Theme.AppCompat.Light" />
-    <style name="Button.White" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@android:color/white</item>
+
+    <style name="AppTheme.Alert" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/accent</item>
+        <!-- Used for the title -->
+        <item name="android:textColor">@color/accent</item>
+        <!-- Used for the text message -->
+        <item name="android:textColorPrimary">@color/dark_grey</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/white</item>
     </style>
 
-    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <!-- Used for the buttons -->
-        <item name="colorAccent">@color/profile</item>
-        <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">@color/reaction</item>
-        <!-- Used for the background -->
-        <item name="android:background">#FFFFFF</item>
+    <style name="AppTheme.Reaction.Alert" parent="AppTheme.Alert">
+        <item name="android:textColor">@color/reaction</item>
     </style>
 
-    <style name="MyAlertDialogStyle2" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <!-- Used for the buttons -->
-        <item name="colorAccent">@color/profile</item>
-        <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">@color/emergency</item>
-        <!-- Used for the background -->
-        <item name="android:background">#FFFFFF</item>
-    </style>
-
-    <style name="MyAlertDialogStyleInfo" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <!-- Used for the buttons -->
-        <item name="colorAccent">@color/profile</item>
-        <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">@color/design_default_color_primary</item>
-        <!-- Used for the background -->
-        <item name="android:background">#FFFFFF</item>
+    <style name="AppTheme.Emergency.Alert" parent="AppTheme.Alert">
+        <item name="android:textColor">@color/emergency</item>
     </style>
 
 </resources>

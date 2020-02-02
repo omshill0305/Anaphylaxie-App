@@ -2,10 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ProfileFormActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout4"
@@ -51,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/profile_name"
                     android:textAllCaps="true"
-                    android:textColor="@color/profile"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="@dimen/paragraph" />
 
                 <EditText
@@ -80,7 +79,7 @@
                         android:layout_weight="0.5"
                         android:text="@string/birthday"
                         android:textAllCaps="true"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <TextView
@@ -90,7 +89,7 @@
                         android:layout_weight="1"
                         android:hint="@string/enter_birthday"
                         android:labelFor="@id/birthday_label"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
                 </LinearLayout>
 
@@ -100,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/gender"
                     android:textAllCaps="true"
-                    android:textColor="@color/profile"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="@dimen/paragraph" />
 
                 <RadioGroup
@@ -143,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/known_allergens"
                     android:textAllCaps="true"
-                    android:textColor="@color/profile"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="@dimen/paragraph" />
 
                 <MultiAutoCompleteTextView
@@ -170,7 +169,7 @@
                         android:layout_weight="0.5"
                         android:text="@string/asthma"
                         android:textAllCaps="true"
-                        android:textColor="@color/profile"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/paragraph" />
 
                     <RadioGroup
@@ -204,14 +203,14 @@
                     android:layout_marginBottom="@dimen/activity_margin"
                     android:text="@string/emergency_set"
                     android:textAllCaps="true"
-                    android:textColor="@color/profile"
+                    android:textColor="?attr/colorPrimary"
                     android:textSize="@dimen/paragraph" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/antihistamine"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/dark_grey"
                     android:textSize="@dimen/paragraph" />
 
                 <LinearLayout
@@ -246,7 +245,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/steroid"
-                    android:textColor="@android:color/black"
+                    android:textColor="@color/dark_grey"
                     android:textSize="@dimen/paragraph" />
 
                 <LinearLayout
@@ -289,7 +288,7 @@
                         android:layout_weight="0.5"
                         android:gravity="center_vertical"
                         android:text="@string/autoinjector"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
 
                     <Spinner
@@ -313,7 +312,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
                         android:text="@string/salbutamol"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/paragraph" />
 
                     <RadioGroup
@@ -348,7 +347,7 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/profile"
+            android:backgroundTint="?attr/colorPrimary"
             android:onClick="cancelProfileChanges"
             android:text="@android:string/cancel"
             android:textColor="@color/white"
@@ -361,7 +360,7 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/profile"
+            android:backgroundTint="?attr/colorPrimary"
             android:onClick="saveProfileChanges"
             android:text="@string/save"
             android:textColor="@color/white"

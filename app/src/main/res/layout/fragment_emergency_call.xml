@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:base_color="@color/emergency"
+    android:theme="@style/AppTheme.Emergency"
+    app:base_color="?attr/colorPrimary"
     app:icon="@drawable/ic_call"
     app:tint="@color/white"
     app:title="@string/title_emergency_call"
@@ -28,8 +29,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:background="@drawable/info_box"
-                android:backgroundTint="@color/emergency"
-                android:backgroundTintMode="add"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -41,7 +40,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1. "
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/subheader"
                         android:textStyle="bold" />
 
@@ -64,7 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2. "
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/subheader"
                         android:textStyle="bold" />
 
@@ -73,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/stay_calm"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/subheader" />
                 </LinearLayout>
 
@@ -86,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3. "
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/subheader"
                         android:textStyle="bold" />
 
@@ -95,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/default_margin"
                         android:text="@string/keep_autoinjector_ready"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/dark_grey"
                         android:textSize="@dimen/subheader" />
                 </LinearLayout>
 
@@ -106,8 +105,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:background="@drawable/info_box"
-                android:backgroundTint="@color/emergency"
-                android:backgroundTintMode="add"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -130,7 +127,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/which"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
@@ -138,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" Symptome?"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header" />
                 </LinearLayout>
 
@@ -152,7 +149,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/how"
                         android:textAlignment="viewStart"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
@@ -160,7 +157,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" viele sind betroffen?"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header" />
                 </LinearLayout>
 
@@ -173,15 +170,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/what"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text=" für eine Reaktion?"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header" />
                 </LinearLayout>
 
@@ -194,7 +191,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/where"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
@@ -202,7 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" ist es passiert?"
-                        android:textColor="?attr/colorAccent"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header" />
                 </LinearLayout>
 
@@ -215,7 +212,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wait"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header"
                         android:textStyle="bold" />
 
@@ -223,7 +220,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" auf Rückfragen!"
-                        android:textColor="@color/emergency"
+                        android:textColor="?attr/colorPrimary"
                         android:textSize="@dimen/header" />
 
 
@@ -234,9 +231,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/info_box"
-                android:backgroundTint="@color/emergency"
-                android:backgroundTintMode="add">
+                android:background="@drawable/info_box">
 
                 <TextView
                     android:id="@+id/textView17"
@@ -257,7 +252,7 @@
                     android:layout_width="0dp"
                     android:layout_height="300dp"
                     android:layout_marginTop="@dimen/default_margin"
-                    android:paddingBottom="50dp"
+                    android:layout_marginBottom="@dimen/default_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

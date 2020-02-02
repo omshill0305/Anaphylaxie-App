@@ -5,6 +5,6 @@
     <color name="emergency">#AD4371</color>
     <color name="reaction">#00897b</color>
     <color name="white">#FFFFFF</color>
-    <color name="grey">#76767676</color>
-    <color name="colorProjektLightGreen">#8000897B</color>
+    <color name="dark_grey">#191919</color>
+    <color name="accent">#3F51B5</color>
 </resources>

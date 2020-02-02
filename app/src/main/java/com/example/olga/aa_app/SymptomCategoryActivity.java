@@ -72,12 +72,12 @@ public class SymptomCategoryActivity extends AppCompatActivity {
             if (descriptions.getResourceId(i, 0) != 0) {
                 final String description = descriptions.getString(i);
                 ImageButton info_button = (ImageButton) row.getChildAt(1);
-                info_button.setColorFilter(getColor(R.color.accent));
                 info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(SymptomCategoryActivity.this,
-                            R.style.MyAlertDialogStyleInfo
+                        AlertDialog.Builder builder = new AlertDialog.Builder(
+                            SymptomCategoryActivity.this,
+                            R.style.AppTheme_Alert
                         );
                         builder.setTitle(checkBox.getText())
                             .setMessage(description)
