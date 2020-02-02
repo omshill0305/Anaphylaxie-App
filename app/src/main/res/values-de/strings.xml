@@ -131,4 +131,6 @@
     <string name="where">WO</string>
     <string name="wait">WARTEN</string>
     <string name="you_are_here">Du bist hier</string>
+    <string name="anaphylaxis">Anaphylaxie</string>
+    <string name="first_aid_for">Erste Hilfe für</string>
 </resources>

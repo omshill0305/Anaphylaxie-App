@@ -139,4 +139,9 @@
     <string name="where">WHERE</string>
     <string name="wait">WAIT</string>
     <string name="you_are_here">You are here</string>
+    <string name="anaphylaxis">Anaphylaxis</string>
+    <string name="first_aid_for">First aid for</string>
+    <string name="powered_by" translatable="false">Powered By</string>
+    <string name="charite" translatable="false">Charité</string>
+    <string name="htw" translatable="false">HTW</string>
 </resources>
